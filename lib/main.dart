@@ -5,11 +5,10 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:restaurant_with_frog_api/features/auth/bloc/auth_cubit.dart';
 import 'package:restaurant_with_frog_api/features/auth/view/splash_page.dart';
 import 'package:restaurant_with_frog_api/flavor/flavor_config.dart';
-import 'package:restaurant_with_frog_api/utils/responsive_widget.dart';
 
-void main() async {
+Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  runApp(const MyApp());
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {

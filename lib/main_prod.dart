@@ -1,7 +1,7 @@
 import 'flavor/flavor_config.dart';
 import 'main.dart' as app;
 
-void main() {
+Future<void> main() async {
   FlavorConfig.setEnvironment('PROD');
-  app.main();
+  await app.main();
 }
