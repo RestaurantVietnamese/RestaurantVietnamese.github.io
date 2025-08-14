@@ -97,4 +97,20 @@ class AuthCubit extends Cubit<AuthState> {
     _refreshToken = null;
     emit(AuthUnauthenticated());
   }
+
+  Future<void> verifyOTP({
+    required String email,
+    required String otp,
+  }) async {
+    emit(AuthLoading());
+    try {
+      await RestaurantService.verifyOTP(
+        email: email,
+        otp: otp,
+      );
+      emit(AuthRegistered());
+    } catch (e) {
+      emit(AuthError(e.toString()));
+    }
+  }
 }

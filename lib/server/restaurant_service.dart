@@ -55,6 +55,20 @@ class RestaurantService {
       },
     );
   }
+  static Future<Map<String, dynamic>> verifyOTP({
+    required String email,
+    required String otp,
+  }) async {
+    return await _client.request(
+      path: '$baseUrl/auth/verify_otp',
+      method: RequestMethod.post,
+      sendToken: false,
+      body: {
+        'email': email,
+        'otp': otp,
+      },
+    );
+  }
 
   //------------------------------------------------------------------------------------------------------------------------
 

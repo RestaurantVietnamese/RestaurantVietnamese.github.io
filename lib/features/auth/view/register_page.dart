@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:restaurant_with_frog_api/features/auth/bloc/auth_cubit.dart';
 import 'package:restaurant_with_frog_api/features/auth/bloc/auth_state.dart';
+import 'package:restaurant_with_frog_api/features/auth/view/verify_otp_page.dart';
 
 class RegisterPage extends StatefulWidget {
   const RegisterPage({super.key});
@@ -35,7 +36,14 @@ class _RegisterPageState extends State<RegisterPage> {
               ScaffoldMessenger.of(context).showSnackBar(
                 const SnackBar(content: Text('Đăng ký thành công')),
               );
-              Navigator.pop(context); // Quay lại trang login
+              // Navigator.pop(context); // Quay lại trang login
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => VerifyOtpScreen(
+                      email: emailController.text.trim(),
+                    ),
+                  ));
             } else if (state is AuthError) {
               ScaffoldMessenger.of(context).showSnackBar(
                 SnackBar(content: Text(state.message)),
@@ -47,7 +55,8 @@ class _RegisterPageState extends State<RegisterPage> {
               children: [
                 TextField(
                   controller: usernameController,
-                  decoration: const InputDecoration(labelText: 'Tên người dùng'),
+                  decoration:
+                      const InputDecoration(labelText: 'Tên người dùng'),
                 ),
                 TextField(
                   controller: emailController,
