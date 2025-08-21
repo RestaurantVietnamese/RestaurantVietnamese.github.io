@@ -41,6 +41,7 @@ dependencies:
   video_player: ^2.9.5
   #
   flutter_bloc: ^9.1.1
+  audioplayers: ^6.4.0
   #
   
 
@@ -70,6 +71,9 @@ flutter:
   assets:
     - assets/images/
     - assets/images/time_gif_animation.gif
+    - assets/sounds/correct.mp3
+    - assets/sounds/wrong.mp3
+    - assets/sounds/vietnamcobacho.mp3
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see

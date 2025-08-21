@@ -2,6 +2,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:puzzel/puzzle_game_3/widget/question_model.dart';
 import 'package:puzzel/puzzle_game_3/widget/question_timer_with_animal.dart';
+import 'package:puzzel/puzzle_game_3/widget/sound_manager.dart';
 
 class QuestionDialog extends StatefulWidget {
   final int index;
@@ -22,6 +23,8 @@ class QuestionDialog extends StatefulWidget {
 class _QuestionDialogState extends State<QuestionDialog> {
   int remainingSeconds = 30;
   Timer? countdownTimer;
+
+  final soundManager = SoundManager();
 
   @override
   void initState() {
@@ -107,6 +110,7 @@ class _QuestionDialogState extends State<QuestionDialog> {
                       if (optionChar == widget.question.correctOption) {
                         Navigator.pop(context);
                         widget.onCorrectAnswer();
+                        soundManager.playCorrect();
                         ScaffoldMessenger.of(context).showSnackBar(
                           const SnackBar(
                             content: Text(
@@ -117,6 +121,7 @@ class _QuestionDialogState extends State<QuestionDialog> {
                           ),
                         );
                       } else {
+                        soundManager.playWrong();
                         ScaffoldMessenger.of(context).showSnackBar(
                           const SnackBar(
                             content: Text(

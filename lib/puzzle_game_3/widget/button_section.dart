@@ -27,20 +27,20 @@ class ButtonSection extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        if (allRevealed && !isShowImage)
-          Padding(
-            padding: const EdgeInsets.all(16.0),
-            child: ElevatedButton.icon(
-              onPressed: onShowImage,
-              icon: const Icon(Icons.auto_fix_high),
-              label: const Text("Sắp xếp lại ảnh"),
-              style: ElevatedButton.styleFrom(
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
-                textStyle: const TextStyle(fontSize: 18),
-              ),
-            ),
-          ),
+        // if (allRevealed && !isShowImage)
+          // Padding(
+          //   padding: const EdgeInsets.all(16.0),
+          //   child: ElevatedButton.icon(
+          //     onPressed: onShowImage,
+          //     icon: const Icon(Icons.auto_fix_high),
+          //     label: const Text("Sắp xếp lại ảnh"),
+          //     style: ElevatedButton.styleFrom(
+          //       padding:
+          //           const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
+          //       textStyle: const TextStyle(fontSize: 18),
+          //     ),
+          //   ),
+          // ),
         const SizedBox(height: 20),
         Padding(
           padding: const EdgeInsets.all(16.0),

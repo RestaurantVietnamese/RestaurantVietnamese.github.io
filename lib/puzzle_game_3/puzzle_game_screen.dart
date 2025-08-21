@@ -5,6 +5,7 @@ import 'package:puzzel/puzzle_game/content_game.dart';
 import 'package:puzzel/puzzle_game_3/widget/button_section.dart';
 import 'package:puzzel/puzzle_game_3/widget/question_dialog.dart';
 import 'package:puzzel/puzzle_game_3/widget/question_model.dart';
+import 'package:puzzel/puzzle_game_3/widget/sound_manager.dart';
 import 'package:puzzel/puzzle_game_3/widget/tile_widget.dart';
 
 class PuzzleGameScreen extends StatefulWidget {
@@ -24,6 +25,8 @@ class _PuzzleGameScreenState extends State<PuzzleGameScreen> {
   int currentRevealIndex = 0; // Vị trí hiện tại trong thứ tự mở
   List<bool> answeredQuestions =
       List.filled(9, false); // Theo dõi câu hỏi đã trả lời
+
+  final soundManager = SoundManager();
 
   @override
   void initState() {
@@ -230,7 +233,44 @@ class _PuzzleGameScreenState extends State<PuzzleGameScreen> {
                                     ),
                                   ),
                                 ),
-                              ))
+                              )),
+                          if (allRevealed)//khi mở hết tất cả các ô
+                            Positioned(
+                                right: 170,
+                                top: 200,
+                                child: Padding(
+                                  padding: const EdgeInsets.all(16.0),
+                                  child: GestureDetector(
+                                    onTap: () => _showRandomQuestion(),
+                                    child: Container(
+                                      width: 100,
+                                      height: 100,
+                                      decoration: BoxDecoration(
+                                        color: Colors.green,
+                                        shape: BoxShape.circle,
+                                        boxShadow: [
+                                          BoxShadow(
+                                            color:
+                                                Colors.black.withOpacity(0.2),
+                                            spreadRadius: 1,
+                                            blurRadius: 5,
+                                            offset: const Offset(0, 3),
+                                          ),
+                                        ],
+                                      ),
+                                      child: Center(
+                                        child: Text(
+                                          'D',
+                                          style: const TextStyle(
+                                            color: Colors.white,
+                                            fontSize: 50,
+                                            fontWeight: FontWeight.bold,
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                ))
                         ],
                       ),
                     if (isShowImage)
@@ -255,6 +295,7 @@ class _PuzzleGameScreenState extends State<PuzzleGameScreen> {
                     onShowImage: () {
                       setState(() {
                         isShowImage = true;
+                        soundManager.playGameOver();
                       });
                     },
                     onCorrectAnswer: (index) {
@@ -264,7 +305,6 @@ class _PuzzleGameScreenState extends State<PuzzleGameScreen> {
               ),
             ],
           ),
-        
         ],
       ),
     );
