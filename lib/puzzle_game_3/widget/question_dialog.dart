@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:puzzel/puzzle_game_3/widget/question_model.dart';
+import 'package:puzzel/puzzle_game_3/widget/question_timer_with_animal.dart';
 
 class QuestionDialog extends StatefulWidget {
   final int index;
@@ -71,20 +72,15 @@ class _QuestionDialogState extends State<QuestionDialog> {
               child: Text(
                 'Câu hỏi số ${widget.index + 1}',
                 style:
-                    const TextStyle(fontWeight: FontWeight.bold, fontSize: 30),
+                    const TextStyle(fontWeight: FontWeight.bold, fontSize: 50),
               ),
             ),
             const SizedBox(height: 8),
-            Align(
-              // Thời gian căn phải
-              alignment: Alignment.centerRight,
-              child: Text(
-                '$remainingSeconds',
-                style: TextStyle(
-                  fontSize: 50,
-                  color: remainingSeconds <= 10 ? Colors.red : Colors.green,
-                  fontWeight: FontWeight.w600,
-                ),
+            SizedBox(
+              width: MediaQuery.of(context).size.width * 0.9,
+              child: QuestionTimerWithAnimal(
+                totalSeconds: 30,
+                remainingSeconds: remainingSeconds,
               ),
             ),
           ],
@@ -95,9 +91,11 @@ class _QuestionDialogState extends State<QuestionDialog> {
           mainAxisSize: MainAxisSize.min,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
+            const SizedBox(height: 16),
             Text(
               widget.question.questionText,
-              style: const TextStyle(fontSize: 30),
+              textAlign: TextAlign.center,
+              style: const TextStyle(fontSize: 30, fontWeight: FontWeight.w600),
             ),
             const SizedBox(height: 16),
             ...widget.question.options.map((option) {

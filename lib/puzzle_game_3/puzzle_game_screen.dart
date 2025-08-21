@@ -156,66 +156,115 @@ class _PuzzleGameScreenState extends State<PuzzleGameScreen> {
     final bool allRevealed = revealedTiles.every((isRevealed) => isRevealed);
 
     return Scaffold(
-      backgroundColor: Color(0xfffce6cc),
-      body: Column(
+      backgroundColor: Colors.white,
+      body: Stack(
         children: [
-          SizedBox(height: 50),
-          Container(
-            height: 800,
-            child: Stack(
-              children: [
-                if (!isShowImage)
-                  Center(
-                    child: AspectRatio(
-                      aspectRatio: 1,
-                      child: GridView.builder(
-                        physics: NeverScrollableScrollPhysics(),
-                        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                          crossAxisCount: 3,
-                          crossAxisSpacing: 4,
-                          mainAxisSpacing: 4,
-                        ),
-                        itemCount: 9,
-                        itemBuilder: (context, index) {
-                          return AnimatedSwitcher(
-                            duration: Duration(milliseconds: 400),
-                            child: TileWidget(
-                              originalIndex: index,
-                              isRevealed: revealedTiles[index],
-                              imagePath: imagePath,
-                              hiddenImagePath: hiddenImagePath[index],
+          Image.asset('assets/images/bgim.png'),
+          Column(
+            children: [
+              SizedBox(height: 70),
+              Container(
+                height: 800,
+                child: Stack(
+                  children: [
+                    if (!isShowImage)
+                      Stack(
+                        children: [
+                          Center(
+                            child: AspectRatio(
+                              aspectRatio: 1,
+                              child: GridView.builder(
+                                physics: NeverScrollableScrollPhysics(),
+                                gridDelegate:
+                                    SliverGridDelegateWithFixedCrossAxisCount(
+                                  crossAxisCount: 3,
+                                  crossAxisSpacing: 4,
+                                  mainAxisSpacing: 4,
+                                ),
+                                itemCount: 9,
+                                itemBuilder: (context, index) {
+                                  return AnimatedSwitcher(
+                                    duration: Duration(milliseconds: 400),
+                                    child: TileWidget(
+                                      originalIndex: index,
+                                      isRevealed: revealedTiles[index],
+                                      imagePath: imagePath,
+                                      hiddenImagePath: hiddenImagePath[index],
+                                    ),
+                                  );
+                                },
+                              ),
                             ),
-                          );
-                        },
+                          ),
+                          Positioned(
+                              right: 170,
+                              top: 0,
+                              child: Padding(
+                                padding: const EdgeInsets.all(16.0),
+                                child: GestureDetector(
+                                  onTap: () => _showRandomQuestion(),
+                                  child: Container(
+                                    width: 100,
+                                    height: 100,
+                                    decoration: BoxDecoration(
+                                      color: Color(0xffff909d),
+                                      shape: BoxShape.circle,
+                                      boxShadow: [
+                                        BoxShadow(
+                                          color: Colors.black.withOpacity(0.2),
+                                          spreadRadius: 1,
+                                          blurRadius: 5,
+                                          offset: const Offset(0, 3),
+                                        ),
+                                      ],
+                                    ),
+                                    child: Center(
+                                      child: Text(
+                                        'R',
+                                        style: const TextStyle(
+                                          color: Colors.white,
+                                          fontSize: 50,
+                                          fontWeight: FontWeight.bold,
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ))
+                        ],
                       ),
-                    ),
-                  ),
-                if (isShowImage)
-                  Positioned.fill(
-                    child: Center(
-                      child: Image.asset(
-                        imagePath,
-                        fit: BoxFit.contain,
+                    if (isShowImage)
+                      Positioned.fill(
+                        child: Center(
+                          child: Image.asset(
+                            imagePath,
+                            fit: BoxFit.contain,
+                          ),
+                        ),
                       ),
-                    ),
-                  ),
-              ],
-            ),
+                  ],
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 150),
+                child: ButtonSection(
+                    allRevealed: allRevealed,
+                    isShowImage: isShowImage,
+                    answeredQuestions: answeredQuestions,
+                    questions: questions,
+                    onShowImage: () {
+                      setState(() {
+                        isShowImage = true;
+                      });
+                    },
+                    onCorrectAnswer: (index) {
+                      _onCorrectAnswer(index);
+                    },
+                    onRandomQuestion: _showRandomQuestion),
+              ),
+            ],
           ),
-          ButtonSection(
-              allRevealed: allRevealed,
-              isShowImage: isShowImage,
-              answeredQuestions: answeredQuestions,
-              questions: questions,
-              onShowImage: () {
-                setState(() {
-                  isShowImage = true;
-                });
-              },
-              onCorrectAnswer: (index) {
-                _onCorrectAnswer(index);
-              },
-              onRandomQuestion: _showRandomQuestion),
+        
         ],
       ),
     );

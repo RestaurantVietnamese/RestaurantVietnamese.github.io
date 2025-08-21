@@ -42,19 +42,6 @@ class ButtonSection extends StatelessWidget {
             ),
           ),
         const SizedBox(height: 20),
-        if (!allRevealed)
-          Padding(
-            padding: const EdgeInsets.all(16.0),
-            child: ElevatedButton.icon(
-              onPressed: onRandomQuestion,
-              icon: Icon(Icons.shuffle),
-              label: Text("Câu hỏi ngẫu nhiên"),
-              style: ElevatedButton.styleFrom(
-                padding: EdgeInsets.symmetric(horizontal: 24, vertical: 12),
-                textStyle: TextStyle(fontSize: 18),
-              ),
-            ),
-          ),
         Padding(
           padding: const EdgeInsets.all(16.0),
           child: Row(

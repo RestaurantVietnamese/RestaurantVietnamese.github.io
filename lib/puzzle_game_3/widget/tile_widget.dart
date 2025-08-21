@@ -24,11 +24,18 @@ class TileWidget extends StatelessWidget {
         if (!isRevealed) {
           return ClipRect(
             key: ValueKey('unrevealed_$originalIndex'),
-            child: Image.asset(
-              hiddenImagePath,
-              fit: BoxFit.cover,
-              width: constraints.maxWidth,
-              height: constraints.maxHeight,
+            child: Container(
+              decoration: BoxDecoration(
+                borderRadius:  BorderRadius.circular(20),
+                  color: Color(0xfffce6cc),
+                  border: Border.all(color: Color(0xffff909d), width: 3)),
+              padding: const EdgeInsets.all(40.0),
+              child: Image.asset(
+                hiddenImagePath,
+                fit: BoxFit.cover,
+                width: constraints.maxWidth,
+                height: constraints.maxHeight,
+              ),
             ),
           );
         }
