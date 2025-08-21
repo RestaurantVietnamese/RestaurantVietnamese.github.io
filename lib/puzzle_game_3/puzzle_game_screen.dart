@@ -117,7 +117,7 @@ class _PuzzleGameScreenState extends State<PuzzleGameScreen> {
                         fontSize: 48, fontWeight: FontWeight.bold),
                   ),
                   const SizedBox(height: 16),
-                  const CircularProgressIndicator(),
+                  // const CircularProgressIndicator(),
                 ],
               ),
             );
@@ -234,14 +234,19 @@ class _PuzzleGameScreenState extends State<PuzzleGameScreen> {
                                   ),
                                 ),
                               )),
-                          if (allRevealed)//khi mở hết tất cả các ô
+                          if (allRevealed) //khi mở hết tất cả các ô
                             Positioned(
                                 right: 170,
                                 top: 200,
                                 child: Padding(
                                   padding: const EdgeInsets.all(16.0),
                                   child: GestureDetector(
-                                    onTap: () => _showRandomQuestion(),
+                                    onTap: () {
+                                      setState(() {
+                                        isShowImage = true;
+                                        soundManager.playGameOver();
+                                      });
+                                    },
                                     child: Container(
                                       width: 100,
                                       height: 100,
@@ -285,24 +290,31 @@ class _PuzzleGameScreenState extends State<PuzzleGameScreen> {
                   ],
                 ),
               ),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 150),
-                child: ButtonSection(
-                    allRevealed: allRevealed,
-                    isShowImage: isShowImage,
-                    answeredQuestions: answeredQuestions,
-                    questions: questions,
-                    onShowImage: () {
-                      setState(() {
-                        isShowImage = true;
-                        soundManager.playGameOver();
-                      });
-                    },
-                    onCorrectAnswer: (index) {
-                      _onCorrectAnswer(index);
-                    },
-                    onRandomQuestion: _showRandomQuestion),
-              ),
+              if (isShowImage)...[
+                SizedBox(height: 10,),
+                Text(
+                  'Tuyên ngôn độc lập'.toUpperCase(),
+                  style: TextStyle(fontSize: 50, fontWeight: FontWeight.bold,color: Colors.red),
+                )],
+              if (!isShowImage)
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 150),
+                  child: ButtonSection(
+                      allRevealed: allRevealed,
+                      isShowImage: isShowImage,
+                      answeredQuestions: answeredQuestions,
+                      questions: questions,
+                      onShowImage: () {
+                        setState(() {
+                          isShowImage = true;
+                          soundManager.playGameOver();
+                        });
+                      },
+                      onCorrectAnswer: (index) {
+                        _onCorrectAnswer(index);
+                      },
+                      onRandomQuestion: _showRandomQuestion),
+                ),
             ],
           ),
         ],
