@@ -1,6 +1,6 @@
 {
-    "name": "web_g18",
-    "short_name": "web_g18",
+    "name": "puzzel",
+    "short_name": "puzzel",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",
