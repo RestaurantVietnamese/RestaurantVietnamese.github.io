@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <!-- Base href để Flutter biết đường dẫn root -->
-  <base href="/">
+  <!-- Base href để Flutter biết root path -->
+  <base href="/ten-repo/"> <!-- Đổi thành tên repo GitHub -->
 
   <meta charset="UTF-8">
   <meta content="IE=Edge" http-equiv="X-UA-Compatible">
-  <meta name="description" content="A new Flutter project.">
+  <meta name="description" content="Flutter Web App with reCAPTCHA">
 
   <!-- iOS meta tags & icons -->
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -22,20 +22,24 @@
 
   <script>
     // Injected by flutter build
-    const serviceWorkerVersion = "2698610746";
+    const serviceWorkerVersion = "2332365706";
   </script>
 
   <!-- QUAN TRỌNG: Load reCAPTCHA trước -->
   <script src="https://www.google.com/recaptcha/api.js?render=6Lf2NKYrAAAAAAIOn5T0JJl9FPtIs1I6pED5GhwE" async defer></script>
+
+  <!-- Flutter loader -->
   <script src="flutter.js" defer></script>
 </head>
 <body>
   <script>
+    let appStarted = false;
+
     function startFlutterApp() {
+      if (appStarted) return; // Chặn khởi động 2 lần
+      appStarted = true;
       _flutter.loader.loadEntrypoint({
-        serviceWorker: {
-          serviceWorkerVersion: serviceWorkerVersion,
-        },
+        serviceWorker: { serviceWorkerVersion: serviceWorkerVersion },
         onEntrypointLoaded: function(engineInitializer) {
           engineInitializer.initializeEngine().then(function(appRunner) {
             appRunner.runApp();
@@ -66,10 +70,16 @@
     setTimeout(() => {
       if (!recaptchaReady) {
         console.warn("⚠ reCAPTCHA chưa load, vẫn khởi động Flutter");
-        recaptchaReady = true;
-        tryStart();
+        startFlutterApp();
       }
     }, 10000);
+
+    // Đảm bảo vẫn khởi động nếu user load xong trang (flutter.js đã sẵn sàng)
+    window.addEventListener('load', function() {
+      if (!appStarted && !recaptchaReady) {
+        console.log("Trang load xong nhưng reCAPTCHA chưa sẵn sàng. Đợi thêm...");
+      }
+    });
   </script>
 </body>
 </html>
