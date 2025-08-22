@@ -1,85 +1,41 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <!-- Base href để Flutter biết root path -->
-  <base href="/ten-repo/"> <!-- Đổi thành tên repo GitHub -->
+  <base href="/ten-repo/">
 
   <meta charset="UTF-8">
   <meta content="IE=Edge" http-equiv="X-UA-Compatible">
   <meta name="description" content="Flutter Web App with reCAPTCHA">
-
-  <!-- iOS meta tags & icons -->
+  <meta name="mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   <meta name="apple-mobile-web-app-title" content="web_g18">
+
   <link rel="apple-touch-icon" href="icons/Icon-192.png">
-
-  <!-- Favicon -->
   <link rel="icon" type="image/png" href="favicon.png"/>
-
-  <title>web_g18</title>
   <link rel="manifest" href="manifest.json">
 
+  <title>web_g18</title>
+
   <script>
-    // Injected by flutter build
-    const serviceWorkerVersion = "2332365706";
+    const serviceWorkerVersion = "4154751391";
   </script>
 
-  <!-- QUAN TRỌNG: Load reCAPTCHA trước -->
   <script src="https://www.google.com/recaptcha/api.js?render=6Lf2NKYrAAAAAAIOn5T0JJl9FPtIs1I6pED5GhwE" async defer></script>
-
-  <!-- Flutter loader -->
   <script src="flutter.js" defer></script>
 </head>
 <body>
   <script>
-    let appStarted = false;
-
     function startFlutterApp() {
-      if (appStarted) return; // Chặn khởi động 2 lần
-      appStarted = true;
       _flutter.loader.loadEntrypoint({
         serviceWorker: { serviceWorkerVersion: serviceWorkerVersion },
         onEntrypointLoaded: function(engineInitializer) {
-          engineInitializer.initializeEngine().then(function(appRunner) {
-            appRunner.runApp();
-          });
+          engineInitializer.initializeEngine().then(appRunner => appRunner.runApp());
         }
       });
     }
 
-    // Đợi cả reCAPTCHA và Flutter loader sẵn sàng
-    let recaptchaReady = false;
-
-    function tryStart() {
-      if (recaptchaReady) {
-        startFlutterApp();
-      }
-    }
-
-    // Kiểm tra reCAPTCHA đã load
-    const checkRecaptcha = setInterval(() => {
-      if (window.grecaptcha) {
-        recaptchaReady = true;
-        clearInterval(checkRecaptcha);
-        tryStart();
-      }
-    }, 100);
-
-    // Timeout sau 10 giây nếu reCAPTCHA chưa load
-    setTimeout(() => {
-      if (!recaptchaReady) {
-        console.warn("⚠ reCAPTCHA chưa load, vẫn khởi động Flutter");
-        startFlutterApp();
-      }
-    }, 10000);
-
-    // Đảm bảo vẫn khởi động nếu user load xong trang (flutter.js đã sẵn sàng)
-    window.addEventListener('load', function() {
-      if (!appStarted && !recaptchaReady) {
-        console.log("Trang load xong nhưng reCAPTCHA chưa sẵn sàng. Đợi thêm...");
-      }
-    });
+    window.addEventListener('load', startFlutterApp);
   </script>
 </body>
 </html>
