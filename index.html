@@ -1,19 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <!--
-    If you are serving your web app in a path other than the root, change the
-    href value below to reflect the base path you are serving from.
-
-    The path provided below has to start and end with a slash "/" in order for
-    it to work correctly.
-
-    For more details:
-    * https://developer.mozilla.org/en-US/docs/Web/HTML/Element/base
-
-    This is a placeholder for base href that will be replaced by the value of
-    the `--base-href` argument provided to `flutter build`.
-  -->
+  <!-- Base href để Flutter biết đường dẫn root -->
   <base href="/">
 
   <meta charset="UTF-8">
@@ -23,16 +11,65 @@
   <!-- iOS meta tags & icons -->
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
-  <meta name="apple-mobile-web-app-title" content="puzzel">
+  <meta name="apple-mobile-web-app-title" content="web_g18">
   <link rel="apple-touch-icon" href="icons/Icon-192.png">
 
   <!-- Favicon -->
   <link rel="icon" type="image/png" href="favicon.png"/>
 
-  <title>puzzel</title>
+  <title>web_g18</title>
   <link rel="manifest" href="manifest.json">
+
+  <script>
+    // Injected by flutter build
+    const serviceWorkerVersion = "2698610746";
+  </script>
+
+  <!-- QUAN TRỌNG: Load reCAPTCHA trước -->
+  <script src="https://www.google.com/recaptcha/api.js?render=6Lf2NKYrAAAAAAIOn5T0JJl9FPtIs1I6pED5GhwE" async defer></script>
+  <script src="flutter.js" defer></script>
 </head>
 <body>
-  <script src="flutter_bootstrap.js" async></script>
+  <script>
+    function startFlutterApp() {
+      _flutter.loader.loadEntrypoint({
+        serviceWorker: {
+          serviceWorkerVersion: serviceWorkerVersion,
+        },
+        onEntrypointLoaded: function(engineInitializer) {
+          engineInitializer.initializeEngine().then(function(appRunner) {
+            appRunner.runApp();
+          });
+        }
+      });
+    }
+
+    // Đợi cả reCAPTCHA và Flutter loader sẵn sàng
+    let recaptchaReady = false;
+
+    function tryStart() {
+      if (recaptchaReady) {
+        startFlutterApp();
+      }
+    }
+
+    // Kiểm tra reCAPTCHA đã load
+    const checkRecaptcha = setInterval(() => {
+      if (window.grecaptcha) {
+        recaptchaReady = true;
+        clearInterval(checkRecaptcha);
+        tryStart();
+      }
+    }, 100);
+
+    // Timeout sau 10 giây nếu reCAPTCHA chưa load
+    setTimeout(() => {
+      if (!recaptchaReady) {
+        console.warn("⚠ reCAPTCHA chưa load, vẫn khởi động Flutter");
+        recaptchaReady = true;
+        tryStart();
+      }
+    }, 10000);
+  </script>
 </body>
 </html>
