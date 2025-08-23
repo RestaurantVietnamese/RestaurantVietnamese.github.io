@@ -26,5 +26,6 @@ echo "📦 Committing and pushing"
 git add .
 git commit -m "Deploy web from feature/code_game"
 git push --force origin main
+git checkout feature/code_game
 
 echo "✅ Done!"
