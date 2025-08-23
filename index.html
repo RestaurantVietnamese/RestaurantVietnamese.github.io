@@ -18,7 +18,8 @@
   <title>web_g18</title>
 
   <script>
-    const serviceWorkerVersion = "2530613243";
+    // Sử dụng template token mới cho service worker version
+    const serviceWorkerVersion = '"372289123"';
   </script>
 
   <!-- reCAPTCHA script -->
@@ -30,7 +31,7 @@
 <body>
   <script>
     function startFlutterApp() {
-      _flutter.loader.loadEntrypoint({
+      _flutter.loader.load({
         serviceWorker: { serviceWorkerVersion: serviceWorkerVersion },
         onEntrypointLoaded: function(engineInitializer) {
           engineInitializer.initializeEngine().then(appRunner => appRunner.runApp());
