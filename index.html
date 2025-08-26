@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   <base href="/">
 
@@ -12,28 +13,30 @@
   <meta name="apple-mobile-web-app-title" content="web_g18">
 
   <link rel="apple-touch-icon" href="icons/Icon-192.png">
-  <link rel="icon" type="image/png" href="favicon.png"/>
+  <link rel="icon" type="image/png" href="assets/images/icon_chot.png" />
   <link rel="manifest" href="manifest.json">
 
   <title>web_g18</title>
 
   <script>
     // Sử dụng template token mới cho service worker version
-    const serviceWorkerVersion = "2465348387";
+    const serviceWorkerVersion = "3592021941";
   </script>
 
   <!-- reCAPTCHA script -->
-  <script src="https://www.google.com/recaptcha/api.js?render=6Lf2NKYrAAAAAAIOn5T0JJl9FPtIs1I6pED5GhwE" async defer></script>
+  <script src="https://www.google.com/recaptcha/api.js?render=6Lf2NKYrAAAAAAIOn5T0JJl9FPtIs1I6pED5GhwE" async
+    defer></script>
 
   <!-- Flutter script -->
   <script src="flutter.js" defer></script>
 </head>
+
 <body>
   <script>
     function startFlutterApp() {
       _flutter.loader.loadEntrypoint({
         serviceWorker: { serviceWorkerVersion: serviceWorkerVersion },
-        onEntrypointLoaded: function(engineInitializer) {
+        onEntrypointLoaded: function (engineInitializer) {
           engineInitializer.initializeEngine().then(appRunner => appRunner.runApp());
         }
       });
@@ -42,4 +45,5 @@
     window.addEventListener('load', startFlutterApp);
   </script>
 </body>
+
 </html>
