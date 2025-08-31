@@ -23,5 +23,6 @@ echo "📦 Committing and pushing"
 git add .
 git commit -m "Deploy web from feature/page_menu"
 git push --force origin main
+git checkout feature/page_menu
 
 echo "✅ Done!"
