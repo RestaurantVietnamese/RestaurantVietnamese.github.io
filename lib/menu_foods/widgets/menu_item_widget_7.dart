@@ -10,9 +10,10 @@ import '../models/menu_item.dart';
 
 class MenuItemWidget7 extends StatelessWidget {
   final MenuItem item;
+  final bool usePadding;
 
-  const MenuItemWidget7({Key? key, required this.item}) : super(key: key);
-
+  const MenuItemWidget7({Key? key, required this.item, this.usePadding = true})
+      : super(key: key);
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<FontCubit, FontState>(
@@ -129,7 +130,7 @@ class MenuItemWidget7 extends StatelessWidget {
               );
             }).toList(),
           ),
-          SizedBox(height: 10),
+          if (usePadding) SizedBox(height: 10),
         ],
       ),
     );

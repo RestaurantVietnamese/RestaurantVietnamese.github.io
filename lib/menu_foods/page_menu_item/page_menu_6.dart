@@ -63,7 +63,10 @@ class PageMenu6 extends StatelessWidget {
                         ? MenuItemWidget8(item: menuItems_Page6[i])
                         : (menuItems_Page6[i].id == '31')
                             ? MenuItemWidget9(item: menuItems_Page6[i])
-                            : MenuItemWidget7(item: menuItems_Page6[i]),
+                            : MenuItemWidget7(
+                                item: menuItems_Page6[i],
+                                usePadding: false,
+                              ),
                   ),
                 ),
               ],
