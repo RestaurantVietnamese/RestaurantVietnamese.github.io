@@ -15,8 +15,8 @@ class PageMenu2 extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        SizedBox(height: 10),
-        SizedBox(height: 2),
+        SizedBox(height: 5),
+
         Text(
           '',
           style: GoogleFonts.greatVibes(fontSize: 20),
@@ -63,7 +63,7 @@ class PageMenu2 extends StatelessWidget {
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(2),
                     color: Colors.white,
-                    border: Border.all(color: Colors.red),
+                    border: Border.all(color: Colors.transparent),
                   ),
                   padding: const EdgeInsets.symmetric(horizontal: 10),
                   child: widgetItem,
@@ -73,7 +73,6 @@ class PageMenu2 extends StatelessWidget {
           ),
         ),
       ],
-    
     );
   }
 }

@@ -71,7 +71,7 @@ final menuItems_Page1 = [
     id: '4',
     title: "Tom Kha Suppe",
     descriptionDe: "Thai Kokos-Suppe mit Gemuse. Auswahl mit:",
-    descriptionEn: "Thai coconut soup with vegetables. Selection with",
+    descriptionEn: "Thai coconut soup with vegetables. Selection with:",
     options: [
       MenuOption(
           code: "a.",
@@ -123,7 +123,7 @@ final menuItems_Page1 = [
     id: '6',
     title: "Vegan Wan Tan Suppe",
     descriptionDe:
-        "Wan Tan Teibglatter gefulltmit Gemuse und Fleisch auf Sojabasis",
+        "Wan Tan Teibglatter gefulltmit\nGemuse und Fleisch auf Sojabasis",
     descriptionEn:
         "Wonton pastry sheets filled with vegetables and plant-based meat",
     options: [

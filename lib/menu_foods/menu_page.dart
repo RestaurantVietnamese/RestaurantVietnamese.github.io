@@ -1,9 +1,13 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:puzzel/menu_foods/page_menu_item/page_menu_1.dart';
 import 'package:puzzel/menu_foods/page_menu_item/page_menu_2.dart';
 import 'package:puzzel/menu_foods/pdf/pdf_generator.dart';
+import 'package:puzzel/widget/fonts/bloc/font_cubit.dart';
+import 'package:puzzel/widget/fonts/bloc/font_state.dart';
+import 'package:puzzel/widget/fonts/helper_fonts.dart';
 
 class MenuPage extends StatefulWidget {
   const MenuPage({Key? key}) : super(key: key);
@@ -24,45 +28,125 @@ class _MenuPageState extends State<MenuPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: RepaintBoundary(
-        key: _globalKey,
-        // Truyền PageController vào DataWidget
-        child: DataWidget(pageController: _pageController),
-      ),
-      bottomNavigationBar: Column(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              IconButton(
-                icon: Icon(Icons.arrow_back_ios),
-                onPressed: () {
-                  _pageController.previousPage(
-                    duration: Duration(milliseconds: 300),
-                    curve: Curves.easeInOut,
-                  );
-                },
+    return BlocBuilder<FontCubit, FontState>(
+      builder: (context, state) => Scaffold(
+        body: RepaintBoundary(
+          key: _globalKey,
+          // Truyền PageController vào DataWidget
+          child: DataWidget(pageController: _pageController),
+        ),
+        bottomNavigationBar: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            SingleChildScrollView(
+              scrollDirection: Axis.horizontal,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  IconButton(
+                    icon: Icon(Icons.arrow_back_ios),
+                    onPressed: () {
+                      _pageController.previousPage(
+                        duration: Duration(milliseconds: 300),
+                        curve: Curves.easeInOut,
+                      );
+                    },
+                  ),
+                  IconButton(
+                    icon: Icon(Icons.arrow_forward_ios),
+                    onPressed: () {
+                      _pageController.nextPage(
+                        duration: Duration(milliseconds: 300),
+                        curve: Curves.easeInOut,
+                      );
+                    },
+                  ),
+                  DropdownButton<AppFont>(
+                    value: state.font0,
+                    underline: SizedBox(), // bỏ gạch chân
+                    icon: Icon(Icons.font_download, color: Colors.red),
+                    items: AppFont.values
+                        .map((font) => DropdownMenuItem(
+                              value: font,
+                              child: Text(font.name),
+                            ))
+                        .toList(),
+                    onChanged: (font) {
+                      if (font != null)
+                        context.read<FontCubit>().changeFont0(font);
+                    },
+                  ),
+                  DropdownButton<AppFont>(
+                    value: state.fontA,
+                    underline: SizedBox(), // bỏ gạch chân
+                    icon: Icon(Icons.font_download, color: Colors.red),
+                    items: AppFont.values
+                        .map((font) => DropdownMenuItem(
+                              value: font,
+                              child: Text(font.name),
+                            ))
+                        .toList(),
+                    onChanged: (font) {
+                      if (font != null)
+                        context.read<FontCubit>().changeFontA(font);
+                    },
+                  ),
+                  DropdownButton<AppFont>(
+                    value: state.fontB,
+                    underline: SizedBox(), // bỏ gạch chân
+                    icon: Icon(Icons.font_download, color: Colors.red),
+                    items: AppFont.values
+                        .map((font) => DropdownMenuItem(
+                              value: font,
+                              child: Text(font.name),
+                            ))
+                        .toList(),
+                    onChanged: (font) {
+                      if (font != null)
+                        context.read<FontCubit>().changeFontB(font);
+                    },
+                  ),
+                  DropdownButton<AppFont>(
+                    value: state.fontC,
+                    underline: SizedBox(), // bỏ gạch chân
+                    icon: Icon(Icons.font_download, color: Colors.red),
+                    items: AppFont.values
+                        .map((font) => DropdownMenuItem(
+                              value: font,
+                              child: Text(font.name),
+                            ))
+                        .toList(),
+                    onChanged: (font) {
+                      if (font != null)
+                        context.read<FontCubit>().changeFontC(font);
+                    },
+                  ),
+                  DropdownButton<AppFont>(
+                    value: state.fontD,
+                    underline: SizedBox(), // bỏ gạch chân
+                    icon: Icon(Icons.font_download, color: Colors.red),
+                    items: AppFont.values
+                        .map((font) => DropdownMenuItem(
+                              value: font,
+                              child: Text(font.name),
+                            ))
+                        .toList(),
+                    onChanged: (font) {
+                      if (font != null)
+                        context.read<FontCubit>().changeFontD(font);
+                    },
+                  ),
+                ],
               ),
-              IconButton(
-                icon: Icon(Icons.arrow_forward_ios),
-                onPressed: () {
-                  _pageController.nextPage(
-                    duration: Duration(milliseconds: 300),
-                    curve: Curves.easeInOut,
-                  );
-                },
-              ),
-            ],
-          ),
-          ElevatedButton(
-            onPressed: () {
-              captureAndSaveImage(_globalKey);
-            },
-            child: const Text("Xuất thành Image"),
-          )
-        ],
+            ),
+            ElevatedButton(
+              onPressed: () {
+                captureAndSaveImage(_globalKey);
+              },
+              child: const Text("Xuất thành Image"),
+            )
+          ],
+        ),
       ),
     );
   }
@@ -85,7 +169,7 @@ class _DataWidgetState extends State<DataWidget> {
   Widget build(BuildContext context) {
     return Container(
       color: Colors.white,
-      padding: EdgeInsets.only(left: 10, right: 10),
+      padding: EdgeInsets.only(left: 5, right: 5),
       margin: EdgeInsets.only(left: 20, top: 20),
       width: 400,
       height: 800,
