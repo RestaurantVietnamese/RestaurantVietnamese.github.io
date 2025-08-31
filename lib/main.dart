@@ -3,12 +3,23 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:puzzel/english_transfer/topic_selection_page.dart';
+import 'package:puzzel/menu_foods/menu_page.dart';
 import 'package:puzzel/puzzle_game/crossword_puzzle.dart';
 import 'package:puzzel/puzzle_game/video_player.dart';
 import 'package:puzzel/puzzle_game_3/puzzle_game_screen.dart';
 
 void main() {
-  runApp(VietnameseCrosswordApp());
+  runApp(MenuApp());
+}
+
+class MenuApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: MenuPage(),
+    );
+  }
 }
 
 class VietnameseCrosswordApp extends StatelessWidget {
