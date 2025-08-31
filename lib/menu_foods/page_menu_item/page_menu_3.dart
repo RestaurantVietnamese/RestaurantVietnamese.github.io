@@ -8,8 +8,8 @@ import 'package:puzzel/menu_foods/widgets/menu_item_widget_3.dart';
 import 'package:puzzel/menu_foods/widgets/menu_item_widget_4.dart';
 import 'package:puzzel/menu_foods/widgets/menu_item_widget_5.dart';
 
-class PageMenu2 extends StatelessWidget {
-  const PageMenu2({super.key});
+class PageMenu3 extends StatelessWidget {
+  const PageMenu3({super.key});
 
   @override
   Widget build(BuildContext context) {

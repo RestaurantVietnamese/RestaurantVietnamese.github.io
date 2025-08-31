@@ -1,15 +1,13 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:puzzel/menu_foods/export_image/save_image_util.dart';
 import 'package:puzzel/menu_foods/page_menu_item/page_menu_1.dart';
 import 'package:puzzel/menu_foods/page_menu_item/page_menu_2.dart';
-import 'package:puzzel/menu_foods/pdf/pdf_generator.dart';
+import 'package:puzzel/menu_foods/page_menu_item/page_menu_3.dart';
 import 'package:puzzel/widget/fonts/bloc/font_cubit.dart';
 import 'package:puzzel/widget/fonts/bloc/font_state.dart';
-import 'package:puzzel/widget/fonts/helper_fonts.dart';
 
 class MenuPage extends StatefulWidget {
   const MenuPage({Key? key}) : super(key: key);
@@ -143,17 +141,6 @@ class _MenuPageState extends State<MenuPage> {
             ),
             ElevatedButton(
               onPressed: () {
-                // if (kIsWeb) {
-                //   final screenWidth = MediaQuery.of(context).size.width;
-                //   if (screenWidth < kMobileMaxWidth) {
-                //     captureAndSaveImageMobile(_globalKey);
-                //   } else {
-                //     captureAndSaveImage(_globalKey);
-                //   }
-                // } else {
-                //   // Gọi hàm cho Mobile
-                //   captureAndSaveImageMobile(_globalKey);
-                // }
                 saveImage(_globalKey);
               },
               child: const Text("Lưu ảnh"),
@@ -164,8 +151,6 @@ class _MenuPageState extends State<MenuPage> {
     );
   }
 }
-
-const double kMobileMaxWidth = 600.0;
 
 class DataWidget extends StatefulWidget {
   // Thêm thuộc tính pageController
@@ -186,15 +171,16 @@ class _DataWidgetState extends State<DataWidget> {
       color: Colors.white,
       padding: EdgeInsets.only(left: 5, right: 5),
       // margin: EdgeInsets.only(left: 20, top: 20),
-      width: 400,
+      width: 410,
       height: 800,
       child: PageView(
         // Sử dụng pageController đã được truyền từ trên xuống
         controller: widget.pageController,
         scrollDirection: Axis.horizontal,
         children: [
-          PageMenu1(),
+          PageMenu3(),
           PageMenu2(),
+          PageMenu1(),
         ],
       ),
     );

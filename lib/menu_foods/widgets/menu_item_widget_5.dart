@@ -2,16 +2,15 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:puzzel/widget/fonts/bloc/font_cubit.dart';
 import 'package:puzzel/widget/fonts/bloc/font_state.dart';
 import 'package:puzzel/widget/fonts/helper_fonts.dart';
 import '../models/menu_item.dart';
 
-class MenuItemWidget4 extends StatelessWidget {
+class MenuItemWidget5 extends StatelessWidget {
   final MenuItem item;
 
-  const MenuItemWidget4({Key? key, required this.item}) : super(key: key);
+  const MenuItemWidget5({Key? key, required this.item}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -60,56 +59,65 @@ class MenuItemWidget4 extends StatelessWidget {
 
           // Mỗi option một dòng (Row)
           ...item.options.map((opt) {
-            return Stack(
-              children: [
+            return
+                // Stack(
+                //   children: [
                 Row(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    // Cột 1: Mô tả tiếng Đức (flex: 10)
-                    Expanded(
-                      flex: 14,
-                      child: Text(
-                        item.descriptionDe,
-                        style: getFont(
-                          state.fontB,
-                          fontSize: 12,
-                          fontWeight: FontWeight.w600,
-                        ),
-                      ),
-                    ),
-
-                    // Cột 2: Tags (flex: 2)
-                    //ko có
-
-                    // Cột 3: Giá 300 (flex: 2)
-                    //ko có
-
-                    // Cột 4: Giá 750 (flex: 2)
-                    // Expanded(
-                    //   flex: 2,
-                    //   child:
-                    // Text(
-                    //     opt.prices2.isNotEmpty ? opt.prices2 : '',
-                    //     textAlign: TextAlign.right,
-                    //     style: getFont(state.fontD,
-                    //         fontSize: 12, fontWeight: FontWeight.w600),
-                    //   ),
-                    // ),
-                  ],
-                ),
-                Positioned(
-                  right: 0,
-                  top: 0,
-                  bottom: 0,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                // Cột 1: Mô tả tiếng Đức (flex: 10)
+                Expanded(
+                  flex: 11,
                   child: Text(
-                    opt.prices2.isNotEmpty ? opt.prices2 : '',
+                    item.descriptionDe,
+                    style: getFont(
+                      state.fontB,
+                      fontSize: 12,
+                      fontWeight: FontWeight.w600,
+                    ),
+                  ),
+                ),
+
+                // Cột 2: Tags (flex: 2)
+                Expanded(
+                  flex: 1,
+                  child: Text(
+                    opt.tags.join(', '),
+                    textAlign: TextAlign.left,
+                    style: getFont(state.fontD,
+                        fontSize: 12, fontWeight: FontWeight.w600),
+                  ),
+                ),
+
+                // Cột 3: Giá 300 (flex: 2)
+                //ko có
+
+                // Cột 4: Giá 750 (flex: 2)
+                Expanded(
+                  flex: 1,
+                  child: Text(
+                    opt.prices2,
                     textAlign: TextAlign.right,
                     style: getFont(state.fontD,
                         fontSize: 12, fontWeight: FontWeight.w600),
                   ),
-                )
+                ),
               ],
-            );
+            )
+                // Positioned(
+                //   right: 0,
+                //   top: 0,
+                //   bottom: 0,
+                //   child: Text(
+                //     opt.prices2.isNotEmpty ? opt.prices2 : '',
+                //     textAlign: TextAlign.right,
+                //     style: getFont(state.fontD,
+                //         fontSize: 12, fontWeight: FontWeight.w600),
+                //   ),
+                // )
+                //   ],
+                // )
+                ;
           }).toList(),
 
           // Mô tả tiếng Anh (in nghiêng)
