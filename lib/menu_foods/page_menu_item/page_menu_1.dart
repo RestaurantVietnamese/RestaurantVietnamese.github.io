@@ -25,7 +25,7 @@ class PageMenu1 extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.only(left: 8.0),
             child: Text(
-              'Suffer',
+              'Supper',
               style: getFont(state.font0, fontSize: 20),
             ),
           ),

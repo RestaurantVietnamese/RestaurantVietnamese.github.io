@@ -1,7 +1,9 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:puzzel/menu_foods/export_image/save_image_util.dart';
 import 'package:puzzel/menu_foods/page_menu_item/page_menu_1.dart';
 import 'package:puzzel/menu_foods/page_menu_item/page_menu_2.dart';
 import 'package:puzzel/menu_foods/pdf/pdf_generator.dart';
@@ -141,9 +143,20 @@ class _MenuPageState extends State<MenuPage> {
             ),
             ElevatedButton(
               onPressed: () {
-                captureAndSaveImage(_globalKey);
+                // if (kIsWeb) {
+                //   final screenWidth = MediaQuery.of(context).size.width;
+                //   if (screenWidth < kMobileMaxWidth) {
+                //     captureAndSaveImageMobile(_globalKey);
+                //   } else {
+                //     captureAndSaveImage(_globalKey);
+                //   }
+                // } else {
+                //   // Gọi hàm cho Mobile
+                //   captureAndSaveImageMobile(_globalKey);
+                // }
+                saveImage(_globalKey);
               },
-              child: const Text("Xuất thành Image"),
+              child: const Text("Lưu ảnh"),
             )
           ],
         ),
@@ -151,6 +164,8 @@ class _MenuPageState extends State<MenuPage> {
     );
   }
 }
+
+const double kMobileMaxWidth = 600.0;
 
 class DataWidget extends StatefulWidget {
   // Thêm thuộc tính pageController
@@ -170,7 +185,7 @@ class _DataWidgetState extends State<DataWidget> {
     return Container(
       color: Colors.white,
       padding: EdgeInsets.only(left: 5, right: 5),
-      margin: EdgeInsets.only(left: 20, top: 20),
+      // margin: EdgeInsets.only(left: 20, top: 20),
       width: 400,
       height: 800,
       child: PageView(
