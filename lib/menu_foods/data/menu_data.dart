@@ -207,7 +207,7 @@ final menuItems_Page2 = [
       subText: '8 Stk.',
       title: "Nem Chay Mini",
       descriptionDe:
-          "Vegetarische Herbstrollen gefüllt mit Karotten, Bohnen, Zwiebeln, Pilzen",
+          "Vegetarische Herbstrollen gefüllt mit\nKarotten, Bohnen, Zwiebeln, Pilzen",
       descriptionEn:
           "Vegetarian autumn rolls filled with carrots, beans, onions, mushrooms",
       options: [
