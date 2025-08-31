@@ -9,6 +9,7 @@ import 'package:puzzel/menu_foods/page_menu_item/page_menu_3.dart';
 import 'package:puzzel/menu_foods/page_menu_item/page_menu_4.dart';
 import 'package:puzzel/menu_foods/page_menu_item/page_menu_5.dart';
 import 'package:puzzel/menu_foods/page_menu_item/page_menu_6.dart';
+import 'package:puzzel/menu_foods/page_menu_item/page_menu_7.dart';
 import 'package:puzzel/widget/fonts/bloc/font_cubit.dart';
 import 'package:puzzel/widget/fonts/bloc/font_state.dart';
 
@@ -181,6 +182,7 @@ class _DataWidgetState extends State<DataWidget> {
         controller: widget.pageController,
         scrollDirection: Axis.horizontal,
         children: [
+          PageMenu7(),
           PageMenu6(),
           PageMenu5(),
           PageMenu4(),

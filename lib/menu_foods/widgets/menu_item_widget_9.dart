@@ -10,8 +10,15 @@ import '../models/menu_item.dart';
 
 class MenuItemWidget9 extends StatelessWidget {
   final MenuItem item;
+  final bool usePadding;
+  final bool menuPage7;
 
-  const MenuItemWidget9({Key? key, required this.item}) : super(key: key);
+  const MenuItemWidget9(
+      {Key? key,
+      required this.item,
+      this.usePadding = true,
+      this.menuPage7 = false})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -35,7 +42,7 @@ class MenuItemWidget9 extends StatelessWidget {
                           fontWeight: FontWeight.bold,
                         ),
                       ),
-                      TextSpan(text: '. '),
+                      if (item.id != '') TextSpan(text: '. '),
                       TextSpan(
                         text: item.title,
                         style: getFont(
@@ -97,31 +104,56 @@ class MenuItemWidget9 extends StatelessWidget {
                     // ),
                   ],
                 ),
-                Positioned(
-                  right: 0,
-                  top: 0,
-                  bottom: 0,
-                  child: Row(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        opt.tags.join(', '),
-                        textAlign: TextAlign.right,
-                        style: getFont(state.fontD,
-                            fontSize: 12, fontWeight: FontWeight.w600),
-                      ),
-                      SizedBox(
-                        width: 70,
-                      ),
-                      Text(
-                        opt.prices2.isNotEmpty ? opt.prices2 : '',
-                        textAlign: TextAlign.right,
-                        style: getFont(state.fontD,
-                            fontSize: 12, fontWeight: FontWeight.w600),
-                      ),
-                    ],
+                if (menuPage7) ...[
+                  Positioned(
+                    right: 0,
+                    top: 0,
+                    bottom: 0,
+                    child: Text(
+                      opt.prices2.isNotEmpty ? opt.prices2 : '',
+                      textAlign: TextAlign.right,
+                      style: getFont(state.fontD,
+                          fontSize: 12, fontWeight: FontWeight.w600),
+                    ),
                   ),
-                )
+                  Positioned(
+                    left: 266,
+                    top: 0,
+                    bottom: 0,
+                    child: Text(
+                      opt.tags.join(', '),
+                      textAlign: TextAlign.left,
+                      style: getFont(state.fontD,
+                          fontSize: 12, fontWeight: FontWeight.w600),
+                    ),
+                  )
+                ],
+                if (!menuPage7)
+                  Positioned(
+                    right: 0,
+                    top: 0,
+                    bottom: 0,
+                    child: Row(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          opt.tags.join(', '),
+                          textAlign: TextAlign.right,
+                          style: getFont(state.fontD,
+                              fontSize: 12, fontWeight: FontWeight.w600),
+                        ),
+                        SizedBox(
+                          width: 70,
+                        ),
+                        Text(
+                          opt.prices2.isNotEmpty ? opt.prices2 : '',
+                          textAlign: TextAlign.right,
+                          style: getFont(state.fontD,
+                              fontSize: 12, fontWeight: FontWeight.w600),
+                        ),
+                      ],
+                    ),
+                  )
               ],
             );
           }).toList(),
@@ -131,12 +163,12 @@ class MenuItemWidget9 extends StatelessWidget {
             item.descriptionEn,
             style: getFont(
               state.fontC,
-              fontSize: 12,
+              fontSize: 11,
               fontWeight: FontWeight.w400,
               fontStyle: FontStyle.italic,
             ),
           ),
-          SizedBox(height: 6),
+          if (usePadding) SizedBox(height: 6),
         ],
       ),
     );

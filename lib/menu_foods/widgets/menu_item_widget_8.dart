@@ -10,8 +10,10 @@ import '../models/menu_item.dart';
 
 class MenuItemWidget8 extends StatelessWidget {
   final MenuItem item;
+  final bool usePadding;
 
-  const MenuItemWidget8({Key? key, required this.item}) : super(key: key);
+  const MenuItemWidget8({Key? key, required this.item, this.usePadding = true})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -110,7 +112,9 @@ class MenuItemWidget8 extends StatelessWidget {
                         style: getFont(state.fontD,
                             fontSize: 12, fontWeight: FontWeight.w600),
                       ),
-                      SizedBox(width: 20,),
+                      SizedBox(
+                        width: 20,
+                      ),
                       Text(
                         opt.prices2.isNotEmpty ? opt.prices2 : '',
                         textAlign: TextAlign.right,
@@ -134,7 +138,7 @@ class MenuItemWidget8 extends StatelessWidget {
               fontStyle: FontStyle.italic,
             ),
           ),
-          SizedBox(height: 6),
+          if (usePadding) SizedBox(height: 6),
         ],
       ),
     );
