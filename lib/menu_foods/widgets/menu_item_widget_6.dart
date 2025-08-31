@@ -1,0 +1,65 @@
+// ignore_for_file: prefer_const_constructors
+
+import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:puzzel/widget/fonts/bloc/font_cubit.dart';
+import 'package:puzzel/widget/fonts/bloc/font_state.dart';
+import 'package:puzzel/widget/fonts/helper_fonts.dart';
+import '../models/menu_item.dart';
+
+class MenuItemWidget6 extends StatelessWidget {
+  final MenuItem item;
+
+  const MenuItemWidget6({Key? key, required this.item}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return BlocBuilder<FontCubit, FontState>(
+      builder: (context, state) => Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          // Tiêu đề món ăn
+          Row(
+            children: [
+              Expanded(
+                child: RichText(
+                  text: TextSpan(
+                    style: DefaultTextStyle.of(context).style,
+                    children: [
+                      TextSpan(
+                        text: item.id,
+                        style: TextStyle(
+                          fontSize: 12,
+                          fontStyle: FontStyle.italic,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                      TextSpan(text: '. '),
+                      TextSpan(
+                        text: item.title,
+                        style: getFont(
+                          state.fontA,
+                          fontStyle: FontStyle.italic,
+                          fontSize: 18,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+              if (item.options.isNotEmpty && item.options.first.prices2 != '')
+                Text(
+                  item.options.first.prices2,
+                  style: getFont(state.fontD,
+                      fontSize: 12, fontWeight: FontWeight.w600),
+                  textAlign: TextAlign.right,
+                ),
+            ],
+          ),
+
+          SizedBox(height: 6),
+        ],
+      ),
+    );
+  }
+}

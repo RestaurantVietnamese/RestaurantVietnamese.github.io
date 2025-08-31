@@ -3,8 +3,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:puzzel/menu_foods/data/menu_data.dart';
-import 'package:puzzel/menu_foods/widgets/menu_item_widget.dart';
+import 'package:puzzel/menu_foods/data/menu_data_page_1.dart';
+import 'package:puzzel/menu_foods/widgets/menu_item_widget_1.dart';
 import 'package:puzzel/menu_foods/widgets/menu_item_widget_2.dart';
 import 'package:puzzel/widget/fonts/bloc/font_cubit.dart';
 import 'package:puzzel/widget/fonts/bloc/font_state.dart';

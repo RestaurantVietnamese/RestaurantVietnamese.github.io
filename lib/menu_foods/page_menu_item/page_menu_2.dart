@@ -2,8 +2,9 @@
 
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:puzzel/menu_foods/data/menu_data.dart';
-import 'package:puzzel/menu_foods/widgets/menu_item_widget.dart';
+import 'package:puzzel/menu_foods/data/menu_data_page_1.dart';
+import 'package:puzzel/menu_foods/data/menu_data_page_2.dart';
+import 'package:puzzel/menu_foods/widgets/menu_item_widget_1.dart';
 import 'package:puzzel/menu_foods/widgets/menu_item_widget_3.dart';
 import 'package:puzzel/menu_foods/widgets/menu_item_widget_4.dart';
 import 'package:puzzel/menu_foods/widgets/menu_item_widget_5.dart';
