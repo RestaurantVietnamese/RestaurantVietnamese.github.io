@@ -108,19 +108,19 @@ class MenuItemWidget extends StatelessWidget {
                         : Container(),
                   ),
 
-                  // Column 4: Prices300
+                  // Column 4: prices1
                   Expanded(
                     flex: 2,
-                    child: Text(opt.prices300,
+                    child: Text(opt.prices1,
                         textAlign: TextAlign.left,
                         style: getFont(state.fontD,
                             fontSize: 12, fontWeight: FontWeight.w600)),
                   ),
 
-                  // Column 5: Prices750
+                  // Column 5: prices2
                   Expanded(
                     flex: 2,
-                    child: Text(opt.prices750,
+                    child: Text(opt.prices2,
                         textAlign: TextAlign.right,
                         style: getFont(state.fontD,
                             fontSize: 12, fontWeight: FontWeight.w600)),

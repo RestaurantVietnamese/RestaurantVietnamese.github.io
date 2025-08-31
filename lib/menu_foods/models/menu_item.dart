@@ -4,15 +4,15 @@ class MenuOption {
   final String code; // a, b, c
   final String name; // Hühnerbrust / Chicken
   final List<String> tags; // A, B, F
-  final String prices300;
-  final String prices750;
+  final String prices1;
+  final String prices2;
 
   MenuOption({
     required this.code,
     required this.name,
     required this.tags,
-     this.prices300='',
-    required this.prices750,
+     this.prices1='',
+    required this.prices2,
   });
 }
 

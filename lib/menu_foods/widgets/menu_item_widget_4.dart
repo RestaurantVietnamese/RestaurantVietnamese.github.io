@@ -84,7 +84,7 @@ class MenuItemWidget4 extends StatelessWidget {
                 Expanded(
                   flex: 2,
                   child: Text(
-                    opt.prices750.isNotEmpty ? opt.prices750 : '',
+                    opt.prices2.isNotEmpty ? opt.prices2 : '',
                     textAlign: TextAlign.right,
                     style: getFont(state.fontD,
                         fontSize: 12, fontWeight: FontWeight.w600),

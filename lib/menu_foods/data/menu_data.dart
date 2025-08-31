@@ -15,20 +15,20 @@ final menuItems_Page1 = [
           code: "a.",
           name: aSelect,
           tags: [],
-          prices300: '8.50',
-          prices750: '13.50'),
+          prices1: '8.50',
+          prices2: '13.50'),
       MenuOption(
           code: "b.",
           name: bSelect,
           tags: [],
-          prices300: '9.00',
-          prices750: '15.00'),
+          prices1: '9.00',
+          prices2: '15.00'),
       MenuOption(
           code: "c.",
           name: cSelect,
           tags: ["F"],
-          prices300: '',
-          prices750: '13.00'),
+          prices1: '',
+          prices2: '13.00'),
     ],
   ),
   MenuItem(
@@ -41,20 +41,20 @@ final menuItems_Page1 = [
           code: "a.",
           name: aSelect,
           tags: ["A"],
-          prices300: '',
-          prices750: '6.50'),
+          prices1: '',
+          prices2: '6.50'),
       MenuOption(
           code: "c.",
           name: cSelect,
           tags: ["F"],
-          prices300: '',
-          prices750: '5.50'),
+          prices1: '',
+          prices2: '5.50'),
       MenuOption(
           code: "d.",
           name: dSelect,
           tags: ["A", "B"],
-          prices300: '',
-          prices750: '8.00'),
+          prices1: '',
+          prices2: '8.00'),
     ],
   ),
   MenuItem(
@@ -64,7 +64,7 @@ final menuItems_Page1 = [
     descriptionEn: "Soup with various vegetables, tofu, seaweed",
     options: [
       MenuOption(
-          code: "", name: "", tags: ["F"], prices300: '', prices750: '5.50'),
+          code: "", name: "", tags: ["F"], prices1: '', prices2: '5.50'),
     ],
   ),
   MenuItem(
@@ -77,20 +77,20 @@ final menuItems_Page1 = [
           code: "a.",
           name: aSelect,
           tags: [""],
-          prices300: '6.50',
-          prices750: '12.50'),
+          prices1: '6.50',
+          prices2: '12.50'),
       MenuOption(
           code: "c.",
           name: cSelect,
           tags: [""],
-          prices300: '5.50',
-          prices750: ''),
+          prices1: '5.50',
+          prices2: ''),
       MenuOption(
           code: "d.",
           name: dSelect,
           tags: ["B"],
-          prices300: '8.00',
-          prices750: '12.50'),
+          prices1: '8.00',
+          prices2: '12.50'),
     ],
   ),
   MenuItem(
@@ -103,20 +103,20 @@ final menuItems_Page1 = [
           code: "a.",
           name: aSelect,
           tags: ["A"],
-          prices300: '',
-          prices750: '8.00'),
+          prices1: '',
+          prices2: '8.00'),
       MenuOption(
           code: "b.",
           name: bSelect,
           tags: ["A"],
-          prices300: '',
-          prices750: '9.00'),
+          prices1: '',
+          prices2: '9.00'),
       MenuOption(
           code: "d.",
           name: dSelect,
           tags: ["A", "B"],
-          prices300: '',
-          prices750: '10.00'),
+          prices1: '',
+          prices2: '10.00'),
     ],
   ),
   MenuItem(
@@ -131,8 +131,8 @@ final menuItems_Page1 = [
           code: "",
           name: '',
           tags: ["A", 'F'],
-          prices300: '',
-          prices750: '6.00'),
+          prices1: '',
+          prices2: '6.00'),
     ],
   )
 ];
@@ -151,14 +151,14 @@ final menuItems_Page2 = [
           code: "a.",
           name: "Tempura Chicken",
           tags: ["A", "C", "F"],
-          prices750: "6.50"),
+          prices2: "6.50"),
       MenuOption(
-          code: "c.", name: cSelect, tags: ["C", "F"], prices750: "6.00"),
+          code: "c.", name: cSelect, tags: ["C", "F"], prices2: "6.00"),
       MenuOption(
           code: "d.",
           name: "Garnelen / Shrimp",
           tags: ["B", "C", "F"],
-          prices750: "7.00"),
+          prices2: "7.00"),
     ],
   ),
   MenuItem(
@@ -171,7 +171,7 @@ final menuItems_Page2 = [
         "Homemade spring rolls with minced meat, glass noodles, carrots, onions rolled in crispy rice paper",
     options: [
       MenuOption(
-          code: "", name: '', tags: [""], prices300: '', prices750: '6.00'),
+          code: "", name: '', tags: [""], prices1: '', prices2: '6.00'),
     ],
   ),
   MenuItem(
@@ -182,7 +182,7 @@ final menuItems_Page2 = [
       descriptionEn:
           "Wonton dough filled with minced meat, garlic, onions, pepper",
       options: [
-        MenuOption(code: "", name: "", tags: ["A"], prices750: "5.00")
+        MenuOption(code: "", name: "", tags: ["A"], prices2: "5.00")
       ]),
   MenuItem(
       id: "10",
@@ -191,7 +191,7 @@ final menuItems_Page2 = [
       descriptionDe: "Garnelen mit Tempura Mantel, Sweet Sour Chili Soße",
       descriptionEn: "Shrimp with tempura coating with sweet sour chili sauce",
       options: [
-        MenuOption(code: "", name: "", tags: ["A", "B"], prices750: "8.00")
+        MenuOption(code: "", name: "", tags: ["A", "B"], prices2: "8.00")
       ]),
   MenuItem(
       id: "11",
@@ -200,7 +200,7 @@ final menuItems_Page2 = [
           "Eine Mischung aus Wan Tan Tashen, Tom Chien und Nem Chay Mini",
       descriptionEn: "A mix of wonton, Tom Chien and Nem Chay Mini",
       options: [
-        MenuOption(code: "", name: "", tags: ["A", "B"], prices750: "9.00")
+        MenuOption(code: "", name: "", tags: ["A", "B"], prices2: "9.00")
       ]),
   MenuItem(
       id: "12",
@@ -211,7 +211,7 @@ final menuItems_Page2 = [
       descriptionEn:
           "Vegetarian autumn rolls filled with carrots, beans, onions, mushrooms",
       options: [
-        MenuOption(code: "", name: "", tags: ["A"], prices750: "5.50")
+        MenuOption(code: "", name: "", tags: ["A"], prices2: "5.50")
       ]),
   MenuItem(
       id: "13",
@@ -222,6 +222,6 @@ final menuItems_Page2 = [
       descriptionEn:
           "Soy-based seafood with tempura coating with sweet sour sauce",
       options: [
-        MenuOption(code: "", name: "", tags: ["A", "F"], prices750: "6.00")
+        MenuOption(code: "", name: "", tags: ["A", "F"], prices2: "6.00")
       ])
 ];

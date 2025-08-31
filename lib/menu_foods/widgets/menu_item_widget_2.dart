@@ -101,7 +101,7 @@ class MenuItemWidget2 extends StatelessWidget {
                 Expanded(
                   flex: 2,
                   child: Text(
-                    opt.prices300.isNotEmpty ? opt.prices300 : '',
+                    opt.prices1.isNotEmpty ? opt.prices1 : '',
                     style: getFont(state.fontD,
                         fontSize: 12, fontWeight: FontWeight.w600),
                   ),
@@ -111,7 +111,7 @@ class MenuItemWidget2 extends StatelessWidget {
                 Expanded(
                   flex: 2,
                   child: Text(
-                    opt.prices750.isNotEmpty ? opt.prices750 : '',
+                    opt.prices2.isNotEmpty ? opt.prices2 : '',
                     textAlign: TextAlign.right,
                     style: getFont(state.fontD,
                         fontSize: 12, fontWeight: FontWeight.w600),
