@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 class MenuOption {
   final String code; // a, b, c
   final String name; // Hühnerbrust / Chicken
+  final String descriptionDe;
+  final String descriptionEn;
   final List<String> tags; // A, B, F
   final String prices1;
   final String prices2;
@@ -10,6 +12,8 @@ class MenuOption {
   MenuOption({
     required this.code,
     required this.name,
+    this.descriptionDe = '',
+    this.descriptionEn = '',
     required this.tags,
      this.prices1='',
     required this.prices2,

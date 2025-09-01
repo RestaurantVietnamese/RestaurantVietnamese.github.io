@@ -11,12 +11,14 @@ final menuItems_Page7 = [
         "Reis mit gebratenen Rindfleischwürfeln,\nZwiebeln, Paprika, Knoblauch, Pfeffer",
     descriptionEn:
         "Rice with fried beef cubes, onions, paprika, garlic, pepper",
-    options: [  MenuOption(
+    options: [
+      MenuOption(
         code: "",
         name: "",
         tags: [],
         prices2: "15.50",
-      ),],
+      ),
+    ],
   ),
   MenuItem(
     id: "33",
@@ -38,7 +40,8 @@ final menuItems_Page7 = [
     id: "34",
     subText: '',
     title: "Hai San Xao",
-    descriptionDe: "Reis mit gebratenem Tintenfisch,\nSellerie, Knoblauc, Chili",
+    descriptionDe:
+        "Reis mit gebratenem Tintenfisch,\nSellerie, Knoblauc, Chili",
     descriptionEn:
         "Rice with fried squid, shrimp, mussels, vegetables, celery, garlic, chili",
     options: [
@@ -56,12 +59,14 @@ final menuItems_Page7 = [
     title: "Hühnersteak Pommes",
     descriptionDe: "Gebratenes Hühnerfilet mit Pommes",
     descriptionEn: "Fried chicken filet with fries",
-    options: [ MenuOption(
+    options: [
+      MenuOption(
         code: "",
         name: "",
         tags: ['A'],
         prices2: "16.00",
-      ),],
+      ),
+    ],
   ),
   MenuItem(
     id: "",
@@ -69,13 +74,12 @@ final menuItems_Page7 = [
     title: "Salmon Bowl",
     descriptionDe:
         "Sushi Reis, Avocado, grüne Sojabohnen,\nGurke, Fischrogen. Auswahl mit Hühnerbrust oder Lachswürfel",
-    descriptionEn:
-        "Sushi rice, avocado, green soybeans, cucumber, fish roe. Selection with chicken breast or salmon cubes",
+    descriptionEn: "",
     options: [
       MenuOption(
         code: "",
         name: "",
-        tags: ['F','D'],
+        tags: ['F', 'D'],
         prices2: "15.50",
       )
     ],
@@ -86,8 +90,7 @@ final menuItems_Page7 = [
     title: "Veggie Bowl",
     descriptionDe:
         "Sushi Reis, Lachswürfel, Avocado,\ngrüne Sojabohnen, Rucola, Radieschen\nSauca: Green-Cream, Erdnuss-Cream, Sesam-Soja",
-    descriptionEn:
-        "Sushi rice, salmon cubes, avocado, green soybeans, arugula, radishes. Sauces: Green-Cream, Peanut-Cream, Sesam-Soy",
+    descriptionEn: "",
     options: [
       MenuOption(
         code: "",
@@ -106,10 +109,10 @@ final menuItems_Page7 = [
     descriptionEn:
         "Rice noodles with grilled meat vegan soy-based, lemongrass, lettuce, carrots, peanuts, fried onions, and soy sauce",
     options: [
-       MenuOption(
+      MenuOption(
         code: "",
         name: "",
-        tags: ['E','F'],
+        tags: ['E', 'F'],
         prices2: "13.50",
       )
     ],

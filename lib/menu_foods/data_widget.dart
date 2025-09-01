@@ -8,6 +8,8 @@ import 'package:puzzel/menu_foods/page_menu_item/page_menu_4.dart';
 import 'package:puzzel/menu_foods/page_menu_item/page_menu_5.dart';
 import 'package:puzzel/menu_foods/page_menu_item/page_menu_6.dart';
 import 'package:puzzel/menu_foods/page_menu_item/page_menu_7.dart';
+import 'package:puzzel/menu_foods/page_menu_item/page_menu_8.dart';
+import 'package:puzzel/menu_foods/page_menu_item/page_menu_9.dart';
 
 class DataWidget extends StatefulWidget {
   // Thêm thuộc tính pageController
@@ -35,13 +37,15 @@ class _DataWidgetState extends State<DataWidget> {
         controller: widget.pageController,
         scrollDirection: Axis.horizontal,
         children: [
-          PageMenu1(),
+          PageMenu9(),
+          PageMenu8(),
           PageMenu7(),
           PageMenu6(),
           PageMenu5(),
           PageMenu4(),
           PageMenu3(),
           PageMenu2(),
+          PageMenu1(),
         ],
       ),
     );

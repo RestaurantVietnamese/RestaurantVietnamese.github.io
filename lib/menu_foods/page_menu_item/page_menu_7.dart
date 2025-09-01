@@ -1,13 +1,7 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:puzzel/menu_foods/data/menu_data_page_1.dart';
-import 'package:puzzel/menu_foods/data/menu_data_page_5.dart';
-import 'package:puzzel/menu_foods/data/menu_data_page_6.dart';
 import 'package:puzzel/menu_foods/data/menu_data_page_7.dart';
-import 'package:puzzel/menu_foods/widgets/menu_item_widget_5.dart';
-import 'package:puzzel/menu_foods/widgets/menu_item_widget_6.dart';
 import 'package:puzzel/menu_foods/widgets/menu_item_widget_7.dart';
 import 'package:puzzel/menu_foods/widgets/menu_item_widget_8.dart';
 import 'package:puzzel/menu_foods/widgets/menu_item_widget_9.dart';
@@ -20,31 +14,6 @@ class PageMenu7 extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        // SizedBox(height: 10),
-        // SizedBox(height: 10),
-        // // SizedBox(height: 10),
-        // // SizedBox(height: 10),
-        // Text(
-        //   '',
-        //   style: GoogleFonts.greatVibes(fontSize: 20),
-        // ),
-        // Row(
-        //   mainAxisAlignment: MainAxisAlignment.end,
-        //   children: [
-        //     Text(
-        //       '',
-        //       style: GoogleFonts.openSans(
-        //           fontSize: 12, fontWeight: FontWeight.w700),
-        //     ),
-        //     SizedBox(width: 30),
-        //     Text(
-        //       '',
-        //       style: GoogleFonts.openSans(
-        //           fontSize: 12, fontWeight: FontWeight.w700),
-        //     ),
-        //   ],
-        // ),
-        // SizedBox(height: 10),
         Expanded(
           child: ListView(
             children: [
@@ -59,7 +28,9 @@ class PageMenu7 extends StatelessWidget {
                         color: Colors.white,
                         border: Border.all(color: Colors.transparent),
                       ),
-                      padding: const EdgeInsets.symmetric(horizontal: 10),
+                      padding: menuItems_Page7[i].title == 'Salmon Bowl'
+                          ? EdgeInsets.only(left: 10, right: 0)
+                          : EdgeInsets.symmetric(horizontal: 10),
                       child: (menuItems_Page7[i].id == '32')
                           ? MenuItemWidget8(
                               item: menuItems_Page7[i],

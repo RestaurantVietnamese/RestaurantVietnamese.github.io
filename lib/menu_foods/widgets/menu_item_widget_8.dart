@@ -40,7 +40,7 @@ class MenuItemWidget8 extends StatelessWidget {
                       TextSpan(text: '. '),
                       TextSpan(
                         text: item.title,
-                        style: getFont0(state),
+                        style: getFontA(state),
                       ),
                     ],
                   ),
