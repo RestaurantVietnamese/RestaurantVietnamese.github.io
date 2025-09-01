@@ -40,11 +40,7 @@ class MenuItemWidget8 extends StatelessWidget {
                       TextSpan(text: '. '),
                       TextSpan(
                         text: item.title,
-                        style: getFont(
-                          state.fontA,
-                          fontStyle: FontStyle.italic,
-                          fontSize: 18,
-                        ),
+                        style: getFont0(state),
                       ),
                     ],
                   ),
@@ -53,8 +49,7 @@ class MenuItemWidget8 extends StatelessWidget {
               if (item.subText != '')
                 Text(
                   item.subText ?? '',
-                  style: getFont(state.fontD,
-                      fontSize: 12, fontWeight: FontWeight.w600),
+                  style: getFontD(state),
                   textAlign: TextAlign.right,
                 ),
             ],
@@ -72,11 +67,7 @@ class MenuItemWidget8 extends StatelessWidget {
                       flex: 14,
                       child: Text(
                         item.descriptionDe,
-                        style: getFont(
-                          state.fontB,
-                          fontSize: 12,
-                          fontWeight: FontWeight.w600,
-                        ),
+                        style: getFontB(state),
                       ),
                     ),
 
@@ -109,8 +100,7 @@ class MenuItemWidget8 extends StatelessWidget {
                       Text(
                         opt.tags.join(', '),
                         textAlign: TextAlign.right,
-                        style: getFont(state.fontD,
-                            fontSize: 12, fontWeight: FontWeight.w600),
+                        style: getFontD(state),
                       ),
                       SizedBox(
                         width: 20,
@@ -118,8 +108,7 @@ class MenuItemWidget8 extends StatelessWidget {
                       Text(
                         opt.prices2.isNotEmpty ? opt.prices2 : '',
                         textAlign: TextAlign.right,
-                        style: getFont(state.fontD,
-                            fontSize: 12, fontWeight: FontWeight.w600),
+                        style: getFontD(state),
                       ),
                     ],
                   ),
@@ -131,12 +120,7 @@ class MenuItemWidget8 extends StatelessWidget {
           // Mô tả tiếng Anh (in nghiêng)
           Text(
             item.descriptionEn,
-            style: getFont(
-              state.fontC,
-              fontSize: 12,
-              fontWeight: FontWeight.w400,
-              fontStyle: FontStyle.italic,
-            ),
+            style: getFontC(state),
           ),
           if (usePadding) SizedBox(height: 6),
         ],

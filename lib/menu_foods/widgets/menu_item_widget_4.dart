@@ -38,11 +38,7 @@ class MenuItemWidget4 extends StatelessWidget {
                       TextSpan(text: '. '),
                       TextSpan(
                         text: item.title,
-                        style: getFont(
-                          state.fontA,
-                          fontStyle: FontStyle.italic,
-                          fontSize: 18,
-                        ),
+                        style: getFontA(state),
                       ),
                     ],
                   ),
@@ -51,8 +47,7 @@ class MenuItemWidget4 extends StatelessWidget {
               if (item.subText != '')
                 Text(
                   item.subText ?? '',
-                  style: getFont(state.fontD,
-                      fontSize: 12, fontWeight: FontWeight.w600),
+                  style: getFontD(state),
                   textAlign: TextAlign.right,
                 ),
             ],
@@ -70,11 +65,7 @@ class MenuItemWidget4 extends StatelessWidget {
                       flex: 14,
                       child: Text(
                         item.descriptionDe,
-                        style: getFont(
-                          state.fontB,
-                          fontSize: 12,
-                          fontWeight: FontWeight.w600,
-                        ),
+                        style: getFontB(state),
                       ),
                     ),
 
@@ -104,8 +95,7 @@ class MenuItemWidget4 extends StatelessWidget {
                   child: Text(
                     opt.prices2.isNotEmpty ? opt.prices2 : '',
                     textAlign: TextAlign.right,
-                    style: getFont(state.fontD,
-                        fontSize: 12, fontWeight: FontWeight.w600),
+                    style: getFontD(state),
                   ),
                 )
               ],
@@ -115,12 +105,7 @@ class MenuItemWidget4 extends StatelessWidget {
           // Mô tả tiếng Anh (in nghiêng)
           Text(
             item.descriptionEn,
-            style: getFont(
-              state.fontC,
-              fontSize: 12,
-              fontWeight: FontWeight.w400,
-              fontStyle: FontStyle.italic,
-            ),
+            style: getFontC(state),
           ),
           SizedBox(height: 6),
         ],

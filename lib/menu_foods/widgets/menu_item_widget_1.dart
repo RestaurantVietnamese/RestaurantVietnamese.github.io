@@ -2,7 +2,6 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:puzzel/widget/fonts/bloc/font_cubit.dart';
 import 'package:puzzel/widget/fonts/bloc/font_state.dart';
 import 'package:puzzel/widget/fonts/helper_fonts.dart';
@@ -39,14 +38,7 @@ class MenuItemWidget extends StatelessWidget {
                       TextSpan(
                         text: '. ', // Add space between id and title
                       ),
-                      TextSpan(
-                          text: item.title,
-                          style: getFont(
-                            state.fontA,
-                            fontSize: 18,
-                            fontStyle: FontStyle.italic,
-                            fontWeight: FontWeight.w500,
-                          )),
+                      TextSpan(text: item.title, style: getFontA(state)),
                     ],
                   ),
                 ),
@@ -54,25 +46,18 @@ class MenuItemWidget extends StatelessWidget {
               if (item.subText != '')
                 Text(
                   item.subText ?? '',
-                  style: getFont(state.fontD,
-                      fontSize: 12, fontWeight: FontWeight.w600),
+                  style: getFontD(state),
                   textAlign: TextAlign.right,
                 ),
             ],
           ),
           // Mô tả tiếng Đức
-          Text(item.descriptionDe,
-              style: getFont(state.fontB,
-                  fontSize: 12, fontWeight: FontWeight.w600)),
+          Text(item.descriptionDe, style: getFontB(state)),
 
           // Mô tả tiếng Anh (in nghiêng)
           Padding(
             padding: const EdgeInsets.only(right: 20),
-            child: Text(item.descriptionEn,
-                style: getFont(state.fontC,
-                    fontSize: 12,
-                    fontWeight: FontWeight.w400,
-                    fontStyle: FontStyle.italic)),
+            child: Text(item.descriptionEn, style: getFontC(state)),
           ),
           SizedBox(height: 6),
 
@@ -87,24 +72,18 @@ class MenuItemWidget extends StatelessWidget {
                       flex: 2,
                       child: Text(
                         opt.code,
-                        style: getFont(state.fontD,
-                            fontSize: 12, fontWeight: FontWeight.w600),
+                        style: getFontD(state),
                       )),
 
                   // Column 2: Name
                   Expanded(
-                      flex: 8,
-                      child: Text(opt.name,
-                          style: getFont(state.fontD,
-                              fontSize: 12, fontWeight: FontWeight.w600))),
+                      flex: 8, child: Text(opt.name, style: getFontD(state))),
 
                   // Column 3: Tags
                   Expanded(
                     flex: 2,
                     child: opt.tags.isNotEmpty
-                        ? Text(opt.tags.join(", "),
-                            style: getFont(state.fontD,
-                                fontSize: 12, fontWeight: FontWeight.w600))
+                        ? Text(opt.tags.join(", "), style: getFontD(state))
                         : Container(),
                   ),
 
@@ -112,18 +91,14 @@ class MenuItemWidget extends StatelessWidget {
                   Expanded(
                     flex: 2,
                     child: Text(opt.prices1,
-                        textAlign: TextAlign.left,
-                        style: getFont(state.fontD,
-                            fontSize: 12, fontWeight: FontWeight.w600)),
+                        textAlign: TextAlign.left, style: getFontD(state)),
                   ),
 
                   // Column 5: prices2
                   Expanded(
                     flex: 2,
                     child: Text(opt.prices2,
-                        textAlign: TextAlign.right,
-                        style: getFont(state.fontD,
-                            fontSize: 12, fontWeight: FontWeight.w600)),
+                        textAlign: TextAlign.right, style: getFontD(state)),
                   ),
                 ],
               );

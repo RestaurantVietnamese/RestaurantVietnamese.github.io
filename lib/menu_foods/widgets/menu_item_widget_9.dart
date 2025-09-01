@@ -45,11 +45,7 @@ class MenuItemWidget9 extends StatelessWidget {
                       if (item.id != '') TextSpan(text: '. '),
                       TextSpan(
                         text: item.title,
-                        style: getFont(
-                          state.fontA,
-                          fontStyle: FontStyle.italic,
-                          fontSize: 18,
-                        ),
+                        style: getFontA(state),
                       ),
                     ],
                   ),
@@ -58,8 +54,7 @@ class MenuItemWidget9 extends StatelessWidget {
               if (item.subText != '')
                 Text(
                   item.subText ?? '',
-                  style: getFont(state.fontD,
-                      fontSize: 12, fontWeight: FontWeight.w600),
+                  style: getFontD(state),
                   textAlign: TextAlign.right,
                 ),
             ],
@@ -77,11 +72,7 @@ class MenuItemWidget9 extends StatelessWidget {
                       flex: 7,
                       child: Text(
                         item.descriptionDe,
-                        style: getFont(
-                          state.fontB,
-                          fontSize: 12,
-                          fontWeight: FontWeight.w600,
-                        ),
+                        style: getFontB(state),
                       ),
                     ),
 
@@ -112,8 +103,7 @@ class MenuItemWidget9 extends StatelessWidget {
                     child: Text(
                       opt.prices2.isNotEmpty ? opt.prices2 : '',
                       textAlign: TextAlign.right,
-                      style: getFont(state.fontD,
-                          fontSize: 12, fontWeight: FontWeight.w600),
+                      style: getFontD(state),
                     ),
                   ),
                   Positioned(
@@ -123,8 +113,7 @@ class MenuItemWidget9 extends StatelessWidget {
                     child: Text(
                       opt.tags.join(', '),
                       textAlign: TextAlign.left,
-                      style: getFont(state.fontD,
-                          fontSize: 12, fontWeight: FontWeight.w600),
+                      style: getFontD(state),
                     ),
                   )
                 ],
@@ -139,8 +128,7 @@ class MenuItemWidget9 extends StatelessWidget {
                         Text(
                           opt.tags.join(', '),
                           textAlign: TextAlign.right,
-                          style: getFont(state.fontD,
-                              fontSize: 12, fontWeight: FontWeight.w600),
+                          style: getFontD(state),
                         ),
                         SizedBox(
                           width: 70,
@@ -148,8 +136,7 @@ class MenuItemWidget9 extends StatelessWidget {
                         Text(
                           opt.prices2.isNotEmpty ? opt.prices2 : '',
                           textAlign: TextAlign.right,
-                          style: getFont(state.fontD,
-                              fontSize: 12, fontWeight: FontWeight.w600),
+                          style: getFontD(state),
                         ),
                       ],
                     ),
@@ -161,12 +148,7 @@ class MenuItemWidget9 extends StatelessWidget {
           // Mô tả tiếng Anh (in nghiêng)
           Text(
             item.descriptionEn,
-            style: getFont(
-              state.fontC,
-              fontSize: 11,
-              fontWeight: FontWeight.w400,
-              fontStyle: FontStyle.italic,
-            ),
+            style: getFontC(state),
           ),
           if (usePadding) SizedBox(height: 6),
         ],

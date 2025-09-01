@@ -2,14 +2,9 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:puzzel/menu_foods/data_widget.dart';
 import 'package:puzzel/menu_foods/export_image/save_image_util.dart';
-import 'package:puzzel/menu_foods/page_menu_item/page_menu_1.dart';
-import 'package:puzzel/menu_foods/page_menu_item/page_menu_2.dart';
-import 'package:puzzel/menu_foods/page_menu_item/page_menu_3.dart';
-import 'package:puzzel/menu_foods/page_menu_item/page_menu_4.dart';
-import 'package:puzzel/menu_foods/page_menu_item/page_menu_5.dart';
-import 'package:puzzel/menu_foods/page_menu_item/page_menu_6.dart';
-import 'package:puzzel/menu_foods/page_menu_item/page_menu_7.dart';
 import 'package:puzzel/widget/fonts/bloc/font_cubit.dart';
 import 'package:puzzel/widget/fonts/bloc/font_state.dart';
 
@@ -47,6 +42,12 @@ class _MenuPageState extends State<MenuPage> {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
+                  ElevatedButton(
+                    onPressed: () {
+                      saveImage(_globalKey);
+                    },
+                    child: const Text("Lưu ảnh"),
+                  ),
                   IconButton(
                     icon: Icon(Icons.arrow_back_ios),
                     onPressed: () {
@@ -65,132 +66,214 @@ class _MenuPageState extends State<MenuPage> {
                       );
                     },
                   ),
-                  DropdownButton<AppFont>(
-                    value: state.font0,
-                    underline: SizedBox(), // bỏ gạch chân
-                    icon: Icon(Icons.font_download, color: Colors.red),
-                    items: AppFont.values
-                        .map((font) => DropdownMenuItem(
-                              value: font,
-                              child: Text(font.name),
-                            ))
-                        .toList(),
-                    onChanged: (font) {
-                      if (font != null)
-                        context.read<FontCubit>().changeFont0(font);
-                    },
-                  ),
-                  DropdownButton<AppFont>(
-                    value: state.fontA,
-                    underline: SizedBox(), // bỏ gạch chân
-                    icon: Icon(Icons.font_download, color: Colors.red),
-                    items: AppFont.values
-                        .map((font) => DropdownMenuItem(
-                              value: font,
-                              child: Text(font.name),
-                            ))
-                        .toList(),
-                    onChanged: (font) {
-                      if (font != null)
-                        context.read<FontCubit>().changeFontA(font);
-                    },
-                  ),
-                  DropdownButton<AppFont>(
-                    value: state.fontB,
-                    underline: SizedBox(), // bỏ gạch chân
-                    icon: Icon(Icons.font_download, color: Colors.red),
-                    items: AppFont.values
-                        .map((font) => DropdownMenuItem(
-                              value: font,
-                              child: Text(font.name),
-                            ))
-                        .toList(),
-                    onChanged: (font) {
-                      if (font != null)
-                        context.read<FontCubit>().changeFontB(font);
-                    },
-                  ),
-                  DropdownButton<AppFont>(
-                    value: state.fontC,
-                    underline: SizedBox(), // bỏ gạch chân
-                    icon: Icon(Icons.font_download, color: Colors.red),
-                    items: AppFont.values
-                        .map((font) => DropdownMenuItem(
-                              value: font,
-                              child: Text(font.name),
-                            ))
-                        .toList(),
-                    onChanged: (font) {
-                      if (font != null)
-                        context.read<FontCubit>().changeFontC(font);
-                    },
-                  ),
-                  DropdownButton<AppFont>(
-                    value: state.fontD,
-                    underline: SizedBox(), // bỏ gạch chân
-                    icon: Icon(Icons.font_download, color: Colors.red),
-                    items: AppFont.values
-                        .map((font) => DropdownMenuItem(
-                              value: font,
-                              child: Text(font.name),
-                            ))
-                        .toList(),
-                    onChanged: (font) {
-                      if (font != null)
-                        context.read<FontCubit>().changeFontD(font);
+                  IconButton(
+                    icon: Icon(Icons.settings, color: Colors.blue),
+                    onPressed: () {
+                      showModalBottomSheet(
+                        context: context,
+                        shape: RoundedRectangleBorder(
+                          borderRadius:
+                              BorderRadius.vertical(top: Radius.circular(16)),
+                        ),
+                        builder: (context) {
+                          return BlocBuilder<FontCubit, FontState>(
+                            builder: (context, state) {
+                              return Padding(
+                                padding: const EdgeInsets.all(16.0),
+                                child: SingleChildScrollView(
+                                  child: Column(
+                                    mainAxisSize: MainAxisSize.min,
+                                    children: [
+                                      Text(
+                                        'Chọn Font & Size',
+                                        style: Theme.of(context)
+                                            .textTheme
+                                            .titleLarge,
+                                      ),
+                                      const SizedBox(height: 16),
+                                      _buildFontSetting(
+                                        title: 'Font 0',
+                                        value: state.font0,
+                                        size: state.size0,
+                                        onFontChanged: (font) {
+                                          if (font != null) {
+                                            context
+                                                .read<FontCubit>()
+                                                .changeFont0(font);
+                                          }
+                                        },
+                                        onSizeChanged: (size) {
+                                          context
+                                              .read<FontCubit>()
+                                              .changeSize0(size);
+                                        },
+                                      ),
+                                      _buildFontSetting(
+                                        title: 'Font A',
+                                        value: state.fontA,
+                                        size: state.sizeA,
+                                        onFontChanged: (font) {
+                                          if (font != null) {
+                                            context
+                                                .read<FontCubit>()
+                                                .changeFontA(font);
+                                          }
+                                        },
+                                        onSizeChanged: (size) {
+                                          context
+                                              .read<FontCubit>()
+                                              .changeSizeA(size);
+                                        },
+                                      ),
+                                      _buildFontSetting(
+                                        title: 'Font B',
+                                        value: state.fontB,
+                                        size: state.sizeB,
+                                        onFontChanged: (font) {
+                                          if (font != null) {
+                                            context
+                                                .read<FontCubit>()
+                                                .changeFontB(font);
+                                          }
+                                        },
+                                        onSizeChanged: (size) {
+                                          context
+                                              .read<FontCubit>()
+                                              .changeSizeB(size);
+                                        },
+                                      ),
+                                      _buildFontSetting(
+                                        title: 'Font C',
+                                        value: state.fontC,
+                                        size: state.sizeC,
+                                        onFontChanged: (font) {
+                                          if (font != null) {
+                                            context
+                                                .read<FontCubit>()
+                                                .changeFontC(font);
+                                          }
+                                        },
+                                        onSizeChanged: (size) {
+                                          context
+                                              .read<FontCubit>()
+                                              .changeSizeC(size);
+                                        },
+                                      ),
+                                      _buildFontSetting(
+                                        title: 'Font D',
+                                        value: state.fontD,
+                                        size: state.sizeD,
+                                        onFontChanged: (font) {
+                                          if (font != null) {
+                                            context
+                                                .read<FontCubit>()
+                                                .changeFontD(font);
+                                          }
+                                        },
+                                        onSizeChanged: (size) {
+                                          context
+                                              .read<FontCubit>()
+                                              .changeSizeD(size);
+                                        },
+                                      ),
+                                      const SizedBox(height: 24),
+                                    ],
+                                  ),
+                                ),
+                              );
+                            },
+                          );
+                        },
+                      );
                     },
                   ),
                 ],
               ),
             ),
-            ElevatedButton(
-              onPressed: () {
-                saveImage(_globalKey);
-              },
-              child: const Text("Lưu ảnh"),
-            )
           ],
         ),
       ),
     );
   }
-}
 
-class DataWidget extends StatefulWidget {
-  // Thêm thuộc tính pageController
-  final PageController pageController;
-  const DataWidget({
-    super.key,
-    required this.pageController,
-  });
+  Widget _buildFontSetting({
+    required String title,
+    required AppFont value,
+    required double size,
+    required ValueChanged<AppFont?> onFontChanged,
+    required ValueChanged<double> onSizeChanged,
+  }) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Text(title),
+            DropdownButton<AppFont>(
+              value: value,
+              underline: SizedBox(),
+              icon: Icon(Icons.font_download, color: Colors.red),
+              items: AppFont.values
+                  .map((font) => DropdownMenuItem(
+                        value: font,
+                        child: Text(font.name),
+                      ))
+                  .toList(),
+              onChanged: onFontChanged,
+            ),
+          ],
+        ),
+        Slider(
+          value: size,
+          min: 10,
+          max: 50,
+          divisions: 40,
+          label: size.toStringAsFixed(0),
+          onChanged: onSizeChanged,
+        ),
+      ],
+    );
+  }
+  Widget _buildFontSetting2({
+    required String title,
+    required String fontName,
+    required double size,
+    required ValueChanged<String?> onFontChanged,
+    required ValueChanged<double> onSizeChanged,
+  }) {
+    final fontNames = GoogleFonts.asMap().keys.toList();
 
-  @override
-  State<DataWidget> createState() => _DataWidgetState();
-}
-
-class _DataWidgetState extends State<DataWidget> {
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      color: Colors.white,
-      padding: EdgeInsets.only(left: 5, right: 5),
-      // margin: EdgeInsets.only(left: 20, top: 20),
-      width: 410,
-      height: 800,
-      child: PageView(
-        // Sử dụng pageController đã được truyền từ trên xuống
-        controller: widget.pageController,
-        scrollDirection: Axis.horizontal,
-        children: [
-          PageMenu7(),
-          PageMenu6(),
-          PageMenu5(),
-          PageMenu4(),
-          PageMenu3(),
-          PageMenu2(),
-          PageMenu1(),
-        ],
-      ),
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Text(title),
+            DropdownButton<String>(
+              value: fontName,
+              underline: SizedBox(),
+              icon: Icon(Icons.font_download, color: Colors.red),
+              items: fontNames
+                  .map((name) => DropdownMenuItem(
+                        value: name,
+                        child: Text(name, style: GoogleFonts.getFont(name)),
+                      ))
+                  .toList(),
+              onChanged: onFontChanged,
+            ),
+          ],
+        ),
+        Slider(
+          value: size,
+          min: 10,
+          max: 50,
+          divisions: 40,
+          label: size.toStringAsFixed(0),
+          onChanged: onSizeChanged,
+        ),
+      ],
     );
   }
 }

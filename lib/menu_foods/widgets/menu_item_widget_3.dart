@@ -38,10 +38,7 @@ class MenuItemWidget3 extends StatelessWidget {
                       TextSpan(text: '. '),
                       TextSpan(
                         text: item.title,
-                        style: getFont(state.fontA,
-                          fontStyle: FontStyle.italic,
-                          fontSize: 18,
-                        ),
+                        style: getFontA(state),
                       ),
                     ],
                   ),
@@ -50,8 +47,7 @@ class MenuItemWidget3 extends StatelessWidget {
                if (item.subText != '')
                 Text(
                   item.subText ?? '',
-                  style: getFont(state.fontD,
-                      fontSize: 12, fontWeight: FontWeight.w600),
+                  style: getFontD(state),
                   textAlign: TextAlign.right,
                 ),
             ],
@@ -67,10 +63,7 @@ class MenuItemWidget3 extends StatelessWidget {
                   flex: 12,
                   child: Text(
                     item.descriptionDe,
-                    style: getFont(state.fontB,
-                      fontSize: 12,
-                      fontWeight: FontWeight.w600,
-                    ),
+                    style:getFontB(state),
                   ),
                 ),
       
@@ -80,8 +73,7 @@ class MenuItemWidget3 extends StatelessWidget {
                   child: opt.tags.isNotEmpty
                       ? Text(
                           opt.tags.join(", "),
-                          style: getFont(state.fontD,
-                              fontSize: 12, fontWeight: FontWeight.w600),
+                          style: getFontD(state),
                         )
                       : SizedBox.shrink(),
                 ),
@@ -95,8 +87,7 @@ class MenuItemWidget3 extends StatelessWidget {
                   child: Text(
                     opt.prices2.isNotEmpty ? opt.prices2 : '',
                     textAlign: TextAlign.right,
-                    style: getFont(state.fontD,
-                        fontSize: 12, fontWeight: FontWeight.w600),
+                    style:getFontD(state),
                   ),
                 ),
               ],
@@ -106,11 +97,7 @@ class MenuItemWidget3 extends StatelessWidget {
           // Mô tả tiếng Anh (in nghiêng)
           Text(
             item.descriptionEn,
-            style: getFont(state.fontC,
-              fontSize: 12,
-              fontWeight: FontWeight.w400,
-              fontStyle: FontStyle.italic,
-            ),
+            style: getFontC(state),
           ),
           SizedBox(height: 6),
         ],

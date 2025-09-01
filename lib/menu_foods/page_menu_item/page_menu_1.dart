@@ -26,7 +26,7 @@ class PageMenu1 extends StatelessWidget {
             padding: const EdgeInsets.only(left: 8.0),
             child: Text(
               'Supper',
-              style: getFont(state.font0, fontSize: 20),
+              style: getFont0(state),
             ),
           ),
           Row(
@@ -34,15 +34,14 @@ class PageMenu1 extends StatelessWidget {
             children: [
               Text(
                 '300 ml',
-                style: getFont(state.fontB,
-                    fontSize: 12, fontWeight: FontWeight.w700),
+                style: getFontB(state),
               ),
-              SizedBox(width: 30),
+              SizedBox(width: 20),
               Text(
                 '750 ml',
-                style: getFont(state.fontB,
-                    fontSize: 12, fontWeight: FontWeight.w700),
+                style: getFontB(state),
               ),
+              SizedBox(width: 10),
             ],
           ),
           SizedBox(height: 10),

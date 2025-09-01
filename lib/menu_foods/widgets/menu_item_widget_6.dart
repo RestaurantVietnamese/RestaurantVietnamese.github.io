@@ -37,11 +37,7 @@ class MenuItemWidget6 extends StatelessWidget {
                       TextSpan(text: '. '),
                       TextSpan(
                         text: item.title,
-                        style: getFont(
-                          state.fontA,
-                          fontStyle: FontStyle.italic,
-                          fontSize: 18,
-                        ),
+                        style: getFontA(state),
                       ),
                     ],
                   ),
@@ -50,8 +46,7 @@ class MenuItemWidget6 extends StatelessWidget {
               if (item.options.isNotEmpty && item.options.first.prices2 != '')
                 Text(
                   item.options.first.prices2,
-                  style: getFont(state.fontD,
-                      fontSize: 12, fontWeight: FontWeight.w600),
+                  style: getFontD(state),
                   textAlign: TextAlign.right,
                 ),
             ],
