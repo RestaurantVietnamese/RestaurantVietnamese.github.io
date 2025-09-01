@@ -1,12 +1,11 @@
 // State chứa font cho mỗi Text
-import 'package:puzzel/widget/fonts/bloc/font_cubit.dart';
 
 class FontState {
-  final AppFont font0;
-  final AppFont fontA;
-  final AppFont fontB;
-  final AppFont fontC;
-  final AppFont fontD;
+  final String font0;
+  final String fontA;
+  final String fontB;
+  final String fontC;
+  final String fontD;
 
   final double size0;
   final double sizeA;
@@ -28,11 +27,11 @@ class FontState {
   });
 
   FontState copyWith({
-    AppFont? font0,
-    AppFont? fontA,
-    AppFont? fontB,
-    AppFont? fontC,
-    AppFont? fontD,
+    String? font0,
+    String? fontA,
+    String? fontB,
+    String? fontC,
+    String? fontD,
     double? size0,
     double? sizeA,
     double? sizeB,

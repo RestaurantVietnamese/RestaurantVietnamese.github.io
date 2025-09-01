@@ -52,7 +52,7 @@ TextStyle getFont0(FontState state,
     {FontWeight fontWeight = FontWeight.normal,
     FontStyle fontStyle = FontStyle.normal}) {
   return getFontByName(
-    state.font0.fontName,
+    state.font0,
     fontSize: state.size0,
     fontWeight: fontWeight,
     fontStyle: fontStyle,
@@ -63,7 +63,7 @@ TextStyle getFontA(FontState state,
     {FontWeight fontWeight = FontWeight.w500,
     FontStyle fontStyle = FontStyle.italic}) {
   return getFontByName(
-    state.fontA.fontName,
+    state.fontA,
     fontSize: state.sizeA,
     fontWeight: fontWeight,
     fontStyle: fontStyle,
@@ -74,7 +74,7 @@ TextStyle getFontB(FontState state,
     {FontWeight fontWeight = FontWeight.w600,
     FontStyle fontStyle = FontStyle.normal}) {
   return getFontByName(
-    state.fontB.fontName,
+    state.fontB,
     fontSize: state.sizeB,
     fontWeight: fontWeight,
     fontStyle: fontStyle,
@@ -85,7 +85,7 @@ TextStyle getFontC(FontState state,
     {FontWeight fontWeight = FontWeight.w400,
     FontStyle fontStyle = FontStyle.italic}) {
   return getFontByName(
-    state.fontC.fontName,
+    state.fontC,
     fontSize: state.sizeC,
     fontWeight: fontWeight,
     fontStyle: fontStyle,
@@ -96,7 +96,7 @@ TextStyle getFontD(FontState state,
     {FontWeight fontWeight = FontWeight.w600,
     FontStyle fontStyle = FontStyle.normal}) {
   return getFontByName(
-    state.fontD.fontName,
+    state.fontD,
     fontSize: state.sizeD,
     fontWeight: fontWeight,
     fontStyle: fontStyle,

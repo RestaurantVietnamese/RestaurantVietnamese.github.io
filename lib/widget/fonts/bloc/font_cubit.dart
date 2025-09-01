@@ -7,11 +7,11 @@ enum AppFont { greatVibes, gelasio, openSans, roboto, lato }
 class FontCubit extends Cubit<FontState> {
   FontCubit()
       : super(FontState(
-          font0: AppFont.greatVibes,
-          fontA: AppFont.gelasio,
-          fontB: AppFont.openSans,
-          fontC: AppFont.roboto,
-          fontD: AppFont.lato,
+          font0: 'Great Vibes',
+          fontA: 'Gelasio',
+          fontB: 'Open Sans',
+          fontC: 'Roboto',
+          fontD: 'Lato',
           size0: 20,
           sizeA: 18,
           sizeB: 12,
@@ -19,70 +19,14 @@ class FontCubit extends Cubit<FontState> {
           sizeD: 12,
         ));
 
-  void changeFont0(AppFont font) => emit(FontState(
-        font0: font,
-        fontA: state.fontA,
-        fontB: state.fontB,
-        fontC: state.fontC,
-        fontD: state.fontD,
-        size0: state.size0,
-        sizeA: state.sizeA,
-        sizeB: state.sizeB,
-        sizeC: state.sizeC,
-        sizeD: state.sizeD,
-      ));
-  void changeFontA(AppFont font) => emit(FontState(
-        font0: state.font0,
-        fontA: font,
-        fontB: state.fontB,
-        fontC: state.fontC,
-        fontD: state.fontD,
-        size0: state.size0,
-        sizeA: state.sizeA,
-        sizeB: state.sizeB,
-        sizeC: state.sizeC,
-        sizeD: state.sizeD,
-      ));
+  // Thay đổi font (String)
+  void changeFont0(String font) => emit(state.copyWith(font0: font));
+  void changeFontA(String font) => emit(state.copyWith(fontA: font));
+  void changeFontB(String font) => emit(state.copyWith(fontB: font));
+  void changeFontC(String font) => emit(state.copyWith(fontC: font));
+  void changeFontD(String font) => emit(state.copyWith(fontD: font));
 
-  void changeFontB(AppFont font) => emit(FontState(
-        font0: state.font0,
-        fontA: state.fontA,
-        fontB: font,
-        fontC: state.fontC,
-        fontD: state.fontD,
-        size0: state.size0,
-        sizeA: state.sizeA,
-        sizeB: state.sizeB,
-        sizeC: state.sizeC,
-        sizeD: state.sizeD,
-      ));
-
-  void changeFontC(AppFont font) => emit(FontState(
-        font0: state.font0,
-        fontA: state.fontA,
-        fontB: state.fontB,
-        fontC: font,
-        fontD: state.fontD,
-        size0: state.size0,
-        sizeA: state.sizeA,
-        sizeB: state.sizeB,
-        sizeC: state.sizeC,
-        sizeD: state.sizeD,
-      ));
-
-  void changeFontD(AppFont font) => emit(FontState(
-        font0: state.font0,
-        fontA: state.fontA,
-        fontB: state.fontB,
-        fontC: state.fontC,
-        fontD: font,
-        size0: state.size0,
-        sizeA: state.sizeA,
-        sizeB: state.sizeB,
-        sizeC: state.sizeC,
-        sizeD: state.sizeD,
-      ));
-
+  // Thay đổi size
   void changeSize0(double size) => emit(state.copyWith(size0: size));
   void changeSizeA(double size) => emit(state.copyWith(sizeA: size));
   void changeSizeB(double size) => emit(state.copyWith(sizeB: size));
