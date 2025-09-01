@@ -2,16 +2,21 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:puzzel/widget/fonts/bloc/font_cubit.dart';
 import 'package:puzzel/widget/fonts/bloc/font_state.dart';
 import 'package:puzzel/widget/fonts/helper_fonts.dart';
 import '../models/menu_item.dart';
-
 class MenuItemWidget2 extends StatelessWidget {
   final MenuItem item;
+  final String id;
+  
+  const MenuItemWidget2({
+    Key? key, 
+    required this.item,
+    this.id = '',
+  }) : super(key: key);
 
-  const MenuItemWidget2({Key? key, required this.item}) : super(key: key);
+  bool get isWhite => id == '6';
 
   @override
   Widget build(BuildContext context) {
@@ -30,19 +35,20 @@ class MenuItemWidget2 extends StatelessWidget {
                       TextSpan(
                         text: item.id,
                         style: TextStyle(
+                          color: isWhite ? Colors.white : null,
                           fontSize: 12,
                           fontStyle: FontStyle.italic,
                           fontWeight: FontWeight.bold,
                         ),
                       ),
-                      TextSpan(text: '. '),
+                      TextSpan(text: '. ',style: TextStyle(color: isWhite ? Colors.white : null)),
                       TextSpan(
                         text: item.title,
-                        style: getFontA(state),
+                        style: getFontA(state, color: isWhite ? Colors.white : null),
                       ),
                       TextSpan(
                         text: item.subText,
-                        style: getFontB(state),
+                        style: getFontB(state, color: isWhite ? Colors.white : null),
                       ),
                     ],
                   ),
@@ -51,7 +57,7 @@ class MenuItemWidget2 extends StatelessWidget {
               if (item.subText != '')
                 Text(
                   item.subText ?? '',
-                  style: getFontD(state),
+                  style: getFontD(state, color: isWhite ? Colors.white : null),
                   textAlign: TextAlign.right,
                 ),
             ],
@@ -68,7 +74,7 @@ class MenuItemWidget2 extends StatelessWidget {
                   flex: 10,
                   child: Text(
                     item.descriptionDe,
-                    style: getFontB(state),
+                    style: getFontB(state, color: isWhite ? Colors.white : null),
                   ),
                 ),
 
@@ -78,7 +84,7 @@ class MenuItemWidget2 extends StatelessWidget {
                   child: opt.tags.isNotEmpty
                       ? Text(
                           opt.tags.join(", "),
-                          style: getFontD(state),
+                          style: getFontD(state, color: isWhite ? Colors.white : null),
                         )
                       : SizedBox.shrink(),
                 ),
@@ -88,7 +94,7 @@ class MenuItemWidget2 extends StatelessWidget {
                   flex: 2,
                   child: Text(
                     opt.prices1.isNotEmpty ? opt.prices1 : '',
-                    style: getFontD(state),
+                    style: getFontD(state, color: isWhite ? Colors.white : null),
                   ),
                 ),
 
@@ -98,7 +104,7 @@ class MenuItemWidget2 extends StatelessWidget {
                   child: Text(
                     opt.prices2.isNotEmpty ? opt.prices2 : '',
                     textAlign: TextAlign.right,
-                    style: getFontD(state),
+                    style: getFontD(state, color: isWhite ? Colors.white : null),
                   ),
                 ),
               ],
@@ -108,7 +114,7 @@ class MenuItemWidget2 extends StatelessWidget {
           // Mô tả tiếng Anh (in nghiêng)
           Text(
             item.descriptionEn,
-            style: getFontC(state),
+            style: getFontC(state, color: isWhite ? Colors.white : null),
           ),
           SizedBox(height: 6),
         ],

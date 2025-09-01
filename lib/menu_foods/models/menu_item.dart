@@ -23,7 +23,7 @@ class MenuOption {
 class MenuItem {
   final String id;
    final String? subText;
-  final IconData? subIcon;
+  final bool? subIcon;
   final String title;
   final String descriptionDe;
   final String descriptionEn;

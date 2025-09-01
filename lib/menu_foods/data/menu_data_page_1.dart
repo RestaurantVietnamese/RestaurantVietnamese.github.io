@@ -61,6 +61,7 @@ final menuItems_Page1 = [
   MenuItem(
     id: '4',
     title: "Tom Kha Suppe",
+    subIcon: true,
     descriptionDe: "Thai Kokos-Suppe mit Gemuse. Auswahl mit:",
     descriptionEn: "Thai coconut soup with vegetables. Selection with:",
     options: [

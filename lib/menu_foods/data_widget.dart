@@ -28,7 +28,7 @@ class _DataWidgetState extends State<DataWidget> {
   Widget build(BuildContext context) {
     return Container(
       color: Colors.white,
-      padding: EdgeInsets.only(left: 5, right: 5),
+      // padding: EdgeInsets.only(left: 5, right: 5),
       // margin: EdgeInsets.only(left: 20, top: 20),
       width: 410,
       height: 800,
@@ -37,15 +37,28 @@ class _DataWidgetState extends State<DataWidget> {
         controller: widget.pageController,
         scrollDirection: Axis.horizontal,
         children: [
-          PageMenu9(),
-          PageMenu8(),
-          PageMenu7(),
-          PageMenu6(),
-          PageMenu5(),
-          PageMenu4(),
-          PageMenu3(),
+          Stack(
+            children: [
+              Positioned(
+                  left: 0,
+                  right: 0,
+                  bottom: 0,
+                  child: Container(
+                    width: 410,
+                    height: 110,
+                    color: Colors.green.withOpacity(0.9),
+                  )),
+              PageMenu1(),
+            ],
+          ),
           PageMenu2(),
-          PageMenu1(),
+          PageMenu3(),
+          PageMenu4(),
+          PageMenu5(),
+          PageMenu6(),
+          PageMenu7(),
+          PageMenu8(),
+          PageMenu9(),
         ],
       ),
     );

@@ -49,6 +49,7 @@ class MenuItemWidget extends StatelessWidget {
                   style: getFontD(state),
                   textAlign: TextAlign.right,
                 ),
+              if (item.subIcon == true) Image.asset('assets/images/icon_chilli.png',height: 25,),
             ],
           ),
           // Mô tả tiếng Đức
