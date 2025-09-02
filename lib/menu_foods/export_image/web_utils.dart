@@ -18,54 +18,72 @@ Future<void> captureAndSaveImage(GlobalKey globalKey) async {
   ByteData? byteData = await image.toByteData(format: ui.ImageByteFormat.png);
   Uint8List pngBytes = byteData!.buffer.asUint8List();
 
-  // final blob = html.Blob([pngBytes]);
-  // final url = html.Url.createObjectUrlFromBlob(blob);
-
-  // final anchor = html.AnchorElement(href: url)
-  //   ..download = "menu_image_${DateTime.now().toIso8601String()}.png";
-
-  // // Append anchor vào DOM trước khi click
-  // html.document.body!.append(anchor);
-
-  // // Click trực tiếp từ sự kiện user (bắt buộc trên iOS)
-  // anchor.click();
-  // anchor.remove();
-  // html.Url.revokeObjectUrl(url);
-
-  // // Thông báo user trên iOS
-  // ScaffoldMessenger.of(globalKey.currentContext!).showSnackBar(
-  //   SnackBar(
-  //     content: Text(
-  //       'Trên iOS: mở menu Share và chọn "Save to Files" để lưu ảnh.',
-  //     ),
-  //   ),
-  // );
   if (kIsWeb) {
     if (isMobileWeb()) {
       // --- MOBILE WEB ---
-      // Mở ảnh trong tab mới, user tự lưu
-      final blob = html.Blob([pngBytes]);
+      // Tạo URL object từ blob
+      final blob = html.Blob([pngBytes], 'image/png');
       final url = html.Url.createObjectUrlFromBlob(blob);
-      html.window.open(url, "_blank");
-
+      
+      // Tạo một iframe để mở ảnh
+      final iframe = html.IFrameElement()
+        ..style.display = 'none'
+        ..src = url;
+      
+      html.document.body!.append(iframe);
+      
+      // Hiển thị hướng dẫn cho người dùng
       ScaffoldMessenger.of(globalKey.currentContext!).showSnackBar(
         SnackBar(
-          content: Text(
-            'Trên iOS/Android web: mở tab mới và lưu ảnh bằng menu Share/Save',
+          content: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Text('Ảnh đã sẵn sàng để lưu:'),
+              SizedBox(height: 8),
+              Text('1. Nhấn và giữ trên ảnh', style: TextStyle(fontWeight: FontWeight.bold)),
+              Text('2. Chọn "Lưu ảnh" hoặc "Save Image"'),
+            ],
           ),
-          duration: Duration(seconds: 5),
+          duration: Duration(seconds: 8),
+          action: SnackBarAction(
+            label: 'Mở ảnh',
+            onPressed: () {
+              html.window.open(url, "_blank");
+            },
+          ),
         ),
       );
+      
+      // Tự động mở ảnh trong tab mới sau 1 giây
+      Future.delayed(Duration(seconds: 1), () {
+        html.window.open(url, "_blank");
+      });
+      
+      // Dọn dẹp sau 10 giây
+      Future.delayed(Duration(seconds: 10), () {
+        html.Url.revokeObjectUrl(url);
+        iframe.remove();
+      });
     } else {
       // --- DESKTOP WEB ---
       final blob = html.Blob([pngBytes]);
       final url = html.Url.createObjectUrlFromBlob(blob);
       final anchor = html.AnchorElement(href: url)
-        ..download = "menu_image_${DateTime.now().toIso8601String()}.png";
+        ..download = "menu_image_${DateTime.now().toIso8601String()}.png"
+        ..style.display = 'none';
+      
       html.document.body!.append(anchor);
       anchor.click();
-      anchor.remove();
-      html.Url.revokeObjectUrl(url);
+      
+      // Dọn dẹp
+      Future.delayed(Duration(seconds: 1), () {
+        anchor.remove();
+        html.Url.revokeObjectUrl(url);
+      });
     }
+  } else {
+    // Xử lý cho mobile app (không phải web)
+    // ... thêm code xử lý cho mobile app nếu cần
   }
 }
