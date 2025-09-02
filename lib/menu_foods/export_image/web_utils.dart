@@ -1,32 +1,29 @@
+import 'dart:html' as html;
 import 'dart:typed_data';
 import 'dart:ui' as ui;
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
-import 'dart:html' as html;
 
-import 'package:puzzel/puzzle_game/convert_puzzle.dart';
+Future<void> captureAndSaveImage(GlobalKey globalKey) async {
+  final boundary =
+      globalKey.currentContext!.findRenderObject() as RenderRepaintBoundary;
+  ui.Image image = await boundary.toImage(pixelRatio: 3.0);
+  ByteData? byteData = await image.toByteData(format: ui.ImageByteFormat.png);
+  Uint8List pngBytes = byteData!.buffer.asUint8List();
 
-Future<void> captureAndSaveImage(
-    GlobalKey globalKey, ) async {
-  try {
-    final boundary =
-        globalKey.currentContext!.findRenderObject() as RenderRepaintBoundary;
+  final blob = html.Blob([pngBytes]);
+  final url = html.Url.createObjectUrlFromBlob(blob);
 
-    ui.Image image = await boundary.toImage(pixelRatio: 3.0);
-    ByteData? byteData = await image.toByteData(format: ui.ImageByteFormat.png);
-    Uint8List pngBytes = byteData!.buffer.asUint8List();
+  // Thông báo cho user: “Tap để download nếu trên mobile”
+  final anchor = html.AnchorElement(href: url)
+    ..download = "menu_image_${DateTime.now().toIso8601String()}.png";
 
-    // Tạo blob và link download cho web
-    final blob = html.Blob([pngBytes]);
-    final url = html.Url.createObjectUrlFromBlob(blob);
-    final anchor = html.AnchorElement(href: url)
-      ..download = "menu_image.png"
-      ..click();
-    html.Url.revokeObjectUrl(url);
+  // Một số trình duyệt mobile cần append anchor vào DOM để trigger download
+  html.document.body!.append(anchor);
+  anchor.click();
+  anchor.remove();
 
-    print('✅ Ảnh đã tải xuống thành công trên Web!');
-    // showFlushBar(context, content: 'Ảnh đã tải xuống thành công trên Web!');
-  } catch (e) {
-    print('❌ Lỗi trên Web: $e');
-  }
+  html.Url.revokeObjectUrl(url);
+
+  print('✅ Ảnh đã tải về Web thành công! (Mobile web sẽ lưu vào Downloads)');
 }
