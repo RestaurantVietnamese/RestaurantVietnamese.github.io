@@ -1,6 +1,7 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:puzzel/menu_foods/data/menu_data_page_2.dart';
 import 'package:puzzel/menu_foods/widgets/menu_item_widget_1.dart';
@@ -9,6 +10,8 @@ import 'package:puzzel/menu_foods/widgets/menu_item_widget_4.dart';
 import 'package:puzzel/menu_foods/widgets/menu_item_widget_5.dart';
 import 'package:puzzel/widget/change_image_background/PositionedImageChangeBackGround.dart';
 import 'package:puzzel/widget/change_image_background/show_dialog_change_image.dart';
+import 'package:puzzel/widget/fonts/bloc/font_cubit.dart';
+import 'package:puzzel/widget/fonts/bloc/font_state.dart';
 
 class PageMenu2 extends StatefulWidget {
   const PageMenu2({super.key});
@@ -37,96 +40,95 @@ class _PageMenu2State extends State<PageMenu2> {
 
   @override
   Widget build(BuildContext context) {
-    return Stack(
-      children: [
-        PositionedImageChangeBackGround(
-          imageUrl: imageUrl,
-          heightImage: 200,
-        ),
-        Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 5),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              // SizedBox(height: 10),
-              // SizedBox(height: 10),
-              // SizedBox(height: 10),
-              // SizedBox(height: 10),
-              Text(
-                '',
-                style: GoogleFonts.greatVibes(fontSize: 20),
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.end,
+    return InteractiveViewer(
+      boundaryMargin: EdgeInsets.all(100),
+      minScale: 0.1, // zoom nhỏ hơn để vừa khung
+      maxScale: 3.0,
+      child: FittedBox(
+        fit: BoxFit.contain,
+        alignment: Alignment.topLeft,
+        child: Stack(
+          children: [
+            PositionedImageChangeBackGround(
+              imageUrl: imageUrl,
+              heightImage: 205,
+            ),
+            Container(
+              width: 410,
+              height: 800,
+              decoration: BoxDecoration(
+                  border: Border.all(color: Colors.grey, width: 0.1)),
+              padding: EdgeInsets.symmetric(horizontal: 5),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(
-                    '',
-                    style: GoogleFonts.openSans(
-                        fontSize: 12, fontWeight: FontWeight.w700),
+                  SizedBox(height: 15),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: [
+                      Text(
+                        '', // Nhãn 1 nếu có
+                        style: GoogleFonts.openSans(
+                            fontSize: 12, fontWeight: FontWeight.w700),
+                      ),
+                      SizedBox(width: 30),
+                      Text(
+                        '', // Nhãn 2 nếu có
+                        style: GoogleFonts.openSans(
+                            fontSize: 12, fontWeight: FontWeight.w700),
+                      ),
+                    ],
                   ),
-                  SizedBox(width: 30),
-                  Text(
-                    '',
-                    style: GoogleFonts.openSans(
-                        fontSize: 12, fontWeight: FontWeight.w700),
+                  SizedBox(height: 10),
+                  Column(
+                    children: menuItems_Page2.map((item) {
+                      Widget widgetItem;
+
+                      if (item.id == '11' ||
+                          item.id == '12' ||
+                          item.id == '13') {
+                        widgetItem = MenuItemWidget3(item: item, id: item.id);
+                      } else if (item.id == '8') {
+                        widgetItem = MenuItemWidget4(item: item);
+                      } else if (item.id == '9' || item.id == '10') {
+                        widgetItem = MenuItemWidget5(item: item);
+                      } else {
+                        widgetItem = MenuItemWidget(item: item);
+                      }
+
+                      return Column(
+                        children: [
+                          Align(
+                            alignment: Alignment.centerLeft,
+                            child: GestureDetector(
+                              onTap: () {
+                                if (item.id == '13' ||item.id == '12' ) _pickImage();
+                              },
+                              child: Container(
+                                width: 400,
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(2),
+                                  color: Colors.transparent,
+                                  border: Border.all(color: Colors.transparent),
+                                ),
+                                padding:
+                                    const EdgeInsets.symmetric(horizontal: 10),
+                                child: widgetItem,
+                              ),
+                            ),
+                          ),
+                          // Chèn khoảng trống giữa id 11 và 12
+                          if (item.id == '11') const SizedBox(height: 20),
+                        ],
+                      );
+                    }).toList(),
                   ),
                 ],
               ),
-              SizedBox(height: 10),
-              Expanded(
-                child: ListView(
-                  children: [
-                    for (var i = 0; i < menuItems_Page2.length; i++) ...[
-                      // Widget cho item hiện tại
-                      Align(
-                        alignment: Alignment.centerLeft,
-                        child: GestureDetector(
-                          onTap: () {
-                            // print(menuItems_Page2[i].id);
-                            if (menuItems_Page2[i].id == '13') {
-                              _pickImage();
-                            }
-                          },
-                          child: Container(
-                            width: 400,
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(2),
-                              color: Colors.transparent,
-                              border: Border.all(color: Colors.transparent),
-                            ),
-                            padding: const EdgeInsets.symmetric(horizontal: 10),
-                            child: (menuItems_Page2[i].id == '11' ||
-                                    menuItems_Page2[i].id == '12' ||
-                                    menuItems_Page2[i].id == '13')
-                                ? MenuItemWidget3(
-                                    item: menuItems_Page2[i],
-                                    id: menuItems_Page2[i].id)
-                                : menuItems_Page2[i].id == '8'
-                                    ? MenuItemWidget4(item: menuItems_Page2[i])
-                                    : (menuItems_Page2[i].id == '9' ||
-                                            menuItems_Page2[i].id == '10')
-                                        ? MenuItemWidget5(
-                                            item: menuItems_Page2[i])
-                                        : MenuItemWidget(
-                                            item: menuItems_Page2[i]),
-                          ),
-                        ),
-                      ),
-
-                      // Chèn khoảng trống giữa id 11 và 12
-                      if (menuItems_Page2[i].id == '11' &&
-                          i + 1 < menuItems_Page2.length &&
-                          menuItems_Page2[i + 1].id == '12')
-                        const SizedBox(
-                            height: 20), // <- thay 20 bằng height bạn muốn
-                    ],
-                  ],
-                ),
-              ),
-            ],
-          ),
+            ),
+          ],
         ),
-      ],
+      ),
     );
   }
 }

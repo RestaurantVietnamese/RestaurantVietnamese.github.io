@@ -41,64 +41,69 @@ class _PageMenu1State extends State<PageMenu1> {
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<FontCubit, FontState>(
-      builder: (context, state) => Stack(
-        children: [
-          PositionedImageChangeBackGround(
-            imageUrl: imageUrl,
-            heightImage: 105,
-          ),
-          Container(
-            padding: EdgeInsets.only(left: 5, right: 5),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                SizedBox(height: 10),
-                Padding(
-                  padding: const EdgeInsets.only(left: 10),
-                  child: Text(
-                    'Supper',
-                    style: getFont0(state),
-                  ),
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.end,
+      builder: (context, state) => InteractiveViewer(
+        boundaryMargin: EdgeInsets.all(100),
+        minScale: 0.1, // zoom nhỏ hơn để vừa khung
+        maxScale: 3.0,
+        child: FittedBox(
+          fit: BoxFit.contain, // scale toàn bộ nội dung vừa khung
+          alignment: Alignment.topLeft,
+          child: Stack(
+            children: [
+              PositionedImageChangeBackGround(
+                imageUrl: imageUrl,
+                heightImage: 105,
+              ),
+              Container(
+                width: 410,
+                height: 800,
+                decoration: BoxDecoration(
+                    border: Border.all(color: Colors.grey, width: 0.1)),
+                padding: EdgeInsets.only(left: 5, right: 5),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(
-                      '300 ml',
-                      style: getFontB(state),
+                    SizedBox(height: 10),
+                    Padding(
+                      padding: const EdgeInsets.only(left: 10),
+                      child: Text(
+                        'Supper',
+                        style: getFont0(state),
+                      ),
                     ),
-                    SizedBox(width: 20),
-                    Text(
-                      '750 ml',
-                      style: getFontB(state),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: [
+                        Text(
+                          '300 ml',
+                          style: getFontB(state),
+                        ),
+                        SizedBox(width: 20),
+                        Text(
+                          '750 ml',
+                          style: getFontB(state),
+                        ),
+                        SizedBox(width: 10),
+                      ],
                     ),
-                    SizedBox(width: 10),
-                  ],
-                ),
-                SizedBox(height: 10),
-                Expanded(
-                  child: ListView(
-                    children: menuItems_Page1.map((item) {
-                      Widget widgetItem;
+                    SizedBox(height: 10),
+                    Column(
+                      children: menuItems_Page1.map((item) {
+                        Widget widgetItem;
 
-                      // Quyết định widget theo id
-                      if (item.id == '3' || item.id == '6') {
-                        widgetItem = MenuItemWidget2(item: item, id: item.id);
-                      } else {
-                        widgetItem = MenuItemWidget(item: item);
-                      }
+                        if (item.id == '3' || item.id == '6') {
+                          widgetItem = MenuItemWidget2(item: item, id: item.id);
+                        } else {
+                          widgetItem = MenuItemWidget(item: item);
+                        }
 
-                      return Column(
-                        children: [
-                          Align(
-                            alignment: Alignment.centerLeft,
-                            child: Builder(builder: (context) {
-                              return GestureDetector(
+                        return Column(
+                          children: [
+                            Align(
+                              alignment: Alignment.centerLeft,
+                              child: GestureDetector(
                                 onTap: () {
-                                  print(item.id);
-                                  if (item.id == '6') {
-                                    _pickImage();
-                                  }
+                                  if (item.id == '6') _pickImage();
                                 },
                                 child: Container(
                                   width: 400,
@@ -112,20 +117,20 @@ class _PageMenu1State extends State<PageMenu1> {
                                       horizontal: 10),
                                   child: widgetItem,
                                 ),
-                              );
-                            }),
-                          ),
-                          if (item.id == '5' || item.id == '6')
-                            SizedBox(height: 10),
-                        ],
-                      );
-                    }).toList(),
-                  ),
+                              ),
+                            ),
+                            if (item.id == '5' || item.id == '6')
+                              SizedBox(height: 10),
+                          ],
+                        );
+                      }).toList(),
+                    ),
+                  ],
                 ),
-              ],
-            ),
+              ),
+            ],
           ),
-        ],
+        ),
       ),
     );
   }

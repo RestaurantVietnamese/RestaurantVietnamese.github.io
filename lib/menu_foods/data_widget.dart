@@ -37,8 +37,8 @@ class _DataWidgetState extends State<DataWidget> {
         controller: widget.pageController,
         scrollDirection: Axis.horizontal,
         children: [
-          PageMenu2(),
           PageMenu1(),
+          PageMenu2(),
           PageMenu3(),
           PageMenu4(),
           PageMenu5(),
