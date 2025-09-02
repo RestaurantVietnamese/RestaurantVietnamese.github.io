@@ -26,7 +26,7 @@ Future<void> captureAndSaveImage(GlobalKey globalKey) async {
       final url = html.Url.createObjectUrlFromBlob(blob);
       
       // Hiển thị ảnh trực tiếp trên trang web thay vì mở tab mới
-      _showImagePreview(globalKey.currentContext!, url, pngBytes);
+      _showImagePreview(globalKey.currentContext!, url, pngBytes,globalKey);
       
       // Dọn dẹp sau 10 phút
       Future.delayed(Duration(minutes: 10), () {
@@ -54,8 +54,113 @@ Future<void> captureAndSaveImage(GlobalKey globalKey) async {
     // ... thêm code xử lý cho mobile app nếu cần
   }
 }
+void _showImagePreview(BuildContext context, String imageUrl, Uint8List pngBytes, GlobalKey globalKey) {
+  // Lấy kích thước thực của widget được chụp
+  final RenderBox renderBox = globalKey.currentContext!.findRenderObject() as RenderBox;
+  final double widgetWidth = renderBox.size.width;
+  final double widgetHeight = renderBox.size.height;
+  
+  // Tính tỷ lệ để hiển thị ảnh đúng kích thước
+  double maxPreviewWidth = html.window.innerWidth! * 0.9;
+  double maxPreviewHeight = html.window.innerHeight! * 0.7;
+  
+  double previewWidth = widgetWidth;
+  double previewHeight = widgetHeight;
+  
+  // Đảm bảo ảnh không vượt quá kích thước màn hình
+  if (previewWidth > maxPreviewWidth) {
+    double ratio = maxPreviewWidth / previewWidth;
+    previewWidth = maxPreviewWidth;
+    previewHeight = previewHeight * ratio;
+  }
+  
+  if (previewHeight > maxPreviewHeight) {
+    double ratio = maxPreviewHeight / previewHeight;
+    previewHeight = maxPreviewHeight;
+    previewWidth = previewWidth * ratio;
+  }
 
-void _showImagePreview(BuildContext context, String imageUrl, Uint8List pngBytes) {
+  // Tạo một overlay để hiển thị ảnh và hướng dẫn
+  final overlayElement = html.DivElement()
+    ..style.position = 'fixed'
+    ..style.top = '0'
+    ..style.left = '0'
+    ..style.width = '100%'
+    ..style.height = '100%'
+    ..style.backgroundColor = 'rgba(0,0,0,0.9)'
+    ..style.zIndex = '10000'
+    ..style.display = 'flex'
+    ..style.flexDirection = 'column'
+    ..style.justifyContent = 'center'
+    ..style.alignItems = 'center'
+    ..style.padding = '20px'
+    ..style.overflow = 'auto';
+
+  // Tạo container cho ảnh để có viền và đổ bóng
+  final imageContainer = html.DivElement()
+    ..style.width = '${previewWidth}px'
+    ..style.height = '${previewHeight}px'
+    ..style.borderRadius = '8px'
+    ..style.overflow = 'hidden'
+    ..style.boxShadow = '0 10px 30px rgba(0,0,0,0.5)'
+    ..style.display = 'flex'
+    ..style.justifyContent = 'center'
+    ..style.alignItems = 'center';
+
+  // Tạo phần tử hiển thị ảnh
+  final imageElement = html.ImageElement(src: imageUrl)
+    ..style.width = '100%'
+    ..style.height = '100%'
+    ..style.objectFit = 'contain';
+
+  // Tạo phần tử hướng dẫn
+  final instructionElement = html.DivElement()
+    ..innerHtml = '''
+      <div style="color: white; text-align: center; margin-top: 20px; font-family: sans-serif; background: rgba(0,0,0,0.7); padding: 15px; border-radius: 10px;">
+        <h2 style="margin-bottom: 12px; font-size: 18px;">Để lưu ảnh:</h2>
+        <p style="margin: 8px 0; font-size: 16px;">1. Nhấn và giữ trên ảnh</p>
+        <p style="margin: 8px 0; font-size: 16px;">2. Chọn "Lưu ảnh" hoặc "Save Image"</p>
+      </div>
+    ''';
+
+  // Tạo nút đóng
+  final closeButton = html.ButtonElement()
+    ..text = 'Đóng'
+    ..style.marginTop = '20px'
+    ..style.padding = '12px 24px'
+    ..style.backgroundColor = '#ff4757'
+    ..style.color = 'white'
+    ..style.border = 'none'
+    ..style.borderRadius = '6px'
+    ..style.fontSize = '16px'
+    ..style.fontWeight = 'bold'
+    ..style.cursor = 'pointer'
+    ..style.boxShadow = '0 4px 10px rgba(0,0,0,0.3)';
+
+  closeButton.onClick.listen((_) {
+    overlayElement.remove();
+    html.Url.revokeObjectUrl(imageUrl);
+  });
+
+  // Thêm các phần tử vào container và overlay
+  imageContainer.append(imageElement);
+  overlayElement.append(imageContainer);
+  overlayElement.append(instructionElement);
+  overlayElement.append(closeButton);
+
+  // Thêm overlay vào body
+  html.document.body!.append(overlayElement);
+
+  // Hiển thị thông báo trong app Flutter
+  ScaffoldMessenger.of(context).showSnackBar(
+    SnackBar(
+      content: Text('Ảnh đã được tạo. Nhấn và giữ trên ảnh để lưu.'),
+      duration: Duration(seconds: 5),
+    ),
+  );
+}
+
+void _showImagePreview1(BuildContext context, String imageUrl, Uint8List pngBytes) {
   // Tạo một overlay để hiển thị ảnh và hướng dẫn
   final overlayElement = html.DivElement()
     ..style.position = 'fixed'
