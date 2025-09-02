@@ -24,12 +24,12 @@ Future<void> captureAndSaveImage(GlobalKey globalKey) async {
       // Tạo URL object từ blob
       final blob = html.Blob([pngBytes], 'image/png');
       final url = html.Url.createObjectUrlFromBlob(blob);
-
-      // Hiển thị dialog hoặc bottom sheet để người dùng chủ động mở ảnh
-      _showMobileSaveDialog(globalKey.currentContext!, url);
-
-      // Dọn dẹp sau 2 phút
-      Future.delayed(Duration(minutes: 2), () {
+      
+      // Hiển thị ảnh trực tiếp trên trang web thay vì mở tab mới
+      _showImagePreview(globalKey.currentContext!, url, pngBytes);
+      
+      // Dọn dẹp sau 10 phút
+      Future.delayed(Duration(minutes: 10), () {
         html.Url.revokeObjectUrl(url);
       });
     } else {
@@ -39,10 +39,10 @@ Future<void> captureAndSaveImage(GlobalKey globalKey) async {
       final anchor = html.AnchorElement(href: url)
         ..download = "menu_image_${DateTime.now().toIso8601String()}.png"
         ..style.display = 'none';
-
+      
       html.document.body!.append(anchor);
       anchor.click();
-
+      
       // Dọn dẹp
       Future.delayed(Duration(seconds: 1), () {
         anchor.remove();
@@ -55,51 +55,69 @@ Future<void> captureAndSaveImage(GlobalKey globalKey) async {
   }
 }
 
-void _showMobileSaveDialog(BuildContext context, String imageUrl) {
-  showDialog(
-    context: context,
-    barrierDismissible: true,
-    builder: (BuildContext context) {
-      return AlertDialog(
-        title: Text('Lưu ảnh'),
-        content: Column(
-          mainAxisSize: MainAxisSize.min,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text('Để lưu ảnh trên thiết bị di động:'),
-            SizedBox(height: 12),
-            Text('1. Nhấn nút "Mở ảnh" bên dưới'),
-            Text('2. Nhấn và giữ trên ảnh'),
-            Text('3. Chọn "Lưu ảnh" hoặc "Save Image"'),
-            SizedBox(height: 16),
-            Text('Lưu ý: Cho phép popup nếu trình duyệt hỏi'),
-          ],
-        ),
-        actions: [
-          TextButton(
-            onPressed: () {
-              Navigator.of(context).pop();
-            },
-            child: Text('Hủy'),
-          ),
-          ElevatedButton(
-            onPressed: () {
-              // Mở ảnh khi người dùng chủ động nhấn nút
-              html.window.open(imageUrl, "_blank");
-              Navigator.of(context).pop();
-
-              // Hiển thị hướng dẫn thêm
-              ScaffoldMessenger.of(context).showSnackBar(
-                SnackBar(
-                  content: Text('Ảnh đã mở. Nhấn và giữ để lưu.'),
-                  duration: Duration(seconds: 5),
-                ),
-              );
-            },
-            child: Text('Mở ảnh'),
-          ),
-        ],
-      );
-    },
+void _showImagePreview(BuildContext context, String imageUrl, Uint8List pngBytes) {
+  // Tạo một overlay để hiển thị ảnh và hướng dẫn
+  final overlayElement = html.DivElement()
+    ..style.position = 'fixed'
+    ..style.top = '0'
+    ..style.left = '0'
+    ..style.width = '100%'
+    ..style.height = '100%'
+    ..style.backgroundColor = 'rgba(0,0,0,0.8)'
+    ..style.zIndex = '10000'
+    ..style.display = 'flex'
+    ..style.flexDirection = 'column'
+    ..style.justifyContent = 'center'
+    ..style.alignItems = 'center'
+    ..style.padding = '20px';
+  
+  // Tạo phần tử hiển thị ảnh
+  final imageElement = html.ImageElement(src: imageUrl)
+    ..style.maxWidth = '90%'
+    ..style.maxHeight = '70%'
+    ..style.borderRadius = '10px'
+    ..style.boxShadow = '0 4px 20px rgba(0,0,0,0.5)';
+  
+  // Tạo phần tử hướng dẫn
+  final instructionElement = html.DivElement()
+    ..innerHtml = '''
+      <div style="color: white; text-align: center; margin-top: 20px; font-family: sans-serif;">
+        <h2 style="margin-bottom: 15px;">Để lưu ảnh:</h2>
+        <p style="margin: 8px 0; font-size: 16px;">1. Nhấn và giữ trên ảnh</p>
+        <p style="margin: 8px 0; font-size: 16px;">2. Chọn "Lưu ảnh" hoặc "Save Image"</p>
+      </div>
+    ''';
+  
+  // Tạo nút đóng
+  final closeButton = html.ButtonElement()
+    ..text = 'Đóng'
+    ..style.marginTop = '20px'
+    ..style.padding = '10px 20px'
+    ..style.backgroundColor = '#ff4757'
+    ..style.color = 'white'
+    ..style.border = 'none'
+    ..style.borderRadius = '5px'
+    ..style.fontSize = '16px'
+    ..style.cursor = 'pointer';
+  
+  closeButton.onClick.listen((_) {
+    overlayElement.remove();
+    html.Url.revokeObjectUrl(imageUrl);
+  });
+  
+  // Thêm các phần tử vào overlay
+  overlayElement.append(imageElement);
+  overlayElement.append(instructionElement);
+  overlayElement.append(closeButton);
+  
+  // Thêm overlay vào body
+  html.document.body!.append(overlayElement);
+  
+  // Hiển thị thông báo trong app Flutter
+  ScaffoldMessenger.of(context).showSnackBar(
+    SnackBar(
+      content: Text('Ảnh đã được tạo. Nhấn và giữ trên ảnh để lưu.'),
+      duration: Duration(seconds: 5),
+    ),
   );
 }
