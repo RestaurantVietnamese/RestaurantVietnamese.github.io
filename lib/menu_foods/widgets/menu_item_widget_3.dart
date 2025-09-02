@@ -9,13 +9,14 @@ import '../models/menu_item.dart';
 
 class MenuItemWidget3 extends StatelessWidget {
   final MenuItem item;
-  final String? id;
 
-  const MenuItemWidget3({Key? key, required this.item, this.id})
-      : super(key: key);
+  const MenuItemWidget3({
+    Key? key,
+    required this.item,
+  }) : super(key: key);
 
   bool isWhite() {
-    return id == '12' || id == '13';
+    return item.id == '11' || item.id == '12' || item.id == '13';
   }
 
   @override
@@ -41,10 +42,14 @@ class MenuItemWidget3 extends StatelessWidget {
                           fontWeight: FontWeight.bold,
                         ),
                       ),
-                      TextSpan(text: '. ',style: TextStyle(color: isWhite() ? Colors.white : Colors.black)),
+                      TextSpan(
+                          text: '. ',
+                          style: TextStyle(
+                              color: isWhite() ? Colors.white : Colors.black)),
                       TextSpan(
                         text: item.title,
-                        style: getFontA(state, color: isWhite() ? Colors.white : Colors.black),
+                        style: getFontA(state,
+                            color: isWhite() ? Colors.white : Colors.black),
                       ),
                     ],
                   ),
@@ -53,7 +58,8 @@ class MenuItemWidget3 extends StatelessWidget {
               if (item.subText != '')
                 Text(
                   item.subText ?? '',
-                  style: getFontD(state, color: isWhite() ? Colors.white : Colors.black),
+                  style: getFontD(state,
+                      color: isWhite() ? Colors.white : Colors.black),
                   textAlign: TextAlign.right,
                 ),
             ],
@@ -69,7 +75,8 @@ class MenuItemWidget3 extends StatelessWidget {
                   flex: 12,
                   child: Text(
                     item.descriptionDe,
-                    style: getFontB(state, color: isWhite() ? Colors.white : Colors.black),
+                    style: getFontB(state,
+                        color: isWhite() ? Colors.white : Colors.black),
                   ),
                 ),
 
@@ -79,7 +86,8 @@ class MenuItemWidget3 extends StatelessWidget {
                   child: opt.tags.isNotEmpty
                       ? Text(
                           opt.tags.join(", "),
-                          style: getFontD(state, color: isWhite() ? Colors.white : Colors.black),
+                          style: getFontD(state,
+                              color: isWhite() ? Colors.white : Colors.black),
                         )
                       : SizedBox.shrink(),
                 ),
@@ -93,7 +101,8 @@ class MenuItemWidget3 extends StatelessWidget {
                   child: Text(
                     opt.prices2.isNotEmpty ? opt.prices2 : '',
                     textAlign: TextAlign.right,
-                    style: getFontD(state, color: isWhite() ? Colors.white : Colors.black),
+                    style: getFontD(state,
+                        color: isWhite() ? Colors.white : Colors.black),
                   ),
                 ),
               ],
@@ -103,7 +112,8 @@ class MenuItemWidget3 extends StatelessWidget {
           // Mô tả tiếng Anh (in nghiêng)
           Text(
             item.descriptionEn,
-            style: getFontC(state, color: isWhite() ? Colors.white : Colors.black),
+            style:
+                getFontC(state, color: isWhite() ? Colors.white : Colors.black),
           ),
           SizedBox(height: 6),
         ],

@@ -12,31 +12,45 @@ import 'package:puzzel/menu_foods/page_menu_item/page_menu_8.dart';
 import 'package:puzzel/menu_foods/page_menu_item/page_menu_9.dart';
 
 class DataWidget extends StatefulWidget {
-  // Thêm thuộc tính pageController
   final PageController pageController;
-  const DataWidget({
-    super.key,
-    required this.pageController,
-  });
+  const DataWidget({super.key, required this.pageController});
 
   @override
   State<DataWidget> createState() => _DataWidgetState();
 }
 
 class _DataWidgetState extends State<DataWidget> {
+  int currentPage = 0;
+
+  // Mapping màu cho từng page (0-based index)
+  final List<Color> pageColors = [
+    Colors.white, // Page 1
+    Colors.black, // Page 2
+    Colors.white, // Page 3
+    Colors.black, // Page 4
+    Colors.white, // Page 5
+    Colors.black, // Page 6
+    Colors.white, // Page 7
+    Colors.white, // Page 8
+    Colors.black, // Page 9
+  ];
+
   @override
   Widget build(BuildContext context) {
-    return Container(
-      color: Colors.white,
-      // padding: EdgeInsets.only(left: 5, right: 5),
-      // margin: EdgeInsets.only(left: 20, top: 20),
+    return AnimatedContainer(
+      duration: const Duration(milliseconds: 300),
+      color: pageColors[currentPage], // đổi màu theo page
       width: 410,
       height: 800,
       child: PageView(
-        // Sử dụng pageController đã được truyền từ trên xuống
         controller: widget.pageController,
         scrollDirection: Axis.horizontal,
-        children: [
+        onPageChanged: (index) {
+          setState(() {
+            currentPage = index;
+          });
+        },
+        children: const [
           PageMenu1(),
           PageMenu2(),
           PageMenu3(),

@@ -1,6 +1,4 @@
-import 'package:flutter/material.dart';
 import 'package:puzzel/menu_foods/models/menu_item.dart';
-import 'package:puzzel/menu_foods/string_content_menu.dart';
 
 final menuItems_Page3 = [
   MenuItem(
@@ -41,6 +39,7 @@ final menuItems_Page3 = [
   MenuItem(
     id: "16",
     subText: '',
+    subIcon: true,
     title: "Rotes That-Curry",
     descriptionDe:
         "Res mit Gemüse in einer Curry Soße gekocht aus Zitronengras, Zitronenbäffler, Großer Galgant, Kokosmilch, Chili. Auswahl mit:",
@@ -77,11 +76,12 @@ final menuItems_Page3 = [
   MenuItem(
     id: "17",
     subText: '',
+    subIcon: true,
     title: "Gold That-Curry",
     descriptionDe:
         "Reis mit Gemüse in einer Curry Soße gekocht aus Zitronengras, Kurkuma, Großer Galgant, Koriander, Kokosmilch, Chili. Auswahl mit:",
     descriptionEn:
-        "Rice with vegetables, a curry sauce cooked from lemongrass, turmeric, great galangal, coriander, coconut milk, chili. Selection with:",
+        "Rice with vegetables, a curry sauce cooked from lemongrass, turm-eric, great galangal, coriander, coconut milk, chili. Selection with:",
     options: [
       MenuOption(
         code: "a.",

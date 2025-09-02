@@ -40,9 +40,7 @@ class MenuItemWidget7 extends StatelessWidget {
                       TextSpan(
                         text: '. ', // Add space between id and title
                       ),
-                      TextSpan(
-                          text: item.title,
-                          style: getFontA(state)),
+                      TextSpan(text: item.title, style: getFontA(state)),
                     ],
                   ),
                 ),
@@ -53,17 +51,20 @@ class MenuItemWidget7 extends StatelessWidget {
                   style: getFontD(state),
                   textAlign: TextAlign.right,
                 ),
+              if (item.subIcon == true)
+                Image.asset(
+                  'assets/images/icon_chilli.png',
+                  height: 25,
+                ),
             ],
           ),
           // Mô tả tiếng Đức
-          Text(item.descriptionDe,
-              style: getFontB(state)),
+          Text(item.descriptionDe, style: getFontB(state)),
 
           // Mô tả tiếng Anh (in nghiêng)
           Padding(
             padding: const EdgeInsets.only(right: 0),
-            child: Text(item.descriptionEn,
-                style:getFontC(state)),
+            child: Text(item.descriptionEn, style: getFontC(state)),
           ),
           SizedBox(height: 6),
 
@@ -83,16 +84,13 @@ class MenuItemWidget7 extends StatelessWidget {
 
                   // Column 2: Name
                   Expanded(
-                      flex: 13,
-                      child: Text(opt.name,
-                          style: getFontD(state))),
+                      flex: 13, child: Text(opt.name, style: getFontD(state))),
 
                   // Column 3: Tags
                   Expanded(
                     flex: 2,
                     child: opt.tags.isNotEmpty
-                        ? Text(opt.tags.join(", "),
-                            style: getFontD(state))
+                        ? Text(opt.tags.join(", "), style: getFontD(state))
                         : Container(),
                   ),
 
@@ -100,16 +98,14 @@ class MenuItemWidget7 extends StatelessWidget {
                   Expanded(
                     flex: 2,
                     child: Text(opt.prices1,
-                        textAlign: TextAlign.left,
-                        style: getFontD(state)),
+                        textAlign: TextAlign.left, style: getFontD(state)),
                   ),
 
                   // Column 5: prices2
                   Expanded(
                     flex: 2,
                     child: Text(opt.prices2,
-                        textAlign: TextAlign.right,
-                        style: getFontD(state)),
+                        textAlign: TextAlign.right, style: getFontD(state)),
                   ),
                 ],
               );
