@@ -24,46 +24,13 @@ Future<void> captureAndSaveImage(GlobalKey globalKey) async {
       // Tạo URL object từ blob
       final blob = html.Blob([pngBytes], 'image/png');
       final url = html.Url.createObjectUrlFromBlob(blob);
-      
-      // Tạo một iframe để mở ảnh
-      final iframe = html.IFrameElement()
-        ..style.display = 'none'
-        ..src = url;
-      
-      html.document.body!.append(iframe);
-      
-      // Hiển thị hướng dẫn cho người dùng
-      ScaffoldMessenger.of(globalKey.currentContext!).showSnackBar(
-        SnackBar(
-          content: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              Text('Ảnh đã sẵn sàng để lưu:'),
-              SizedBox(height: 8),
-              Text('1. Nhấn và giữ trên ảnh', style: TextStyle(fontWeight: FontWeight.bold)),
-              Text('2. Chọn "Lưu ảnh" hoặc "Save Image"'),
-            ],
-          ),
-          duration: Duration(seconds: 8),
-          action: SnackBarAction(
-            label: 'Mở ảnh',
-            onPressed: () {
-              html.window.open(url, "_blank");
-            },
-          ),
-        ),
-      );
-      
-      // Tự động mở ảnh trong tab mới sau 1 giây
-      Future.delayed(Duration(seconds: 1), () {
-        html.window.open(url, "_blank");
-      });
-      
-      // Dọn dẹp sau 10 giây
-      Future.delayed(Duration(seconds: 10), () {
+
+      // Hiển thị dialog hoặc bottom sheet để người dùng chủ động mở ảnh
+      _showMobileSaveDialog(globalKey.currentContext!, url);
+
+      // Dọn dẹp sau 2 phút
+      Future.delayed(Duration(minutes: 2), () {
         html.Url.revokeObjectUrl(url);
-        iframe.remove();
       });
     } else {
       // --- DESKTOP WEB ---
@@ -72,10 +39,10 @@ Future<void> captureAndSaveImage(GlobalKey globalKey) async {
       final anchor = html.AnchorElement(href: url)
         ..download = "menu_image_${DateTime.now().toIso8601String()}.png"
         ..style.display = 'none';
-      
+
       html.document.body!.append(anchor);
       anchor.click();
-      
+
       // Dọn dẹp
       Future.delayed(Duration(seconds: 1), () {
         anchor.remove();
@@ -86,4 +53,53 @@ Future<void> captureAndSaveImage(GlobalKey globalKey) async {
     // Xử lý cho mobile app (không phải web)
     // ... thêm code xử lý cho mobile app nếu cần
   }
+}
+
+void _showMobileSaveDialog(BuildContext context, String imageUrl) {
+  showDialog(
+    context: context,
+    barrierDismissible: true,
+    builder: (BuildContext context) {
+      return AlertDialog(
+        title: Text('Lưu ảnh'),
+        content: Column(
+          mainAxisSize: MainAxisSize.min,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text('Để lưu ảnh trên thiết bị di động:'),
+            SizedBox(height: 12),
+            Text('1. Nhấn nút "Mở ảnh" bên dưới'),
+            Text('2. Nhấn và giữ trên ảnh'),
+            Text('3. Chọn "Lưu ảnh" hoặc "Save Image"'),
+            SizedBox(height: 16),
+            Text('Lưu ý: Cho phép popup nếu trình duyệt hỏi'),
+          ],
+        ),
+        actions: [
+          TextButton(
+            onPressed: () {
+              Navigator.of(context).pop();
+            },
+            child: Text('Hủy'),
+          ),
+          ElevatedButton(
+            onPressed: () {
+              // Mở ảnh khi người dùng chủ động nhấn nút
+              html.window.open(imageUrl, "_blank");
+              Navigator.of(context).pop();
+
+              // Hiển thị hướng dẫn thêm
+              ScaffoldMessenger.of(context).showSnackBar(
+                SnackBar(
+                  content: Text('Ảnh đã mở. Nhấn và giữ để lưu.'),
+                  duration: Duration(seconds: 5),
+                ),
+              );
+            },
+            child: Text('Mở ảnh'),
+          ),
+        ],
+      );
+    },
+  );
 }
