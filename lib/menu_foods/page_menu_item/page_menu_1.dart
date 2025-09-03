@@ -55,17 +55,26 @@ class _PageMenu1State extends State<PageMenu1> {
                 heightImage: 105,
               ),
               Container(
-                width: 440,
+                width: 450,
                 height: 800,
                 decoration: BoxDecoration(
+                    color: Colors.transparent,
                     border: Border.all(color: Colors.grey, width: 0.1)),
-                padding: EdgeInsets.only(left: 5, right: 5),
+                padding: EdgeInsets.only(left: 15, right: 15),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
+                    // SizedBox(height: 10),
+
+                    // SizedBox(height: 10),
                     SizedBox(height: 10),
+                    // SizedBox(height: 10),
+                    // SizedBox(height: 10),
+                    // SizedBox(height: 10),
+                    // SizedBox(height: 10),
+                    // SizedBox(height: 10),
                     Padding(
-                      padding: const EdgeInsets.only(left: 10),
+                      padding: const EdgeInsets.only(left: 0),
                       child: Text(
                         'Supper',
                         style: getFont0(state),
@@ -78,7 +87,7 @@ class _PageMenu1State extends State<PageMenu1> {
                           '300 ml',
                           style: getFontB(state),
                         ),
-                        SizedBox(width: 20),
+                        SizedBox(width: 30),
                         Text(
                           '750 ml',
                           style: getFontB(state),
@@ -86,13 +95,16 @@ class _PageMenu1State extends State<PageMenu1> {
                         SizedBox(width: 10),
                       ],
                     ),
-                    SizedBox(height: 10),
+                    SizedBox(height: 5),
+
                     Column(
                       children: menuItems_Page1.map((item) {
                         Widget widgetItem;
 
                         if (item.id == '3' || item.id == '6') {
-                          widgetItem = MenuItemWidget2(item: item, id: item.id);
+                          widgetItem = MenuItemWidget2(
+                            item: item,
+                          );
                         } else {
                           widgetItem = MenuItemWidget(item: item);
                         }
@@ -106,7 +118,7 @@ class _PageMenu1State extends State<PageMenu1> {
                                   if (item.id == '6') _pickImage();
                                 },
                                 child: Container(
-                                  width: 400,
+                                  width: 450,
                                   decoration: BoxDecoration(
                                     borderRadius: BorderRadius.circular(2),
                                     color: Colors.transparent,
@@ -119,8 +131,8 @@ class _PageMenu1State extends State<PageMenu1> {
                                 ),
                               ),
                             ),
-                            if (item.id == '5' || item.id == '6')
-                              SizedBox(height: 10),
+                            if (item.id == '5') SizedBox(height: 15),
+                            if (item.id == '6') SizedBox(height: 8),
                           ],
                         );
                       }).toList(),

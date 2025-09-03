@@ -6,17 +6,16 @@ import 'package:puzzel/widget/fonts/bloc/font_cubit.dart';
 import 'package:puzzel/widget/fonts/bloc/font_state.dart';
 import 'package:puzzel/widget/fonts/helper_fonts.dart';
 import '../models/menu_item.dart';
+
 class MenuItemWidget2 extends StatelessWidget {
   final MenuItem item;
-  final String id;
-  
+
   const MenuItemWidget2({
-    Key? key, 
+    Key? key,
     required this.item,
-    this.id = '',
   }) : super(key: key);
 
-  bool get isWhite => id == '6';
+  bool get isWhite => item.id == '6';
 
   @override
   Widget build(BuildContext context) {
@@ -41,14 +40,19 @@ class MenuItemWidget2 extends StatelessWidget {
                           fontWeight: FontWeight.bold,
                         ),
                       ),
-                      TextSpan(text: '. ',style: TextStyle(color: isWhite ? Colors.white : null)),
+                      TextSpan(
+                          text: '. ',
+                          style:
+                              TextStyle(color: isWhite ? Colors.white : null)),
                       TextSpan(
                         text: item.title,
-                        style: getFontA(state, color: isWhite ? Colors.white : null),
+                        style: getFontA(state,
+                            color: isWhite ? Colors.white : null),
                       ),
                       TextSpan(
                         text: item.subText,
-                        style: getFontB(state, color: isWhite ? Colors.white : null),
+                        style: getFontB(state,
+                            color: isWhite ? Colors.white : null),
                       ),
                     ],
                   ),
@@ -74,7 +78,8 @@ class MenuItemWidget2 extends StatelessWidget {
                   flex: 10,
                   child: Text(
                     item.descriptionDe,
-                    style: getFontB(state, color: isWhite ? Colors.white : null),
+                    style:
+                        getFontB(state, color: isWhite ? Colors.white : null),
                   ),
                 ),
 
@@ -84,7 +89,8 @@ class MenuItemWidget2 extends StatelessWidget {
                   child: opt.tags.isNotEmpty
                       ? Text(
                           opt.tags.join(", "),
-                          style: getFontD(state, color: isWhite ? Colors.white : null),
+                          style: getFontD(state,
+                              color: isWhite ? Colors.white : null),
                         )
                       : SizedBox.shrink(),
                 ),
@@ -94,7 +100,8 @@ class MenuItemWidget2 extends StatelessWidget {
                   flex: 2,
                   child: Text(
                     opt.prices1.isNotEmpty ? opt.prices1 : '',
-                    style: getFontD(state, color: isWhite ? Colors.white : null),
+                    style:
+                        getFontD(state, color: isWhite ? Colors.white : null),
                   ),
                 ),
 
@@ -104,7 +111,8 @@ class MenuItemWidget2 extends StatelessWidget {
                   child: Text(
                     opt.prices2.isNotEmpty ? opt.prices2 : '',
                     textAlign: TextAlign.right,
-                    style: getFontD(state, color: isWhite ? Colors.white : null),
+                    style:
+                        getFontD(state, color: isWhite ? Colors.white : null),
                   ),
                 ),
               ],
@@ -116,7 +124,7 @@ class MenuItemWidget2 extends StatelessWidget {
             item.descriptionEn,
             style: getFontC(state, color: isWhite ? Colors.white : null),
           ),
-          SizedBox(height: 6),
+          if (item.id == '3') SizedBox(height: 10),
         ],
       ),
     );

@@ -1,4 +1,3 @@
-import 'package:flutter/material.dart';
 import 'package:puzzel/menu_foods/models/menu_item.dart';
 import 'package:puzzel/menu_foods/string_content_menu.dart';
 
@@ -7,9 +6,9 @@ final menuItems_Page1 = [
     id: '1',
     title: "Pho Hanoi",
     descriptionDe:
-        "Reisbandnudelsuppe mit Ingwer, Lauchzwiebeln, Koriander, Basilikum und Fleischbrühe. Auswahl mit:",
+        "Reisbandnudelsuppe mit Ingwer, Lauchzwiebeln,\nKoriander, Basilikum und Fleischbrühe. Auswahl mit:",
     descriptionEn:
-        "Flat rice noodle soup with ginger, spring onions, coriander, basil and meat broth. Selection with:",
+        "Flat rice noodle soup with ginger, spring onions,\ncoriander, basil and meat broth. Selection with:",
     options: [
       MenuOption(
           code: "a.",
