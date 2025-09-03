@@ -9,6 +9,7 @@ TextStyle getFontByName(
   Color? color,
   FontWeight fontWeight = FontWeight.normal,
   FontStyle fontStyle = FontStyle.normal,
+  double? lineHeight, // thêm tham số lineHeight
 }) {
   final fontMap = GoogleFonts.asMap();
   final builder = fontMap[fontName];
@@ -20,6 +21,7 @@ TextStyle getFontByName(
         color: color,
         fontWeight: fontWeight,
         fontStyle: fontStyle,
+        height: lineHeight ?? 1.5, // áp dụng lineHeight
       ),
     );
   }
@@ -29,6 +31,7 @@ TextStyle getFontByName(
     fontSize: fontSize,
     fontWeight: fontWeight,
     fontStyle: fontStyle,
+    height: lineHeight,
   );
 }
 
@@ -99,18 +102,22 @@ TextStyle getFontC(FontState state,
     color: color,
     fontWeight: fontWeight,
     fontStyle: fontStyle,
+
   );
 }
 
 TextStyle getFontD(FontState state,
     {FontWeight fontWeight = FontWeight.w600,
     Color? color,
-    FontStyle fontStyle = FontStyle.normal}) {
+    FontStyle fontStyle = FontStyle.normal,
+    double? lineHeight,
+    }) {
   return getFontByName(
     state.fontD,
     fontSize: state.sizeD,
     color: color,
     fontWeight: fontWeight,
     fontStyle: fontStyle,
+    lineHeight: lineHeight
   );
 }

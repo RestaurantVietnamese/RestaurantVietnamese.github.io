@@ -1,11 +1,10 @@
-import 'package:flutter/material.dart';
 import 'package:puzzel/menu_foods/models/menu_item.dart';
-import 'package:puzzel/menu_foods/string_content_menu.dart';
 
 final menuItems_Page7 = [
   MenuItem(
     id: "32",
     subText: '',
+    subIcon: true,
     title: "Bo Luc Lac",
     descriptionDe:
         "Reis mit gebratenen Rindfleischwürfeln,\nZwiebeln, Paprika, Knoblauch, Pfeffer",
@@ -23,7 +22,7 @@ final menuItems_Page7 = [
   MenuItem(
     id: "33",
     subText: '',
-    title: "Mac Xao Hanh",
+    title: "Muc Xao Hanh",
     descriptionDe:
         "Reis mit gebratenem Tintenfisch, Sellerie,\nZwiebeln, Paprika, Knoblauch",
     descriptionEn: "Rice with fried squid, celery, onions, paprika, garlic",
@@ -39,9 +38,10 @@ final menuItems_Page7 = [
   MenuItem(
     id: "34",
     subText: '',
+    subIcon: true,
     title: "Hai San Xao",
     descriptionDe:
-        "Reis mit gebratenem Tintenfisch,\nSellerie, Knoblauc, Chili",
+        "Reis mit gebratenem Tintenfisch,\nGarnelen, Muscheln, Gemüse, Sellerie, Knoblauch, Chili",
     descriptionEn:
         "Rice with fried squid, shrimp, mussels, vegetables, celery, garlic, chili",
     options: [
@@ -103,11 +103,11 @@ final menuItems_Page7 = [
   MenuItem(
     id: "37",
     subText: '',
-    title: "Vanraste Bun Cha",
+    title: "Vantastic Bun Cha",
     descriptionDe:
-        "Reisnudeln mit gegrilltem Fleisch vegan\nauf Sojabasis, Zitronengras, Salat, Karotten, Erdnüssen, Röstzwiebeln und Sojasoße",
+        "Reisnudeln mit gegrilltem Fleisch vegan\nauf Sojabasis, Zitronengras, Salat, Karotten,\nErdnüssen, Röstzwiebeln und Sojasoße",
     descriptionEn:
-        "Rice noodles with grilled meat vegan soy-based, lemongrass, lettuce, carrots, peanuts, fried onions, and soy sauce",
+        "Rice noodles with grilled meat vegan soy-based, lemongrass,\nlettuce, carrots, peanuts, fried onions, and soy sauce",
     options: [
       MenuOption(
         code: "",
@@ -120,7 +120,7 @@ final menuItems_Page7 = [
   MenuItem(
     id: "38",
     subText: '',
-    title: "Vanraste Erdnuss",
+    title: "Vantastic Erdnuss",
     descriptionDe:
         "Reis mit Gemüse in einer Soße gekocht aus\nErdnüssen, cremiger Erdnussbutter, Kokosmilch. Auswahl mit:",
     descriptionEn:

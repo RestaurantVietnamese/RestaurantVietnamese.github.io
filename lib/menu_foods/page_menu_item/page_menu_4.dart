@@ -1,11 +1,7 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:puzzel/menu_foods/data/menu_data_page_1.dart';
 import 'package:puzzel/menu_foods/data/menu_data_page_4.dart';
-import 'package:puzzel/menu_foods/widgets/menu_item_widget_5.dart';
-import 'package:puzzel/menu_foods/widgets/menu_item_widget_6.dart';
 import 'package:puzzel/menu_foods/widgets/menu_item_widget_7.dart';
 
 class PageMenu4 extends StatelessWidget {
@@ -36,7 +32,6 @@ class PageMenu4 extends StatelessWidget {
                   SizedBox(height: 10),
                   // SizedBox(height: 10),
 
-                  SizedBox(height: 10),
                   Expanded(
                     child: Column(
                       children: menuItems_Page4.map((item) {
@@ -66,7 +61,7 @@ class PageMenu4 extends StatelessWidget {
                             // if (item.id == '6') SizedBox(height: 8),
 
                             // // Thêm logic khoảng cách giữa 11 và 12
-                            // if (item.id == '11') SizedBox(height: 20),
+                            if (item.id == '21') SizedBox(height: 10),
                           ],
                         );
                       }).toList(),

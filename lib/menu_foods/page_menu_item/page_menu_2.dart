@@ -2,7 +2,6 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:puzzel/menu_foods/data/menu_data_page_2.dart';
 import 'package:puzzel/menu_foods/widgets/menu_item_widget_1.dart';
 import 'package:puzzel/menu_foods/widgets/menu_item_widget_3.dart';
@@ -53,10 +52,10 @@ class _PageMenu2State extends State<PageMenu2> {
             children: [
               PositionedImageChangeBackGround(
                 imageUrl: imageUrl,
-                heightImage: 230,
+                heightImage: 215,
               ),
               Container(
-                width: 450,
+                width: 455,
                 height: 800,
                 decoration: BoxDecoration(
                     border: Border.all(color: Colors.grey, width: 0.1)),
@@ -111,8 +110,8 @@ class _PageMenu2State extends State<PageMenu2> {
                               ),
                             ),
                             // Chèn khoảng trống giữa id 11 và 12
-                            if (item.id == '11') const SizedBox(height: 50),
-                            if (item.id == '12') const SizedBox(height: 10),
+                            if (item.id == '11') const SizedBox(height: 29),
+                            // if (item.id == '12') const SizedBox(height: 5),
                           ],
                         );
                       }).toList(),
@@ -137,14 +136,14 @@ class _PageMenu2State extends State<PageMenu2> {
                   top: 15,
                   left: 15,
                   child: Container(
-                    height: 575,
+                    height: 585,
                     width: 2,
                     decoration: BoxDecoration(
                       color: Colors.white,
                     ),
                   )),
               Positioned(
-                  top: 590,
+                  top: 600,
                   right: 15,
                   left: 15,
                   child: Container(
@@ -158,7 +157,7 @@ class _PageMenu2State extends State<PageMenu2> {
                   top: 15,
                   right: 15,
                   child: Container(
-                    height: 575,
+                    height: 585,
                     width: 2,
                     decoration: BoxDecoration(
                       color: Colors.white,

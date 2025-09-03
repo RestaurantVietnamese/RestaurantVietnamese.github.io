@@ -115,7 +115,7 @@ class MenuItemWidget3 extends StatelessWidget {
             style:
                 getFontC(state, color: isWhite() ? Colors.white : Colors.black),
           ),
-          SizedBox(height: 6),
+          SizedBox(height: 10),
         ],
       ),
     );

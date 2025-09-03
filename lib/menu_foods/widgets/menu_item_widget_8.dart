@@ -2,7 +2,6 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:puzzel/widget/fonts/bloc/font_cubit.dart';
 import 'package:puzzel/widget/fonts/bloc/font_state.dart';
 import 'package:puzzel/widget/fonts/helper_fonts.dart';
@@ -11,9 +10,16 @@ import '../models/menu_item.dart';
 class MenuItemWidget8 extends StatelessWidget {
   final MenuItem item;
   final bool usePadding;
+  final bool usePaddingPage6;
 
-  const MenuItemWidget8({Key? key, required this.item, this.usePadding = true})
+  const MenuItemWidget8(
+      {Key? key,
+      required this.item,
+      this.usePadding = true,
+      this.usePaddingPage6 = false})
       : super(key: key);
+
+  bool get isWhite => item.id == '30';
 
   @override
   Widget build(BuildContext context) {
@@ -33,14 +39,22 @@ class MenuItemWidget8 extends StatelessWidget {
                         text: item.id,
                         style: TextStyle(
                           fontSize: 12,
+                          color: isWhite ? Colors.white : Colors.black,
                           fontStyle: FontStyle.italic,
                           fontWeight: FontWeight.bold,
                         ),
                       ),
-                      TextSpan(text: '. '),
+                      TextSpan(
+                          text: '. ',
+                          style: TextStyle(
+                            color: isWhite ? Colors.white : Colors.black,
+                          )),
                       TextSpan(
                         text: item.title,
-                        style: getFontA(state),
+                        style: getFontA(
+                          state,
+                          color: isWhite ? Colors.white : Colors.black,
+                        ),
                       ),
                     ],
                   ),
@@ -49,8 +63,14 @@ class MenuItemWidget8 extends StatelessWidget {
               if (item.subText != '')
                 Text(
                   item.subText ?? '',
-                  style: getFontD(state),
+                  style: getFontD(state,
+                      color: isWhite ? Colors.white : Colors.black),
                   textAlign: TextAlign.right,
+                ),
+              if (item.subIcon == true)
+                Image.asset(
+                  'assets/images/icon_chilli.png',
+                  height: 25,
                 ),
             ],
           ),
@@ -67,7 +87,8 @@ class MenuItemWidget8 extends StatelessWidget {
                       flex: 14,
                       child: Text(
                         item.descriptionDe,
-                        style: getFontB(state),
+                        style: getFontB(state,
+                            color: isWhite ? Colors.white : Colors.black),
                       ),
                     ),
 
@@ -100,7 +121,8 @@ class MenuItemWidget8 extends StatelessWidget {
                       Text(
                         opt.tags.join(', '),
                         textAlign: TextAlign.right,
-                        style: getFontD(state),
+                        style: getFontD(state,
+                            color: isWhite ? Colors.white : Colors.black),
                       ),
                       SizedBox(
                         width: 20,
@@ -108,7 +130,8 @@ class MenuItemWidget8 extends StatelessWidget {
                       Text(
                         opt.prices2.isNotEmpty ? opt.prices2 : '',
                         textAlign: TextAlign.right,
-                        style: getFontD(state),
+                        style: getFontD(state,
+                            color: isWhite ? Colors.white : Colors.black),
                       ),
                     ],
                   ),
@@ -120,9 +143,11 @@ class MenuItemWidget8 extends StatelessWidget {
           // Mô tả tiếng Anh (in nghiêng)
           Text(
             item.descriptionEn,
-            style: getFontC(state),
+            style:
+                getFontC(state, color: isWhite ? Colors.white : Colors.black),
           ),
-          if (usePadding) SizedBox(height: 6),
+          if (usePadding) SizedBox(height: 10),
+          if (usePaddingPage6) SizedBox(height: 6),
         ],
       ),
     );

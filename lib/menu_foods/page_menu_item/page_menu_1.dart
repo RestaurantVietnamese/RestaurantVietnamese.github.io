@@ -52,7 +52,7 @@ class _PageMenu1State extends State<PageMenu1> {
             children: [
               PositionedImageChangeBackGround(
                 imageUrl: imageUrl,
-                heightImage: 105,
+                heightImage: 100,
               ),
               Container(
                 width: 450,
@@ -77,12 +77,12 @@ class _PageMenu1State extends State<PageMenu1> {
                       children: [
                         Text(
                           '300 ml',
-                          style: getFontB(state),
+                          style: getFontB(state, fontWeight: FontWeight.w700),
                         ),
                         SizedBox(width: 30),
                         Text(
                           '750 ml',
-                          style: getFontB(state),
+                          style: getFontB(state, fontWeight: FontWeight.w700),
                         ),
                         SizedBox(width: 10),
                       ],
@@ -122,8 +122,8 @@ class _PageMenu1State extends State<PageMenu1> {
                                 ),
                               ),
                             ),
-                            if (item.id == '5') SizedBox(height: 15),
-                            if (item.id == '6') SizedBox(height: 8),
+                            if (item.id == '5') SizedBox(height: 6),
+                            if (item.id == '6') SizedBox(height: 10),
                           ],
                         );
                       }).toList(),

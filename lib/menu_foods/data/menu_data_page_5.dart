@@ -1,6 +1,4 @@
-import 'package:flutter/material.dart';
 import 'package:puzzel/menu_foods/models/menu_item.dart';
-import 'package:puzzel/menu_foods/string_content_menu.dart';
 
 final menuItems_Page5 = [
   MenuItem(
@@ -8,13 +6,13 @@ final menuItems_Page5 = [
     subText: '',
     title: "Süß & Sauer",
     descriptionDe:
-        "Reis mit Gemüse in einer Süß-Sauer-Soße gekocht aus Ananas, Äpfeln, Orangen, Tomatenmark. Auswahl mit:",
+        "Reis mit Gemüse in einer Süß-Sauer-Soße\ngekocht aus Ananas, Äpfeln, Orangen, Tomatenmark.\nAuswahl mit:",
     descriptionEn:
-        "Rice with vegetables, a sweet and sour sauce cooked from pineapples, apples, oranges, tomato paste. Selection with:",
+        "Rice with vegetables, a sweet and sour sauce cooked from\npineapples, apples, oranges, tomato paste. Selection with:",
     options: [
       MenuOption(
         code: "a.",
-        name: "Panierte Hühnerbrust / Breaded Chicken",
+        name: "Panierte Hühnerbrust /\nBreaded Chicken",
         tags: ["A"],
         prices2: "13.50",
       ),
@@ -93,9 +91,9 @@ final menuItems_Page5 = [
     subText: '',
     title: "Udon Nudeln",
     descriptionDe:
-        "Gebratene Udon Nudeln mit Paprika, Lauch, Knoblauch und Zwiebeln. Auswahl mit:",
+        "Gebratene Udon Nudeln mit Paprika, Lauch,\nKnoblauch und Zwiebeln. Auswahl mit:",
     descriptionEn:
-        "Fried udon noodles with peppers, leek, garlic and onions. Selection with:",
+        "Fried udon noodles with peppers, leek, garlic and onions.\nSelection with:",
     options: [
       MenuOption(
         code: "g.",

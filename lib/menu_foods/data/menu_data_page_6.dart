@@ -1,19 +1,17 @@
-import 'package:flutter/material.dart';
 import 'package:puzzel/menu_foods/models/menu_item.dart';
-import 'package:puzzel/menu_foods/string_content_menu.dart';
 
 final menuItems_Page6 = [
   MenuItem(
     id: "23",
     subText: '',
-    title: "Unagt",
-    descriptionDe: "Reis mit Gemüse in Unagt Soße. Auswahl mit:",
+    title: "Unagi",
+    descriptionDe: "Reis mit Gemüse in Unagi Soße. Auswahl mit:",
     descriptionEn: "Rice with vegetables, a curry sauce. Selection with:",
     options: [
       MenuOption(
         code: "a.",
         name:
-            "Hühnerbrust (paniert (A) / unpaniert) / Chicken (breaded / nonbreaded)",
+            "Hühnerbrust (paniert (A) / unpaniert)\n/ Chicken (breaded / nonbreaded)",
         tags: [],
         prices2: "13.50",
       ),
@@ -28,6 +26,7 @@ final menuItems_Page6 = [
   MenuItem(
     id: "27",
     subText: '',
+    subIcon: true,
     title: "Pad Thai",
     descriptionDe:
         "Gebratene Reisbandnudeln mit Gemüse, Limette,\nKoriander, Erdnüssen, Röstzwiebeln. Auswahl mit:",
@@ -63,6 +62,7 @@ final menuItems_Page6 = [
   MenuItem(
     id: "28",
     subText: '',
+    subIcon: true,
     title: "Bun Thai Xao",
     descriptionDe:
         "Gebratene Reisnudeln mit saisonalem Gemüse,\nThai Soße, Paprika, Zwiebeln, Lauch. Auswahl mit:",
@@ -98,6 +98,7 @@ final menuItems_Page6 = [
   MenuItem(
     id: "29",
     subText: '',
+    subIcon: true,
     title: "Xao Sa Ot",
     descriptionDe:
         "Reis mit Zitronengras, Knoblauch, Zwiebeln, Paprika, Lauch.",
@@ -138,6 +139,7 @@ final menuItems_Page6 = [
   MenuItem(
     id: "31",
     subText: '',
+    subIcon: true,
     title: "Bun Bo Nan Bo",
     descriptionDe:
         "Reisnudeln mit gebratenem Rindfleisch,\nSalat, Knoblauch, Zwiebeln, Karotten, Bohnensprossen, Röstzwiebeln und vietnamesischer Fischsoße",

@@ -90,7 +90,7 @@ class MenuItemWidget extends StatelessWidget {
                   color: isWhite() ? Colors.white : Colors.black,
                 )),
           ),
-          SizedBox(height: 6),
+          // SizedBox(height: 6),
 
           // Danh sách option
           Column(

@@ -2,7 +2,6 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:puzzel/widget/fonts/bloc/font_cubit.dart';
 import 'package:puzzel/widget/fonts/bloc/font_state.dart';
 import 'package:puzzel/widget/fonts/helper_fonts.dart';
@@ -12,13 +11,17 @@ class MenuItemWidget9 extends StatelessWidget {
   final MenuItem item;
   final bool usePadding;
   final bool menuPage7;
+  final bool usePaddingPage6;
 
-  const MenuItemWidget9(
-      {Key? key,
-      required this.item,
-      this.usePadding = true,
-      this.menuPage7 = false})
-      : super(key: key);
+  const MenuItemWidget9({
+    Key? key,
+    required this.item,
+    this.usePadding = true,
+    this.menuPage7 = false,
+    this.usePaddingPage6 = false,
+  }) : super(key: key);
+
+  bool get isWhite => item.id == '31' || item.id == '37' || item.title== 'Veggie Bowl';
 
   @override
   Widget build(BuildContext context) {
@@ -38,14 +41,23 @@ class MenuItemWidget9 extends StatelessWidget {
                         text: item.id,
                         style: TextStyle(
                           fontSize: 12,
+                          color: isWhite ? Colors.white : null,
                           fontStyle: FontStyle.italic,
                           fontWeight: FontWeight.bold,
                         ),
                       ),
-                      if (item.id != '') TextSpan(text: '. '),
+                      if (item.id != '')
+                        TextSpan(
+                            text: '. ',
+                            style: TextStyle(
+                              color: isWhite ? Colors.white : null,
+                            )),
                       TextSpan(
                         text: item.title,
-                        style: getFontA(state),
+                        style: getFontA(
+                          state,
+                          color: isWhite ? Colors.white : null,
+                        ),
                       ),
                     ],
                   ),
@@ -54,8 +66,13 @@ class MenuItemWidget9 extends StatelessWidget {
               if (item.subText != '')
                 Text(
                   item.subText ?? '',
-                  style: getFontD(state),
+                  style: getFontD(state, color: isWhite ? Colors.white : null),
                   textAlign: TextAlign.right,
+                ),
+              if (item.subIcon == true)
+                Image.asset(
+                  'assets/images/icon_chilli.png',
+                  height: 25,
                 ),
             ],
           ),
@@ -72,7 +89,8 @@ class MenuItemWidget9 extends StatelessWidget {
                       flex: 7,
                       child: Text(
                         item.descriptionDe,
-                        style: getFontB(state),
+                        style: getFontB(state,
+                            color: isWhite ? Colors.white : null),
                       ),
                     ),
 
@@ -103,17 +121,19 @@ class MenuItemWidget9 extends StatelessWidget {
                     child: Text(
                       opt.prices2.isNotEmpty ? opt.prices2 : '',
                       textAlign: TextAlign.right,
-                      style: getFontD(state),
+                      style:
+                          getFontD(state, color: isWhite ? Colors.white : null),
                     ),
                   ),
                   Positioned(
-                    left: 266,
+                    left: 286,
                     top: 0,
                     bottom: 0,
                     child: Text(
                       opt.tags.join(', '),
                       textAlign: TextAlign.left,
-                      style: getFontD(state),
+                      style:
+                          getFontD(state, color: isWhite ? Colors.white : null),
                     ),
                   )
                 ],
@@ -128,15 +148,17 @@ class MenuItemWidget9 extends StatelessWidget {
                         Text(
                           opt.tags.join(', '),
                           textAlign: TextAlign.right,
-                          style: getFontD(state),
+                          style: getFontD(state,
+                              color: isWhite ? Colors.white : null),
                         ),
                         SizedBox(
-                          width: 70,
+                          width: 62,
                         ),
                         Text(
                           opt.prices2.isNotEmpty ? opt.prices2 : '',
                           textAlign: TextAlign.right,
-                          style: getFontD(state),
+                          style: getFontD(state,
+                              color: isWhite ? Colors.white : null),
                         ),
                       ],
                     ),
@@ -146,11 +168,13 @@ class MenuItemWidget9 extends StatelessWidget {
           }).toList(),
 
           // Mô tả tiếng Anh (in nghiêng)
+          if (item.descriptionEn.isNotEmpty)
           Text(
             item.descriptionEn,
-            style: getFontC(state),
+            style: getFontC(state, color: isWhite ? Colors.white : null),
           ),
-          if (usePadding) SizedBox(height: 6),
+          if (usePadding) SizedBox(height: 10),
+          if (usePaddingPage6) SizedBox(height: 6),
         ],
       ),
     );

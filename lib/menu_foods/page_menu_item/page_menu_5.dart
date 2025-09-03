@@ -1,86 +1,89 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:puzzel/menu_foods/data/menu_data_page_1.dart';
 import 'package:puzzel/menu_foods/data/menu_data_page_5.dart';
-import 'package:puzzel/menu_foods/widgets/menu_item_widget_5.dart';
-import 'package:puzzel/menu_foods/widgets/menu_item_widget_6.dart';
 import 'package:puzzel/menu_foods/widgets/menu_item_widget_7.dart';
+import 'package:puzzel/widget/change_image_background/PositionedImageChangeBackGround.dart';
+import 'package:puzzel/widget/change_image_background/show_dialog_change_image.dart';
 
-class PageMenu5 extends StatelessWidget {
+class PageMenu5 extends StatefulWidget {
   const PageMenu5({super.key});
 
   @override
+  State<PageMenu5> createState() => _PageMenu5State();
+}
+
+class _PageMenu5State extends State<PageMenu5> {
+  String? imageUrl =
+      'https://images.pexels.com/photos/769289/pexels-photo-769289.jpeg';
+
+  void _pickImage() async {
+    final result = await showInputDialog(
+      context: context,
+      title: 'Nhập link ảnh',
+      hintText: 'https://example.com/image.jpg',
+    );
+
+    if (result != null && result.isNotEmpty) {
+      setState(() {
+        imageUrl = result;
+      });
+    }
+  }
+
+  @override
   Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        SizedBox(height: 10),
-        SizedBox(height: 10),
-        // SizedBox(height: 10),
-        // SizedBox(height: 10),
-        Text(
-          '',
-          style: GoogleFonts.greatVibes(fontSize: 20),
-        ),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.end,
+    return InteractiveViewer(
+      boundaryMargin: EdgeInsets.all(100),
+      minScale: 0.1, // zoom nhỏ hơn để vừa khung
+      maxScale: 3.0,
+      child: FittedBox(
+        fit: BoxFit.contain,
+        alignment: Alignment.topLeft,
+        child: Stack(
           children: [
-            Text(
-              '',
-              style: GoogleFonts.openSans(
-                  fontSize: 12, fontWeight: FontWeight.w700),
+            PositionedImageChangeBackGround(
+              imageUrl: imageUrl,
+              heightImage: 800,
             ),
-            SizedBox(width: 30),
-            Text(
-              '',
-              style: GoogleFonts.openSans(
-                  fontSize: 12, fontWeight: FontWeight.w700),
+            Container(
+              width: 455,
+              height: 800,
+              decoration: BoxDecoration(
+                  border: Border.all(color: Colors.grey, width: 0.1)),
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  Container(
+                    margin: EdgeInsets.symmetric(horizontal: 15),
+                    color: Colors.white, // nền trắng cho toàn bộ danh sách
+                    padding: EdgeInsets.symmetric(horizontal: 15),
+                    child: Column(
+                      children: menuItems_Page5
+                          .map((item) => Padding(
+                                padding: EdgeInsets.only(
+                                    top: item.id == '22' ? 15 : 0,
+                                    bottom: item.id == '26'
+                                        ? 5
+                                        : 0), // spacing between items
+                                child: GestureDetector(
+                                    onTap: () {
+                                      if (item.id == '26') {
+                                        _pickImage();
+                                      }
+                                    },
+                                    child: MenuItemWidget7(item: item)),
+                              ))
+                          .toList(),
+                    ),
+                  ),
+                ],
+              ),
             ),
           ],
         ),
-        SizedBox(height: 10),
-        Expanded(
-          child: ListView(
-            children: [
-              for (var i = 0; i < menuItems_Page5.length; i++) ...[
-                // Widget cho item hiện tại
-                Align(
-                  alignment: Alignment.centerLeft,
-                  child: Container(
-                    width: 400,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(2),
-                      color: Colors.white,
-                      border: Border.all(color: Colors.transparent),
-                    ),
-                    padding: const EdgeInsets.symmetric(horizontal: 10),
-                    child:
-                        //  (menuItems_Page5[i].id == '11' ||
-                        //         menuItems_Page5[i].id == '12' ||
-                        //         menuItems_Page5[i].id == '13')
-                        //     ? MenuItemWidget3(item: menuItems_Page5[i])
-                        //     : menuItems_Page5[i].id == '8'
-                        //         ? MenuItemWidget4(item: menuItems_Page5[i])
-                        //         :
-                        // (menuItems_Page5[i].id == '15')
-                        //     ? MenuItemWidget6(item: menuItems_Page5[i])
-                        //     :
-                        MenuItemWidget7(item: menuItems_Page5[i]),
-                  ),
-                ),
-
-                // Chèn khoảng trống giữa id 11 và 12
-                if (menuItems_Page5[i].id == '11' &&
-                    i + 1 < menuItems_Page5.length &&
-                    menuItems_Page5[i + 1].id == '12')
-                  const SizedBox(height: 20), // <- thay 20 bằng height bạn muốn
-              ],
-            ],
-          ),
-        ),
-      ],
+      ),
     );
   }
 }
