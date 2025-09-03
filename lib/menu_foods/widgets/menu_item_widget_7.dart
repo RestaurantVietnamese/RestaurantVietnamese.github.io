@@ -2,7 +2,6 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:puzzel/widget/fonts/bloc/font_cubit.dart';
 import 'package:puzzel/widget/fonts/bloc/font_state.dart';
 import 'package:puzzel/widget/fonts/helper_fonts.dart';
@@ -14,6 +13,9 @@ class MenuItemWidget7 extends StatelessWidget {
 
   const MenuItemWidget7({Key? key, required this.item, this.usePadding = true})
       : super(key: key);
+
+  bool get isWhite =>
+      item.id == '18' || item.id == '19' || item.id == '20' || item.id == '21';
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<FontCubit, FontState>(
@@ -33,14 +35,23 @@ class MenuItemWidget7 extends StatelessWidget {
                         text: item.id,
                         style: TextStyle(
                           fontSize: 12,
+                          color: isWhite ? Colors.white : null,
                           fontStyle: FontStyle.italic,
                           fontWeight: FontWeight.bold,
                         ),
                       ),
                       TextSpan(
-                        text: '. ', // Add space between id and title
+                        text: '. ',
+                        style: TextStyle(
+                          color: isWhite ? Colors.white : null,
+                        ), // Add space between id and title
                       ),
-                      TextSpan(text: item.title, style: getFontA(state)),
+                      TextSpan(
+                          text: item.title,
+                          style: getFontA(
+                            state,
+                            color: isWhite ? Colors.white : null,
+                          )),
                     ],
                   ),
                 ),
@@ -48,7 +59,7 @@ class MenuItemWidget7 extends StatelessWidget {
               if (item.subText != '')
                 Text(
                   item.subText ?? '',
-                  style: getFontD(state),
+                  style: getFontD(state, color: isWhite ? Colors.white : null),
                   textAlign: TextAlign.right,
                 ),
               if (item.subIcon == true)
@@ -59,12 +70,14 @@ class MenuItemWidget7 extends StatelessWidget {
             ],
           ),
           // Mô tả tiếng Đức
-          Text(item.descriptionDe, style: getFontB(state)),
+          Text(item.descriptionDe,
+              style: getFontB(state, color: isWhite ? Colors.white : null)),
 
           // Mô tả tiếng Anh (in nghiêng)
           Padding(
             padding: const EdgeInsets.only(right: 0),
-            child: Text(item.descriptionEn, style: getFontC(state)),
+            child: Text(item.descriptionEn,
+                style: getFontC(state, color: isWhite ? Colors.white : null)),
           ),
           SizedBox(height: 6),
 
@@ -79,18 +92,24 @@ class MenuItemWidget7 extends StatelessWidget {
                       flex: 2,
                       child: Text(
                         opt.code,
-                        style: getFontD(state),
+                        style: getFontD(state,
+                            color: isWhite ? Colors.white : null),
                       )),
 
                   // Column 2: Name
                   Expanded(
-                      flex: 13, child: Text(opt.name, style: getFontD(state))),
+                      flex: 13,
+                      child: Text(opt.name,
+                          style: getFontD(state,
+                              color: isWhite ? Colors.white : null))),
 
                   // Column 3: Tags
                   Expanded(
                     flex: 2,
                     child: opt.tags.isNotEmpty
-                        ? Text(opt.tags.join(", "), style: getFontD(state))
+                        ? Text(opt.tags.join(", "),
+                            style: getFontD(state,
+                                color: isWhite ? Colors.white : null))
                         : Container(),
                   ),
 
@@ -98,14 +117,18 @@ class MenuItemWidget7 extends StatelessWidget {
                   Expanded(
                     flex: 2,
                     child: Text(opt.prices1,
-                        textAlign: TextAlign.left, style: getFontD(state)),
+                        textAlign: TextAlign.left,
+                        style: getFontD(state,
+                            color: isWhite ? Colors.white : null)),
                   ),
 
                   // Column 5: prices2
                   Expanded(
                     flex: 2,
                     child: Text(opt.prices2,
-                        textAlign: TextAlign.right, style: getFontD(state)),
+                        textAlign: TextAlign.right,
+                        style: getFontD(state,
+                            color: isWhite ? Colors.white : null)),
                   ),
                 ],
               );

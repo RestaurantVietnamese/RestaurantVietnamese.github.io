@@ -60,19 +60,11 @@ class _PageMenu1State extends State<PageMenu1> {
                 decoration: BoxDecoration(
                     color: Colors.transparent,
                     border: Border.all(color: Colors.grey, width: 0.1)),
-                padding: EdgeInsets.only(left: 15, right: 15),
+                padding: EdgeInsets.only(left: 20, right: 20),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    // SizedBox(height: 10),
-
-                    // SizedBox(height: 10),
                     SizedBox(height: 10),
-                    // SizedBox(height: 10),
-                    // SizedBox(height: 10),
-                    // SizedBox(height: 10),
-                    // SizedBox(height: 10),
-                    // SizedBox(height: 10),
                     Padding(
                       padding: const EdgeInsets.only(left: 0),
                       child: Text(
@@ -96,7 +88,6 @@ class _PageMenu1State extends State<PageMenu1> {
                       ],
                     ),
                     SizedBox(height: 5),
-
                     Column(
                       children: menuItems_Page1.map((item) {
                         Widget widgetItem;

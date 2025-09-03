@@ -1,16 +1,15 @@
-import 'package:flutter/material.dart';
 import 'package:puzzel/menu_foods/models/menu_item.dart';
-import 'package:puzzel/menu_foods/string_content_menu.dart';
 
 final menuItems_Page4 = [
   MenuItem(
     id: "18",
     subText: '',
+    subIcon: true,
     title: "Mango Curry",
     descriptionDe:
-        "Reis mit Gemüse in einer Currysoße gekocht aus Mangopüree, Currypaste, Kokosmilch. Auswahl mit:",
+        "Reis mit Gemüse in einer Currysoße gekocht aus\nMangopüree, Currypaste, Kokosmilch. Auswahl mit:",
     descriptionEn:
-        "Rice with vegetables, a curry sauce cooked from mango puree, curry paste, coconut milk. Selection with:",
+        "Rice with vegetables, a curry sauce cooked from mango puree,\ncurry paste, coconut milk. Selection with:",
     options: [
       MenuOption(
         code: "a.",
@@ -46,7 +45,7 @@ final menuItems_Page4 = [
     descriptionDe:
         "Reis mit Gemüse, Austernsoße, Knoblauch und Sojasoße. Auswahl mit:",
     descriptionEn:
-        "Rice with vegetables, oyster sauce, garlic and soy sauce. Selection with:",
+        "Rice with vegetables, oyster sauce, garlic and soy sauce.\nSelection with:",
     options: [
       MenuOption(
         code: "a.",
@@ -71,11 +70,12 @@ final menuItems_Page4 = [
   MenuItem(
     id: "20",
     subText: '',
+    subIcon: true,
     title: "Kungpao",
     descriptionDe:
         "Reis mit Gemüse, Holsin Soße, Knoblauch und Sojasoße. Auswahl mit:",
     descriptionEn:
-        "Rice with vegetables, holsin sauce, garlic and soy sauce. Selection with:",
+        "Rice with vegetables, holsin sauce, garlic and soy sauce.\nSelection with:",
     options: [
       MenuOption(
         code: "a.",
@@ -102,9 +102,9 @@ final menuItems_Page4 = [
     subText: '',
     title: "Erdnuss",
     descriptionDe:
-        "Reis mit Gemüse in einer Soße gekocht aus Erdnüssen, cremiger Erdnussbutter und Kokosmilch. Auswahl mit:",
+        "Reis mit Gemüse in einer Soße gekocht aus\nErdnüssen, cremiger Erdnussbutter und Kokosmilch.\nAuswahl mit:",
     descriptionEn:
-        "Rice with vegetables, a sauce cooked from peanuts, creamy peanut butter and coconut milk. Selection with:",
+        "Rice with vegetables, a sauce cooked from peanuts,\ncreamy peanut butter and coconut milk. Selection with:",
     options: [
       MenuOption(
         code: "a.",

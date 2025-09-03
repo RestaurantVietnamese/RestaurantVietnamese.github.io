@@ -27,13 +27,13 @@ class PageMenu3 extends StatelessWidget {
                   Align(
                     alignment: Alignment.centerLeft,
                     child: Container(
-                      width: 400,
+                      width: 450,
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(2),
                         color: Colors.white,
                         border: Border.all(color: Colors.transparent),
                       ),
-                      padding: const EdgeInsets.symmetric(horizontal: 10),
+                      padding: const EdgeInsets.symmetric(horizontal: 30),
                       child: (menuItems_Page3[i].id == '15')
                           ? MenuItemWidget6(item: menuItems_Page3[i])
                           : MenuItemWidget7(item: menuItems_Page3[i]),
@@ -46,7 +46,7 @@ class PageMenu3 extends StatelessWidget {
                       menuItems_Page3[i + 1].id == '16')
                     Padding(
                       padding:
-                          const EdgeInsets.only(left: 10, top: 30, bottom: 10),
+                          const EdgeInsets.only(left: 30, top: 30, bottom: 10),
                       child: Text(
                         'Main',
                         style: getFont0(state),
