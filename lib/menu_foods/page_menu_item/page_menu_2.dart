@@ -51,34 +51,14 @@ class _PageMenu2State extends State<PageMenu2> {
           alignment: Alignment.topLeft,
           child: Stack(
             children: [
-              Positioned(
-                top: -20,
-                left: -10,
-                child: Image.asset(
-                  'assets/images/black_paint.png',
-                  color: Colors.white,
-                  height: 80,
-                  width: 120,
-                  colorBlendMode: BlendMode.srcIn,
-                ),
-              ),
-              Positioned(
-                top: 5,
-                left: 15,
-                child: Text(
-                  'Vorspeise',
-                  style: getFont0(state),
-                ),
-              ),
               PositionedImageChangeBackGround(
                 imageUrl: imageUrl,
                 heightImage: 230,
               ),
               Container(
-                width: 410,
+                width: 450,
                 height: 800,
                 decoration: BoxDecoration(
-                    // color: Colors.black.withOpacity(0.5),
                     border: Border.all(color: Colors.grey, width: 0.1)),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -88,11 +68,7 @@ class _PageMenu2State extends State<PageMenu2> {
                     SizedBox(height: 10),
                     SizedBox(height: 10),
                     SizedBox(height: 10),
-                    // SizedBox(height: 10),
-                    // SizedBox(height: 10),
                     SizedBox(height: 12),
-                    // SizedBox(height: 10),
-                    // SizedBox(height: 5),
                     Column(
                       children: menuItems_Page2.map((item) {
                         Widget widgetItem;
@@ -122,7 +98,8 @@ class _PageMenu2State extends State<PageMenu2> {
                                 },
                                 child: Container(
                                   padding: EdgeInsets.only(
-                                      left: 15, right: item.id == '8' ? 5 : 15),
+                                      left: 30,
+                                      right: item.id == '8' ? 10 : 30),
                                   decoration: BoxDecoration(
                                     borderRadius: BorderRadius.circular(2),
                                     color: Colors.transparent,
@@ -135,6 +112,7 @@ class _PageMenu2State extends State<PageMenu2> {
                             ),
                             // Chèn khoảng trống giữa id 11 và 12
                             if (item.id == '11') const SizedBox(height: 50),
+                            if (item.id == '12') const SizedBox(height: 10),
                           ],
                         );
                       }).toList(),
@@ -143,21 +121,20 @@ class _PageMenu2State extends State<PageMenu2> {
                 ),
               ),
               Positioned(
-                  top: 10,
-                  right: 5,
-                  left: 5,
+                  top: 15,
+                  right: 15,
+                  left: 15,
                   child: Container(
                     height: 2,
-                    width: 30,
                     decoration: BoxDecoration(
                       color: Colors.white,
                     ),
                   )),
               Positioned(
-                  top: 10,
-                  left: 5,
+                  top: 15,
+                  left: 15,
                   child: Container(
-                    height: 580,
+                    height: 575,
                     width: 2,
                     decoration: BoxDecoration(
                       color: Colors.white,
@@ -165,8 +142,8 @@ class _PageMenu2State extends State<PageMenu2> {
                   )),
               Positioned(
                   top: 590,
-                  right: 5,
-                  left: 5,
+                  right: 15,
+                  left: 15,
                   child: Container(
                     height: 2,
                     width: 30,
@@ -175,15 +152,37 @@ class _PageMenu2State extends State<PageMenu2> {
                     ),
                   )),
               Positioned(
-                  top: 10,
-                  right: 5,
+                  top: 15,
+                  right: 15,
                   child: Container(
-                    height: 580,
+                    height: 575,
                     width: 2,
                     decoration: BoxDecoration(
                       color: Colors.white,
                     ),
                   )),
+
+              //
+              Positioned(
+                top: -30,
+                left: -20,
+                child: Image.asset(
+                  'assets/images/black_paint.png',
+                  color: Colors.white,
+                  height: 100,
+                  width: 140,
+                  colorBlendMode: BlendMode.srcIn,
+                ),
+              ),
+              Positioned(
+                top: 5,
+                left: 15,
+                child: Text(
+                  'Vorspeise',
+                  style: getFont0(state),
+                ),
+              ),
+              //
             ],
           ),
         ),

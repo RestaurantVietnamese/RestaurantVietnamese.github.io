@@ -54,7 +54,7 @@ class MenuItemWidget4 extends StatelessWidget {
               ),
               if (item.subText != '')
                 Padding(
-                  padding: const EdgeInsets.only(right: 10),
+                  padding: const EdgeInsets.only(right: 20),
                   child: Text(
                     item.subText ?? '',
                     style: getFontD(state,
@@ -102,7 +102,7 @@ class MenuItemWidget4 extends StatelessWidget {
                   ],
                 ),
                 Positioned(
-                  right: 10,
+                  right: 20,
                   top: 0,
                   bottom: 0,
                   child: Text(
@@ -122,7 +122,7 @@ class MenuItemWidget4 extends StatelessWidget {
             style:
                 getFontC(state, color: isWhite() ? Colors.white : Colors.black),
           ),
-          SizedBox(height: 6),
+          SizedBox(height: 10),
         ],
       ),
     );

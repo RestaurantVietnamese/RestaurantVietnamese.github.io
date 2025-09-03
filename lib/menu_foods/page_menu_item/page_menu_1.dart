@@ -55,7 +55,7 @@ class _PageMenu1State extends State<PageMenu1> {
                 heightImage: 105,
               ),
               Container(
-                width: 410,
+                width: 440,
                 height: 800,
                 decoration: BoxDecoration(
                     border: Border.all(color: Colors.grey, width: 0.1)),

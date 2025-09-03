@@ -32,7 +32,7 @@ final menuItems_Page2 = [
     descriptionDe:
         "Hausgemachte Frühlingsrollen mit Hackfleisch,\nGlasnudeln, Karotten, Zwiebeln in knuspriges Reispapier gerollt",
     descriptionEn:
-        "Homemade spring rolls with minced meat, glass noodles, carrots, onions rolled in crispy rice paper",
+        "Homemade spring rolls with minced meat, glass noodles,\ncarrots, onions rolled in crispy rice paper",
     options: [
       MenuOption(code: "", name: '', tags: [""], prices1: '', prices2: '6.00'),
     ],
