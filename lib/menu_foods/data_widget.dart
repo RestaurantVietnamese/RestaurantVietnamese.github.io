@@ -1,6 +1,7 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 
 import 'package:flutter/material.dart';
+import 'package:puzzel/menu_foods/page_menu_item/page_menu_0.dart';
 import 'package:puzzel/menu_foods/page_menu_item/page_menu_1.dart';
 import 'package:puzzel/menu_foods/page_menu_item/page_menu_2.dart';
 import 'package:puzzel/menu_foods/page_menu_item/page_menu_3.dart';
@@ -52,6 +53,7 @@ class _DataWidgetState extends State<DataWidget> {
           });
         },
         children: const [
+          PageMenu0(),
           PageMenu1(),
           PageMenu2(),
           PageMenu3(),
