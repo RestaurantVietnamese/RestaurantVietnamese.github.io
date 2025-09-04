@@ -47,7 +47,7 @@ class PageMenu8 extends StatelessWidget {
                                   width: 450,
                                   decoration: BoxDecoration(
                                     borderRadius: BorderRadius.circular(2),
-                                    color: Colors.white,
+                                    color: Colors.transparent,
                                     border:
                                         Border.all(color: Colors.transparent),
                                   ),
@@ -73,24 +73,25 @@ class PageMenu8 extends StatelessWidget {
                                             )),
                             ),
                             if (menuItems_Page8[i].id == '42')
-                              Padding(
-                                padding: const EdgeInsets.only(right: 15),
-                                child: Row(
-                                  mainAxisAlignment: MainAxisAlignment.end,
-                                  children: [
-                                    Column(
-                                      children: [
-                                        SizedBox(height: 6),
-                                        Text(
-                                          'Beilagen',
-                                          style: getFont0(state),
-                                        ),
-                                        SizedBox(height: 10),
-                                      ],
-                                    ),
-                                  ],
-                                ),
-                              ),
+                            SizedBox(height: 50,)
+                              // Padding(
+                              //   padding: const EdgeInsets.only(right: 15),
+                              //   child: Row(
+                              //     mainAxisAlignment: MainAxisAlignment.end,
+                              //     children: [
+                              //       Column(
+                              //         children: [
+                              //           SizedBox(height: 6),
+                              //           Text(
+                              //             'Beilagen',
+                              //             style: getFont0(state),
+                              //           ),
+                              //           SizedBox(height: 10),
+                              //         ],
+                              //       ),
+                              //     ],
+                              //   ),
+                              // ),
                           ],
                         ],
                       ),
@@ -98,6 +99,34 @@ class PageMenu8 extends StatelessWidget {
                   ],
                 ),
               ),
+              //
+              //
+              //
+              Positioned(
+                bottom: 110,
+                right: -80,
+                child: Container(
+                  width: 210,
+                  height: 40,
+                  child: Image.asset(
+                    'assets/images/black_paint.png',
+                    color: Colors.white,
+                    fit: BoxFit.fitWidth,
+                    colorBlendMode: BlendMode.srcIn,
+                  ),
+                ),
+              ),
+              Positioned(
+                bottom: 110,
+                right: 15,
+                child: Text(
+                  'Beilagen',
+                  style: getFont0(state),
+                ),
+              ),
+              //
+              //
+              //
               //
               //
               //

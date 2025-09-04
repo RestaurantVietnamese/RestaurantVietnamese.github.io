@@ -3,6 +3,9 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:puzzel/widget/fonts/bloc/font_cubit.dart';
 import 'package:puzzel/widget/fonts/bloc/font_state.dart';
 
+const Color aBg = Color.fromARGB(255, 249, 247, 247);
+const Color bBg = Color.fromRGBO(0, 0, 0, 0.9);
+
 TextStyle getFontByName(
   String fontName, {
   double fontSize = 14,
@@ -53,12 +56,13 @@ extension AppFontX on AppFont {
 }
 //--------------------
 
-TextStyle getFont0(FontState state,
-    {FontWeight fontWeight = FontWeight.normal,
-    Color? color,
-    FontStyle fontStyle = FontStyle.normal,
-     double? lineHeight,
-    }) {
+TextStyle getFont0(
+  FontState state, {
+  FontWeight fontWeight = FontWeight.normal,
+  Color? color,
+  FontStyle fontStyle = FontStyle.normal,
+  double? lineHeight,
+}) {
   return getFontByName(
     state.font0,
     fontSize: state.size0,
@@ -69,12 +73,13 @@ TextStyle getFont0(FontState state,
   );
 }
 
-TextStyle getFontA(FontState state,
-    {FontWeight fontWeight = FontWeight.w500,
-    Color? color,
-    FontStyle fontStyle = FontStyle.italic,
-     double? lineHeight  = 0,
-    }) {
+TextStyle getFontA(
+  FontState state, {
+  FontWeight fontWeight = FontWeight.w500,
+  Color? color,
+  FontStyle fontStyle = FontStyle.italic,
+  double? lineHeight = 0,
+}) {
   return getFontByName(
     state.fontA,
     fontSize: state.sizeA,
@@ -85,12 +90,13 @@ TextStyle getFontA(FontState state,
   );
 }
 
-TextStyle getFontB(FontState state,
-    {FontWeight fontWeight = FontWeight.w600,
-    Color? color,
-    FontStyle fontStyle = FontStyle.normal,
-     double? lineHeight,
-    }) {
+TextStyle getFontB(
+  FontState state, {
+  FontWeight fontWeight = FontWeight.w600,
+  Color? color,
+  FontStyle fontStyle = FontStyle.normal,
+  double? lineHeight,
+}) {
   return getFontByName(
     state.fontB,
     fontSize: state.sizeB,
@@ -101,12 +107,13 @@ TextStyle getFontB(FontState state,
   );
 }
 
-TextStyle getFontC(FontState state,
-    {FontWeight fontWeight = FontWeight.w400,
-    Color? color,
-    FontStyle fontStyle = FontStyle.italic,
-     double? lineHeight,
-    }) {
+TextStyle getFontC(
+  FontState state, {
+  FontWeight fontWeight = FontWeight.w400,
+  Color? color,
+  FontStyle fontStyle = FontStyle.italic,
+  double? lineHeight,
+}) {
   return getFontByName(
     state.fontC,
     fontSize: state.sizeC,
@@ -114,22 +121,20 @@ TextStyle getFontC(FontState state,
     fontWeight: fontWeight,
     fontStyle: fontStyle,
     lineHeight: lineHeight,
-
   );
 }
 
-TextStyle getFontD(FontState state,
-    {FontWeight fontWeight = FontWeight.w600,
-    Color? color,
-    FontStyle fontStyle = FontStyle.normal,
-    double? lineHeight,
-    }) {
-  return getFontByName(
-    state.fontD,
-    fontSize: state.sizeD,
-    color: color,
-    fontWeight: fontWeight,
-    fontStyle: fontStyle,
-    lineHeight: lineHeight
-  );
+TextStyle getFontD(
+  FontState state, {
+  FontWeight fontWeight = FontWeight.w600,
+  Color? color,
+  FontStyle fontStyle = FontStyle.normal,
+  double? lineHeight,
+}) {
+  return getFontByName(state.fontD,
+      fontSize: state.sizeD,
+      color: color,
+      fontWeight: fontWeight,
+      fontStyle: fontStyle,
+      lineHeight: lineHeight);
 }

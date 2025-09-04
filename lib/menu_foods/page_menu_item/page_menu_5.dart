@@ -5,6 +5,7 @@ import 'package:puzzel/menu_foods/data/menu_data_page_5.dart';
 import 'package:puzzel/menu_foods/widgets/menu_item_widget_7.dart';
 import 'package:puzzel/widget/change_image_background/PositionedImageChangeBackGround.dart';
 import 'package:puzzel/widget/change_image_background/show_dialog_change_image.dart';
+import 'package:puzzel/widget/fonts/helper_fonts.dart';
 
 class PageMenu5 extends StatefulWidget {
   const PageMenu5({super.key});
@@ -57,7 +58,7 @@ class _PageMenu5State extends State<PageMenu5> {
                 children: [
                   Container(
                     margin: EdgeInsets.symmetric(horizontal: 15),
-                    color: Colors.white, // nền trắng cho toàn bộ danh sách
+                    color: aBg, // nền trắng cho toàn bộ danh sách
                     padding: EdgeInsets.symmetric(horizontal: 15),
                     child: Column(
                       children: menuItems_Page5

@@ -30,7 +30,7 @@ class PageMenu3 extends StatelessWidget {
                       width: 450,
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(2),
-                        color: Colors.white,
+                        color: aBg,
                         border: Border.all(color: Colors.transparent),
                       ),
                       padding: const EdgeInsets.symmetric(horizontal: 30),

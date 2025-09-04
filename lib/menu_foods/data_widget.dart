@@ -10,6 +10,7 @@ import 'package:puzzel/menu_foods/page_menu_item/page_menu_6.dart';
 import 'package:puzzel/menu_foods/page_menu_item/page_menu_7.dart';
 import 'package:puzzel/menu_foods/page_menu_item/page_menu_8.dart';
 import 'package:puzzel/menu_foods/page_menu_item/page_menu_9.dart';
+import 'package:puzzel/widget/fonts/helper_fonts.dart';
 
 class DataWidget extends StatefulWidget {
   final PageController pageController;
@@ -24,15 +25,15 @@ class _DataWidgetState extends State<DataWidget> {
 
   // Mapping màu cho từng page (0-based index)
   final List<Color> pageColors = [
-    // Colors.white, // Page 1
-    // Colors.black.withOpacity(0.9), // Page 2
-    // Colors.white, // Page 3
-    // Colors.black.withOpacity(0.9), // Page 4
-    // Colors.white, // Page 5
-    Colors.black.withOpacity(0.9), // Page 6
-    Colors.white, // Page 7
-    Colors.white, // Page 8
-    Colors.black.withOpacity(0.9), // Page 9
+    aBg, // Page 1
+    bBg, // Page 2
+    aBg, // Page 3
+    bBg, // Page 4
+    aBg, // Page 5
+    bBg, // Page 6
+    aBg, // Page 7
+    aBg, // Page 8
+    bBg, // Page 9
   ];
 
   @override
@@ -51,11 +52,11 @@ class _DataWidgetState extends State<DataWidget> {
           });
         },
         children: const [
-          // PageMenu1(),
-          // PageMenu2(),
-          // PageMenu3(),
-          // PageMenu4(),
-          // PageMenu5(),
+          PageMenu1(),
+          PageMenu2(),
+          PageMenu3(),
+          PageMenu4(),
+          PageMenu5(),
           PageMenu6(),
           PageMenu7(),
           PageMenu8(),

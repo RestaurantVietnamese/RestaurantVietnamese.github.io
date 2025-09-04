@@ -55,6 +55,17 @@ class _PageMenu1State extends State<PageMenu1> {
                 heightImage: 106,
               ),
               Positioned(
+                top: -30,
+                left: -20,
+                child: Image.asset(
+                  'assets/images/black_paint.png',
+                  color: Colors.white,
+                  height: 100,
+                  width: 140,
+                  colorBlendMode: BlendMode.srcIn,
+                ),
+              ),
+              Positioned(
                 top: 5,
                 left: 15,
                 child: Text(
