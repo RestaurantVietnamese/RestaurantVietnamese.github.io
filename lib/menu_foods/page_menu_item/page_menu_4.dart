@@ -62,6 +62,9 @@ class PageMenu4 extends StatelessWidget {
                             // if (item.id == '6') SizedBox(height: 8),
 
                             // // Thêm logic khoảng cách giữa 11 và 12
+                            if (item.id == '18') SizedBox(height: 8),
+                            if (item.id == '19') SizedBox(height: 8),
+                            if (item.id == '20') SizedBox(height: 8),
                             if (item.id == '21') SizedBox(height: 10),
                           ],
                         );

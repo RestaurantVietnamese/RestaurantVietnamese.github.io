@@ -73,7 +73,7 @@ TextStyle getFontA(FontState state,
     {FontWeight fontWeight = FontWeight.w500,
     Color? color,
     FontStyle fontStyle = FontStyle.italic,
-     double? lineHeight  = 0.1,
+     double? lineHeight  = 0,
     }) {
   return getFontByName(
     state.fontA,

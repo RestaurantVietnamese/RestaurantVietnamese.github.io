@@ -32,7 +32,7 @@ class MenuItemWidget10 extends StatelessWidget {
           Row(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              SizedBox(width: 8),
+              // SizedBox(width: 8),
               Expanded(
                 child: RichText(
                   text: TextSpan(
@@ -62,7 +62,7 @@ class MenuItemWidget10 extends StatelessWidget {
                           text: item.descriptionEn,
                           style: getFontC(state,
                               lineHeight: useLineHeight ? 1 : null)),
-                      WidgetSpan(child: SizedBox(width: 126)),
+                      WidgetSpan(child: SizedBox(width: 138)),
                       TextSpan(
                         text: item.options.first.tags.join(', '),
                         style: getFontD(state,

@@ -32,13 +32,27 @@ class PageMenu9 extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    SizedBox(height: 10,),
-                    SizedBox(height: 10,),
-                    SizedBox(height: 10,),
-                    SizedBox(height: 10,),
-                    SizedBox(height: 10,),
-                    SizedBox(height: 10,),
-                    SizedBox(height: 10,),
+                    SizedBox(
+                      height: 10,
+                    ),
+                    SizedBox(
+                      height: 10,
+                    ),
+                    SizedBox(
+                      height: 10,
+                    ),
+                    SizedBox(
+                      height: 10,
+                    ),
+                    SizedBox(
+                      height: 10,
+                    ),
+                    SizedBox(
+                      height: 10,
+                    ),
+                    SizedBox(
+                      height: 10,
+                    ),
                     Expanded(
                       child: ListView(
                         children: [
@@ -63,6 +77,10 @@ class PageMenu9 extends StatelessWidget {
                                       : MenuItemWidget10(
                                           item: menuItems_Page9[i])),
                             ),
+                            if (menuItems_Page9[i].title == 'Maki Rolls')
+                              SizedBox(height: 12),
+                            if (menuItems_Page9[i].title == 'Tempura Rolls')
+                              SizedBox(height: 12)
                           ],
                         ],
                       ),

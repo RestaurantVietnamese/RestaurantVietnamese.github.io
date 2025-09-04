@@ -51,7 +51,7 @@ class _PageMenu7State extends State<PageMenu7> {
             children: [
               PositionedImageChangeBackGround(
                 imageUrl: imageUrl,
-                heightImage: 400,
+                heightImage: 405,
               ),
               //
               //
@@ -115,6 +115,16 @@ class _PageMenu7State extends State<PageMenu7> {
                                               ),
                                             )),
                             ),
+                            // if (menuItems_Page7[i].id == '32')
+                            //  SizedBox(height: 2),
+                            // if (menuItems_Page7[i].id == '33')
+                            //  SizedBox(height: 2),
+                            // if (menuItems_Page7[i].id == '34')
+                            //  SizedBox(height: 2),
+                            // if (menuItems_Page7[i].id == '35')
+                            //  SizedBox(height: 2),
+                            if (menuItems_Page7[i].id == '37')
+                              SizedBox(height: 6),
                             if (menuItems_Page7[i].title == 'Salmon Bowl')
                               SizedBox(height: 45),
                           ],
@@ -128,29 +138,33 @@ class _PageMenu7State extends State<PageMenu7> {
               //
               //
               //
+              // Positioned(
+              //   top: 372,
+              //   left: -60,
+              //   child: Image.asset(
+              //     'assets/images/black_paint.png',
+              //     color: Colors.white,
+              //     height: 100,
+              //     width: 230,
+              //     colorBlendMode: BlendMode.srcIn,
+              //   ),
+              // ),
               Positioned(
-                top: 372,
+                top: 396,
                 left: -60,
-                child: Image.asset(
-                  'assets/images/black_paint.png',
-                  color: Colors.white,
-                  height: 100,
-                  width: 230,
-                  colorBlendMode: BlendMode.srcIn,
+                child: Container(
+                  width: 210,
+                  height: 40,
+                  child: Image.asset(
+                    'assets/images/black_paint.png',
+                    color: Colors.white,
+                    fit: BoxFit.fitWidth,
+                    colorBlendMode: BlendMode.srcIn,
+                  ),
                 ),
               ),
-              // Container(
-              //     width: 220,
-              //     height: 40,
-              //     child: Image.asset(
-              //       'assets/images/black_paint.png',
-              //       color: Colors.white,
-              //       fit: BoxFit.fitWidth,
-              //       colorBlendMode: BlendMode.srcIn,
-              //     ),
-              //   )
               Positioned(
-                top: 405,
+                top: 400,
                 left: 5,
                 child: Text(
                   'Vegan Main',

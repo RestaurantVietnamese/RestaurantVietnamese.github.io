@@ -41,7 +41,7 @@ final menuItems_Page4 = [
   MenuItem(
     id: "19",
     subText: '',
-    title: "Chopstey",
+    title: "Chopsuey",
     descriptionDe:
         "Reis mit Gemüse, Austernsoße, Knoblauch und Sojasoße. Auswahl mit:",
     descriptionEn:

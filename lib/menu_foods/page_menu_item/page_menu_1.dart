@@ -52,7 +52,7 @@ class _PageMenu1State extends State<PageMenu1> {
             children: [
               PositionedImageChangeBackGround(
                 imageUrl: imageUrl,
-                heightImage: 100,
+                heightImage: 106,
               ),
               Positioned(
                 top: 5,
@@ -72,7 +72,7 @@ class _PageMenu1State extends State<PageMenu1> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    SizedBox(height: 45),
+                    SizedBox(height: 42),
                     // Padding(
                     //   padding: const EdgeInsets.only(left: 0),
                     //   child: Text(
@@ -138,12 +138,12 @@ class _PageMenu1State extends State<PageMenu1> {
                                 ),
                               ),
                             ),
-                            if (item.id == '1') SizedBox(height: 5),
-                            if (item.id == '2') SizedBox(height: 5),
-                            if (item.id == '3') SizedBox(height: 5),
-                            if (item.id == '4') SizedBox(height: 5),
-                            if (item.id == '5') SizedBox(height: 20),
-                            // if (item.id == '6') SizedBox(height: 10),
+                            // if (item.id == '1') SizedBox(height: 5),
+                            // if (item.id == '2') SizedBox(height: 5),
+                            // if (item.id == '3') SizedBox(height: 5),
+                            // if (item.id == '4') SizedBox(height: 5),
+                            if (item.id == '5') SizedBox(height: 15),
+                            // if (item.id == '6') SizedBox(height: 5),
                           ],
                         );
                       }).toList(),

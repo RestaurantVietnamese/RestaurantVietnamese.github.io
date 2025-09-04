@@ -27,12 +27,12 @@ class PageMenu6 extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              // SizedBox(
-              //   height: 10,
-              // ),
-              // SizedBox(
-              //   height: 3,
-              // ),
+              SizedBox(
+                height: 10,
+              ),
+              SizedBox(
+                height: 6,
+              ),
               Expanded(
                 child: ListView(
                   children: [
@@ -68,6 +68,10 @@ class PageMenu6 extends StatelessWidget {
                                     ),
                         ),
                       ),
+                      // if (menuItems_Page6[i].id == '23') SizedBox(height: 6),
+                      // if (menuItems_Page6[i].id == '27') SizedBox(height: 6),
+                      // if (menuItems_Page6[i].id == '28') SizedBox(height: 6),
+                      // if (menuItems_Page6[i].id == '29') SizedBox(height: 6),
                     ],
                   ],
                 ),

@@ -115,12 +115,12 @@ class _PageMenu2State extends State<PageMenu2> {
                               ),
                             ),
                             // Chèn khoảng trống giữa id 11 và 12
-                            if (item.id == '7') const SizedBox(height: 8),
-                            if (item.id == '8') const SizedBox(height: 8),
-                            if (item.id == '9') const SizedBox(height: 8),
-                            if (item.id == '10') const SizedBox(height: 8),
-                            if (item.id == '11') const SizedBox(height: 40),
-                            if (item.id == '12') const SizedBox(height: 5),
+                            // if (item.id == '7') const SizedBox(height: 8),
+                            // if (item.id == '8') const SizedBox(height: 8),
+                            // if (item.id == '9') const SizedBox(height: 8),
+                            // if (item.id == '10') const SizedBox(height: 8),
+                            if (item.id == '11') const SizedBox(height: 43),
+                            // if (item.id == '12') const SizedBox(height: 5),
                             // if (item.id == '12') const SizedBox(height: 5),
                           ],
                         );

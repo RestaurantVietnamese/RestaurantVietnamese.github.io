@@ -33,7 +33,9 @@ class PageMenu8 extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    SizedBox(height: 15,),
+                    SizedBox(
+                      height: 15,
+                    ),
                     Expanded(
                       child: ListView(
                         children: [
@@ -54,7 +56,9 @@ class PageMenu8 extends StatelessWidget {
                                           menuItems_Page8[i].id == '41' ||
                                           menuItems_Page8[i].id == '42')
                                       ? MenuItemWidget7(
-                                          item: menuItems_Page8[i],usePadding: false,)
+                                          item: menuItems_Page8[i],
+                                          usePadding: false,
+                                        )
                                       : (menuItems_Page8[i].id == '43' ||
                                               menuItems_Page8[i].id == '44' ||
                                               menuItems_Page8[i].id == '45' ||
@@ -76,12 +80,12 @@ class PageMenu8 extends StatelessWidget {
                                   children: [
                                     Column(
                                       children: [
-                                        SizedBox(height: 10),
+                                        SizedBox(height: 6),
                                         Text(
                                           'Beilagen',
                                           style: getFont0(state),
                                         ),
-                                         SizedBox(height: 10),
+                                        SizedBox(height: 10),
                                       ],
                                     ),
                                   ],

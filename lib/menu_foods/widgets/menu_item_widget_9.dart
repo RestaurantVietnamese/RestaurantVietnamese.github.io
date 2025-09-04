@@ -21,7 +21,10 @@ class MenuItemWidget9 extends StatelessWidget {
     this.usePaddingPage6 = false,
   }) : super(key: key);
 
-  bool get isWhite => item.id == '31' || item.id == '37' || item.title== 'Veggie Bowl';
+  bool get isWhite =>
+      item.id == '31' || item.id == '37' || item.title == 'Veggie Bowl';
+  bool get useLineHeight =>
+      item.title == 'Veggie Bowl' || item.title == 'Salmon Bowl';
 
   @override
   Widget build(BuildContext context) {
@@ -44,6 +47,7 @@ class MenuItemWidget9 extends StatelessWidget {
                           color: isWhite ? Colors.white : null,
                           fontStyle: FontStyle.italic,
                           fontWeight: FontWeight.bold,
+                          height: useLineHeight ? 1.5 : null,
                         ),
                       ),
                       if (item.id != '')
@@ -57,6 +61,7 @@ class MenuItemWidget9 extends StatelessWidget {
                         style: getFontA(
                           state,
                           color: isWhite ? Colors.white : null,
+                          lineHeight: useLineHeight ? 1.5 : null,
                         ),
                       ),
                     ],
@@ -169,10 +174,10 @@ class MenuItemWidget9 extends StatelessWidget {
 
           // Mô tả tiếng Anh (in nghiêng)
           if (item.descriptionEn.isNotEmpty)
-          Text(
-            item.descriptionEn,
-            style: getFontC(state, color: isWhite ? Colors.white : null),
-          ),
+            Text(
+              item.descriptionEn,
+              style: getFontC(state, color: isWhite ? Colors.white : null),
+            ),
           if (usePadding) SizedBox(height: 10),
           if (usePaddingPage6) SizedBox(height: 6),
         ],
