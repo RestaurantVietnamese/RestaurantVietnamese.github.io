@@ -131,7 +131,7 @@ class MenuItemWidget9 extends StatelessWidget {
                     ),
                   ),
                   Positioned(
-                    left: 286,
+                    left: 279,
                     top: 0,
                     bottom: 0,
                     child: Text(
@@ -157,7 +157,7 @@ class MenuItemWidget9 extends StatelessWidget {
                               color: isWhite ? Colors.white : null),
                         ),
                         SizedBox(
-                          width: 62,
+                          width: 72,
                         ),
                         Text(
                           opt.prices2.isNotEmpty ? opt.prices2 : '',

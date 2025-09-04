@@ -105,7 +105,7 @@ class PageMenu8 extends StatelessWidget {
               Positioned(
                 bottom: 110,
                 right: -80,
-                child: Container(
+                child: SizedBox(
                   width: 210,
                   height: 40,
                   child: Image.asset(
