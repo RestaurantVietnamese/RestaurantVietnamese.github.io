@@ -36,6 +36,7 @@ final menuItems_Page8 = [
   MenuItem(
     id: "40",
     subText: '',
+    subIcon: true,
     title: "Vantastic Chopstey",
     descriptionDe: "Reis mit Gemüse, Austernsoße, Knoblauch und Sojasoße",
     descriptionEn: "Rice with vegetables, oyster sauce, garlic, and soy sauce",
@@ -57,6 +58,7 @@ final menuItems_Page8 = [
   MenuItem(
     id: "41",
     subText: '',
+    subIcon: true,
     title: "Vantastic Rotes That-Curry",
     descriptionDe:
         "Reis mit Gemüse in einer Curry Soße gekocht aus Zitronengras, Zitronenblättern, Großer Galgant, Kokosmilch, Chili",
@@ -86,6 +88,7 @@ final menuItems_Page8 = [
   MenuItem(
     id: "42",
     subText: '',
+    subIcon: true,
     title: "Vantastic Mango Curry",
     descriptionDe:
         "Reis mit Gemüse in einer Curry Soße gekocht aus Mango Püree, Currypaste, Kokosmilch",

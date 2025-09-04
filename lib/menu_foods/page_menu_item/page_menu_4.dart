@@ -19,7 +19,7 @@ class PageMenu4 extends StatelessWidget {
         child: Stack(
           children: [
             Container(
-              width: 455,
+              width: 450,
               height: 800,
               decoration: BoxDecoration(
                   color: Colors.transparent,
@@ -27,6 +27,7 @@ class PageMenu4 extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
+                  SizedBox(height: 10),
                   SizedBox(height: 10),
                   SizedBox(height: 10),
                   SizedBox(height: 10),
@@ -84,14 +85,14 @@ class PageMenu4 extends StatelessWidget {
                 top: 15,
                 left: 15,
                 child: Container(
-                  height: 760,
+                  height: 765,
                   width: 2,
                   decoration: BoxDecoration(
                     color: Colors.white,
                   ),
                 )),
             Positioned(
-                top: 775,
+                top: 780,
                 right: 15,
                 left: 15,
                 child: Container(
@@ -105,7 +106,7 @@ class PageMenu4 extends StatelessWidget {
                 top: 15,
                 right: 15,
                 child: Container(
-                  height: 760,
+                  height: 765,
                   width: 2,
                   decoration: BoxDecoration(
                     color: Colors.white,

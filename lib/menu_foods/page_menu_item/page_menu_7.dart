@@ -46,7 +46,7 @@ class _PageMenu7State extends State<PageMenu7> {
         maxScale: 3.0,
         child: FittedBox(
           fit: BoxFit.contain,
-          alignment: Alignment.center,
+          alignment: Alignment.topLeft,
           child: Stack(
             children: [
               PositionedImageChangeBackGround(
@@ -57,7 +57,7 @@ class _PageMenu7State extends State<PageMenu7> {
               //
               //
               Container(
-                width: 455,
+                width: 450,
                 height: 800,
                 decoration: BoxDecoration(
                     border: Border.all(color: Colors.grey, width: 0.1)),

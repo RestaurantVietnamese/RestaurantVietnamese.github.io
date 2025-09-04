@@ -51,11 +51,12 @@ class _PageMenu2State extends State<PageMenu2> {
           child: Stack(
             children: [
               PositionedImageChangeBackGround(
+
                 imageUrl: imageUrl,
                 heightImage: 215,
               ),
               Container(
-                width: 455,
+                width: 450,
                 height: 800,
                 decoration: BoxDecoration(
                     border: Border.all(color: Colors.grey, width: 0.1)),

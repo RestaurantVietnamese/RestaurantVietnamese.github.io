@@ -56,52 +56,64 @@ extension AppFontX on AppFont {
 TextStyle getFont0(FontState state,
     {FontWeight fontWeight = FontWeight.normal,
     Color? color,
-    FontStyle fontStyle = FontStyle.normal}) {
+    FontStyle fontStyle = FontStyle.normal,
+     double? lineHeight,
+    }) {
   return getFontByName(
     state.font0,
     fontSize: state.size0,
     color: color,
     fontWeight: fontWeight,
     fontStyle: fontStyle,
+    lineHeight: lineHeight,
   );
 }
 
 TextStyle getFontA(FontState state,
     {FontWeight fontWeight = FontWeight.w500,
     Color? color,
-    FontStyle fontStyle = FontStyle.italic}) {
+    FontStyle fontStyle = FontStyle.italic,
+     double? lineHeight,
+    }) {
   return getFontByName(
     state.fontA,
     fontSize: state.sizeA,
     color: color,
     fontWeight: fontWeight,
     fontStyle: fontStyle,
+    lineHeight: lineHeight,
   );
 }
 
 TextStyle getFontB(FontState state,
     {FontWeight fontWeight = FontWeight.w600,
     Color? color,
-    FontStyle fontStyle = FontStyle.normal}) {
+    FontStyle fontStyle = FontStyle.normal,
+     double? lineHeight,
+    }) {
   return getFontByName(
     state.fontB,
     fontSize: state.sizeB,
     color: color,
     fontWeight: fontWeight,
     fontStyle: fontStyle,
+    lineHeight: lineHeight,
   );
 }
 
 TextStyle getFontC(FontState state,
     {FontWeight fontWeight = FontWeight.w400,
     Color? color,
-    FontStyle fontStyle = FontStyle.italic}) {
+    FontStyle fontStyle = FontStyle.italic,
+     double? lineHeight,
+    }) {
   return getFontByName(
     state.fontC,
     fontSize: state.sizeC,
     color: color,
     fontWeight: fontWeight,
     fontStyle: fontStyle,
+    lineHeight: lineHeight,
 
   );
 }

@@ -19,7 +19,7 @@ class PageMenu6 extends StatelessWidget {
         fit: BoxFit.contain,
         alignment: Alignment.topLeft,
         child: Container(
-          width: 455,
+          width: 450,
           height: 800,
           padding: EdgeInsets.symmetric(horizontal: 20),
           decoration:

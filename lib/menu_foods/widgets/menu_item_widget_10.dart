@@ -16,6 +16,13 @@ class MenuItemWidget10 extends StatelessWidget {
     required this.item,
   }) : super(key: key);
 
+  bool get useLineHeight =>
+      item.id == '43' ||
+      item.id == '44' ||
+      item.id == '45' ||
+      item.id == '46' ||
+      item.id == '47';
+
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<FontCubit, FontState>(
@@ -35,19 +42,32 @@ class MenuItemWidget10 extends StatelessWidget {
                       TextSpan(
                         text: item.id,
                         style: TextStyle(
-                            fontSize: 10, fontWeight: FontWeight.w300),
+                            fontSize: 10,
+                            fontWeight: FontWeight.w300,
+                            height: useLineHeight ? 1 : null),
                       ),
-                      if (item.id != '') TextSpan(text: '. '),
+                      if (item.id != '')
+                        TextSpan(
+                            text: '. ',
+                            style: TextStyle(height: useLineHeight ? 1 : null)),
                       WidgetSpan(child: SizedBox(width: 17)),
                       TextSpan(
-                          text: item.descriptionDe, style: getFontB(state)),
-                      TextSpan(text: ' / ', style: getFontB(state)),
+                          text: item.descriptionDe,
+                          style: getFontB(state,
+                              lineHeight: useLineHeight ? 1 : null)),
                       TextSpan(
-                          text: item.descriptionEn, style: getFontC(state)),
+                          text: ' / ',
+                          style: getFontB(state,
+                              lineHeight: useLineHeight ? 1 : null)),
+                      TextSpan(
+                          text: item.descriptionEn,
+                          style: getFontC(state,
+                              lineHeight: useLineHeight ? 1 : null)),
                       WidgetSpan(child: SizedBox(width: 126)),
                       TextSpan(
                         text: item.options.first.tags.join(', '),
-                        style: getFontD(state),
+                        style: getFontD(state,
+                            lineHeight: useLineHeight ? 1 : null),
                       ),
                     ],
                   ),
@@ -55,7 +75,7 @@ class MenuItemWidget10 extends StatelessWidget {
               ),
               Text(
                 item.options.first.prices2,
-                style: getFontD(state),
+                style: getFontD(state, lineHeight: useLineHeight ? 1 : null),
               ),
             ],
           ),
