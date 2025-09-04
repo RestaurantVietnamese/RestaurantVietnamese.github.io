@@ -64,7 +64,7 @@ class _PageMenu7State extends State<PageMenu7> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    SizedBox(height: 10),
+                    // SizedBox(height: 10),
                     Expanded(
                       child: ListView(
                         children: [
@@ -116,7 +116,7 @@ class _PageMenu7State extends State<PageMenu7> {
                                             )),
                             ),
                             if (menuItems_Page7[i].title == 'Salmon Bowl')
-                              SizedBox(height: 55),
+                              SizedBox(height: 45),
                           ],
                         ],
                       ),

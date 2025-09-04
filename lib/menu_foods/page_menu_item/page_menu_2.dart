@@ -52,7 +52,7 @@ class _PageMenu2State extends State<PageMenu2> {
             children: [
               PositionedImageChangeBackGround(
                 imageUrl: imageUrl,
-                heightImage: 215,
+                heightImage: 220,
               ),
               Container(
                 width: 450,
@@ -62,12 +62,17 @@ class _PageMenu2State extends State<PageMenu2> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
+                    // SizedBox(height: 10),
+                    // SizedBox(height: 10),
+                    SizedBox(height: 2),
                     SizedBox(height: 10),
                     SizedBox(height: 10),
                     SizedBox(height: 10),
                     SizedBox(height: 10),
                     SizedBox(height: 10),
-                    SizedBox(height: 12),
+                    SizedBox(height: 10),
+                    // SizedBox(height: 10),
+                    // SizedBox(height: 10),
                     Column(
                       children: menuItems_Page2.map((item) {
                         Widget widgetItem;
@@ -110,7 +115,12 @@ class _PageMenu2State extends State<PageMenu2> {
                               ),
                             ),
                             // Chèn khoảng trống giữa id 11 và 12
-                            if (item.id == '11') const SizedBox(height: 29),
+                            if (item.id == '7') const SizedBox(height: 8),
+                            if (item.id == '8') const SizedBox(height: 8),
+                            if (item.id == '9') const SizedBox(height: 8),
+                            if (item.id == '10') const SizedBox(height: 8),
+                            if (item.id == '11') const SizedBox(height: 40),
+                            if (item.id == '12') const SizedBox(height: 5),
                             // if (item.id == '12') const SizedBox(height: 5),
                           ],
                         );

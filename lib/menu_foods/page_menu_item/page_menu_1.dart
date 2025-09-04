@@ -54,6 +54,14 @@ class _PageMenu1State extends State<PageMenu1> {
                 imageUrl: imageUrl,
                 heightImage: 100,
               ),
+              Positioned(
+                top: 5,
+                left: 15,
+                child: Text(
+                  'Supper',
+                  style: getFont0(state),
+                ),
+              ),
               Container(
                 width: 450,
                 height: 800,
@@ -64,30 +72,38 @@ class _PageMenu1State extends State<PageMenu1> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    SizedBox(height: 10),
-                    Padding(
-                      padding: const EdgeInsets.only(left: 0),
-                      child: Text(
-                        'Supper',
-                        style: getFont0(state),
-                      ),
-                    ),
+                    SizedBox(height: 45),
+                    // Padding(
+                    //   padding: const EdgeInsets.only(left: 0),
+                    //   child: Text(
+                    //     'Supper',
+                    //     style: getFont0(state),
+                    //   ),
+                    // ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.end,
-                      children: [
+                      children: const [
                         Text(
                           '300 ml',
-                          style: getFontB(state, fontWeight: FontWeight.w700),
+                          style: TextStyle(
+                              fontSize: 14, fontWeight: FontWeight.w700),
+                          // style: getFontB(
+                          //   state,
+                          //   fontWeight: FontWeight.w800,
+                          // ),
                         ),
-                        SizedBox(width: 30),
+                        SizedBox(width: 20),
                         Text(
                           '750 ml',
-                          style: getFontB(state, fontWeight: FontWeight.w700),
+                          style: TextStyle(
+                              fontSize: 14, fontWeight: FontWeight.w700),
+
+                          // style: getFontB(state, fontWeight: FontWeight.w800),
                         ),
                         SizedBox(width: 10),
                       ],
                     ),
-                    SizedBox(height: 5),
+                    // SizedBox(height: 5),
                     Column(
                       children: menuItems_Page1.map((item) {
                         Widget widgetItem;
@@ -122,8 +138,12 @@ class _PageMenu1State extends State<PageMenu1> {
                                 ),
                               ),
                             ),
-                            if (item.id == '5') SizedBox(height: 6),
-                            if (item.id == '6') SizedBox(height: 10),
+                            if (item.id == '1') SizedBox(height: 5),
+                            if (item.id == '2') SizedBox(height: 5),
+                            if (item.id == '3') SizedBox(height: 5),
+                            if (item.id == '4') SizedBox(height: 5),
+                            if (item.id == '5') SizedBox(height: 20),
+                            // if (item.id == '6') SizedBox(height: 10),
                           ],
                         );
                       }).toList(),

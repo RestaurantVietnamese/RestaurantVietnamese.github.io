@@ -27,12 +27,12 @@ class PageMenu6 extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              SizedBox(
-                height: 10,
-              ),
-              SizedBox(
-                height: 3,
-              ),
+              // SizedBox(
+              //   height: 10,
+              // ),
+              // SizedBox(
+              //   height: 3,
+              // ),
               Expanded(
                 child: ListView(
                   children: [

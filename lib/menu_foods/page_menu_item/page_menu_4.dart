@@ -27,8 +27,8 @@ class PageMenu4 extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  SizedBox(height: 10),
-                  SizedBox(height: 10),
+                  // SizedBox(height: 10),
+                  SizedBox(height: 8),
                   SizedBox(height: 10),
                   SizedBox(height: 10),
                   // SizedBox(height: 10),
