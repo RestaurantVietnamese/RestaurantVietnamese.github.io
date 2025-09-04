@@ -24,15 +24,15 @@ class _DataWidgetState extends State<DataWidget> {
 
   // Mapping màu cho từng page (0-based index)
   final List<Color> pageColors = [
-    // Colors.white, // Page 1
-    // Colors.black, // Page 2
-    // Colors.white, // Page 3
-    // Colors.black, // Page 4
-    // Colors.white, // Page 5
-    // Colors.black, // Page 6
-    // Colors.white, // Page 7
+    Colors.white, // Page 1
+    Colors.black.withOpacity(0.9), // Page 2
+    Colors.white, // Page 3
+    Colors.black.withOpacity(0.9), // Page 4
+    Colors.white, // Page 5
+    Colors.black.withOpacity(0.9), // Page 6
+    Colors.white, // Page 7
     Colors.white, // Page 8
-    Colors.black, // Page 9
+    Colors.black.withOpacity(0.9), // Page 9
   ];
 
   @override
@@ -51,13 +51,13 @@ class _DataWidgetState extends State<DataWidget> {
           });
         },
         children: const [
-          // PageMenu1(),
-          // PageMenu2(),
-          // PageMenu3(),
-          // PageMenu4(),
-          // PageMenu5(),
-          // PageMenu6(),
-          // PageMenu7(),
+          PageMenu1(),
+          PageMenu2(),
+          PageMenu3(),
+          PageMenu4(),
+          PageMenu5(),
+          PageMenu6(),
+          PageMenu7(),
           PageMenu8(),
           PageMenu9(),
         ],

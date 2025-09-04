@@ -13,6 +13,11 @@ class MenuItemWidget11 extends StatelessWidget {
 
   const MenuItemWidget11({Key? key, required this.item, this.usePadding = true})
       : super(key: key);
+
+  bool get isWhite =>
+      item.title == 'Maki Rolls' ||
+      item.title == 'California Rolls' ||
+      item.title == 'Tempura Rolls';
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<FontCubit, FontState>(
@@ -33,15 +38,24 @@ class MenuItemWidget11 extends StatelessWidget {
                           text: item.id,
                           style: TextStyle(
                             fontSize: 12,
+                            color: isWhite ? Colors.white : null,
                             fontStyle: FontStyle.italic,
                             fontWeight: FontWeight.bold,
                           ),
                         ),
                         TextSpan(
-                          text: '. ', // Add space between id and title
+                          text: '. ',
+                          style: TextStyle(
+                            color: isWhite ? Colors.white : null,
+                          ), // Add space between id and title
                         )
                       ],
-                      TextSpan(text: item.title, style: getFontA(state)),
+                      TextSpan(
+                          text: item.title,
+                          style: getFontA(
+                            state,
+                            color: isWhite ? Colors.white : null,
+                          )),
                     ],
                   ),
                 ),
@@ -49,7 +63,10 @@ class MenuItemWidget11 extends StatelessWidget {
               if (item.subText != '')
                 Text(
                   item.subText ?? '',
-                  style: getFontD(state),
+                  style: getFontD(
+                    state,
+                    color: isWhite ? Colors.white : null,
+                  ),
                   textAlign: TextAlign.right,
                 ),
             ],
@@ -70,34 +87,52 @@ class MenuItemWidget11 extends StatelessWidget {
                         Expanded(
                             flex: 14,
                             child: Text('${opt.code} ${opt.name}',
-                                style: getFontD(state)))
+                                style: getFontD(
+                                  state,
+                                  color: isWhite ? Colors.white : null,
+                                )))
                       ],
                       if (opt.code.startsWith('M')) ...[
                         Expanded(
                             flex: 2,
                             child: Text(
                               opt.code,
-                              style: getFontD(state),
+                              style: getFontD(
+                                state,
+                                color: isWhite ? Colors.white : null,
+                              ),
                             )),
 
                         // Column 2: Name
                         Expanded(
                             flex: 12,
-                            child: Text(opt.name, style: getFontD(state))),
+                            child: Text(opt.name,
+                                style: getFontD(
+                                  state,
+                                  color: isWhite ? Colors.white : null,
+                                ))),
                       ],
 
                       // Column 3: Tags
                       Expanded(
                         flex: 2,
                         child: opt.tags.isNotEmpty
-                            ? Text(opt.tags.join(", "), style: getFontD(state))
+                            ? Text(opt.tags.join(", "),
+                                style: getFontD(
+                                  state,
+                                  color: isWhite ? Colors.white : null,
+                                ))
                             : Container(),
                       ),
 
                       Expanded(
                         flex: 2,
                         child: Text(opt.prices2,
-                            textAlign: TextAlign.right, style: getFontD(state)),
+                            textAlign: TextAlign.right,
+                            style: getFontD(
+                              state,
+                              color: isWhite ? Colors.white : null,
+                            )),
                       ),
                     ],
                   ),
@@ -112,12 +147,18 @@ class MenuItemWidget11 extends StatelessWidget {
                             children: [
                               Text(
                                 opt.descriptionDe,
-                                style: getFontB(state),
+                                style: getFontB(
+                                  state,
+                                  color: isWhite ? Colors.white : null,
+                                ),
                               ),
                               Text(' / '),
                               Text(
                                 opt.descriptionEn,
-                                style: getFontC(state),
+                                style: getFontC(
+                                  state,
+                                  color: isWhite ? Colors.white : null,
+                                ),
                               ),
                             ],
                           )
@@ -126,11 +167,17 @@ class MenuItemWidget11 extends StatelessWidget {
                             children: [
                               Text(
                                 opt.descriptionDe,
-                                style: getFontB(state),
+                                style: getFontB(
+                                  state,
+                                  color: isWhite ? Colors.white : null,
+                                ),
                               ),
                               Text(
                                 opt.descriptionEn,
-                                style: getFontC(state),
+                                style: getFontC(
+                                  state,
+                                  color: isWhite ? Colors.white : null,
+                                ),
                               ),
                             ],
                           ),

@@ -51,7 +51,6 @@ class _PageMenu2State extends State<PageMenu2> {
           child: Stack(
             children: [
               PositionedImageChangeBackGround(
-
                 imageUrl: imageUrl,
                 heightImage: 215,
               ),
@@ -186,6 +185,9 @@ class _PageMenu2State extends State<PageMenu2> {
                   style: getFont0(state),
                 ),
               ),
+              //
+              //
+              //
               //
             ],
           ),
