@@ -26,6 +26,7 @@ class _DataWidgetState extends State<DataWidget> {
 
   // Mapping màu cho từng page (0-based index)
   final List<Color> pageColors = [
+    aBg, // Page 0
     aBg, // Page 1
     bBg, // Page 2
     aBg, // Page 3
