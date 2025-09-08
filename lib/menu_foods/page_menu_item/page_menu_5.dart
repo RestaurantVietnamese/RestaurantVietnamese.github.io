@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:puzzel/menu_foods/data/menu_data_page_5.dart';
+import 'package:puzzel/menu_foods/edit_data/edit_prices.dart';
 import 'package:puzzel/menu_foods/widgets/menu_item_widget_7.dart';
 import 'package:puzzel/widget/change_image_background/PositionedImageChangeBackGround.dart';
 import 'package:puzzel/widget/change_image_background/show_dialog_change_image.dart';
@@ -74,7 +75,15 @@ class _PageMenu5State extends State<PageMenu5> {
                                         _pickImage();
                                       }
                                     },
-                                    child: MenuItemWidget7(item: item)),
+                                    child: MenuItemWidget7(
+                                      item: item,
+                                      onEditPrice: (option, isPrice1) =>
+                                          editPrice(
+                                              context: context,
+                                              option: option,
+                                              isPrice1: isPrice1,
+                                              setState: setState),
+                                    )),
                               ))
                           .toList(),
                     ),

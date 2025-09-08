@@ -3,15 +3,21 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:puzzel/menu_foods/data/menu_data_page_3.dart';
+import 'package:puzzel/menu_foods/edit_data/edit_prices.dart';
 import 'package:puzzel/menu_foods/widgets/menu_item_widget_6.dart';
 import 'package:puzzel/menu_foods/widgets/menu_item_widget_7.dart';
 import 'package:puzzel/widget/fonts/bloc/font_cubit.dart';
 import 'package:puzzel/widget/fonts/bloc/font_state.dart';
 import 'package:puzzel/widget/fonts/helper_fonts.dart';
 
-class PageMenu3 extends StatelessWidget {
+class PageMenu3 extends StatefulWidget {
   const PageMenu3({super.key});
 
+  @override
+  State<PageMenu3> createState() => _PageMenu3State();
+}
+
+class _PageMenu3State extends State<PageMenu3> {
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<FontCubit, FontState>(
@@ -35,8 +41,23 @@ class PageMenu3 extends StatelessWidget {
                       ),
                       padding: const EdgeInsets.symmetric(horizontal: 30),
                       child: (menuItems_Page3[i].id == '15')
-                          ? MenuItemWidget6(item: menuItems_Page3[i])
-                          : MenuItemWidget7(item: menuItems_Page3[i]),
+                          ? MenuItemWidget6(
+                              item: menuItems_Page3[i],
+                              onEditPrice: (option, isPrice1) => editPrice(
+                                context: context,
+                                option: option,
+                                isPrice1: isPrice1,
+                                setState: setState,
+                              ),
+                            )
+                          : MenuItemWidget7(
+                              item: menuItems_Page3[i],
+                              onEditPrice: (option, isPrice1) => editPrice(
+                                    context: context,
+                                    option: option,
+                                    isPrice1: isPrice1,
+                                    setState: setState,
+                                  )),
                     ),
                   ),
 

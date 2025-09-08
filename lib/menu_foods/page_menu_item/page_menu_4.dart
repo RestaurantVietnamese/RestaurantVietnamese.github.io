@@ -2,11 +2,17 @@
 
 import 'package:flutter/material.dart';
 import 'package:puzzel/menu_foods/data/menu_data_page_4.dart';
+import 'package:puzzel/menu_foods/edit_data/edit_prices.dart';
 import 'package:puzzel/menu_foods/widgets/menu_item_widget_7.dart';
 
-class PageMenu4 extends StatelessWidget {
+class PageMenu4 extends StatefulWidget {
   const PageMenu4({super.key});
 
+  @override
+  State<PageMenu4> createState() => _PageMenu4State();
+}
+
+class _PageMenu4State extends State<PageMenu4> {
   @override
   Widget build(BuildContext context) {
     return InteractiveViewer(
@@ -38,7 +44,14 @@ class PageMenu4 extends StatelessWidget {
                       children: menuItems_Page4.map((item) {
                         Widget widgetItem;
 
-                        widgetItem = MenuItemWidget7(item: item);
+                        widgetItem = MenuItemWidget7(
+                            item: item,
+                            onEditPrice: (option, isPrice1) => editPrice(
+                                  context: context,
+                                  option: option,
+                                  isPrice1: isPrice1,
+                                  setState: setState,
+                                ));
 
                         return Column(
                           children: [

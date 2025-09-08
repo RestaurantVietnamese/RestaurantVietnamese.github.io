@@ -1,4 +1,3 @@
-import 'package:flutter/material.dart';
 
 class MenuOption {
   final String code; // a, b, c
@@ -6,8 +5,8 @@ class MenuOption {
   final String descriptionDe;
   final String descriptionEn;
   final List<String> tags; // A, B, F
-  final String prices1;
-  final String prices2;
+   String prices1;
+   String prices2;
 
   MenuOption({
     required this.code,
@@ -15,14 +14,21 @@ class MenuOption {
     this.descriptionDe = '',
     this.descriptionEn = '',
     required this.tags,
-     this.prices1='',
+    this.prices1 = '',
     required this.prices2,
   });
+  MenuOption copy() => MenuOption(
+        code: code,
+        name: name,
+        tags: List.from(tags),
+        prices1: prices1,
+        prices2: prices2,
+      );
 }
 
 class MenuItem {
   final String id;
-   final String? subText;
+  final String? subText;
   final bool? subIcon;
   final String title;
   final String descriptionDe;
@@ -38,11 +44,20 @@ class MenuItem {
     required this.descriptionEn,
     required this.options,
   });
+  MenuItem copy() => MenuItem(
+        id: id,
+        title: title,
+        descriptionDe: descriptionDe,
+        descriptionEn: descriptionEn,
+        subText: subText,
+        subIcon: subIcon,
+        options: options.map((e) => e.copy()).toList(),
+      );
 }
+
 class MenuSection {
   final String title;
   final List<MenuItem> items;
 
   MenuSection({required this.title, required this.items});
 }
-

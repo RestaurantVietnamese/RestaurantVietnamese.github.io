@@ -3,6 +3,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:puzzel/menu_foods/data/menu_data_page_1.dart';
+import 'package:puzzel/menu_foods/edit_data/edit_prices.dart';
+import 'package:puzzel/menu_foods/models/menu_item.dart';
 import 'package:puzzel/menu_foods/widgets/menu_item_widget_1.dart';
 import 'package:puzzel/menu_foods/widgets/menu_item_widget_2.dart';
 import 'package:puzzel/widget/change_image_background/PositionedImageChangeBackGround.dart';
@@ -37,6 +39,8 @@ class _PageMenu1State extends State<PageMenu1> {
       });
     }
   }
+
+  // 👇 Thêm hàm này để sửa giá
 
   @override
   Widget build(BuildContext context) {
@@ -122,9 +126,23 @@ class _PageMenu1State extends State<PageMenu1> {
                         if (item.id == '3' || item.id == '6') {
                           widgetItem = MenuItemWidget2(
                             item: item,
+                            onEditPrice: (option, isPrice1) => editPrice(
+                              context: context,
+                              option: option,
+                              isPrice1: isPrice1,
+                              setState: setState,
+                            ),
                           );
                         } else {
-                          widgetItem = MenuItemWidget(item: item);
+                          widgetItem = MenuItemWidget(
+                            item: item,
+                            onEditPrice: (option, isPrice1) => editPrice(
+                              context: context,
+                              option: option,
+                              isPrice1: isPrice1,
+                              setState: setState,
+                            ),
+                          );
                         }
 
                         return Column(

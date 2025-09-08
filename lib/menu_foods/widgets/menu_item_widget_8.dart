@@ -11,12 +11,14 @@ class MenuItemWidget8 extends StatelessWidget {
   final MenuItem item;
   final bool usePadding;
   final bool usePaddingPage6;
+  final Function(MenuOption, bool)? onEditPrice;
 
   const MenuItemWidget8(
       {Key? key,
       required this.item,
       this.usePadding = true,
-      this.usePaddingPage6 = false})
+      this.usePaddingPage6 = false,
+      this.onEditPrice})
       : super(key: key);
 
   bool get isWhite => item.id == '30';
@@ -127,11 +129,16 @@ class MenuItemWidget8 extends StatelessWidget {
                       SizedBox(
                         width: 20,
                       ),
-                      Text(
-                        opt.prices2.isNotEmpty ? opt.prices2 : '',
-                        textAlign: TextAlign.right,
-                        style: getFontD(state,
-                            color: isWhite ? Colors.white : Colors.black),
+                      GestureDetector(
+                        onTap: () {
+                          onEditPrice?.call(opt, false);
+                        },
+                        child: Text(
+                          opt.prices2.isNotEmpty ? opt.prices2 : '',
+                          textAlign: TextAlign.right,
+                          style: getFontD(state,
+                              color: isWhite ? Colors.white : Colors.black),
+                        ),
                       ),
                     ],
                   ),

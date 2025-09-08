@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:puzzel/menu_foods/data/menu_data_page_2.dart';
+import 'package:puzzel/menu_foods/edit_data/edit_prices.dart';
 import 'package:puzzel/menu_foods/widgets/menu_item_widget_1.dart';
 import 'package:puzzel/menu_foods/widgets/menu_item_widget_3.dart';
 import 'package:puzzel/menu_foods/widgets/menu_item_widget_4.dart';
@@ -82,13 +83,43 @@ class _PageMenu2State extends State<PageMenu2> {
                             item.id == '13') {
                           widgetItem = MenuItemWidget3(
                             item: item,
+                            onEditPrice: (option, isPrice1) => editPrice(
+                              context: context,
+                              option: option,
+                              isPrice1: isPrice1,
+                              setState: setState,
+                            ),
                           );
                         } else if (item.id == '8') {
-                          widgetItem = MenuItemWidget4(item: item);
+                          widgetItem = MenuItemWidget4(
+                            item: item,
+                            onEditPrice: (option, isPrice1) => editPrice(
+                              context: context,
+                              option: option,
+                              isPrice1: isPrice1,
+                              setState: setState,
+                            ),
+                          );
                         } else if (item.id == '9' || item.id == '10') {
-                          widgetItem = MenuItemWidget5(item: item);
+                          widgetItem = MenuItemWidget5(
+                            item: item,
+                            onEditPrice: (option, isPrice1) => editPrice(
+                              context: context,
+                              option: option,
+                              isPrice1: isPrice1,
+                              setState: setState,
+                            ),
+                          );
                         } else {
-                          widgetItem = MenuItemWidget(item: item);
+                          widgetItem = MenuItemWidget(
+                            item: item,
+                            onEditPrice: (option, isPrice1) => editPrice(
+                              context: context,
+                              option: option,
+                              isPrice1: isPrice1,
+                              setState: setState,
+                            ),
+                          );
                         }
 
                         return Column(

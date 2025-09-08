@@ -12,14 +12,16 @@ class MenuItemWidget9 extends StatelessWidget {
   final bool usePadding;
   final bool menuPage7;
   final bool usePaddingPage6;
+  final void Function(MenuOption, bool)? onEditPrice;
 
-  const MenuItemWidget9({
-    Key? key,
-    required this.item,
-    this.usePadding = true,
-    this.menuPage7 = false,
-    this.usePaddingPage6 = false,
-  }) : super(key: key);
+  const MenuItemWidget9(
+      {Key? key,
+      required this.item,
+      this.usePadding = true,
+      this.menuPage7 = false,
+      this.usePaddingPage6 = false,
+      this.onEditPrice})
+      : super(key: key);
 
   bool get isWhite =>
       item.id == '31' || item.id == '37' || item.title == 'Veggie Bowl';
@@ -123,11 +125,14 @@ class MenuItemWidget9 extends StatelessWidget {
                     right: 0,
                     top: 0,
                     bottom: 0,
-                    child: Text(
-                      opt.prices2.isNotEmpty ? opt.prices2 : '',
-                      textAlign: TextAlign.right,
-                      style:
-                          getFontD(state, color: isWhite ? Colors.white : null),
+                    child: GestureDetector(
+                      onTap: () => onEditPrice?.call(opt, false),
+                      child: Text(
+                        opt.prices2.isNotEmpty ? opt.prices2 : '',
+                        textAlign: TextAlign.right,
+                        style: getFontD(state,
+                            color: isWhite ? Colors.white : null),
+                      ),
                     ),
                   ),
                   Positioned(
@@ -159,11 +164,14 @@ class MenuItemWidget9 extends StatelessWidget {
                         SizedBox(
                           width: 72,
                         ),
-                        Text(
-                          opt.prices2.isNotEmpty ? opt.prices2 : '',
-                          textAlign: TextAlign.right,
-                          style: getFontD(state,
-                              color: isWhite ? Colors.white : null),
+                        GestureDetector(
+                          onTap: () => onEditPrice?.call(opt, false),
+                          child: Text(
+                            opt.prices2.isNotEmpty ? opt.prices2 : '',
+                            textAlign: TextAlign.right,
+                            style: getFontD(state,
+                                color: isWhite ? Colors.white : null),
+                          ),
                         ),
                       ],
                     ),

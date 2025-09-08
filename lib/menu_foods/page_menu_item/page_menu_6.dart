@@ -2,13 +2,19 @@
 
 import 'package:flutter/material.dart';
 import 'package:puzzel/menu_foods/data/menu_data_page_6.dart';
+import 'package:puzzel/menu_foods/edit_data/edit_prices.dart';
 import 'package:puzzel/menu_foods/widgets/menu_item_widget_7.dart';
 import 'package:puzzel/menu_foods/widgets/menu_item_widget_8.dart';
 import 'package:puzzel/menu_foods/widgets/menu_item_widget_9.dart';
 
-class PageMenu6 extends StatelessWidget {
+class PageMenu6 extends StatefulWidget {
   const PageMenu6({super.key});
 
+  @override
+  State<PageMenu6> createState() => _PageMenu6State();
+}
+
+class _PageMenu6State extends State<PageMenu6> {
   @override
   Widget build(BuildContext context) {
     return InteractiveViewer(
@@ -53,18 +59,35 @@ class PageMenu6 extends StatelessWidget {
                                   item: menuItems_Page6[i],
                                   usePadding: false,
                                   usePaddingPage6: true,
+                                  onEditPrice: (option, isPrice1) => editPrice(
+                                      context: context,
+                                      option: option,
+                                      isPrice1: isPrice1,
+                                      setState: setState),
                                 )
                               : (menuItems_Page6[i].id == '31')
                                   ? MenuItemWidget9(
                                       item: menuItems_Page6[i],
                                       usePadding: false,
                                       usePaddingPage6: false,
+                                      onEditPrice: (option, isPrice1) =>
+                                          editPrice(
+                                              context: context,
+                                              option: option,
+                                              isPrice1: isPrice1,
+                                              setState: setState),
                                     )
                                   : MenuItemWidget7(
                                       item: menuItems_Page6[i],
                                       usePadding: false,
                                       useLineHeight: false,
                                       usePaddingPage6: true,
+                                      onEditPrice: (option, isPrice1) =>
+                                          editPrice(
+                                              context: context,
+                                              option: option,
+                                              isPrice1: isPrice1,
+                                              setState: setState),
                                     ),
                         ),
                       ),

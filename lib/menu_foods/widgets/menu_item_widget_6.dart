@@ -9,8 +9,10 @@ import '../models/menu_item.dart';
 
 class MenuItemWidget6 extends StatelessWidget {
   final MenuItem item;
+  final void Function(MenuOption option, bool isPrice1)? onEditPrice;
 
-  const MenuItemWidget6({Key? key, required this.item}) : super(key: key);
+  const MenuItemWidget6({Key? key, required this.item, this.onEditPrice})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -44,10 +46,13 @@ class MenuItemWidget6 extends StatelessWidget {
                 ),
               ),
               if (item.options.isNotEmpty && item.options.first.prices2 != '')
-                Text(
-                  item.options.first.prices2,
-                  style: getFontD(state),
-                  textAlign: TextAlign.right,
+                GestureDetector(
+                  onTap: () => onEditPrice?.call(item.options.first, false),
+                  child: Text(
+                    item.options.first.prices2,
+                    style: getFontD(state),
+                    textAlign: TextAlign.right,
+                  ),
                 ),
             ],
           ),

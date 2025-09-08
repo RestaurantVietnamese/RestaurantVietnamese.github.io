@@ -3,15 +3,21 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:puzzel/menu_foods/data/menu_data_page_9.dart';
+import 'package:puzzel/menu_foods/edit_data/edit_prices.dart';
 import 'package:puzzel/menu_foods/widgets/menu_item_widget_10.dart';
 import 'package:puzzel/menu_foods/widgets/menu_item_widget_11.dart';
 import 'package:puzzel/widget/fonts/bloc/font_cubit.dart';
 import 'package:puzzel/widget/fonts/bloc/font_state.dart';
 import 'package:puzzel/widget/fonts/helper_fonts.dart';
 
-class PageMenu9 extends StatelessWidget {
+class PageMenu9 extends StatefulWidget {
   const PageMenu9({super.key});
 
+  @override
+  State<PageMenu9> createState() => _PageMenu9State();
+}
+
+class _PageMenu9State extends State<PageMenu9> {
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<FontCubit, FontState>(
@@ -73,9 +79,24 @@ class PageMenu9 extends StatelessWidget {
                                       ? MenuItemWidget11(
                                           item: menuItems_Page9[i],
                                           usePadding: true,
+                                          onEditPrice: (option, isPrice1) =>
+                                              editPrice(
+                                            context: context,
+                                            option: option,
+                                            isPrice1: isPrice1,
+                                            setState: setState,
+                                          ),
                                         )
                                       : MenuItemWidget10(
-                                          item: menuItems_Page9[i])),
+                                          item: menuItems_Page9[i],
+                                          onEditPrice: (option, isPrice1) =>
+                                              editPrice(
+                                            context: context,
+                                            option: option,
+                                            isPrice1: isPrice1,
+                                            setState: setState,
+                                          ),
+                                        )),
                             ),
                             if (menuItems_Page9[i].title == 'Maki Rolls')
                               SizedBox(height: 12),

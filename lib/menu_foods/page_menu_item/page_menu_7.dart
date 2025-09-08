@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:puzzel/menu_foods/data/menu_data_page_7.dart';
+import 'package:puzzel/menu_foods/edit_data/edit_prices.dart';
 import 'package:puzzel/menu_foods/widgets/menu_item_widget_7.dart';
 import 'package:puzzel/menu_foods/widgets/menu_item_widget_8.dart';
 import 'package:puzzel/menu_foods/widgets/menu_item_widget_9.dart';
@@ -85,6 +86,12 @@ class _PageMenu7State extends State<PageMenu7> {
                                       ? MenuItemWidget8(
                                           item: menuItems_Page7[i],
                                           usePadding: false,
+                                          onEditPrice: (option, isPrice1) =>
+                                              editPrice(
+                                                  context: context,
+                                                  option: option,
+                                                  isPrice1: isPrice1,
+                                                  setState: setState),
                                         )
                                       : (menuItems_Page7[i].id == '38')
                                           ? GestureDetector(
@@ -97,6 +104,13 @@ class _PageMenu7State extends State<PageMenu7> {
                                               child: MenuItemWidget7(
                                                 item: menuItems_Page7[i],
                                                 useLineHeight: false,
+                                                onEditPrice:
+                                                    (option, isPrice1) =>
+                                                        editPrice(
+                                                            context: context,
+                                                            option: option,
+                                                            isPrice1: isPrice1,
+                                                            setState: setState),
                                               ),
                                             )
                                           : GestureDetector(
@@ -112,6 +126,13 @@ class _PageMenu7State extends State<PageMenu7> {
                                                 item: menuItems_Page7[i],
                                                 usePadding: false,
                                                 menuPage7: true,
+                                                onEditPrice:
+                                                    (option, isPrice1) =>
+                                                        editPrice(
+                                                            context: context,
+                                                            option: option,
+                                                            isPrice1: isPrice1,
+                                                            setState: setState),
                                               ),
                                             )),
                             ),

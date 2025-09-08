@@ -9,10 +9,12 @@ import '../models/menu_item.dart';
 
 class MenuItemWidget3 extends StatelessWidget {
   final MenuItem item;
+  final void Function(MenuOption option, bool isPrice1)? onEditPrice;
 
   const MenuItemWidget3({
     Key? key,
     required this.item,
+    this.onEditPrice,
   }) : super(key: key);
 
   bool isWhite() {
@@ -98,11 +100,14 @@ class MenuItemWidget3 extends StatelessWidget {
                 // Cột 4: Giá 750 (flex: 2)
                 Expanded(
                   flex: 2,
-                  child: Text(
-                    opt.prices2.isNotEmpty ? opt.prices2 : '',
-                    textAlign: TextAlign.right,
-                    style: getFontD(state,
-                        color: isWhite() ? Colors.white : Colors.black),
+                  child: GestureDetector(
+                    onTap: () => onEditPrice?.call(opt, false),
+                    child: Text(
+                      opt.prices2.isNotEmpty ? opt.prices2 : '',
+                      textAlign: TextAlign.right,
+                      style: getFontD(state,
+                          color: isWhite() ? Colors.white : Colors.black),
+                    ),
                   ),
                 ),
               ],

@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:puzzel/menu_foods/data/menu_data_page_8.dart';
+import 'package:puzzel/menu_foods/edit_data/edit_prices.dart';
 import 'package:puzzel/menu_foods/widgets/menu_item_widget_10.dart';
 import 'package:puzzel/menu_foods/widgets/menu_item_widget_7.dart';
 import 'package:puzzel/menu_foods/widgets/menu_item_widget_9.dart';
@@ -10,9 +11,14 @@ import 'package:puzzel/widget/fonts/bloc/font_cubit.dart';
 import 'package:puzzel/widget/fonts/bloc/font_state.dart';
 import 'package:puzzel/widget/fonts/helper_fonts.dart';
 
-class PageMenu8 extends StatelessWidget {
+class PageMenu8 extends StatefulWidget {
   const PageMenu8({super.key});
 
+  @override
+  State<PageMenu8> createState() => _PageMenu8State();
+}
+
+class _PageMenu8State extends State<PageMenu8> {
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<FontCubit, FontState>(
@@ -58,6 +64,12 @@ class PageMenu8 extends StatelessWidget {
                                       ? MenuItemWidget7(
                                           item: menuItems_Page8[i],
                                           usePadding: false,
+                                          onEditPrice: (option, isPrice1) =>
+                                              editPrice(
+                                                  context: context,
+                                                  option: option,
+                                                  isPrice1: isPrice1,
+                                                  setState: setState),
                                         )
                                       : (menuItems_Page8[i].id == '43' ||
                                               menuItems_Page8[i].id == '44' ||
@@ -65,33 +77,48 @@ class PageMenu8 extends StatelessWidget {
                                               menuItems_Page8[i].id == '46' ||
                                               menuItems_Page8[i].id == '47')
                                           ? MenuItemWidget10(
-                                              item: menuItems_Page8[i])
+                                              item: menuItems_Page8[i],
+                                              onEditPrice: (option, isPrice1) =>
+                                                  editPrice(
+                                                      context: context,
+                                                      option: option,
+                                                      isPrice1: isPrice1,
+                                                      setState: setState),
+                                            )
                                           : MenuItemWidget9(
                                               item: menuItems_Page8[i],
                                               usePadding: false,
                                               menuPage7: true,
+                                              onEditPrice: (option, isPrice1) =>
+                                                  editPrice(
+                                                      context: context,
+                                                      option: option,
+                                                      isPrice1: isPrice1,
+                                                      setState: setState),
                                             )),
                             ),
                             if (menuItems_Page8[i].id == '42')
-                            SizedBox(height: 50,)
-                              // Padding(
-                              //   padding: const EdgeInsets.only(right: 15),
-                              //   child: Row(
-                              //     mainAxisAlignment: MainAxisAlignment.end,
-                              //     children: [
-                              //       Column(
-                              //         children: [
-                              //           SizedBox(height: 6),
-                              //           Text(
-                              //             'Beilagen',
-                              //             style: getFont0(state),
-                              //           ),
-                              //           SizedBox(height: 10),
-                              //         ],
-                              //       ),
-                              //     ],
-                              //   ),
-                              // ),
+                              SizedBox(
+                                height: 50,
+                              )
+                            // Padding(
+                            //   padding: const EdgeInsets.only(right: 15),
+                            //   child: Row(
+                            //     mainAxisAlignment: MainAxisAlignment.end,
+                            //     children: [
+                            //       Column(
+                            //         children: [
+                            //           SizedBox(height: 6),
+                            //           Text(
+                            //             'Beilagen',
+                            //             style: getFont0(state),
+                            //           ),
+                            //           SizedBox(height: 10),
+                            //         ],
+                            //       ),
+                            //     ],
+                            //   ),
+                            // ),
                           ],
                         ],
                       ),

@@ -9,11 +9,10 @@ import '../models/menu_item.dart';
 
 class MenuItemWidget10 extends StatelessWidget {
   final MenuItem item;
+  final void Function(MenuOption, bool)? onEditPrice;
 
-  const MenuItemWidget10({
-    Key? key,
-    required this.item,
-  }) : super(key: key);
+  const MenuItemWidget10({Key? key, required this.item, this.onEditPrice})
+      : super(key: key);
 
   bool get useLineHeight =>
       item.id == '43' ||
@@ -72,9 +71,12 @@ class MenuItemWidget10 extends StatelessWidget {
                   ),
                 ),
               ),
-              Text(
-                item.options.first.prices2,
-                style: getFontD(state, lineHeight: useLineHeight ? 1 : null),
+              GestureDetector(
+                onTap: () => onEditPrice?.call(item.options.first, false),
+                child: Text(
+                  item.options.first.prices2,
+                  style: getFontD(state, lineHeight: useLineHeight ? 1 : null),
+                ),
               ),
             ],
           ),

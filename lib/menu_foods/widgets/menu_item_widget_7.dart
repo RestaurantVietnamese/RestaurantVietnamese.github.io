@@ -1,5 +1,6 @@
 // ignore_for_file: prefer_const_constructors
 
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:puzzel/widget/fonts/bloc/font_cubit.dart';
@@ -12,13 +13,16 @@ class MenuItemWidget7 extends StatelessWidget {
   final bool usePadding;
   final bool useLineHeight;
   final bool usePaddingPage6;
+  final Function(MenuOption, bool)? onEditPrice;
 
   const MenuItemWidget7(
       {Key? key,
       required this.item,
       this.usePadding = true,
       this.useLineHeight = true,
-      this.usePaddingPage6 = false})
+      this.usePaddingPage6 = false,
+      this.onEditPrice
+      })
       : super(key: key);
 
   bool get isWhite =>
@@ -134,21 +138,27 @@ class MenuItemWidget7 extends StatelessWidget {
                   // Column 4: prices1
                   Expanded(
                     flex: 2,
-                    child: Text(opt.prices1,
-                        textAlign: TextAlign.left,
-                        style: getFontD(state,
-                            color: isWhite ? Colors.white : null,
-                            lineHeight: useLineHeight ? null : 1.2)),
+                    child: GestureDetector(
+                      onTap: () => onEditPrice?.call(opt, true),
+                      child: Text(opt.prices1,
+                          textAlign: TextAlign.left,
+                          style: getFontD(state,
+                              color: isWhite ? Colors.white : null,
+                              lineHeight: useLineHeight ? null : 1.2)),
+                    ),
                   ),
 
                   // Column 5: prices2
                   Expanded(
                     flex: 2,
-                    child: Text(opt.prices2,
-                        textAlign: TextAlign.right,
-                        style: getFontD(state,
-                            color: isWhite ? Colors.white : null,
-                            lineHeight: useLineHeight ? null : 1.2)),
+                    child: GestureDetector(
+                      onTap: () => onEditPrice?.call(opt,false),
+                      child: Text(opt.prices2,
+                          textAlign: TextAlign.right,
+                          style: getFontD(state,
+                              color: isWhite ? Colors.white : null,
+                              lineHeight: useLineHeight ? null : 1.2)),
+                    ),
                   ),
                 ],
               );
