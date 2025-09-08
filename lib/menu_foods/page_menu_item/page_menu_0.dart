@@ -70,9 +70,15 @@ class _PageMenu0State extends State<PageMenu0> {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text(
-                        'Sophienstraße 27-29, 76530 Baden-Baden',
-                        style: getTextStyleNormal(),
+                      Padding(
+                        padding: const EdgeInsets.only(right: 5),
+                        child: Text(
+                          'Sophienstraße 27-29, 76530 Baden-Baden',
+                          style: getTextStyleNormal(size: 13),
+                        ),
+                      ),
+                      SizedBox(
+                        height: 5,
                       ),
                       Text(
                         'Mo: Ruhetag',
