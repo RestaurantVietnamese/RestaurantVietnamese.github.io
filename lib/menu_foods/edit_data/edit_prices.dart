@@ -1,6 +1,7 @@
 // Global function to edit price that can be used across the app
 import 'package:puzzel/menu_foods/models/menu_item.dart';
 import 'package:flutter/material.dart';
+import 'package:puzzel/widget/input_text.dart';
 
 Future<void> editPrice({
   required BuildContext context,
@@ -15,12 +16,17 @@ Future<void> editPrice({
   final result = await showDialog<String>(
     context: context,
     builder: (_) => AlertDialog(
-      title: Text("Chỉnh sửa giá"),
-      content: TextField(
+      title: Center(child: Text("Chỉnh sửa giá")),
+      content: InputText(
+        hintText: 'Nhập nội dung',
         controller: controller,
-        keyboardType: TextInputType.number,
-        decoration: InputDecoration(hintText: "Nhập giá mới"),
+        textInputType: TextInputType.number,
       ),
+      // TextField(
+      //   controller: controller,
+      //   keyboardType: TextInputType.number,
+      //   decoration: InputDecoration(hintText: "Nhập giá mới"),
+      // ),
       actions: [
         TextButton(
           onPressed: () => Navigator.pop(context),
@@ -58,13 +64,14 @@ Future<void> editDescription({
   final result = await showDialog<String>(
     context: context,
     builder: (_) => AlertDialog(
-      title: Text("Chỉnh sửa Mô tả"),
-      content: TextField(
+      title: Center(child: Text("Chỉnh sửa Mô tả")),
+      content: InputText(
+        hintText: 'Nhập nội dung',
         controller: controller,
-        // keyboardType: TextInputType.number,
-        keyboardType: TextInputType.multiline,
+        textInputType: TextInputType.multiline,
+        textInputAction: TextInputAction.newline,
         maxLines: null,
-        decoration: InputDecoration(hintText: "Nhập mô tả mới"),
+        minLines: 3,
       ),
       actions: [
         TextButton(
@@ -103,13 +110,14 @@ Future<void> editDescriptionOption({
   final result = await showDialog<String>(
     context: context,
     builder: (_) => AlertDialog(
-      title: Text("Chỉnh sửa Mô tả"),
-      content: TextField(
+      title: Center(child: Text("Chỉnh sửa Mô tả")),
+      content: InputText(
+        hintText: 'Nhập nội dung',
         controller: controller,
-        // keyboardType: TextInputType.number,
-        keyboardType: TextInputType.multiline,
+        textInputType: TextInputType.multiline,
+        textInputAction: TextInputAction.newline,
         maxLines: null,
-        decoration: InputDecoration(hintText: "Nhập mô tả mới"),
+        minLines: 3,
       ),
       actions: [
         TextButton(
@@ -147,13 +155,14 @@ Future<void> editName({
   final result = await showDialog<String>(
     context: context,
     builder: (_) => AlertDialog(
-      title: Text("Chỉnh sửa"),
-      content: TextField(
+      title: Center(child: Text("Chỉnh sửa")),
+      content: InputText(
+        hintText: 'Nhập nội dung',
         controller: controller,
-        // keyboardType: TextInputType.number,
-        keyboardType: TextInputType.multiline,
+        textInputType: TextInputType.multiline,
+        textInputAction: TextInputAction.newline,
         maxLines: null,
-        decoration: InputDecoration(hintText: "Nhập nội dung mới"),
+        minLines: 3,
       ),
       actions: [
         TextButton(
