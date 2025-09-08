@@ -10,11 +10,13 @@ import '../models/menu_item.dart';
 class MenuItemWidget2 extends StatelessWidget {
   final MenuItem item;
   final void Function(MenuOption option, bool isPrice1)? onEditPrice;
+  final void Function(MenuItem item, bool isDescriptionDe)? onEditDescription;
 
   const MenuItemWidget2({
     Key? key,
     required this.item,
     this.onEditPrice,
+    this.onEditDescription,
   }) : super(key: key);
 
   bool get isWhite => item.id == '6';
@@ -78,10 +80,13 @@ class MenuItemWidget2 extends StatelessWidget {
                 // Cột 1: Mô tả tiếng Đức (flex: 10)
                 Expanded(
                   flex: 10,
-                  child: Text(
-                    item.descriptionDe,
-                    style:
-                        getFontB(state, color: isWhite ? Colors.white : null),
+                  child: GestureDetector(
+                    onTap: () => onEditDescription?.call(item, true),
+                    child: Text(
+                      item.descriptionDe,
+                      style:
+                          getFontB(state, color: isWhite ? Colors.white : null),
+                    ),
                   ),
                 ),
 
@@ -128,9 +133,12 @@ class MenuItemWidget2 extends StatelessWidget {
           }).toList(),
 
           // Mô tả tiếng Anh (in nghiêng)
-          Text(
-            item.descriptionEn,
-            style: getFontC(state, color: isWhite ? Colors.white : null),
+          GestureDetector(
+            onTap: () => onEditDescription?.call(item, false),
+            child: Text(
+              item.descriptionEn,
+              style: getFontC(state, color: isWhite ? Colors.white : null),
+            ),
           ),
           if (item.id == '3') SizedBox(height: 10),
         ],

@@ -1,5 +1,6 @@
 // ignore_for_file: prefer_const_constructors
 
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:puzzel/widget/fonts/bloc/font_cubit.dart';
@@ -10,8 +11,10 @@ import '../models/menu_item.dart';
 class MenuItemWidget10 extends StatelessWidget {
   final MenuItem item;
   final void Function(MenuOption, bool)? onEditPrice;
+  final void Function(MenuItem, bool)? onEditDescription;
 
-  const MenuItemWidget10({Key? key, required this.item, this.onEditPrice})
+  const MenuItemWidget10(
+      {Key? key, required this.item, this.onEditPrice, this.onEditDescription})
       : super(key: key);
 
   bool get useLineHeight =>
@@ -51,6 +54,8 @@ class MenuItemWidget10 extends StatelessWidget {
                       WidgetSpan(child: SizedBox(width: 17)),
                       TextSpan(
                           text: item.descriptionDe,
+                          recognizer: TapGestureRecognizer()
+                            ..onTap = () => onEditDescription?.call(item, true),
                           style: getFontB(state,
                               lineHeight: useLineHeight ? 1 : null)),
                       TextSpan(
@@ -59,6 +64,9 @@ class MenuItemWidget10 extends StatelessWidget {
                               lineHeight: useLineHeight ? 1 : null)),
                       TextSpan(
                           text: item.descriptionEn,
+                          recognizer: TapGestureRecognizer()
+                            ..onTap =
+                                () => onEditDescription?.call(item, false),
                           style: getFontC(state,
                               lineHeight: useLineHeight ? 1 : null)),
                       WidgetSpan(child: SizedBox(width: 138)),

@@ -92,6 +92,14 @@ class _PageMenu7State extends State<PageMenu7> {
                                                   option: option,
                                                   isPrice1: isPrice1,
                                                   setState: setState),
+                                          onEditDescription:
+                                              (item, isDescriptionDe) =>
+                                                  editDescription(
+                                            context: context,
+                                            item: item,
+                                            isDescriptionDe: isDescriptionDe,
+                                            setState: setState,
+                                          ),
                                         )
                                       : (menuItems_Page7[i].id == '38')
                                           ? GestureDetector(
@@ -111,6 +119,15 @@ class _PageMenu7State extends State<PageMenu7> {
                                                             option: option,
                                                             isPrice1: isPrice1,
                                                             setState: setState),
+                                                onEditDescription:
+                                                    (item, isDescriptionDe) =>
+                                                        editDescription(
+                                                  context: context,
+                                                  item: item,
+                                                  isDescriptionDe:
+                                                      isDescriptionDe,
+                                                  setState: setState,
+                                                ),
                                               ),
                                             )
                                           : GestureDetector(
@@ -133,6 +150,15 @@ class _PageMenu7State extends State<PageMenu7> {
                                                             option: option,
                                                             isPrice1: isPrice1,
                                                             setState: setState),
+                                                onEditDescription:
+                                                    (item, isDescriptionDe) =>
+                                                        editDescription(
+                                                  context: context,
+                                                  item: item,
+                                                  isDescriptionDe:
+                                                      isDescriptionDe,
+                                                  setState: setState,
+                                                ),
                                               ),
                                             )),
                             ),

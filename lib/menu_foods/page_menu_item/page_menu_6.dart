@@ -64,6 +64,13 @@ class _PageMenu6State extends State<PageMenu6> {
                                       option: option,
                                       isPrice1: isPrice1,
                                       setState: setState),
+                                  onEditDescription: (item, isDescriptionDe) =>
+                                      editDescription(
+                                    context: context,
+                                    item: item,
+                                    isDescriptionDe: isDescriptionDe,
+                                    setState: setState,
+                                  ),
                                 )
                               : (menuItems_Page6[i].id == '31')
                                   ? MenuItemWidget9(
@@ -76,6 +83,14 @@ class _PageMenu6State extends State<PageMenu6> {
                                               option: option,
                                               isPrice1: isPrice1,
                                               setState: setState),
+                                      onEditDescription:
+                                          (item, isDescriptionDe) =>
+                                              editDescription(
+                                        context: context,
+                                        item: item,
+                                        isDescriptionDe: isDescriptionDe,
+                                        setState: setState,
+                                      ),
                                     )
                                   : MenuItemWidget7(
                                       item: menuItems_Page6[i],
@@ -88,6 +103,14 @@ class _PageMenu6State extends State<PageMenu6> {
                                               option: option,
                                               isPrice1: isPrice1,
                                               setState: setState),
+                                      onEditDescription:
+                                          (item, isDescriptionDe) =>
+                                              editDescription(
+                                        context: context,
+                                        item: item,
+                                        isDescriptionDe: isDescriptionDe,
+                                        setState: setState,
+                                      ),
                                     ),
                         ),
                       ),

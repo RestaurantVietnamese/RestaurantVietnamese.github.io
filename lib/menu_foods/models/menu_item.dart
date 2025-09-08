@@ -1,12 +1,11 @@
-
 class MenuOption {
   final String code; // a, b, c
-  final String name; // Hühnerbrust / Chicken
-  final String descriptionDe;
-  final String descriptionEn;
+   String name; // Hühnerbrust / Chicken
+   String descriptionDe;
+   String descriptionEn;
   final List<String> tags; // A, B, F
-   String prices1;
-   String prices2;
+  String prices1;
+  String prices2;
 
   MenuOption({
     required this.code,
@@ -31,8 +30,8 @@ class MenuItem {
   final String? subText;
   final bool? subIcon;
   final String title;
-  final String descriptionDe;
-  final String descriptionEn;
+  String descriptionDe;
+  String descriptionEn;
   final List<MenuOption> options;
 
   MenuItem({

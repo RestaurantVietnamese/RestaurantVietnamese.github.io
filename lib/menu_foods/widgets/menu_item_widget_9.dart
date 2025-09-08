@@ -13,6 +13,7 @@ class MenuItemWidget9 extends StatelessWidget {
   final bool menuPage7;
   final bool usePaddingPage6;
   final void Function(MenuOption, bool)? onEditPrice;
+  final void Function(MenuItem, bool)? onEditDescription;
 
   const MenuItemWidget9(
       {Key? key,
@@ -20,7 +21,8 @@ class MenuItemWidget9 extends StatelessWidget {
       this.usePadding = true,
       this.menuPage7 = false,
       this.usePaddingPage6 = false,
-      this.onEditPrice})
+      this.onEditPrice,
+      this.onEditDescription})
       : super(key: key);
 
   bool get isWhite =>
@@ -94,10 +96,13 @@ class MenuItemWidget9 extends StatelessWidget {
                     // Cột 1: Mô tả tiếng Đức (flex: 10)
                     Expanded(
                       flex: 7,
-                      child: Text(
-                        item.descriptionDe,
-                        style: getFontB(state,
-                            color: isWhite ? Colors.white : null),
+                      child: GestureDetector(
+                        onTap: () => onEditDescription?.call(item, true),
+                        child: Text(
+                          item.descriptionDe,
+                          style: getFontB(state,
+                              color: isWhite ? Colors.white : null),
+                        ),
                       ),
                     ),
 
@@ -182,9 +187,12 @@ class MenuItemWidget9 extends StatelessWidget {
 
           // Mô tả tiếng Anh (in nghiêng)
           if (item.descriptionEn.isNotEmpty)
-            Text(
-              item.descriptionEn,
-              style: getFontC(state, color: isWhite ? Colors.white : null),
+            GestureDetector(
+              onTap: () => onEditDescription?.call(item, false),
+              child: Text(
+                item.descriptionEn,
+                style: getFontC(state, color: isWhite ? Colors.white : null),
+              ),
             ),
           if (usePadding) SizedBox(height: 10),
           if (usePaddingPage6) SizedBox(height: 6),

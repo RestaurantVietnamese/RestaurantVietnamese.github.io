@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:puzzel/menu_foods/data/menu_data_page_1.dart';
 import 'package:puzzel/menu_foods/edit_data/edit_prices.dart';
-import 'package:puzzel/menu_foods/models/menu_item.dart';
 import 'package:puzzel/menu_foods/widgets/menu_item_widget_1.dart';
 import 'package:puzzel/menu_foods/widgets/menu_item_widget_2.dart';
 import 'package:puzzel/widget/change_image_background/PositionedImageChangeBackGround.dart';
@@ -132,6 +131,13 @@ class _PageMenu1State extends State<PageMenu1> {
                               isPrice1: isPrice1,
                               setState: setState,
                             ),
+                            onEditDescription: (item, isDescriptionDe) =>
+                                editDescription(
+                              context: context,
+                              item: item,
+                              isDescriptionDe: isDescriptionDe,
+                              setState: setState,
+                            ),
                           );
                         } else {
                           widgetItem = MenuItemWidget(
@@ -140,6 +146,13 @@ class _PageMenu1State extends State<PageMenu1> {
                               context: context,
                               option: option,
                               isPrice1: isPrice1,
+                              setState: setState,
+                            ),
+                            onEditDescription: (item, isDescriptionDe) =>
+                                editDescription(
+                              context: context,
+                              item: item,
+                              isDescriptionDe: isDescriptionDe,
                               setState: setState,
                             ),
                           );

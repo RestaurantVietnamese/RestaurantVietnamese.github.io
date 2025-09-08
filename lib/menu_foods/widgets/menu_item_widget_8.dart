@@ -12,13 +12,15 @@ class MenuItemWidget8 extends StatelessWidget {
   final bool usePadding;
   final bool usePaddingPage6;
   final Function(MenuOption, bool)? onEditPrice;
+  final Function(MenuItem, bool)? onEditDescription;
 
   const MenuItemWidget8(
       {Key? key,
       required this.item,
       this.usePadding = true,
       this.usePaddingPage6 = false,
-      this.onEditPrice})
+      this.onEditPrice,
+      this.onEditDescription})
       : super(key: key);
 
   bool get isWhite => item.id == '30';
@@ -87,10 +89,13 @@ class MenuItemWidget8 extends StatelessWidget {
                     // Cột 1: Mô tả tiếng Đức (flex: 10)
                     Expanded(
                       flex: 14,
-                      child: Text(
-                        item.descriptionDe,
-                        style: getFontB(state,
-                            color: isWhite ? Colors.white : Colors.black),
+                      child: GestureDetector(
+                        onTap: () => onEditDescription?.call(item, true),
+                        child: Text(
+                          item.descriptionDe,
+                          style: getFontB(state,
+                              color: isWhite ? Colors.white : Colors.black),
+                        ),
                       ),
                     ),
 
@@ -148,10 +153,13 @@ class MenuItemWidget8 extends StatelessWidget {
           }).toList(),
 
           // Mô tả tiếng Anh (in nghiêng)
-          Text(
-            item.descriptionEn,
-            style:
-                getFontC(state, color: isWhite ? Colors.white : Colors.black),
+          GestureDetector(
+            onTap: () => onEditDescription?.call(item, false),
+            child: Text(
+              item.descriptionEn,
+              style:
+                  getFontC(state, color: isWhite ? Colors.white : Colors.black),
+            ),
           ),
           if (usePadding) SizedBox(height: 10),
           if (usePaddingPage6) SizedBox(height: 6),

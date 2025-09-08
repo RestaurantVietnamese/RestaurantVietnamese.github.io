@@ -53,11 +53,19 @@ class _PageMenu3State extends State<PageMenu3> {
                           : MenuItemWidget7(
                               item: menuItems_Page3[i],
                               onEditPrice: (option, isPrice1) => editPrice(
-                                    context: context,
-                                    option: option,
-                                    isPrice1: isPrice1,
-                                    setState: setState,
-                                  )),
+                                context: context,
+                                option: option,
+                                isPrice1: isPrice1,
+                                setState: setState,
+                              ),
+                              onEditDescription: (item, isDescriptionDe) =>
+                                  editDescription(
+                                context: context,
+                                item: item,
+                                isDescriptionDe: isDescriptionDe,
+                                setState: setState,
+                              ),
+                            ),
                     ),
                   ),
 

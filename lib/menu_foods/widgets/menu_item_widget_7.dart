@@ -1,6 +1,5 @@
 // ignore_for_file: prefer_const_constructors
 
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:puzzel/widget/fonts/bloc/font_cubit.dart';
@@ -14,6 +13,7 @@ class MenuItemWidget7 extends StatelessWidget {
   final bool useLineHeight;
   final bool usePaddingPage6;
   final Function(MenuOption, bool)? onEditPrice;
+  final Function(MenuItem, bool)? onEditDescription;
 
   const MenuItemWidget7(
       {Key? key,
@@ -21,8 +21,8 @@ class MenuItemWidget7 extends StatelessWidget {
       this.usePadding = true,
       this.useLineHeight = true,
       this.usePaddingPage6 = false,
-      this.onEditPrice
-      })
+      this.onEditPrice,
+      this.onEditDescription})
       : super(key: key);
 
   bool get isWhite =>
@@ -89,14 +89,20 @@ class MenuItemWidget7 extends StatelessWidget {
             ],
           ),
           // Mô tả tiếng Đức
-          Text(item.descriptionDe,
-              style: getFontB(state, color: isWhite ? Colors.white : null)),
+          GestureDetector(
+            onTap: () => onEditDescription?.call(item, true),
+            child: Text(item.descriptionDe,
+                style: getFontB(state, color: isWhite ? Colors.white : null)),
+          ),
 
           // Mô tả tiếng Anh (in nghiêng)
           Padding(
             padding: const EdgeInsets.only(right: 0),
-            child: Text(item.descriptionEn,
-                style: getFontC(state, color: isWhite ? Colors.white : null)),
+            child: GestureDetector(
+              onTap: () => onEditDescription?.call(item, false),
+              child: Text(item.descriptionEn,
+                  style: getFontC(state, color: isWhite ? Colors.white : null)),
+            ),
           ),
           // SizedBox(height: 6),
 
@@ -152,7 +158,7 @@ class MenuItemWidget7 extends StatelessWidget {
                   Expanded(
                     flex: 2,
                     child: GestureDetector(
-                      onTap: () => onEditPrice?.call(opt,false),
+                      onTap: () => onEditPrice?.call(opt, false),
                       child: Text(opt.prices2,
                           textAlign: TextAlign.right,
                           style: getFontD(state,

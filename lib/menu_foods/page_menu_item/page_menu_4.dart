@@ -45,13 +45,21 @@ class _PageMenu4State extends State<PageMenu4> {
                         Widget widgetItem;
 
                         widgetItem = MenuItemWidget7(
+                          item: item,
+                          onEditPrice: (option, isPrice1) => editPrice(
+                            context: context,
+                            option: option,
+                            isPrice1: isPrice1,
+                            setState: setState,
+                          ),
+                          onEditDescription: (item, isDescriptionDe) =>
+                              editDescription(
+                            context: context,
                             item: item,
-                            onEditPrice: (option, isPrice1) => editPrice(
-                                  context: context,
-                                  option: option,
-                                  isPrice1: isPrice1,
-                                  setState: setState,
-                                ));
+                            isDescriptionDe: isDescriptionDe,
+                            setState: setState,
+                          ),
+                        );
 
                         return Column(
                           children: [

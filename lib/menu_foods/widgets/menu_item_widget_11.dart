@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:puzzel/menu_foods/edit_data/edit_prices.dart';
 import 'package:puzzel/widget/fonts/bloc/font_cubit.dart';
 import 'package:puzzel/widget/fonts/bloc/font_state.dart';
 import 'package:puzzel/widget/fonts/helper_fonts.dart';
@@ -11,9 +12,16 @@ class MenuItemWidget11 extends StatelessWidget {
   final MenuItem item;
   final bool usePadding;
   final void Function(MenuOption option, bool isPrice1)? onEditPrice;
+  final void Function(MenuOption, bool)? onEditDescription;
+  final void Function(MenuOption)? onEditName;
 
   const MenuItemWidget11(
-      {Key? key, required this.item, this.usePadding = true, this.onEditPrice})
+      {Key? key,
+      required this.item,
+      this.usePadding = true,
+      this.onEditPrice,
+      this.onEditDescription,
+      this.onEditName})
       : super(key: key);
 
   bool get isWhite =>
@@ -108,11 +116,14 @@ class MenuItemWidget11 extends StatelessWidget {
                         // Column 2: Name
                         Expanded(
                             flex: 12,
-                            child: Text(opt.name,
-                                style: getFontD(
-                                  state,
-                                  color: isWhite ? Colors.white : null,
-                                ))),
+                            child: GestureDetector(
+                              onTap: () => onEditName?.call(opt),
+                              child: Text(opt.name,
+                                  style: getFontD(
+                                    state,
+                                    color: isWhite ? Colors.white : null,
+                                  )),
+                            )),
                       ],
 
                       // Column 3: Tags
@@ -150,19 +161,26 @@ class MenuItemWidget11 extends StatelessWidget {
                             opt.code != 'T4.')
                         ? Row(
                             children: [
-                              Text(
-                                opt.descriptionDe,
-                                style: getFontB(
-                                  state,
-                                  color: isWhite ? Colors.white : null,
+                              GestureDetector(
+                                onTap: () => onEditDescription?.call(opt, true),
+                                child: Text(
+                                  opt.descriptionDe,
+                                  style: getFontB(
+                                    state,
+                                    color: isWhite ? Colors.white : null,
+                                  ),
                                 ),
                               ),
                               Text(' / '),
-                              Text(
-                                opt.descriptionEn,
-                                style: getFontC(
-                                  state,
-                                  color: isWhite ? Colors.white : null,
+                              GestureDetector(
+                                onTap: () =>
+                                    onEditDescription?.call(opt, false),
+                                child: Text(
+                                  opt.descriptionEn,
+                                  style: getFontC(
+                                    state,
+                                    color: isWhite ? Colors.white : null,
+                                  ),
                                 ),
                               ),
                             ],
@@ -170,18 +188,25 @@ class MenuItemWidget11 extends StatelessWidget {
                         : Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Text(
-                                opt.descriptionDe,
-                                style: getFontB(
-                                  state,
-                                  color: isWhite ? Colors.white : null,
+                              GestureDetector(
+                                onTap: () => onEditDescription?.call(opt, true),
+                                child: Text(
+                                  opt.descriptionDe,
+                                  style: getFontB(
+                                    state,
+                                    color: isWhite ? Colors.white : null,
+                                  ),
                                 ),
                               ),
-                              Text(
-                                opt.descriptionEn,
-                                style: getFontC(
-                                  state,
-                                  color: isWhite ? Colors.white : null,
+                              GestureDetector(
+                                onTap: () =>
+                                    onEditDescription?.call(opt, false),
+                                child: Text(
+                                  opt.descriptionEn,
+                                  style: getFontC(
+                                    state,
+                                    color: isWhite ? Colors.white : null,
+                                  ),
                                 ),
                               ),
                             ],

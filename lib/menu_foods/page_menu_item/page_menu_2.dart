@@ -89,6 +89,13 @@ class _PageMenu2State extends State<PageMenu2> {
                               isPrice1: isPrice1,
                               setState: setState,
                             ),
+                            onEditDescription: (item, isDescriptionDe) =>
+                                editDescription(
+                              context: context,
+                              item: item,
+                              isDescriptionDe: isDescriptionDe,
+                              setState: setState,
+                            ),
                           );
                         } else if (item.id == '8') {
                           widgetItem = MenuItemWidget4(
@@ -97,6 +104,13 @@ class _PageMenu2State extends State<PageMenu2> {
                               context: context,
                               option: option,
                               isPrice1: isPrice1,
+                              setState: setState,
+                            ),
+                            onEditDescription: (item, isDescriptionDe) =>
+                                editDescription(
+                              context: context,
+                              item: item,
+                              isDescriptionDe: isDescriptionDe,
                               setState: setState,
                             ),
                           );
@@ -109,6 +123,13 @@ class _PageMenu2State extends State<PageMenu2> {
                               isPrice1: isPrice1,
                               setState: setState,
                             ),
+                            onEditDescription: (item, isDescriptionDe) =>
+                                editDescription(
+                              context: context,
+                              item: item,
+                              isDescriptionDe: isDescriptionDe,
+                              setState: setState,
+                            ),
                           );
                         } else {
                           widgetItem = MenuItemWidget(
@@ -117,6 +138,13 @@ class _PageMenu2State extends State<PageMenu2> {
                               context: context,
                               option: option,
                               isPrice1: isPrice1,
+                              setState: setState,
+                            ),
+                            onEditDescription: (item, isDescriptionDe) =>
+                                editDescription(
+                              context: context,
+                              item: item,
+                              isDescriptionDe: isDescriptionDe,
                               setState: setState,
                             ),
                           );

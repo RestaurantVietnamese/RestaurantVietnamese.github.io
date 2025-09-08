@@ -83,6 +83,14 @@ class _PageMenu5State extends State<PageMenu5> {
                                               option: option,
                                               isPrice1: isPrice1,
                                               setState: setState),
+                                      onEditDescription:
+                                          (item, isDescriptionDe) =>
+                                              editDescription(
+                                        context: context,
+                                        item: item,
+                                        isDescriptionDe: isDescriptionDe,
+                                        setState: setState,
+                                      ),
                                     )),
                               ))
                           .toList(),

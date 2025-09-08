@@ -86,17 +86,21 @@ class _PageMenu9State extends State<PageMenu9> {
                                             isPrice1: isPrice1,
                                             setState: setState,
                                           ),
-                                        )
-                                      : MenuItemWidget10(
-                                          item: menuItems_Page9[i],
-                                          onEditPrice: (option, isPrice1) =>
-                                              editPrice(
+                                          onEditDescription:
+                                              (option, isDescriptionDe) =>
+                                                  editDescriptionOption(
                                             context: context,
                                             option: option,
-                                            isPrice1: isPrice1,
+                                            isDescriptionDe: isDescriptionDe,
                                             setState: setState,
                                           ),
-                                        )),
+                                          onEditName: (option) => editName(
+                                            context: context,
+                                            option: option,
+                                            setState: setState,
+                                          ),
+                                        )
+                                      : Container()),
                             ),
                             if (menuItems_Page9[i].title == 'Maki Rolls')
                               SizedBox(height: 12),

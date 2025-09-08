@@ -70,6 +70,14 @@ class _PageMenu8State extends State<PageMenu8> {
                                                   option: option,
                                                   isPrice1: isPrice1,
                                                   setState: setState),
+                                          onEditDescription:
+                                              (item, isDescriptionDe) =>
+                                                  editDescription(
+                                            context: context,
+                                            item: item,
+                                            isDescriptionDe: isDescriptionDe,
+                                            setState: setState,
+                                          ),
                                         )
                                       : (menuItems_Page8[i].id == '43' ||
                                               menuItems_Page8[i].id == '44' ||
@@ -84,6 +92,15 @@ class _PageMenu8State extends State<PageMenu8> {
                                                       option: option,
                                                       isPrice1: isPrice1,
                                                       setState: setState),
+                                              onEditDescription:
+                                                  (item, isDescriptionDe) =>
+                                                      editDescription(
+                                                context: context,
+                                                item: item,
+                                                isDescriptionDe:
+                                                    isDescriptionDe,
+                                                setState: setState,
+                                              ),
                                             )
                                           : MenuItemWidget9(
                                               item: menuItems_Page8[i],
@@ -95,6 +112,15 @@ class _PageMenu8State extends State<PageMenu8> {
                                                       option: option,
                                                       isPrice1: isPrice1,
                                                       setState: setState),
+                                              onEditDescription:
+                                                  (item, isDescriptionDe) =>
+                                                      editDescription(
+                                                context: context,
+                                                item: item,
+                                                isDescriptionDe:
+                                                    isDescriptionDe,
+                                                setState: setState,
+                                              ),
                                             )),
                             ),
                             if (menuItems_Page8[i].id == '42')
