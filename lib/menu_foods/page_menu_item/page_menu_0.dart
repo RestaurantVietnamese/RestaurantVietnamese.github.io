@@ -61,7 +61,7 @@ class _PageMenu0State extends State<PageMenu0> {
                 right: 0,
                 child: Container(
                   height: 130,
-                  padding: EdgeInsets.only(left: 5, top: 5),
+                  padding: EdgeInsets.only(left: 15, top: 5),
                   decoration: BoxDecoration(
                       gradient: LinearGradient(colors: const [
                     Color(0xff2c4e33),
