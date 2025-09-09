@@ -93,4 +93,18 @@ class SentenceCubit extends Cubit<SentenceState> {
       loadCurrentSentence();
     }
   }
+
+  void toggleCheckPositions() {
+    // Bật check vị trí
+    emit(state.copyWith(showCheckPositions: true));
+
+    // Sau 2 giây thì tắt
+    Future.delayed(const Duration(seconds: 1), () {
+      emit(state.copyWith(showCheckPositions: false));
+    });
+  }
+
+  void updateSelectedWords(List<String> words) {
+    emit(state.copyWith(selectedWords: words));
+  }
 }
