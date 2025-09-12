@@ -72,7 +72,7 @@ class _PageMenu1State extends State<PageMenu1> {
                 top: 5,
                 left: 15,
                 child: Text(
-                  'Supper',
+                  'Suppen',
                   style: getFont0(state),
                 ),
               ),

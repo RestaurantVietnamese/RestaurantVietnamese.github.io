@@ -1,6 +1,35 @@
 import 'package:puzzel/menu_foods/models/menu_item.dart';
 
 final menuItems_Page6 = [
+  // MenuItem(
+  //   id: "26",
+  //   subText: '',
+  //   title: "Udon Nudeln",
+  //   descriptionDe:
+  //       "Gebratene Udon Nudeln mit Paprika, Lauch,\nKnoblauch und Zwiebeln. Auswahl mit:",
+  //   descriptionEn:
+  //       "Fried udon noodles with peppers, leek, garlic and onions.\nSelection with:",
+  //   options: [
+  //     MenuOption(
+  //       code: "g.",
+  //       name: "Gemüse / Vegetables",
+  //       tags: ["A"],
+  //       prices2: "13.50",
+  //     ),
+  //     MenuOption(
+  //       code: "a.",
+  //       name: "Hühnerbrust / Chicken",
+  //       tags: ["A"],
+  //       prices2: "14.00",
+  //     ),
+  //     MenuOption(
+  //       code: "c.",
+  //       name: "Entenbrust / Duck",
+  //       tags: ["A", "C"],
+  //       prices2: "17.00",
+  //     ),
+  //   ],
+  // ),
   MenuItem(
     id: "23",
     subText: '',
@@ -13,13 +42,13 @@ final menuItems_Page6 = [
         name:
             "Hühnerbrust (paniert (A) / unpaniert)\n/ Chicken (breaded / nonbreaded)",
         tags: [],
-        prices2: "13.50",
+        prices2: "14.00",
       ),
       MenuOption(
         code: "c.",
         name: "Entenbrust / Duck",
-        tags: ['A'],
-        prices2: "16.00",
+        tags: ['A', 'C'],
+        prices2: "16.50",
       ),
     ],
   ),
@@ -49,7 +78,7 @@ final menuItems_Page6 = [
         code: "c.",
         name: "Tofu",
         tags: ["F", "E"],
-        prices2: "13.50",
+        prices2: "14.00",
       ),
       MenuOption(
         code: "d.",
@@ -70,22 +99,22 @@ final menuItems_Page6 = [
         "Fried rice noodles with seasonal vegetables,\nThai sauce, paprika, onions, leeks. Selection with:",
     options: [
       MenuOption(
-        code: "a.",
+        code: "g.",
         name: "Gemüse / Vegetables",
-        tags: [],
-        prices2: "13.50",
+        tags: ['A'],
+        prices2: "14.00",
       ),
       MenuOption(
-        code: "b.",
+        code: "a.",
         name: "Hühnerbrust / Chicken",
-        tags: [],
+        tags: ['E'],
         prices2: "14.50",
       ),
       MenuOption(
-        code: "c.",
+        code: "b.",
         name: "Rinderfilet / Beef",
-        tags: [],
-        prices2: "15.50",
+        tags: ['A'],
+        prices2: "16.00",
       ),
       MenuOption(
         code: "d.",
@@ -112,7 +141,7 @@ final menuItems_Page6 = [
         prices2: "14.50",
       ),
       MenuOption(
-        code: "b.",
+        code: "d.",
         name: "Garnelen / Shrimp",
         tags: ["B"],
         prices2: "17.50",
@@ -132,7 +161,7 @@ final menuItems_Page6 = [
         code: "",
         name: "",
         tags: ["E", "D"],
-        prices2: "14.00",
+        prices2: "14.50",
       )
     ],
   ),
@@ -140,7 +169,7 @@ final menuItems_Page6 = [
     id: "31",
     subText: '',
     subIcon: true,
-    title: "Bun Bo Nan Bo",
+    title: "Bun Bo Nam Bo",
     descriptionDe:
         "Reisnudeln mit gebratenem Rindfleisch,\nSalat, Knoblauch, Zwiebeln, Karotten, Bohnensprossen, Röstzwiebeln und vietnamesischer Fischsoße",
     descriptionEn:

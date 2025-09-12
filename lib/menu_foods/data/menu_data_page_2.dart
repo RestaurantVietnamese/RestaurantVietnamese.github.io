@@ -17,7 +17,7 @@ final menuItems_Page2 = [
           name: "Tempura Chicken",
           tags: ["A", "C", "F"],
           prices2: "6.50"),
-      MenuOption(code: "c.", name: cSelect, tags: ["C", "F"], prices2: "6.00"),
+      MenuOption(code: "c.", name: cSelect, tags: ["C", "F"], prices2: "6.50"),
       MenuOption(
           code: "d.",
           name: "Garnelen / Shrimp",
@@ -30,11 +30,11 @@ final menuItems_Page2 = [
     subText: '2 Stk.',
     title: "Nem Ran",
     descriptionDe:
-        "Hausgemachte Frühlingsrollen mit Hackfleisch,\nGlasnudeln, Karotten, Zwiebeln in knuspriges Reispapier gerollt",
+        "Hausgemachte Frühlingsrollen mit Hackfleisch,\nGlasnudeln, Karotten, Zwiebeln in knusprigem Reispapier gerollt",
     descriptionEn:
         "Homemade spring rolls with minced meat, glass noodles,\ncarrots, onions rolled in crispy rice paper",
     options: [
-      MenuOption(code: "", name: '', tags: [""], prices1: '', prices2: '6.00'),
+      MenuOption(code: "", name: '', tags: [""], prices1: '', prices2: '6.50'),
     ],
   ),
   MenuItem(
@@ -45,7 +45,7 @@ final menuItems_Page2 = [
       descriptionEn:
           "Wonton dough filled with minced meat, garlic, onions, pepper",
       options: [
-        MenuOption(code: "", name: "", tags: ["A"], prices2: "5.00")
+        MenuOption(code: "", name: "", tags: ["A"], prices2: "5.50")
       ]),
   MenuItem(
       id: "10",

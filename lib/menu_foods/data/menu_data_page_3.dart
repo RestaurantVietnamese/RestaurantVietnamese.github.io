@@ -14,16 +14,16 @@ final menuItems_Page3 = [
           code: "a.",
           name: "Hühnersteak / Chicken",
           tags: [],
-          prices2: "11.00"),
+          prices2: "11.50"),
       MenuOption(
-          code: "b.", name: "Rinderfilet / Beef", tags: [], prices2: "12.00"),
+          code: "b.", name: "Rinderfilet / Beef", tags: [], prices2: "12.50"),
       MenuOption(
           code: "c.",
           name: "Blattsalat gemischt / mixed salad",
           tags: [],
-          prices2: "9.00"),
+          prices2: "9.50"),
       MenuOption(
-          code: "d.", name: "Garnelen / Shrimp", tags: ["B"], prices2: "13.00"),
+          code: "d.", name: "Garnelen / Shrimp", tags: ["B"], prices2: "13.50"),
     ],
   ),
   MenuItem(
@@ -40,9 +40,9 @@ final menuItems_Page3 = [
     id: "16",
     subText: '',
     subIcon: true,
-    title: "Rotes That-Curry",
+    title: "Rotes Thai-Curry",
     descriptionDe:
-        "Res mit Gemüse in einer Curry Soße gekocht aus Zitronengras, Zitronenbäffler, Großer Galgant, Kokosmilch, Chili. Auswahl mit:",
+        "Reis mit Gemüse in einer Curry Soße gekocht aus Zitronengras, Zitronenbäffler, Großer Galgant, Kokosmilch, Chili. Auswahl mit:",
     descriptionEn:
         "Rice with vegetables, a curry sauce cooked from lemongrass, lemon leaves, great galangal, coconut milk, chilli. Selection with:",
     options: [
@@ -51,25 +51,25 @@ final menuItems_Page3 = [
         name:
             "Hühnerbrust (paniert (A) / unpaniert) / Chicken (breaded / nonbreaded)",
         tags: [""],
-        prices2: "13.50",
+        prices2: "14.00",
       ),
       MenuOption(
         code: "b.",
         name: "Rinderfilet / Beef",
         tags: [],
-        prices2: "14.00",
+        prices2: "15.00",
       ),
       MenuOption(
         code: "c.",
         name: "Enterbrust / Duck",
         tags: ['A'],
-        prices2: "16.00",
+        prices2: "16.50",
       ),
       MenuOption(
         code: "d.",
         name: "Garnelen / Shrimp",
         tags: ['B'],
-        prices2: "17.00",
+        prices2: "17.50",
       ),
     ],
   ),
@@ -77,7 +77,7 @@ final menuItems_Page3 = [
     id: "17",
     subText: '',
     subIcon: true,
-    title: "Gold That-Curry",
+    title: "Gold Thai-Curry",
     descriptionDe:
         "Reis mit Gemüse in einer Curry Soße gekocht aus Zitronengras, Kurkuma, Großer Galgant, Koriander, Kokosmilch, Chili. Auswahl mit:",
     descriptionEn:
@@ -87,19 +87,19 @@ final menuItems_Page3 = [
         code: "a.",
         name: "Hühnerbrust / Chicken",
         tags: [""],
-        prices2: "13.00",
+        prices2: "13.50",
       ),
       MenuOption(
         code: "c.",
         name: "Entenbrust / Duck",
         tags: ["A"],
-        prices2: "16.00",
+        prices2: "16.50",
       ),
       MenuOption(
         code: "e.",
         name: "Lachs / Salmon",
-        tags: ['D'],
-        prices2: "17.00",
+        tags: [],
+        prices2: "17.50",
       ),
     ],
   ),

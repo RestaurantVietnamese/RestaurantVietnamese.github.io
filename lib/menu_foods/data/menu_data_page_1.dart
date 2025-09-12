@@ -15,19 +15,19 @@ final menuItems_Page1 = [
           name: aSelect,
           tags: [],
           prices1: '8.50',
-          prices2: '13.50'),
+          prices2: '14.00'),
       MenuOption(
           code: "b.",
           name: bSelect,
           tags: [],
           prices1: '9.00',
-          prices2: '15.00'),
+          prices2: '15.50'),
       MenuOption(
           code: "c.",
           name: cSelect,
           tags: ["F"],
           prices1: '',
-          prices2: '13.00'),
+          prices2: '13.50'),
     ],
   ),
   MenuItem(
@@ -39,29 +39,29 @@ final menuItems_Page1 = [
       MenuOption(
           code: "a.", name: aSelect, tags: ["A"], prices1: '', prices2: '6.50'),
       MenuOption(
-          code: "c.", name: cSelect, tags: ["F"], prices1: '', prices2: '5.50'),
+          code: "c.", name: cSelect, tags: ["F"], prices1: '', prices2: '6.00'),
       MenuOption(
           code: "d.",
           name: dSelect,
           tags: ["A", "B"],
           prices1: '',
-          prices2: '8.00'),
+          prices2: '9.00'),
     ],
   ),
   MenuItem(
     id: '3',
     title: "Miso Suppe",
-    descriptionDe: "Suppe mit Gemuse, Tofu, Seetang",
+    descriptionDe: "Suppe mit Gemüse, Tofu, Seetang",
     descriptionEn: "Soup with various vegetables, tofu, seaweed",
     options: [
-      MenuOption(code: "", name: "", tags: ["F"], prices1: '', prices2: '5.50'),
+      MenuOption(code: "", name: "", tags: ["F"], prices1: '', prices2: '6.00'),
     ],
   ),
   MenuItem(
     id: '4',
     title: "Tom Kha Suppe",
     subIcon: true,
-    descriptionDe: "Thai Kokos-Suppe mit Gemuse. Auswahl mit:",
+    descriptionDe: "Thai Kokos-Suppe mit Gemüse. Auswahl mit:",
     descriptionEn: "Thai coconut soup with vegetables. Selection with:",
     options: [
       MenuOption(
@@ -71,19 +71,19 @@ final menuItems_Page1 = [
           prices1: '6.50',
           prices2: '12.50'),
       MenuOption(
-          code: "c.", name: cSelect, tags: [""], prices1: '5.50', prices2: ''),
+          code: "c.", name: cSelect, tags: [""], prices1: '6.00', prices2: ''),
       MenuOption(
           code: "d.",
           name: dSelect,
           tags: ["B"],
-          prices1: '8.00',
-          prices2: '12.50'),
+          prices1: '8.50',
+          prices2: '13.50'),
     ],
   ),
   MenuItem(
     id: '5',
     title: "My Tom (500 ml)",
-    descriptionDe: "Thai Kokos-Suppe mit Gemuse. Auswahl mit:",
+    descriptionDe: "My Tom Nudeln mit Hühnerbrühe, Lauchzwiebeln. Auswahl mit:",
     descriptionEn: "My Tom noodles with chicken broth and spring onions.",
     options: [
       MenuOption(
@@ -102,12 +102,12 @@ final menuItems_Page1 = [
     id: '6',
     title: "Vegan Wan Tan Suppe",
     descriptionDe:
-        "Wan Tan Teibglatter gefulltmit\nGemuse und Fleisch auf Sojabasis",
+        "Wan Tan Teigblätter gefüllt \nmit Gemüse und Fleisch auf Sojabasis",
     descriptionEn:
         "Wonton pastry sheets filled with vegetables and plant-based meat",
     options: [
       MenuOption(
-          code: "", name: '', tags: ["A", 'F'], prices1: '', prices2: '6.00'),
+          code: "", name: '', tags: ["A", 'F'], prices1: '', prices2: '6.50'),
     ],
   )
 ];

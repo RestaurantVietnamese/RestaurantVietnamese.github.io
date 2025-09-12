@@ -20,7 +20,7 @@ Future<void> editPrice({
       content: InputText(
         hintText: 'Nhập nội dung',
         controller: controller,
-        textInputType: TextInputType.number,
+        textInputType: TextInputType.numberWithOptions(decimal: true),
       ),
       // TextField(
       //   controller: controller,
