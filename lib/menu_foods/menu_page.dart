@@ -19,7 +19,9 @@ class MenuPage extends StatefulWidget {
 
 class _MenuPageState extends State<MenuPage> {
   final GlobalKey _globalKey = GlobalKey();
-  final PageController _pageController = PageController();
+  final _pageController = PageController(
+    viewportFraction: 1.0, // bắt buộc = 1.0
+  );
 
   @override
   void initState() {
@@ -44,7 +46,12 @@ class _MenuPageState extends State<MenuPage> {
         body: RepaintBoundary(
           key: _globalKey,
           // Truyền PageController vào DataWidget
-          child: DataWidget(pageController: _pageController),
+          child: ClipRect(
+            child: SizedBox(
+                width: 450,
+                height: 800,
+                child: DataWidget(pageController: _pageController)),
+          ),
         ),
         bottomNavigationBar: Column(
           mainAxisSize: MainAxisSize.min,
@@ -56,7 +63,7 @@ class _MenuPageState extends State<MenuPage> {
                 children: [
                   ElevatedButton(
                     onPressed: () {
-                      saveImage(_globalKey);
+                      saveImage(_globalKey, _pageController);
                     },
                     child: const Text("Lưu ảnh"),
                   ),
