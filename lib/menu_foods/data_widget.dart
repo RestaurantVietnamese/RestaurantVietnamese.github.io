@@ -26,9 +26,9 @@ class _DataWidgetState extends State<DataWidget> {
 
   // Mapping màu cho từng page (0-based index)
   final List<Color> pageColors = [
-    aBg, // Page 0
-    aBg, // Page 1
-    bBg, // Page 2
+    // aBg, // Page 0
+    // aBg, // Page 1
+    // bBg, // Page 2
     aBg, // Page 3
     bBg, // Page 4
     aBg, // Page 5
@@ -54,9 +54,9 @@ class _DataWidgetState extends State<DataWidget> {
           });
         },
         children: const [
-          PageMenu0(),
-          PageMenu1(),
-          PageMenu2(),
+          // PageMenu0(),
+          // PageMenu1(),
+          // PageMenu2(),
           PageMenu3(),
           PageMenu4(),
           PageMenu5(),
