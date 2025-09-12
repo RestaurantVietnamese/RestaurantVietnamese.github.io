@@ -24,11 +24,13 @@ class _PageMenu0State extends State<PageMenu0> {
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<FontCubit, FontState>(
-      builder: (context, state) => InteractiveViewer(
-        boundaryMargin: EdgeInsets.all(100),
-        minScale: 0.1, // zoom nhỏ hơn để vừa khung
-        maxScale: 3.0,
-        child: FittedBox(
+      builder: (context, state) => 
+      // InteractiveViewer(
+      //   boundaryMargin: EdgeInsets.all(100),
+      //   minScale: 0.1, // zoom nhỏ hơn để vừa khung
+      //   maxScale: 3.0,
+      //   child: 
+        FittedBox(
           fit: BoxFit.contain, // scale toàn bộ nội dung vừa khung
           alignment: Alignment.topLeft,
           child: Stack(
@@ -107,7 +109,7 @@ class _PageMenu0State extends State<PageMenu0> {
             ],
           ),
         ),
-      ),
+      // ),
     );
   }
 

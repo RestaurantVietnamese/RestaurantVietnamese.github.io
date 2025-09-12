@@ -20,14 +20,18 @@ class _PageMenu9State extends State<PageMenu9> {
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<FontCubit, FontState>(
-      builder: (context, state) => InteractiveViewer(
-        boundaryMargin: EdgeInsets.all(100),
-        minScale: 0.1, // zoom nhỏ hơn để vừa khung
-        maxScale: 3.0,
-        child: FittedBox(
-          fit: BoxFit.contain,
-          alignment: Alignment.topLeft,
-          child: Stack(
+      builder: (context, state) =>
+          // InteractiveViewer(
+          //   boundaryMargin: EdgeInsets.all(100),
+          //   minScale: 0.1, // zoom nhỏ hơn để vừa khung
+          //   maxScale: 3.0,
+          //   child:
+          Container(
+            color: bBg,
+            child: FittedBox(
+                    fit: BoxFit.contain,
+                    alignment: Alignment.topLeft,
+                    child: Stack(
             children: [
               Container(
                 width: 450,
@@ -70,8 +74,7 @@ class _PageMenu9State extends State<PageMenu9> {
                                   decoration: BoxDecoration(
                                     borderRadius: BorderRadius.circular(2),
                                     color: Colors.transparent,
-                                    border:
-                                        Border.all(color: Colors.transparent),
+                                    border: Border.all(color: Colors.transparent),
                                   ),
                                   padding: EdgeInsets.symmetric(horizontal: 30),
                                   child: (menuItems_Page9[i].id == '')
@@ -138,9 +141,10 @@ class _PageMenu9State extends State<PageMenu9> {
               //
               //
             ],
+                    ),
+                  ),
           ),
-        ),
-      ),
+      // ),
     );
   }
 }

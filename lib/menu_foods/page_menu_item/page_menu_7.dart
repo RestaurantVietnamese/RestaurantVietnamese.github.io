@@ -41,190 +41,195 @@ class _PageMenu7State extends State<PageMenu7> {
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<FontCubit, FontState>(
-      builder: (context, state) => InteractiveViewer(
-        boundaryMargin: EdgeInsets.all(100),
-        minScale: 0.1, // zoom nhỏ hơn để vừa khung
-        maxScale: 3.0,
-        child: FittedBox(
-          fit: BoxFit.contain,
-          alignment: Alignment.topLeft,
-          child: Stack(
-            children: [
-              PositionedImageChangeBackGround(
-                imageUrl: imageUrl,
-                heightImage: 405,
-              ),
-              //
-              //
-              //
-              Container(
-                width: 450,
-                height: 800,
-                decoration: BoxDecoration(
-                    border: Border.all(color: Colors.grey, width: 0.1)),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    // SizedBox(height: 10),
-                    Expanded(
-                      child: ListView(
-                        children: [
-                          for (var i = 0; i < menuItems_Page7.length; i++) ...[
-                            // Widget cho item hiện tại
-                            Align(
-                              alignment: Alignment.centerLeft,
-                              child: Container(
-                                  width: 450,
-                                  decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(2),
-                                    color: Colors.transparent,
-                                    border:
-                                        Border.all(color: Colors.transparent),
-                                  ),
-                                  padding: EdgeInsets.symmetric(horizontal: 25),
-                                  child: (menuItems_Page7[i].id == '32')
-                                      ? MenuItemWidget8(
-                                          item: menuItems_Page7[i],
-                                          usePadding: false,
-                                          onEditPrice: (option, isPrice1) =>
-                                              editPrice(
-                                                  context: context,
-                                                  option: option,
-                                                  isPrice1: isPrice1,
-                                                  setState: setState),
-                                          onEditDescription:
-                                              (item, isDescriptionDe) =>
-                                                  editDescription(
-                                            context: context,
-                                            item: item,
-                                            isDescriptionDe: isDescriptionDe,
-                                            setState: setState,
-                                          ),
-                                        )
-                                      : (menuItems_Page7[i].id == '38')
-                                          ? GestureDetector(
-                                              onTap: () {
-                                                if (menuItems_Page7[i].id ==
-                                                    '38') {
-                                                  _pickImage();
-                                                }
-                                              },
-                                              child: MenuItemWidget7(
-                                                item: menuItems_Page7[i],
-                                                useLineHeight: false,
-                                                onEditPrice:
-                                                    (option, isPrice1) =>
-                                                        editPrice(
-                                                            context: context,
-                                                            option: option,
-                                                            isPrice1: isPrice1,
-                                                            setState: setState),
-                                                onEditDescription:
-                                                    (item, isDescriptionDe) =>
-                                                        editDescription(
-                                                  context: context,
-                                                  item: item,
-                                                  isDescriptionDe:
-                                                      isDescriptionDe,
-                                                  setState: setState,
-                                                ),
-                                              ),
-                                            )
-                                          : GestureDetector(
-                                              onTap: () {
-                                                if (menuItems_Page7[i].id ==
-                                                        '37' ||
-                                                    menuItems_Page7[i].title ==
-                                                        'Veggie Bowl') {
-                                                  _pickImage();
-                                                }
-                                              },
-                                              child: MenuItemWidget9(
-                                                item: menuItems_Page7[i],
-                                                usePadding: false,
-                                                menuPage7: true,
-                                                onEditPrice:
-                                                    (option, isPrice1) =>
-                                                        editPrice(
-                                                            context: context,
-                                                            option: option,
-                                                            isPrice1: isPrice1,
-                                                            setState: setState),
-                                                onEditDescription:
-                                                    (item, isDescriptionDe) =>
-                                                        editDescription(
-                                                  context: context,
-                                                  item: item,
-                                                  isDescriptionDe:
-                                                      isDescriptionDe,
-                                                  setState: setState,
-                                                ),
-                                              ),
-                                            )),
-                            ),
-                            // if (menuItems_Page7[i].id == '32')
-                            //  SizedBox(height: 2),
-                            // if (menuItems_Page7[i].id == '33')
-                            //  SizedBox(height: 2),
-                            // if (menuItems_Page7[i].id == '34')
-                            //  SizedBox(height: 2),
-                            // if (menuItems_Page7[i].id == '35')
-                            //  SizedBox(height: 2),
-                            if (menuItems_Page7[i].id == '37')
-                              SizedBox(height: 6),
-                            if (menuItems_Page7[i].title == 'Salmon Bowl')
-                              SizedBox(height: 45),
-                          ],
-                        ],
-                      ),
-                    ),
-                  ],
+      builder: (context, state) =>
+      //  InteractiveViewer(
+      //   boundaryMargin: EdgeInsets.all(100),
+      //   minScale: 0.1, // zoom nhỏ hơn để vừa khung
+      //   maxScale: 3.0,
+      //   child: 
+        Container(
+          color: aBg,
+          child: FittedBox(
+            fit: BoxFit.contain,
+            alignment: Alignment.topLeft,
+            child: Stack(
+              children: [
+                PositionedImageChangeBackGround(
+                  imageUrl: imageUrl,
+                  heightImage: 405,
                 ),
-              ),
-
-              //
-              //
-              //
-              // Positioned(
-              //   top: 372,
-              //   left: -60,
-              //   child: Image.asset(
-              //     'assets/images/black_paint.png',
-              //     color: Colors.white,
-              //     height: 100,
-              //     width: 230,
-              //     colorBlendMode: BlendMode.srcIn,
-              //   ),
-              // ),
-              Positioned(
-                top: 396,
-                left: -60,
-                child: Container(
-                  width: 210,
-                  height: 40,
-                  child: Image.asset(
-                    'assets/images/black_paint.png',
-                    color: Colors.white,
-                    fit: BoxFit.fitWidth,
-                    colorBlendMode: BlendMode.srcIn,
+                //
+                //
+                //
+                Container(
+                  width: 450,
+                  height: 800,
+                  decoration: BoxDecoration(
+                      border: Border.all(color: Colors.grey, width: 0.1)),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      // SizedBox(height: 10),
+                      Expanded(
+                        child: ListView(
+                          children: [
+                            for (var i = 0; i < menuItems_Page7.length; i++) ...[
+                              // Widget cho item hiện tại
+                              Align(
+                                alignment: Alignment.centerLeft,
+                                child: Container(
+                                    width: 450,
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(2),
+                                      color: Colors.transparent,
+                                      border:
+                                          Border.all(color: Colors.transparent),
+                                    ),
+                                    padding: EdgeInsets.symmetric(horizontal: 25),
+                                    child: (menuItems_Page7[i].id == '32')
+                                        ? MenuItemWidget8(
+                                            item: menuItems_Page7[i],
+                                            usePadding: false,
+                                            onEditPrice: (option, isPrice1) =>
+                                                editPrice(
+                                                    context: context,
+                                                    option: option,
+                                                    isPrice1: isPrice1,
+                                                    setState: setState),
+                                            onEditDescription:
+                                                (item, isDescriptionDe) =>
+                                                    editDescription(
+                                              context: context,
+                                              item: item,
+                                              isDescriptionDe: isDescriptionDe,
+                                              setState: setState,
+                                            ),
+                                          )
+                                        : (menuItems_Page7[i].id == '38')
+                                            ? GestureDetector(
+                                                onTap: () {
+                                                  if (menuItems_Page7[i].id ==
+                                                      '38') {
+                                                    _pickImage();
+                                                  }
+                                                },
+                                                child: MenuItemWidget7(
+                                                  item: menuItems_Page7[i],
+                                                  useLineHeight: false,
+                                                  onEditPrice:
+                                                      (option, isPrice1) =>
+                                                          editPrice(
+                                                              context: context,
+                                                              option: option,
+                                                              isPrice1: isPrice1,
+                                                              setState: setState),
+                                                  onEditDescription:
+                                                      (item, isDescriptionDe) =>
+                                                          editDescription(
+                                                    context: context,
+                                                    item: item,
+                                                    isDescriptionDe:
+                                                        isDescriptionDe,
+                                                    setState: setState,
+                                                  ),
+                                                ),
+                                              )
+                                            : GestureDetector(
+                                                onTap: () {
+                                                  if (menuItems_Page7[i].id ==
+                                                          '37' ||
+                                                      menuItems_Page7[i].title ==
+                                                          'Veggie Bowl') {
+                                                    _pickImage();
+                                                  }
+                                                },
+                                                child: MenuItemWidget9(
+                                                  item: menuItems_Page7[i],
+                                                  usePadding: false,
+                                                  menuPage7: true,
+                                                  onEditPrice:
+                                                      (option, isPrice1) =>
+                                                          editPrice(
+                                                              context: context,
+                                                              option: option,
+                                                              isPrice1: isPrice1,
+                                                              setState: setState),
+                                                  onEditDescription:
+                                                      (item, isDescriptionDe) =>
+                                                          editDescription(
+                                                    context: context,
+                                                    item: item,
+                                                    isDescriptionDe:
+                                                        isDescriptionDe,
+                                                    setState: setState,
+                                                  ),
+                                                ),
+                                              )),
+                              ),
+                              // if (menuItems_Page7[i].id == '32')
+                              //  SizedBox(height: 2),
+                              // if (menuItems_Page7[i].id == '33')
+                              //  SizedBox(height: 2),
+                              // if (menuItems_Page7[i].id == '34')
+                              //  SizedBox(height: 2),
+                              // if (menuItems_Page7[i].id == '35')
+                              //  SizedBox(height: 2),
+                              if (menuItems_Page7[i].id == '37')
+                                SizedBox(height: 6),
+                              if (menuItems_Page7[i].title == 'Salmon Bowl')
+                                SizedBox(height: 45),
+                            ],
+                          ],
+                        ),
+                      ),
+                    ],
                   ),
                 ),
-              ),
-              Positioned(
-                top: 400,
-                left: 5,
-                child: Text(
-                  'Vegan Main',
-                  style: getFont0(state),
+          
+                //
+                //
+                //
+                // Positioned(
+                //   top: 372,
+                //   left: -60,
+                //   child: Image.asset(
+                //     'assets/images/black_paint.png',
+                //     color: Colors.white,
+                //     height: 100,
+                //     width: 230,
+                //     colorBlendMode: BlendMode.srcIn,
+                //   ),
+                // ),
+                Positioned(
+                  top: 396,
+                  left: -60,
+                  child: Container(
+                    width: 210,
+                    height: 40,
+                    child: Image.asset(
+                      'assets/images/black_paint.png',
+                      color: Colors.white,
+                      fit: BoxFit.fitWidth,
+                      colorBlendMode: BlendMode.srcIn,
+                    ),
+                  ),
                 ),
-              ),
-              //
-              //
-              //
-            ],
-          ),
+                Positioned(
+                  top: 400,
+                  left: 5,
+                  child: Text(
+                    'Vegan Main',
+                    style: getFont0(state),
+                  ),
+                ),
+                //
+                //
+                //
+              ],
+            ),
+          // ),
+                ),
         ),
-      ),
     );
   }
 }

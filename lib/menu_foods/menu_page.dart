@@ -5,6 +5,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:puzzel/menu_foods/data_widget.dart';
 import 'package:puzzel/menu_foods/export_image/save_image_util.dart';
+import 'package:puzzel/menu_foods/page_menu_item/page_10.dart';
 import 'package:puzzel/widget/fonts/AppFontsGoogle.dart';
 import 'package:puzzel/widget/fonts/bloc/font_cubit.dart';
 import 'package:puzzel/widget/fonts/bloc/font_state.dart';
@@ -18,132 +19,106 @@ class MenuPage extends StatefulWidget {
 }
 
 class _MenuPageState extends State<MenuPage> {
-  final GlobalKey _globalKey = GlobalKey();
-  final PageController _pageController = PageController();
-
-  @override
-  void initState() {
-    // TODO: implement initState
-    super.initState();
-    // final fonts = GoogleFonts.asMap().keys.toList();
-    // final formatted = fonts.map((f) => '"$f"').join(', ');
-
-    // print('[$formatted]');
-  }
-
-  @override
-  void dispose() {
-    _pageController.dispose();
-    super.dispose();
-  }
+  final GlobalKey _captureKey10 = GlobalKey();
+  final GlobalKey _captureKey11 = GlobalKey();
+  bool showPage10 = true;
 
   @override
   Widget build(BuildContext context) {
+    final currentKey = showPage10 ? _captureKey10 : _captureKey11;
+
     return BlocBuilder<FontCubit, FontState>(
       builder: (context, state) => Scaffold(
-        body: RepaintBoundary(
-          key: _globalKey,
-          // Truyền PageController vào DataWidget
-          child: DataWidget(pageController: _pageController),
-        ),
-        bottomNavigationBar: Column(
-          mainAxisSize: MainAxisSize.min,
+        body: showPage10
+            ? PageMenu10(captureKey: _captureKey10)
+            : PageMenu11(captureKey: _captureKey11),
+        bottomNavigationBar: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            SingleChildScrollView(
-              scrollDirection: Axis.horizontal,
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  ElevatedButton(
-                    onPressed: () {
-                      saveImage(_globalKey);
-                    },
-                    child: const Text("Lưu ảnh"),
-                  ),
-                  IconButton(
-                    icon: Icon(Icons.arrow_back_ios),
-                    onPressed: () {
-                      _pageController.previousPage(
-                        duration: Duration(milliseconds: 300),
-                        curve: Curves.easeInOut,
-                      );
-                    },
-                  ),
-                  IconButton(
-                    icon: Icon(Icons.arrow_forward_ios),
-                    onPressed: () {
-                      _pageController.nextPage(
-                        duration: Duration(milliseconds: 300),
-                        curve: Curves.easeInOut,
-                      );
-                    },
-                  ),
-                  IconButton(
-                    icon: Icon(Icons.settings, color: Colors.blue),
-                    onPressed: () {
-                      showModalBottomSheet(
-                        context: context,
-                        shape: RoundedRectangleBorder(
-                          borderRadius:
-                              BorderRadius.vertical(top: Radius.circular(16)),
-                        ),
-                        builder: (context) {
-                          return BlocBuilder<FontCubit, FontState>(
-                            builder: (context, state) {
-                              return Padding(
-                                padding: const EdgeInsets.all(16.0),
-                                child: SingleChildScrollView(
-                                  child: Column(
-                                    mainAxisSize: MainAxisSize.min,
-                                    children: [
-                                      Text('Chọn Font & Size',
-                                          style: Theme.of(context)
-                                              .textTheme
-                                              .titleLarge),
-                                      const SizedBox(height: 16),
-                                      ...fontConfigs.map((config) {
-                                        final fontName = (config['getFont']
-                                            as String Function(
-                                                FontState))(state);
-                                        final size = (config['getSize']
-                                            as double Function(
-                                                FontState))(state);
-
-                                        return _buildFontSetting(
-                                          title: config['title'] as String,
-                                          fontName: fontName,
-                                          size: size,
-                                          onFontChanged: (font) {
-                                            if (font != null) {
-                                              (config['onFontChanged']
-                                                  as void Function(BuildContext,
-                                                      String))(context, font);
-                                            }
-                                          },
-                                          onSizeChanged: (newSize) {
-                                            (config['onSizeChanged']
-                                                as void Function(BuildContext,
-                                                    double))(context, newSize);
-                                          },
-                                        );
-                                      }).toList(),
-                                      const SizedBox(height: 24),
-                                    ],
-                                  ),
-                                ),
-                              );
-                            },
-                          );
-                        },
-                      );
-                    },
-                  ),
-                ],
-              ),
+            ElevatedButton(
+              onPressed: () async {
+                await Future.delayed(const Duration(milliseconds: 100));
+                saveImage(
+                    currentKey); // 👈 chọn đúng key theo page đang hiển thị
+              },
+              child: const Text("Lưu ảnh"),
             ),
+            ElevatedButton(
+              onPressed: () {
+                setState(() {
+                  showPage10 = true;
+                });
+              },
+              child: const Text("1"),
+            ),
+            ElevatedButton(
+              onPressed: () {
+                setState(() {
+                  showPage10 = false;
+                });
+              },
+              child: const Text("2"),
+            ),
+            ButtonSetting(context),
           ],
         ),
       ),
+    );
+  }
+
+  IconButton ButtonSetting(BuildContext context) {
+    return IconButton(
+      icon: Icon(Icons.settings, color: Colors.blue),
+      onPressed: () {
+        showModalBottomSheet(
+          context: context,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.vertical(top: Radius.circular(16)),
+          ),
+          builder: (context) {
+            return BlocBuilder<FontCubit, FontState>(
+              builder: (context, state) {
+                return Padding(
+                  padding: const EdgeInsets.all(16.0),
+                  child: SingleChildScrollView(
+                    child: Column(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        Text('Chọn Font & Size',
+                            style: Theme.of(context).textTheme.titleLarge),
+                        const SizedBox(height: 16),
+                        ...fontConfigs.map((config) {
+                          final fontName = (config['getFont'] as String
+                              Function(FontState))(state);
+                          final size = (config['getSize'] as double Function(
+                              FontState))(state);
+
+                          return _buildFontSetting(
+                            title: config['title'] as String,
+                            fontName: fontName,
+                            size: size,
+                            onFontChanged: (font) {
+                              if (font != null) {
+                                (config['onFontChanged'] as void Function(
+                                    BuildContext, String))(context, font);
+                              }
+                            },
+                            onSizeChanged: (newSize) {
+                              (config['onSizeChanged'] as void Function(
+                                  BuildContext, double))(context, newSize);
+                            },
+                          );
+                        }).toList(),
+                        const SizedBox(height: 24),
+                      ],
+                    ),
+                  ),
+                );
+              },
+            );
+          },
+        );
+      },
     );
   }
 
@@ -268,3 +243,28 @@ class _MenuPageState extends State<MenuPage> {
     );
   }
 }
+
+
+//  IconButton(
+//                   icon: Icon(Icons.arrow_back_ios),
+//                   onPressed: () {
+//                     _pageController.previousPage(
+//                       duration: Duration(milliseconds: 300),
+//                       curve: Curves.easeInOut,
+//                     );
+//                   },
+//                 ),
+//                 IconButton(
+//                   icon: Icon(Icons.arrow_forward_ios),
+//                   onPressed: () {
+//                     _pageController.nextPage(
+//                       duration: Duration(milliseconds: 300),
+//                       curve: Curves.easeInOut,
+//                     );
+//                   },
+//                 ),
+//                 ButtonSetting(context),
+
+
+
+

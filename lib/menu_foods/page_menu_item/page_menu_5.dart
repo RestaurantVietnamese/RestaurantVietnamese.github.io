@@ -35,11 +35,13 @@ class _PageMenu5State extends State<PageMenu5> {
 
   @override
   Widget build(BuildContext context) {
-    return InteractiveViewer(
-      boundaryMargin: EdgeInsets.all(100),
-      minScale: 0.1, // zoom nhỏ hơn để vừa khung
-      maxScale: 3.0,
-      child: FittedBox(
+    return 
+    // InteractiveViewer(
+    //   boundaryMargin: EdgeInsets.all(100),
+    //   minScale: 0.1, // zoom nhỏ hơn để vừa khung
+    //   maxScale: 3.0,
+    //   child: 
+      FittedBox(
         fit: BoxFit.contain,
         alignment: Alignment.topLeft,
         child: Stack(
@@ -49,7 +51,7 @@ class _PageMenu5State extends State<PageMenu5> {
               heightImage: 800,
             ),
             Container(
-              width: 455,
+              width: 450,
               height: 800,
               decoration: BoxDecoration(
                   border: Border.all(color: Colors.grey, width: 0.1)),
@@ -101,7 +103,7 @@ class _PageMenu5State extends State<PageMenu5> {
             ),
           ],
         ),
-      ),
+      // ),
     );
   }
 }

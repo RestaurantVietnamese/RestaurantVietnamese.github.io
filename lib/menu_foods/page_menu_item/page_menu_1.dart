@@ -44,159 +44,164 @@ class _PageMenu1State extends State<PageMenu1> {
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<FontCubit, FontState>(
-      builder: (context, state) => InteractiveViewer(
-        boundaryMargin: EdgeInsets.all(100),
-        minScale: 0.1, // zoom nhỏ hơn để vừa khung
-        maxScale: 3.0,
-        child: FittedBox(
-          fit: BoxFit.contain, // scale toàn bộ nội dung vừa khung
-          alignment: Alignment.topLeft,
-          child: Stack(
-            children: [
-              PositionedImageChangeBackGround(
-                imageUrl: imageUrl,
-                heightImage: 106,
-              ),
-              Positioned(
-                top: -30,
-                left: -20,
-                child: Image.asset(
-                  'assets/images/black_paint.png',
-                  color: Colors.white,
-                  height: 100,
-                  width: 140,
-                  colorBlendMode: BlendMode.srcIn,
+      builder: (context, state) => 
+      // InteractiveViewer(
+      //   boundaryMargin: EdgeInsets.all(100),
+      //   minScale: 0.1, // zoom nhỏ hơn để vừa khung
+      //   maxScale: 3.0,
+      //   child: 
+        Container(
+          color: aBg,
+          child: FittedBox(
+            fit: BoxFit.contain, // scale toàn bộ nội dung vừa khung
+            alignment: Alignment.topLeft,
+            child: Stack(
+              children: [
+                PositionedImageChangeBackGround(
+                  imageUrl: imageUrl,
+                  heightImage: 106,
                 ),
-              ),
-              Positioned(
-                top: 5,
-                left: 15,
-                child: Text(
-                  'Suppen',
-                  style: getFont0(state),
+                Positioned(
+                  top: -30,
+                  left: -20,
+                  child: Image.asset(
+                    'assets/images/black_paint.png',
+                    color: Colors.white,
+                    height: 100,
+                    width: 140,
+                    colorBlendMode: BlendMode.srcIn,
+                  ),
                 ),
-              ),
-              Container(
-                width: 450,
-                height: 800,
-                decoration: BoxDecoration(
-                    color: Colors.transparent,
-                    border: Border.all(color: Colors.grey, width: 0.1)),
-                padding: EdgeInsets.only(left: 20, right: 20),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    SizedBox(height: 42),
-                    // Padding(
-                    //   padding: const EdgeInsets.only(left: 0),
-                    //   child: Text(
-                    //     'Supper',
-                    //     style: getFont0(state),
-                    //   ),
-                    // ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.end,
-                      children: const [
-                        Text(
-                          '300 ml',
-                          style: TextStyle(
-                              fontSize: 14, fontWeight: FontWeight.w700),
-                          // style: getFontB(
-                          //   state,
-                          //   fontWeight: FontWeight.w800,
-                          // ),
-                        ),
-                        SizedBox(width: 20),
-                        Text(
-                          '750 ml',
-                          style: TextStyle(
-                              fontSize: 14, fontWeight: FontWeight.w700),
-
-                          // style: getFontB(state, fontWeight: FontWeight.w800),
-                        ),
-                        SizedBox(width: 10),
-                      ],
-                    ),
-                    // SizedBox(height: 5),
-                    Column(
-                      children: menuItems_Page1.map((item) {
-                        Widget widgetItem;
-
-                        if (item.id == '3' || item.id == '6') {
-                          widgetItem = MenuItemWidget2(
-                            item: item,
-                            onEditPrice: (option, isPrice1) => editPrice(
-                              context: context,
-                              option: option,
-                              isPrice1: isPrice1,
-                              setState: setState,
-                            ),
-                            onEditDescription: (item, isDescriptionDe) =>
-                                editDescription(
-                              context: context,
+                Positioned(
+                  top: 5,
+                  left: 15,
+                  child: Text(
+                    'Suppen',
+                    style: getFont0(state),
+                  ),
+                ),
+                Container(
+                  width: 450,
+                  height: 800,
+                  decoration: BoxDecoration(
+                      color: Colors.transparent,
+                      border: Border.all(color: Colors.grey, width: 0.1)),
+                  padding: EdgeInsets.only(left: 20, right: 20),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      SizedBox(height: 42),
+                      // Padding(
+                      //   padding: const EdgeInsets.only(left: 0),
+                      //   child: Text(
+                      //     'Supper',
+                      //     style: getFont0(state),
+                      //   ),
+                      // ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.end,
+                        children: const [
+                          Text(
+                            '300 ml',
+                            style: TextStyle(
+                                fontSize: 14, fontWeight: FontWeight.w700),
+                            // style: getFontB(
+                            //   state,
+                            //   fontWeight: FontWeight.w800,
+                            // ),
+                          ),
+                          SizedBox(width: 20),
+                          Text(
+                            '750 ml',
+                            style: TextStyle(
+                                fontSize: 14, fontWeight: FontWeight.w700),
+          
+                            // style: getFontB(state, fontWeight: FontWeight.w800),
+                          ),
+                          SizedBox(width: 10),
+                        ],
+                      ),
+                      // SizedBox(height: 5),
+                      Column(
+                        children: menuItems_Page1.map((item) {
+                          Widget widgetItem;
+          
+                          if (item.id == '3' || item.id == '6') {
+                            widgetItem = MenuItemWidget2(
                               item: item,
-                              isDescriptionDe: isDescriptionDe,
-                              setState: setState,
-                            ),
-                          );
-                        } else {
-                          widgetItem = MenuItemWidget(
-                            item: item,
-                            onEditPrice: (option, isPrice1) => editPrice(
-                              context: context,
-                              option: option,
-                              isPrice1: isPrice1,
-                              setState: setState,
-                            ),
-                            onEditDescription: (item, isDescriptionDe) =>
-                                editDescription(
-                              context: context,
+                              onEditPrice: (option, isPrice1) => editPrice(
+                                context: context,
+                                option: option,
+                                isPrice1: isPrice1,
+                                setState: setState,
+                              ),
+                              onEditDescription: (item, isDescriptionDe) =>
+                                  editDescription(
+                                context: context,
+                                item: item,
+                                isDescriptionDe: isDescriptionDe,
+                                setState: setState,
+                              ),
+                            );
+                          } else {
+                            widgetItem = MenuItemWidget(
                               item: item,
-                              isDescriptionDe: isDescriptionDe,
-                              setState: setState,
-                            ),
-                          );
-                        }
-
-                        return Column(
-                          children: [
-                            Align(
-                              alignment: Alignment.centerLeft,
-                              child: GestureDetector(
-                                onTap: () {
-                                  if (item.id == '6') _pickImage();
-                                },
-                                child: Container(
-                                  width: 450,
-                                  decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(2),
-                                    color: Colors.transparent,
-                                    border:
-                                        Border.all(color: Colors.transparent),
+                              onEditPrice: (option, isPrice1) => editPrice(
+                                context: context,
+                                option: option,
+                                isPrice1: isPrice1,
+                                setState: setState,
+                              ),
+                              onEditDescription: (item, isDescriptionDe) =>
+                                  editDescription(
+                                context: context,
+                                item: item,
+                                isDescriptionDe: isDescriptionDe,
+                                setState: setState,
+                              ),
+                            );
+                          }
+          
+                          return Column(
+                            children: [
+                              Align(
+                                alignment: Alignment.centerLeft,
+                                child: GestureDetector(
+                                  onTap: () {
+                                    if (item.id == '6') _pickImage();
+                                  },
+                                  child: Container(
+                                    width: 450,
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(2),
+                                      color: Colors.transparent,
+                                      border:
+                                          Border.all(color: Colors.transparent),
+                                    ),
+                                    padding: const EdgeInsets.symmetric(
+                                        horizontal: 10),
+                                    child: widgetItem,
                                   ),
-                                  padding: const EdgeInsets.symmetric(
-                                      horizontal: 10),
-                                  child: widgetItem,
                                 ),
                               ),
-                            ),
-                            // if (item.id == '1') SizedBox(height: 5),
-                            // if (item.id == '2') SizedBox(height: 5),
-                            // if (item.id == '3') SizedBox(height: 5),
-                            // if (item.id == '4') SizedBox(height: 5),
-                            if (item.id == '5') SizedBox(height: 15),
-                            // if (item.id == '6') SizedBox(height: 5),
-                          ],
-                        );
-                      }).toList(),
-                    ),
-                  ],
+                              // if (item.id == '1') SizedBox(height: 5),
+                              // if (item.id == '2') SizedBox(height: 5),
+                              // if (item.id == '3') SizedBox(height: 5),
+                              // if (item.id == '4') SizedBox(height: 5),
+                              if (item.id == '5') SizedBox(height: 20),
+                              // if (item.id == '6') SizedBox(height: 5),
+                            ],
+                          );
+                        }).toList(),
+                      ),
+                    ],
+                  ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         ),
-      ),
+      // ),
     );
   }
 }
