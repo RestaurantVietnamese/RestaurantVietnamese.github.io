@@ -103,12 +103,12 @@ class _PageMenu3State extends State<PageMenu3> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    'ALLERGENE: A - Gluten, B - Krebstiere, C - Ei, D - Fisch, E - Erdnüsse, F - Soja. G - Mich,\nH - Schalenfrüchte, L. - Seferie, M - Senf, N - Sesam, O - Sulfite, R -',
-                    style: GoogleFonts.lato(fontSize: 8),
+                    'ALLERGENE: A - Gluten, B - Krebstiere, C - Ei, D - Fisch, E - Erdnüsse, F - Soja. G - Mich,\nH - Schalenfrüchte, L. - Seferie, M - Senf, N - Sesam, O - Sulfite, R - Welchtiere',
+                    style: GoogleFonts.lato(fontSize: 8,fontWeight: FontWeight.w600),
                   ),
                   Text(
-                    'ZUSATZSTOFFE: 1 - Konservierungsstoffe, 2 - Farbstoffe, 3 - Antioxidationsmittel,4 - Süßungsmittel, 5 - Phosphat, 6 - Schwefel, 7 - Chinin, 8 - Koffein, 9 - Geschmacksver-stärker, 10 - Schwefeldioxid und Sulfid, 11 - Phenylalalinquelle, 12 - Säuerungsmittel,13 - Surmi, 14 - geschwärzt',
-                    style: GoogleFonts.lato(fontSize: 8),
+                    'ZUSATZSTOFFE: 1 - Konservierungsstoffe, 2 - Farbstoffe, 3 - Antioxidationsmittel,\n4 - Süßungsmittel, 5 - Phosphat, 6 - Schwefel, 7 - Chinin, 8 - Koffein, 9 - Geschmacksver-stärker, 10 - Schwefeldioxid und Sulfid, 11 - Phenylalalinquelle, 12 - Säuerungsmittel,\n13 - Surmi, 14 - geschwärzt',
+                    style: GoogleFonts.lato(fontSize: 8,fontWeight: FontWeight.w600),
                   )
                 ],
               ),
