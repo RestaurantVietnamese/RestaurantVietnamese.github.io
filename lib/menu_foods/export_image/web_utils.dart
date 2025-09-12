@@ -12,47 +12,70 @@ bool isMobileWeb() {
 }
 
 Future<void> captureAndSaveImage(GlobalKey globalKey) async {
-  final boundary =
-      globalKey.currentContext!.findRenderObject() as RenderRepaintBoundary;
-  ui.Image image = await boundary.toImage(pixelRatio: 3.0);
-  ByteData? byteData = await image.toByteData(format: ui.ImageByteFormat.png);
-  Uint8List pngBytes = byteData!.buffer.asUint8List();
+  final pngBytes = await captureCroppedImage(globalKey);
 
   if (kIsWeb) {
     if (isMobileWeb()) {
-      // --- MOBILE WEB ---
-      // Tạo URL object từ blob
       final blob = html.Blob([pngBytes], 'image/png');
       final url = html.Url.createObjectUrlFromBlob(blob);
-
-      // Hiển thị ảnh trực tiếp trên trang web thay vì mở tab mới
       _showImagePreview(globalKey.currentContext!, url, pngBytes, globalKey);
-
-      // Dọn dẹp sau 10 phút
-      Future.delayed(Duration(minutes: 10), () {
+      Future.delayed(const Duration(minutes: 10), () {
         html.Url.revokeObjectUrl(url);
       });
     } else {
-      // --- DESKTOP WEB ---
       final blob = html.Blob([pngBytes]);
       final url = html.Url.createObjectUrlFromBlob(blob);
       final anchor = html.AnchorElement(href: url)
         ..download = "menu_image_${DateTime.now().toIso8601String()}.png"
         ..style.display = 'none';
-
       html.document.body!.append(anchor);
       anchor.click();
-
-      // Dọn dẹp
-      Future.delayed(Duration(seconds: 1), () {
+      Future.delayed(const Duration(seconds: 1), () {
         anchor.remove();
         html.Url.revokeObjectUrl(url);
       });
     }
-  } else {
-    // Xử lý cho mobile app (không phải web)
-    // ... thêm code xử lý cho mobile app nếu cần
   }
+}
+
+Future<Uint8List> captureCroppedImage(GlobalKey key) async {
+  final boundary =
+      key.currentContext!.findRenderObject() as RenderRepaintBoundary;
+
+  // chụp ảnh gốc
+  final ui.Image image = await boundary.toImage(pixelRatio: 3.0);
+  final byteData = await image.toByteData(format: ui.ImageByteFormat.png);
+  final pngBytes = byteData!.buffer.asUint8List();
+
+  // decode lại thành Image để cắt
+  final codec = await ui.instantiateImageCodec(pngBytes);
+  final frame = await codec.getNextFrame();
+  final ui.Image fullImage = frame.image;
+
+  // lấy đúng kích thước widget (theo pixelRatio)
+  final renderBox = key.currentContext!.findRenderObject() as RenderBox;
+  final targetWidth = (renderBox.size.width * 3.0).toInt();
+  final targetHeight = (renderBox.size.height * 3.0).toInt();
+
+  // cắt đúng khung
+  final recorder = ui.PictureRecorder();
+  final canvas = Canvas(recorder);
+  final paint = Paint();
+  canvas.drawImageRect(
+    fullImage,
+    Rect.fromLTWH(0, 0, targetWidth.toDouble(), targetHeight.toDouble()),
+    Rect.fromLTWH(0, 0, targetWidth.toDouble(), targetHeight.toDouble()),
+    paint,
+  );
+
+  final cropped =
+      await recorder.endRecording().toImage(targetWidth, targetHeight);
+  final croppedBytes =
+      await (await cropped.toByteData(format: ui.ImageByteFormat.png))!
+          .buffer
+          .asUint8List();
+
+  return croppedBytes;
 }
 
 void _showImagePreview(BuildContext context, String imageUrl,
