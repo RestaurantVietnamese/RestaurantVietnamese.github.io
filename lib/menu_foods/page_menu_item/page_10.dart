@@ -110,21 +110,42 @@ class PageMenu11 extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return RepaintBoundary(
-      key: captureKey,
-      child: SizedBox(
-        width: 450 * 5, // ép full 2250
-        height: 800,
-        child: Row(
-          children: const [
-            SizedBox(width: 450, height: 800, child: PageMenu6()),
-            SizedBox(width: 450, height: 800, child: PageMenu7()),
-            SizedBox(width: 450, height: 800, child: PageMenu8()),
-            SizedBox(width: 450, height: 800, child: PageMenu9()),
-            SizedBox(width: 450, height: 800, child: PageMenu0()),
-          ],
+    return Stack(
+      children: [
+        // user view
+        SingleChildScrollView(
+          scrollDirection: Axis.horizontal,
+          child: Row(
+            children: const [
+              PageMenu6(),
+              PageMenu7(),
+              PageMenu8(),
+              PageMenu9(),
+              PageMenu0(),
+            ],
+          ),
         ),
-      ),
+        // hidden capture version
+        Transform.translate(
+          offset: const Offset(10000, 0),
+          child: RepaintBoundary(
+            key: captureKey,
+            child: SizedBox(
+              width: 450 * 5,
+              height: 800,
+              child: Row(
+                children: const [
+                  SizedBox(width: 450, height: 800, child: PageMenu6()),
+                  SizedBox(width: 450, height: 800, child: PageMenu7()),
+                  SizedBox(width: 450, height: 800, child: PageMenu8()),
+                  SizedBox(width: 450, height: 800, child: PageMenu9()),
+                  SizedBox(width: 450, height: 800, child: PageMenu0()),
+                ],
+              ),
+            ),
+          ),
+        ),
+      ],
     );
   }
 }
