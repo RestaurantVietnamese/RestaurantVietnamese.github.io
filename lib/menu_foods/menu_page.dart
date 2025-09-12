@@ -59,211 +59,194 @@ class _MenuPageState extends State<MenuPage> {
               },
               child: const Text("2"),
             ),
-            ButtonSetting(context),
           ],
         ),
       ),
-    );
-  }
-
-  IconButton ButtonSetting(BuildContext context) {
-    return IconButton(
-      icon: Icon(Icons.settings, color: Colors.blue),
-      onPressed: () {
-        showModalBottomSheet(
-          context: context,
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.vertical(top: Radius.circular(16)),
-          ),
-          builder: (context) {
-            return BlocBuilder<FontCubit, FontState>(
-              builder: (context, state) {
-                return Padding(
-                  padding: const EdgeInsets.all(16.0),
-                  child: SingleChildScrollView(
-                    child: Column(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        Text('Chọn Font & Size',
-                            style: Theme.of(context).textTheme.titleLarge),
-                        const SizedBox(height: 16),
-                        ...fontConfigs.map((config) {
-                          final fontName = (config['getFont'] as String
-                              Function(FontState))(state);
-                          final size = (config['getSize'] as double Function(
-                              FontState))(state);
-
-                          return _buildFontSetting(
-                            title: config['title'] as String,
-                            fontName: fontName,
-                            size: size,
-                            onFontChanged: (font) {
-                              if (font != null) {
-                                (config['onFontChanged'] as void Function(
-                                    BuildContext, String))(context, font);
-                              }
-                            },
-                            onSizeChanged: (newSize) {
-                              (config['onSizeChanged'] as void Function(
-                                  BuildContext, double))(context, newSize);
-                            },
-                          );
-                        }).toList(),
-                        const SizedBox(height: 24),
-                      ],
-                    ),
-                  ),
-                );
-              },
-            );
-          },
-        );
-      },
-    );
-  }
-
-  Widget _buildFontSetting({
-    required String title,
-    required String fontName,
-    required double size,
-    required ValueChanged<String?> onFontChanged,
-    required ValueChanged<double> onSizeChanged,
-  }) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Text(title),
-            Row(
-              children: [
-                Text(fontName, style: GoogleFonts.getFont(fontName)),
-                IconButton(
-                  icon: Icon(Icons.search, color: Colors.red),
-                  onPressed: () {
-                    _showFontSearch(context, fontName, (selectedFont) {
-                      onFontChanged(selectedFont);
-                    });
-                  },
-                ),
-              ],
-            ),
-          ],
-        ),
-        Slider(
-          value: size,
-          min: 10,
-          max: 50,
-          divisions: 40,
-          label: size.toStringAsFixed(0),
-          onChanged: onSizeChanged,
-        ),
-      ],
-    );
-  }
-
-  Future<void> _showFontSearch(
-    BuildContext context,
-    String currentFont,
-    Function(String) onSelected,
-  ) async {
-    String query = '';
-    List<String> filteredFonts = [];
-
-    await showModalBottomSheet(
-      context: context,
-      isScrollControlled: true,
-      backgroundColor: Colors.white,
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.vertical(top: Radius.circular(16)),
-      ),
-      builder: (context) {
-        return FractionallySizedBox(
-          heightFactor: 0.5, // Chỉ chiếm 50% màn hình
-          child: StatefulBuilder(
-            builder: (context, setState) {
-              return Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Column(
-                  children: [
-                    TextField(
-                      decoration: InputDecoration(
-                        hintText: 'Search font...',
-                        prefixIcon: Icon(Icons.search),
-                        border: OutlineInputBorder(),
-                      ),
-                      onChanged: (value) {
-                        query = value.toLowerCase();
-                        setState(() {
-                          if (query.isEmpty) {
-                            filteredFonts = [];
-                          } else {
-                            filteredFonts = AppFontsGoogle.allFonts
-                                .where((font) =>
-                                    font.toLowerCase().contains(query))
-                                .take(50)
-                                .toList();
-                          }
-                        });
-                      },
-                    ),
-                    SizedBox(height: 10),
-                    Expanded(
-                      child: filteredFonts.isEmpty
-                          ? Center(child: Text('Nhập từ khóa để tìm font'))
-                          : ListView.separated(
-                              itemCount: filteredFonts.length,
-                              separatorBuilder: (_, __) => Divider(),
-                              itemBuilder: (context, index) {
-                                final fontName = filteredFonts[index];
-                                return ListTile(
-                                  title: Text(
-                                    fontName,
-                                    style: GoogleFonts.getFont(fontName),
-                                  ),
-                                  trailing: fontName == currentFont
-                                      ? Icon(Icons.check, color: Colors.green)
-                                      : null,
-                                  onTap: () {
-                                    onSelected(fontName);
-                                    Navigator.pop(context);
-                                  },
-                                );
-                              },
-                            ),
-                    ),
-                  ],
-                ),
-              );
-            },
-          ),
-        );
-      },
     );
   }
 }
 
 
-//  IconButton(
-//                   icon: Icon(Icons.arrow_back_ios),
-//                   onPressed: () {
-//                     _pageController.previousPage(
-//                       duration: Duration(milliseconds: 300),
-//                       curve: Curves.easeInOut,
-//                     );
-//                   },
-//                 ),
-//                 IconButton(
-//                   icon: Icon(Icons.arrow_forward_ios),
-//                   onPressed: () {
-//                     _pageController.nextPage(
-//                       duration: Duration(milliseconds: 300),
-//                       curve: Curves.easeInOut,
-//                     );
-//                   },
-//                 ),
-//                 ButtonSetting(context),
+  // IconButton ButtonSetting(BuildContext context) {
+  //   return IconButton(
+  //     icon: Icon(Icons.settings, color: Colors.blue),
+  //     onPressed: () {
+  //       showModalBottomSheet(
+  //         context: context,
+  //         shape: RoundedRectangleBorder(
+  //           borderRadius: BorderRadius.vertical(top: Radius.circular(16)),
+  //         ),
+  //         builder: (context) {
+  //           return BlocBuilder<FontCubit, FontState>(
+  //             builder: (context, state) {
+  //               return Padding(
+  //                 padding: const EdgeInsets.all(16.0),
+  //                 child: SingleChildScrollView(
+  //                   child: Column(
+  //                     mainAxisSize: MainAxisSize.min,
+  //                     children: [
+  //                       Text('Chọn Font & Size',
+  //                           style: Theme.of(context).textTheme.titleLarge),
+  //                       const SizedBox(height: 16),
+  //                       ...fontConfigs.map((config) {
+  //                         final fontName = (config['getFont'] as String
+  //                             Function(FontState))(state);
+  //                         final size = (config['getSize'] as double Function(
+  //                             FontState))(state);
+
+  //                         return _buildFontSetting(
+  //                           title: config['title'] as String,
+  //                           fontName: fontName,
+  //                           size: size,
+  //                           onFontChanged: (font) {
+  //                             if (font != null) {
+  //                               (config['onFontChanged'] as void Function(
+  //                                   BuildContext, String))(context, font);
+  //                             }
+  //                           },
+  //                           onSizeChanged: (newSize) {
+  //                             (config['onSizeChanged'] as void Function(
+  //                                 BuildContext, double))(context, newSize);
+  //                           },
+  //                         );
+  //                       }).toList(),
+  //                       const SizedBox(height: 24),
+  //                     ],
+  //                   ),
+  //                 ),
+  //               );
+  //             },
+  //           );
+  //         },
+  //       );
+  //     },
+  //   );
+  // }
+
+  // Widget _buildFontSetting({
+  //   required String title,
+  //   required String fontName,
+  //   required double size,
+  //   required ValueChanged<String?> onFontChanged,
+  //   required ValueChanged<double> onSizeChanged,
+  // }) {
+  //   return Column(
+  //     crossAxisAlignment: CrossAxisAlignment.start,
+  //     children: [
+  //       Row(
+  //         mainAxisAlignment: MainAxisAlignment.spaceBetween,
+  //         children: [
+  //           Text(title),
+  //           Row(
+  //             children: [
+  //               Text(fontName, style: GoogleFonts.getFont(fontName)),
+  //               IconButton(
+  //                 icon: Icon(Icons.search, color: Colors.red),
+  //                 onPressed: () {
+  //                   _showFontSearch(context, fontName, (selectedFont) {
+  //                     onFontChanged(selectedFont);
+  //                   });
+  //                 },
+  //               ),
+  //             ],
+  //           ),
+  //         ],
+  //       ),
+  //       Slider(
+  //         value: size,
+  //         min: 10,
+  //         max: 50,
+  //         divisions: 40,
+  //         label: size.toStringAsFixed(0),
+  //         onChanged: onSizeChanged,
+  //       ),
+  //     ],
+  //   );
+  // }
+
+  // Future<void> _showFontSearch(
+  //   BuildContext context,
+  //   String currentFont,
+  //   Function(String) onSelected,
+  // ) async {
+  //   String query = '';
+  //   List<String> filteredFonts = [];
+
+  //   await showModalBottomSheet(
+  //     context: context,
+  //     isScrollControlled: true,
+  //     backgroundColor: Colors.white,
+  //     shape: RoundedRectangleBorder(
+  //       borderRadius: BorderRadius.vertical(top: Radius.circular(16)),
+  //     ),
+  //     builder: (context) {
+  //       return FractionallySizedBox(
+  //         heightFactor: 0.5, // Chỉ chiếm 50% màn hình
+  //         child: StatefulBuilder(
+  //           builder: (context, setState) {
+  //             return Padding(
+  //               padding: const EdgeInsets.all(8.0),
+  //               child: Column(
+  //                 children: [
+  //                   TextField(
+  //                     decoration: InputDecoration(
+  //                       hintText: 'Search font...',
+  //                       prefixIcon: Icon(Icons.search),
+  //                       border: OutlineInputBorder(),
+  //                     ),
+  //                     onChanged: (value) {
+  //                       query = value.toLowerCase();
+  //                       setState(() {
+  //                         if (query.isEmpty) {
+  //                           filteredFonts = [];
+  //                         } else {
+  //                           filteredFonts = AppFontsGoogle.allFonts
+  //                               .where((font) =>
+  //                                   font.toLowerCase().contains(query))
+  //                               .take(50)
+  //                               .toList();
+  //                         }
+  //                       });
+  //                     },
+  //                   ),
+  //                   SizedBox(height: 10),
+  //                   Expanded(
+  //                     child: filteredFonts.isEmpty
+  //                         ? Center(child: Text('Nhập từ khóa để tìm font'))
+  //                         : ListView.separated(
+  //                             itemCount: filteredFonts.length,
+  //                             separatorBuilder: (_, __) => Divider(),
+  //                             itemBuilder: (context, index) {
+  //                               final fontName = filteredFonts[index];
+  //                               return ListTile(
+  //                                 title: Text(
+  //                                   fontName,
+  //                                   style: GoogleFonts.getFont(fontName),
+  //                                 ),
+  //                                 trailing: fontName == currentFont
+  //                                     ? Icon(Icons.check, color: Colors.green)
+  //                                     : null,
+  //                                 onTap: () {
+  //                                   onSelected(fontName);
+  //                                   Navigator.pop(context);
+  //                                 },
+  //                               );
+  //                             },
+  //                           ),
+  //                   ),
+  //                 ],
+  //               ),
+  //             );
+  //           },
+  //         ),
+  //       );
+  //     },
+  //   );
+  // }
+
+
+
+
 
 
 
