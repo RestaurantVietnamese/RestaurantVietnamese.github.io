@@ -35,22 +35,23 @@ class _MenuPageState extends State<MenuPage> {
         bottomNavigationBar: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            ElevatedButton(
-              onPressed: () async {
-                await Future.delayed(const Duration(milliseconds: 100));
-                saveImage(
-                    currentKey); // 👈 chọn đúng key theo page đang hiển thị
-              },
-              child: const Text("Lưu ảnh"),
-            ),
-            ElevatedButton(
-              onPressed: () async {
-                await Future.delayed(const Duration(milliseconds: 100));
-                downloadAsPdf(
-                    currentKey); // 👈 chọn đúng key theo page đang hiển thị
-              },
-              child: const Text("Lưu pdf"),
-            ),
+            // if(w)
+            // ElevatedButton(
+            //   onPressed: () async {
+            //     await Future.delayed(const Duration(milliseconds: 100));
+            //     saveImage(
+            //         currentKey); // 👈 chọn đúng key theo page đang hiển thị
+            //   },
+            //   child: const Text("Lưu ảnh"),
+            // ),
+            // ElevatedButton(
+            //   onPressed: () async {
+            //     await Future.delayed(const Duration(milliseconds: 100));
+            //     downloadAsPdf(
+            //         currentKey); // 👈 chọn đúng key theo page đang hiển thị
+            //   },
+            //   child: const Text("Lưu pdf"),
+            // ),
             ElevatedButton(
               onPressed: () {
                 setState(() {
@@ -73,8 +74,6 @@ class _MenuPageState extends State<MenuPage> {
       ),
     );
   }
-
-
 
   IconButton ButtonSetting(BuildContext context) {
     return IconButton(
@@ -252,11 +251,4 @@ class _MenuPageState extends State<MenuPage> {
       },
     );
   }
-
-
 }
-
-
-
-
-
