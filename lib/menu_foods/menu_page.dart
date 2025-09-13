@@ -44,6 +44,14 @@ class _MenuPageState extends State<MenuPage> {
               child: const Text("Lưu ảnh"),
             ),
             ElevatedButton(
+              onPressed: () async {
+                await Future.delayed(const Duration(milliseconds: 100));
+                downloadAsPdf(
+                    currentKey); // 👈 chọn đúng key theo page đang hiển thị
+              },
+              child: const Text("Lưu pdf"),
+            ),
+            ElevatedButton(
               onPressed: () {
                 setState(() {
                   showPage10 = true;
