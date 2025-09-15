@@ -94,7 +94,7 @@ Future<void> downloadAsPdf2(GlobalKey genKey) async {
 
 Future<Uint8List> _captureKeyToBytes(GlobalKey key) async {
   final boundary = key.currentContext!.findRenderObject() as RenderRepaintBoundary;
-  final image = await boundary.toImage(pixelRatio: 2.0);
+  final image = await boundary.toImage(pixelRatio: 5);
   final byteData = await image.toByteData(format: ui.ImageByteFormat.png);
   return byteData!.buffer.asUint8List();
 }
