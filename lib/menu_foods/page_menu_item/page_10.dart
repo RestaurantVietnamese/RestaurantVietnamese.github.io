@@ -12,67 +12,35 @@ import 'package:puzzel/menu_foods/page_menu_item/page_menu_7.dart';
 import 'package:puzzel/menu_foods/page_menu_item/page_menu_8.dart';
 import 'package:puzzel/menu_foods/page_menu_item/page_menu_9.dart';
 
-// class PageMenu10 extends StatelessWidget {
-//   final GlobalKey captureKey;
-//   const PageMenu10({super.key, required this.captureKey});
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return RepaintBoundary(
-//       key: captureKey,
-//       child: SingleChildScrollView(
-//         scrollDirection: Axis.horizontal,
-//         child: Row(
-//           children: const [
-//             SizedBox(width: 450, height: 800, child: PageMenu1()),
-//             SizedBox(width: 450, height: 800, child: PageMenu2()),
-//             SizedBox(width: 450, height: 800, child: PageMenu3()),
-//             SizedBox(width: 450, height: 800, child: PageMenu4()),
-//             SizedBox(width: 450, height: 800, child: PageMenu5()),
-//           ],
-//         ),
-//       ),
-//     );
-//   }
-// }
 class PageMenu10 extends StatelessWidget {
-  final GlobalKey captureKey;
-  const PageMenu10({super.key, required this.captureKey});
+  final List<GlobalKey> captureKeys;
+  const PageMenu10({super.key, required this.captureKeys});
 
   @override
   Widget build(BuildContext context) {
     return Stack(
       children: [
-        // user view
-        SingleChildScrollView(
-          scrollDirection: Axis.horizontal,
-          child: Row(
-            children: const [
-              PageMenu1(),
-              PageMenu2(),
-              PageMenu3(),
-              PageMenu4(),
-              PageMenu5(),
-            ],
-          ),
-        ),
-        // hidden capture version
-        Transform.translate(
-          offset: const Offset(10000, 0),
-          child: RepaintBoundary(
-            key: captureKey,
-            child: SizedBox(
-              width: 450 * 5,
-              height: 800,
-              child: Row(
-                children: const [
-                  SizedBox(width: 450, height: 800, child: PageMenu1()),
-                  SizedBox(width: 450, height: 800, child: PageMenu2()),
-                  SizedBox(width: 450, height: 800, child: PageMenu3()),
-                  SizedBox(width: 450, height: 800, child: PageMenu4()),
-                  SizedBox(width: 450, height: 800, child: PageMenu5()),
-                ],
-              ),
+        // 👉 user view: zoom
+        InteractiveViewer(
+          minScale: 0.5,
+          maxScale: 3.0,
+          boundaryMargin: const EdgeInsets.all(50),
+          child: SingleChildScrollView(
+            scrollDirection: Axis.horizontal,
+            child: Row(
+              children: List.generate(5, (index) {
+                final page = [
+                  const PageMenu1(),
+                  const PageMenu2(),
+                  const PageMenu3(),
+                  const PageMenu4(),
+                  const PageMenu5(),
+                ][index];
+                return RepaintBoundary(
+                  key: captureKeys[index],
+                  child: SizedBox(width: 450, height: 800, child: page),
+                );
+              }),
             ),
           ),
         ),
@@ -81,67 +49,35 @@ class PageMenu10 extends StatelessWidget {
   }
 }
 
-// class PageMenu11 extends StatelessWidget {
-//   final GlobalKey captureKey;
-//   const PageMenu11({super.key, required this.captureKey});
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return RepaintBoundary(
-//       key: captureKey,
-//       child: const SingleChildScrollView(
-//         scrollDirection: Axis.horizontal,
-//         child: Row(
-//           children: [
-//             SizedBox(width: 450, height: 800, child: PageMenu6()),
-//             SizedBox(width: 450, height: 800, child: PageMenu7()),
-//             SizedBox(width: 450, height: 800, child: PageMenu8()),
-//             SizedBox(width: 450, height: 800, child: PageMenu9()),
-//             SizedBox(width: 450, height: 800, child: PageMenu0()),
-//           ],
-//         ),
-//       ),
-//     );
-//   }
-// }
 class PageMenu11 extends StatelessWidget {
-  final GlobalKey captureKey;
-  const PageMenu11({super.key, required this.captureKey});
+  final List<GlobalKey> captureKeys;
+  const PageMenu11({super.key, required this.captureKeys});
 
   @override
   Widget build(BuildContext context) {
     return Stack(
       children: [
-        // user view
-        SingleChildScrollView(
-          scrollDirection: Axis.horizontal,
-          child: Row(
-            children: const [
-              PageMenu6(),
-              PageMenu7(),
-              PageMenu8(),
-              PageMenu9(),
-              PageMenu0(),
-            ],
-          ),
-        ),
-        // hidden capture version
-        Transform.translate(
-          offset: const Offset(10000, 0),
-          child: RepaintBoundary(
-            key: captureKey,
-            child: SizedBox(
-              width: 450 * 5,
-              height: 800,
-              child: Row(
-                children: const [
-                  SizedBox(width: 450, height: 800, child: PageMenu6()),
-                  SizedBox(width: 450, height: 800, child: PageMenu7()),
-                  SizedBox(width: 450, height: 800, child: PageMenu8()),
-                  SizedBox(width: 450, height: 800, child: PageMenu9()),
-                  SizedBox(width: 450, height: 800, child: PageMenu0()),
-                ],
-              ),
+        // 👉 user view: zoom
+        InteractiveViewer(
+          minScale: 0.5,
+          maxScale: 3.0,
+          boundaryMargin: const EdgeInsets.all(50),
+          child: SingleChildScrollView(
+            scrollDirection: Axis.horizontal,
+            child: Row(
+              children: List.generate(5, (index) {
+                final page = [
+                  const PageMenu6(),
+                  const PageMenu7(),
+                  const PageMenu8(),
+                  const PageMenu9(),
+                  const PageMenu0(),
+                ][index];
+                return RepaintBoundary(
+                  key: captureKeys[index],
+                  child: SizedBox(width: 450, height: 800, child: page),
+                );
+              }),
             ),
           ),
         ),

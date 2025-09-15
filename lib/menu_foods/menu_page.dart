@@ -23,54 +23,74 @@ class _MenuPageState extends State<MenuPage> {
   final GlobalKey _captureKey11 = GlobalKey();
   bool showPage10 = true;
 
+  final List<GlobalKey> _captureKeys =
+      List.generate(5, (_) => GlobalKey()); // 5 keys
+
+  bool _isLoading = false;
+
+  Future<void> _handleDownload() async {
+    setState(() => _isLoading = true);
+
+    try {
+      await Future.delayed(const Duration(milliseconds: 100));
+      await downloadAsPdf(_captureKeys);
+    } finally {
+      setState(() => _isLoading = false);
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     final currentKey = showPage10 ? _captureKey10 : _captureKey11;
 
     return BlocBuilder<FontCubit, FontState>(
-      builder: (context, state) => Scaffold(
-        body: showPage10
-            ? PageMenu10(captureKey: _captureKey10)
-            : PageMenu11(captureKey: _captureKey11),
-        bottomNavigationBar: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            // if(w)
-            // ElevatedButton(
-            //   onPressed: () async {
-            //     await Future.delayed(const Duration(milliseconds: 100));
-            //     saveImage(
-            //         currentKey); // 👈 chọn đúng key theo page đang hiển thị
-            //   },
-            //   child: const Text("Lưu ảnh"),
-            // ),
-            // ElevatedButton(
-            //   onPressed: () async {
-            //     await Future.delayed(const Duration(milliseconds: 100));
-            //     downloadAsPdf(
-            //         currentKey); // 👈 chọn đúng key theo page đang hiển thị
-            //   },
-            //   child: const Text("Lưu pdf"),
-            // ),
-            ElevatedButton(
-              onPressed: () {
-                setState(() {
-                  showPage10 = true;
-                });
-              },
-              child: const Text("1"),
+      builder: (context, state) => Stack(
+        children: [
+          Scaffold(
+            body: showPage10
+                ? PageMenu10(captureKeys: _captureKeys)
+                : PageMenu11(captureKeys: _captureKeys),
+            bottomNavigationBar: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                ElevatedButton(
+                  onPressed: _handleDownload,
+                  child: const Icon(Icons.download),
+                ),
+                ElevatedButton(
+                  onPressed: () {
+                    setState(() {
+                      showPage10 = true;
+                    });
+                  },
+                  child: const Text("1"),
+                ),
+                ElevatedButton(
+                  onPressed: () {
+                    setState(() {
+                      showPage10 = false;
+                    });
+                  },
+                  child: const Text("2"),
+                ),
+                ButtonSetting(context),
+              ],
             ),
-            ElevatedButton(
-              onPressed: () {
-                setState(() {
-                  showPage10 = false;
-                });
-              },
-              child: const Text("2"),
+          ),
+
+          // 👉 Overlay loading
+          if (_isLoading)
+            Positioned.fill(
+              child: Container(
+                color: Colors.black45,
+                child: const Center(
+                  child: CircularProgressIndicator(
+                    color: Colors.white,
+                  ),
+                ),
+              ),
             ),
-            ButtonSetting(context),
-          ],
-        ),
+        ],
       ),
     );
   }
