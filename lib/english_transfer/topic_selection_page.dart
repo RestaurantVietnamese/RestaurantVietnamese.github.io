@@ -8,7 +8,11 @@ class TopicSelectionPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text("Chọn chủ đề")),
+      appBar: AppBar(
+        backgroundColor: Colors.transparent,
+        title: const Text("Chọn chủ đề"),
+        surfaceTintColor: Colors.transparent,
+      ),
       body: ListView.builder(
         itemCount: allSentenceSets.length,
         itemBuilder: (context, index) {

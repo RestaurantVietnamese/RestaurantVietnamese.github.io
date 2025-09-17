@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:puzzel/english_transfer/bloc/sentence_cubit.dart';
 import 'package:puzzel/english_transfer/bloc/sentence_state.dart';
+import 'package:puzzel/english_transfer/tts_example_page.dart';
 import 'package:reorderables/reorderables.dart';
 
 class SentenceGameView extends StatelessWidget {
@@ -126,45 +127,53 @@ class SentenceGameView extends StatelessWidget {
 
                 const Spacer(),
 
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    ElevatedButton(
-                      onPressed: () {
-                        cubit.checkAnswer(
-                          () => ScaffoldMessenger.of(context).showSnackBar(
-                            const SnackBar(content: Text("✅ Chính xác!")),
-                          ),
-                          () => ScaffoldMessenger.of(context).showSnackBar(
-                            const SnackBar(
-                                content: Text("❌ Sai rồi, hãy thử lại!")),
-                          ),
-                          () => ScaffoldMessenger.of(context).showSnackBar(
-                            const SnackBar(
-                                content: Text("🎉 Hoàn thành tất cả câu!")),
-                          ),
-                        );
-                      },
-                      child: const Text("Kiểm tra"),
-                    ),
-                    ElevatedButton(
-                      onPressed: () {
-                        cubit.toggleCheckPositions();
-                      },
-                      style: ElevatedButton.styleFrom(),
-                      child: const Text("Kiểm tra vị trí"),
-                    ),
-                    ElevatedButton(
-                      onPressed: () {
-                        final correctAnswer = cubit
-                            .sentenceSet.englishSentences[state.currentIndex];
-                        ScaffoldMessenger.of(context).showSnackBar(
-                          SnackBar(content: Text("💡 Gợi ý : $correctAnswer")),
-                        );
-                      },
-                      child: const Text("Gợi ý"),
-                    ),
-                  ],
+                SingleChildScrollView(
+                  scrollDirection: Axis.horizontal,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      ElevatedButton(
+                        onPressed: () {
+                          cubit.checkAnswer(
+                            () => ScaffoldMessenger.of(context).showSnackBar(
+                              const SnackBar(content: Text("✅ Chính xác!")),
+                            ),
+                            () => ScaffoldMessenger.of(context).showSnackBar(
+                              const SnackBar(
+                                  content: Text("❌ Sai rồi, hãy thử lại!")),
+                            ),
+                            () => ScaffoldMessenger.of(context).showSnackBar(
+                              const SnackBar(
+                                  content: Text("🎉 Hoàn thành tất cả câu!")),
+                            ),
+                          );
+                        },
+                        child: const Text("Kiểm tra"),
+                      ),
+                      ElevatedButton(
+                        onPressed: () {
+                          cubit.toggleCheckPositions();
+                        },
+                        style: ElevatedButton.styleFrom(),
+                        child: const Text("Kiểm tra vị trí"),
+                      ),
+                      ElevatedButton(
+                        onPressed: () {
+                          final correctAnswer = cubit
+                              .sentenceSet.englishSentences[state.currentIndex];
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            SnackBar(
+                                content: Text("💡 Gợi ý : $correctAnswer")),
+                          );
+                        },
+                        child: const Text("Gợi ý"),
+                      ),
+                      TtsExamplePage(
+                        textContent: cubit
+                            .sentenceSet.englishSentences[state.currentIndex],
+                      ),
+                    ],
+                  ),
                 ),
                 const SizedBox(height: 16),
 
