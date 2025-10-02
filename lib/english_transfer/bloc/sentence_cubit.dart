@@ -107,4 +107,14 @@ class SentenceCubit extends Cubit<SentenceState> {
   void updateSelectedWords(List<String> words) {
     emit(state.copyWith(selectedWords: words));
   }
+
+  void resetCurrentSentence() {
+    final currentSentence =
+        sentenceSet.englishSentences[state.currentIndex].split(' ');
+    emit(state.copyWith(
+      selectedWords: [],
+      shuffledWords: List<String>.from(currentSentence)..shuffle(),
+      showCheckPositions: false,
+    ));
+  }
 }

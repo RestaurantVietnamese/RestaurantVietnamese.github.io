@@ -38,39 +38,6 @@ class SentenceGameView extends StatelessWidget {
                 ),
                 const SizedBox(height: 20),
 
-                // Selected words (reorderable)
-                // Selected words (Wrap + drag & drop)
-                // ReorderableWrap(
-                //   spacing: 8,
-                //   runSpacing: 8,
-                //   needsLongPressDraggable: true, // có thể bật tắt
-                //   onReorder: (oldIndex, newIndex) {
-                //     final updated = List<String>.from(state.selectedWords);
-                //     final movedWord = updated.removeAt(oldIndex);
-                //     updated.insert(newIndex, movedWord);
-                //     cubit.updateSelectedWords(updated);
-                //   },
-                //   children: state.selectedWords.asMap().entries.map((entry) {
-                //     final index = entry.key;
-                //     final word = entry.value;
-
-                //     final correctWords = cubit
-                //         .sentenceSet.englishSentences[state.currentIndex]
-                //         .split(' ');
-                //     final isCorrect = index < correctWords.length &&
-                //         word == correctWords[index];
-
-                //     return Chip(
-                //       key: ValueKey(word), // bắt buộc có key
-                //       label: Text(word),
-                //       backgroundColor: state.showCheckPositions
-                //           ? (isCorrect
-                //               ? Colors.green.shade200
-                //               : Colors.red.shade200)
-                //           : null,
-                //     );
-                //   }).toList(),
-                // ),
                 ReorderableWrap(
                   spacing: 8,
                   runSpacing: 8,
@@ -156,6 +123,14 @@ class SentenceGameView extends StatelessWidget {
                         },
                         style: ElevatedButton.styleFrom(),
                         child: const Text("Kiểm tra vị trí"),
+                      ),
+                      ElevatedButton(
+                        onPressed: () {
+                          cubit.resetCurrentSentence();
+                        },
+                        // style: ElevatedButton.styleFrom(
+                        //     backgroundColor: Colors.orange),
+                        child: const Text("Làm lại"),
                       ),
                       ElevatedButton(
                         onPressed: () {

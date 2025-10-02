@@ -24,7 +24,7 @@ class _TtsExamplePageState extends State<TtsExamplePage> {
   Future<void> _speak() async {
     await flutterTts.setLanguage(_selectedLang);
     await flutterTts.setPitch(1.0);
-    await flutterTts.setSpeechRate(0.5);
+    await flutterTts.setSpeechRate(0.2);
     await flutterTts.speak(widget.textContent);
   }
 
