@@ -23,5 +23,6 @@ echo "📦 Committing and pushing"
 git add .
 git commit -m "Deploy web from restaurant"
 git push --force origin main
+git checkout restaurant
 
 echo "✅ Done!"
