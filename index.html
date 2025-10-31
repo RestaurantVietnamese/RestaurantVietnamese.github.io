@@ -1,24 +1,11 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <!--
-    If you are serving your web app in a path other than the root, change the
-    href value below to reflect the base path you are serving from.
-
-    The path provided below has to start and end with a slash "/" in order for
-    it to work correctly.
-
-    For more details:
-    * https://developer.mozilla.org/en-US/docs/Web/HTML/Element/base
-
-    This is a placeholder for base href that will be replaced by the value of
-    the `--base-href` argument provided to `flutter build`.
-  -->
   <base href="/">
 
   <meta charset="UTF-8">
   <meta content="IE=Edge" http-equiv="X-UA-Compatible">
-  <meta name="description" content="A new Flutter project.">
+  <meta name="description" content="Firebase Notifications App">
 
   <!-- iOS meta tags & icons -->
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -29,10 +16,40 @@
   <!-- Favicon -->
   <link rel="icon" type="image/png" href="favicon.png"/>
 
-  <title>firebase_notifications_app</title>
+  <title>Firebase Notifications</title>
   <link rel="manifest" href="manifest.json">
 </head>
 <body>
+  <script>
+    // Register Service Worker cho FCM - THÊM ĐOẠN NÀY TRƯỚC flutter_bootstrap.js
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', function() {
+        // Đường dẫn đến service worker
+        navigator.serviceWorker.register('/firebase-messaging-sw.js')
+          .then(function(registration) {
+            console.log('✅ ServiceWorker registered successfully with scope:', registration.scope);
+            
+            // Kiểm tra xem service worker có active không
+            if (registration.active) {
+              console.log('✅ Service Worker is active and ready for FCM');
+            }
+          })
+          .catch(function(err) {
+            console.error('❌ ServiceWorker registration failed:', err);
+          });
+      });
+    } else {
+      console.warn('⚠️ Service workers are not supported in this browser.');
+    }
+
+    // Service Worker ready check
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.ready.then(function(registration) {
+        console.log('🔥 Service Worker ready for FCM messaging');
+      });
+    }
+  </script>
+
   <script src="flutter_bootstrap.js" async></script>
 </body>
 </html>
