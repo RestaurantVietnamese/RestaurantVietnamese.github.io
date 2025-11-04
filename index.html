@@ -1,55 +1,90 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   <base href="/">
 
-  <meta charset="UTF-8">
-  <meta content="IE=Edge" http-equiv="X-UA-Compatible">
-  <meta name="description" content="Firebase Notifications App">
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <!-- iOS meta tags & icons -->
+  <meta name="mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
-  <meta name="apple-mobile-web-app-title" content="firebase_notifications_app">
+  <meta name="apple-mobile-web-app-title" content="web_g18">
+
   <link rel="apple-touch-icon" href="icons/Icon-192.png">
-
-  <!-- Favicon -->
-  <link rel="icon" type="image/png" href="favicon.png"/>
-
-  <title>Firebase Notifications</title>
+  <link rel="icon" type="image/png" href="favicon.png" />
   <link rel="manifest" href="manifest.json">
+
+  <title>Chotbatdongsan</title>
+  <meta name="description"
+    content="Chotbatdongsan cung cấp thông tin Bán, Thuê, Tìm Mua, Tìm Thuê bất động sản nhanh chóng, đáng tin cậy.">
+  <meta name="keywords" content="Chotbatdongsan, Bán, Thuê, Tìm Mua, Tìm Thuê, Bất động sản">
+
+  <style>
+  html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+    overflow: hidden; /* QUAN TRỌNG: Đổi từ 'auto' thành 'hidden' */
+    background: #ffffff;
+  }
+
+  #output {
+    height: 100%;
+    width: 100%;
+  }
+
+  /* Thêm style mới để đảm bảo Flutter app chiếm toàn bộ màn hình */
+  flt-glass-pane {
+    width: 100% !important;
+    height: 100% !important;
+  }
+</style>
+
+  <link rel="preload" href="flutter.js" as="script">
+  <link rel="preload" href="main.dart.js" as="script">
+  <link rel="preload" href="assets/AssetManifest.json" as="fetch" crossorigin>
+  <link rel="preload" href="assets/FontManifest.json" as="fetch" crossorigin>
+
 </head>
+
 <body>
+  <script src="flutter.js"></script>
+
   <script>
-    // Register Service Worker cho FCM - THÊM ĐOẠN NÀY TRƯỚC flutter_bootstrap.js
-    if ('serviceWorker' in navigator) {
-      window.addEventListener('load', function() {
-        // Đường dẫn đến service worker
-        navigator.serviceWorker.register('/firebase-messaging-sw.js')
-          .then(function(registration) {
-            console.log('✅ ServiceWorker registered successfully with scope:', registration.scope);
-            
-            // Kiểm tra xem service worker có active không
-            if (registration.active) {
-              console.log('✅ Service Worker is active and ready for FCM');
-            }
-          })
-          .catch(function(err) {
-            console.error('❌ ServiceWorker registration failed:', err);
-          });
+    // ✅ FIX: Bỏ Service Worker ra khỏi Load Entrypoint để khắc phục lỗi timeout 4s.
+    // Nếu bạn muốn dùng SW, hãy GỠ LỖI file flutter_service_worker.js trước.
+    // Nếu lỗi 4s vẫn xảy ra, hãy dùng đoạn code dưới đây để bỏ qua SW trong quá trình tải ban đầu.
+    // (Bỏ 'serviceWorker: { serviceWorkerVersion },' đi)
+    function startFlutterApp() {
+      _flutter.loader.loadEntrypoint({
+        onEntrypointLoaded: function (engineInitializer) {
+          engineInitializer.initializeEngine().then(appRunner => appRunner.runApp());
+        }
       });
-    } else {
-      console.warn('⚠️ Service workers are not supported in this browser.');
     }
 
-    // Service Worker ready check
-    if ('serviceWorker' in navigator) {
-      navigator.serviceWorker.ready.then(function(registration) {
-        console.log('🔥 Service Worker ready for FCM messaging');
-      });
-    }
+    // ✅ Dùng DOMContentLoaded để khởi chạy sớm (đã tốt)
+    window.addEventListener('DOMContentLoaded', startFlutterApp);
+
+    // 3. LAZY LOAD reCAPTCHA: Đảm bảo Flutter Engine được ưu tiên.
+    // Tải reCAPTCHA sau khi Flutter đã bắt đầu khởi động.
+    // function loadRecaptcha() {
+    //   const script = document.createElement('script');
+    //   script.src = "https://www.google.com/recaptcha/api.js?render=6Lf2NKYrAAAAAAIOn5T0JJl9FPtIs1I6pED5GhwE";
+    //   script.async = true;
+    //   script.defer = true;
+    //   document.body.appendChild(script);
+    // }
+    
+    // Tải reCAPTCHA sau 1.5 giây hoặc sau khi Flutter App đã khởi động
+    // setTimeout(loadRecaptcha, 1500); 
+
   </script>
 
-  <script src="flutter_bootstrap.js" async></script>
 </body>
+
 </html>
