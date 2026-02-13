@@ -32,31 +32,52 @@ class _ImagePageDashState extends State<ImagePageDash> {
     print(_layoutIndex);
   }
 
+  final TransformationController _controller = TransformationController();
+
+  @override
+  void initState() {
+    super.initState();
+
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      final screenSize = MediaQuery.of(context).size;
+
+      final scaleX = screenSize.width / 600;
+      final scaleY = screenSize.height / 800;
+      final initialScale = scaleX < scaleY ? scaleX : scaleY;
+
+      _controller.value = Matrix4.identity()..scale(initialScale);
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
+    final screenSize = MediaQuery.of(context).size;
+
+    // Tính scale để fit toàn bộ 600x800 vào màn hình
+    final scaleX = screenSize.width / 600;
+    final scaleY = screenSize.height / 800;
+    final initialScale = scaleX < scaleY ? scaleX : scaleY;
+
     return Scaffold(
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          setState(() {
-            nextLayout();
-          });
+          nextLayout();
         },
         child: const Icon(Icons.refresh),
       ),
-      body: Center(
-        child: InteractiveViewer(
-          minScale: 0.5,
-          maxScale: 4,
-          boundaryMargin: const EdgeInsets.all(200),
-          child: Container(
-            width: 600,
-            height: 800,
-            decoration: const BoxDecoration(
-              color: Color(0xFF5A4F45),
-            ),
-            child: Stack(
-              children: _buildLayout(_layoutIndex),
-            ),
+      body: InteractiveViewer(
+        transformationController: _controller,
+        minScale: 0.05,
+        maxScale: 4,
+        boundaryMargin: const EdgeInsets.all(200),
+        child: Container(
+          width: 600,
+          height: 800,
+          decoration: const BoxDecoration(
+            color: Color(0xFF5A4F45),
+          ),
+          child: Stack(
+            children: _buildLayout(_layoutIndex),
           ),
         ),
       ),
