@@ -1,20 +1,27 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
+import 'dart:ui' as ui;
+import 'dart:io';
+import 'package:path_provider/path_provider.dart';
+import 'dart:html' as html;
 
 class ImagePageDash extends StatefulWidget {
-  ImagePageDash({super.key});
+  const ImagePageDash({super.key});
 
   @override
   State<ImagePageDash> createState() => _ImagePageDashState();
 }
 
 class _ImagePageDashState extends State<ImagePageDash> {
+  final GlobalKey _captureKey = GlobalKey();
+
   final List<String> images = const [
+    'assets/images/img_5.jpg',
+    'assets/images/img_2.jpeg',
     'assets/images/img_1.jpg',
-    'assets/images/img_1.jpg',
-    'assets/images/img_1.jpg',
-    'assets/images/img_1.jpg',
-    'assets/images/img_1.jpg',
-    'assets/images/img_1.jpg',
+    'assets/images/img_4_2.jpg',
+    'assets/images/img_5_2.png',
     'assets/images/img_1.jpg',
     'assets/images/img_1.jpg',
   ];
@@ -49,21 +56,72 @@ class _ImagePageDashState extends State<ImagePageDash> {
     });
   }
 
+  Future<void> _saveImage() async {
+    try {
+      final boundary = _captureKey.currentContext!.findRenderObject()
+          as RenderRepaintBoundary;
+
+      final image = await boundary.toImage(pixelRatio: 3); // chất lượng cao
+      final byteData = await image.toByteData(format: ui.ImageByteFormat.png);
+
+      final pngBytes = byteData!.buffer.asUint8List();
+
+      final directory = await getApplicationDocumentsDirectory();
+      final file = File(
+          '${directory.path}/layout_${DateTime.now().millisecondsSinceEpoch}.png');
+
+      await file.writeAsBytes(pngBytes);
+
+      print("Saved to: ${file.path}");
+    } catch (e) {
+      print("Error saving image: $e");
+    }
+  }
+
+  Future<void> _saveImageWeb() async {
+    try {
+      final boundary = _captureKey.currentContext!.findRenderObject()
+          as RenderRepaintBoundary;
+
+      final pixelRatio = ui.window.devicePixelRatio * 2;
+      final image = await boundary.toImage(pixelRatio: pixelRatio);
+
+      final byteData = await image.toByteData(format: ui.ImageByteFormat.png);
+
+      final pngBytes = byteData!.buffer.asUint8List();
+
+      final blob = html.Blob([pngBytes]);
+      final url = html.Url.createObjectUrlFromBlob(blob);
+
+      final anchor = html.AnchorElement(href: url)
+        ..setAttribute(
+            "download", "layout_${DateTime.now().millisecondsSinceEpoch}.png")
+        ..click();
+
+      html.Url.revokeObjectUrl(url);
+    } catch (e) {
+      print("Error saving image: $e");
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
-    final screenSize = MediaQuery.of(context).size;
-
-    // Tính scale để fit toàn bộ 600x800 vào màn hình
-    final scaleX = screenSize.width / 600;
-    final scaleY = screenSize.height / 800;
-    final initialScale = scaleX < scaleY ? scaleX : scaleY;
-
     return Scaffold(
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          nextLayout();
-        },
-        child: const Icon(Icons.refresh),
+      floatingActionButton: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          FloatingActionButton(
+            heroTag: "refresh",
+            onPressed: nextLayout,
+            child: const Icon(Icons.refresh),
+          ),
+          const SizedBox(height: 12),
+          FloatingActionButton(
+            heroTag: "save",
+            onPressed: (kIsWeb) ? _saveImageWeb : _saveImage,
+            child: const Icon(Icons.save),
+          ),
+        ],
       ),
       body: InteractiveViewer(
         constrained: false,
@@ -72,14 +130,17 @@ class _ImagePageDashState extends State<ImagePageDash> {
         minScale: 0.05,
         maxScale: 4,
         boundaryMargin: const EdgeInsets.all(200),
-        child: Container(
-          width: 600,
-          height: 800,
-          decoration: const BoxDecoration(
-            color: Color(0xFF5A4F45),
-          ),
-          child: Stack(
-            children: _buildLayout(_layoutIndex),
+        child: RepaintBoundary(
+          key: _captureKey,
+          child: Container(
+            width: 600,
+            height: 800,
+            decoration: const BoxDecoration(
+              color: Colors.white,
+            ),
+            child: Stack(
+              children: _buildLayout(_layoutIndex),
+            ),
           ),
         ),
       ),
@@ -88,36 +149,36 @@ class _ImagePageDashState extends State<ImagePageDash> {
 
   List<Widget> _buildLayout(int index) {
     final layouts = [
-      _layout1(),
-      _layout2(),
-      _layout3(),
+      // _layout1(),
+      // _layout2(),
+      // _layout3(),
       _layout4(),
-      _layout5(),
-      _layout6(),
+      // _layout5(),
+      // _layout6(),
       _layout7(),
-      _layout8(),
-      _layout9(),
-      _layout10(),
-      _layout11(),
-      _layout12(),
-      _layout13(),
-      _layout14(),
-      _layout15(),
-      _layout16(),
-      _layout17(),
-      _layout18(),
-      _layout19(),
-      _layout20(),
-      _layout21(),
-      _layout22(),
-      _layout23(),
-      _layout24(),
-      _layout25(),
-      _layout26(),
-      _layout27(),
-      _layout28(),
-      _layout29(),
-      _layout30(),
+      // _layout8(),
+      // _layout9(),
+      // _layout10(),
+      // _layout11(),
+      // _layout12(),
+      // _layout13(),
+      // _layout14(),
+      // _layout15(),
+      // _layout16(),
+      // _layout17(),
+      // _layout18(),
+      // _layout19(),
+      // _layout20(),
+      // _layout21(),
+      // _layout22(),
+      // _layout23(),
+      // _layout24(),
+      // _layout25(),
+      // _layout26(),
+      // _layout27(),
+      // _layout28(),
+      // _layout29(),
+      // _layout30(),
     ];
 
     return layouts[(index - 1) % layouts.length];
@@ -135,10 +196,6 @@ class _ImagePageDashState extends State<ImagePageDash> {
         height: size,
         decoration: BoxDecoration(
           shape: BoxShape.circle,
-          image: DecorationImage(
-            image: AssetImage(images[index]),
-            fit: BoxFit.cover,
-          ),
           boxShadow: [
             BoxShadow(
               color: Colors.black.withOpacity(0.25),
@@ -146,6 +203,15 @@ class _ImagePageDashState extends State<ImagePageDash> {
               offset: const Offset(0, 12),
             ),
           ],
+        ),
+        child: ClipOval(
+          child: Transform.scale(
+            scale: (index == 1) ? 1.205 : 1,
+            child: Image.asset(
+              images[index],
+              fit: BoxFit.fitWidth,
+            ),
+          ),
         ),
       ),
     );
