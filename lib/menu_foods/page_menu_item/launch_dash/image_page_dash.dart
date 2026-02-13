@@ -66,6 +66,8 @@ class _ImagePageDashState extends State<ImagePageDash> {
         child: const Icon(Icons.refresh),
       ),
       body: InteractiveViewer(
+        constrained: false,
+        alignment: Alignment.topLeft,
         transformationController: _controller,
         minScale: 0.05,
         maxScale: 4,
