@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:puzzel/menu_foods/menu_page.dart';
+import 'package:puzzel/menu_foods/page_menu_item/launch_dash/image_page_dash.dart';
 import 'package:puzzel/widget/fonts/bloc/font_cubit.dart';
 
 void main() {
@@ -19,7 +20,8 @@ class MenuApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: MenuPage(),
+      // home: MenuPage(),
+      home: ImagePageDash(),
     );
   }
 }

@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:puzzel/menu_foods/export_image/save_image_util.dart';
+import 'package:puzzel/menu_foods/page_menu_item/launch_dash/image_page_dash.dart';
 import 'package:puzzel/menu_foods/page_menu_item/page_10.dart';
 import 'package:puzzel/widget/fonts/AppFontsGoogle.dart';
 import 'package:puzzel/widget/fonts/bloc/font_cubit.dart';
@@ -73,6 +74,18 @@ class _MenuPageState extends State<MenuPage> {
                   child: const Text("2"),
                 ),
                 ButtonSetting(context),
+                ElevatedButton(
+                  onPressed: () {
+                    setState(() {
+                      Navigator.push(context, MaterialPageRoute(
+                        builder: (context) {
+                          return ImagePageDash();
+                        },
+                      ));
+                    });
+                  },
+                  child: const Text("Image"),
+                )
               ],
             ),
           ),
